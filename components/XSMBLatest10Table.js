@@ -2,12 +2,13 @@
  * Component hiển thị 3 bảng kết quả XSMB mới nhất với button xem thêm
  */
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, memo } from 'react';
 import styles from '../styles/XSMBSimpleTable.module.css';
 import { useXSMBLatest10 } from '../hooks/useXSMBNext';
 
-const XSMBLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
-    const [displayedCount, setDisplayedCount] = useState(3);
+const XSMBLatest10Table = memo(({ page = 1, limit = 10, onPaginationChange }) => {
+    // ✅ Performance: Start with 1 table instead of 3 to improve initial render
+    const [displayedCount, setDisplayedCount] = useState(1);
     const { data: apiData, pagination, loading, error } = useXSMBLatest10({ page, limit });
 
     // Notify parent component of pagination changes
@@ -22,13 +23,15 @@ const XSMBLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
     // Use API data if available, otherwise show empty state
     const data = apiData;
 
-    // Handle load more button
+    // Handle load more button - Load 2 more at a time for better performance
     const handleLoadMore = () => {
-        setDisplayedCount(prev => Math.min(prev + 3, data?.length || 0));
+        setDisplayedCount(prev => Math.min(prev + 2, data?.length || 0));
     };
 
-    // Get displayed data
-    const displayedData = data?.slice(0, displayedCount) || [];
+    // ✅ Memoize displayed data to avoid recalculation
+    const displayedData = useMemo(() => {
+        return data?.slice(0, displayedCount) || [];
+    }, [data, displayedCount]);
 
     // Loading state - ✅ FIX CLS: Use skeleton with fixed height
     if (loading) {
@@ -367,19 +370,20 @@ const XSMBLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
                         onClick={handleLoadMore}
                         className={styles.loadMoreButton}
                     >
-                        Xem thêm 3 kết quả ({displayedCount + 3 <= (data?.length || 0) ? 3 : (data?.length || 0) - displayedCount} kết quả)
+                        Xem thêm 2 kết quả ({displayedCount + 2 <= (data?.length || 0) ? 2 : (data?.length || 0) - displayedCount} kết quả)
                     </button>
                 </div>
             )}
 
             {/* Show all loaded message */}
-            {displayedCount >= (data?.length || 0) && data && data.length > 3 && (
+            {displayedCount >= (data?.length || 0) && data && data.length > 1 && (
                 <div className={styles.allLoadedMessage}>
                     Đã hiển thị tất cả {data.length} kết quả
                 </div>
             )}
         </div>
     );
-};
+});
 
+XSMBLatest10Table.displayName = 'XSMBLatest10Table';
 export default XSMBLatest10Table;

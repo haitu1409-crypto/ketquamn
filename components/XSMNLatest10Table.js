@@ -8,13 +8,14 @@
  * @param {Function} onPaginationChange - Callback when pagination changes
  */
 
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, memo } from 'react';
 import styles from '../styles/XSMNSimpleTable.module.css';
 import { useXSMNLatest10 } from '../hooks/useXSMNNext';
 import { getFilteredNumber } from '../utils/lotteryUtils';
 
-const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
-    const [displayedDaysCount, setDisplayedDaysCount] = useState(3); // Số ngày hiển thị, không phải số documents
+const XSMNLatest10Table = memo(({ page = 1, limit = 10, onPaginationChange }) => {
+    // ✅ Performance: Start with 1 day instead of 3 to improve initial render
+    const [displayedDaysCount, setDisplayedDaysCount] = useState(1); // Số ngày hiển thị, không phải số documents
     const [filterTypes, setFilterTypes] = useState({});
     const { data: apiData, pagination, loading, error } = useXSMNLatest10({ page, limit });
 
@@ -192,9 +193,9 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
     
     // ✅ Removed debug logs for production performance
 
-    // Handle load more button - tăng số ngày, không phải số documents
+    // Handle load more button - Load 2 more days at a time for better performance
     const handleLoadMore = () => {
-        setDisplayedDaysCount(prev => Math.min(prev + 3, sortedDateKeys.length));
+        setDisplayedDaysCount(prev => Math.min(prev + 2, sortedDateKeys.length));
     };
 
     // Initialize filter types
@@ -558,6 +559,7 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
             )}
         </div>
     );
-};
+});
 
+XSMNLatest10Table.displayName = 'XSMNLatest10Table';
 export default XSMNLatest10Table;
