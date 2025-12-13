@@ -90,6 +90,40 @@ function MyApp({ Component, pageProps }) {
         }
     }, [router.pathname]);
 
+    // ✅ Lazy load background image after initial render to improve LCP
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            // Load background image after page is interactive
+            const loadBackground = () => {
+                const body = document.body;
+                const main = document.querySelector('main');
+                
+                if (body && !body.dataset.bgLoaded) {
+                    body.style.backgroundImage = 
+                        'linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(/imgs/background.png)';
+                    body.style.backgroundSize = 'cover';
+                    body.style.backgroundPosition = 'center';
+                    body.style.backgroundRepeat = 'no-repeat';
+                    body.style.backgroundAttachment = 'fixed';
+                    body.dataset.bgLoaded = 'true';
+                }
+                
+                if (main && !main.dataset.bgLoaded) {
+                    main.style.backgroundImage = 'url(/imgs/background.png)';
+                    main.style.backgroundSize = 'cover';
+                    main.style.backgroundPosition = 'center';
+                    main.style.backgroundRepeat = 'no-repeat';
+                    main.style.backgroundAttachment = 'fixed';
+                    main.dataset.bgLoaded = 'true';
+                }
+            };
+
+            // Load after a short delay to not block initial render
+            const timeoutId = setTimeout(loadBackground, 100);
+            return () => clearTimeout(timeoutId);
+        }
+    }, []);
+
     // Handle route changes for smooth navigation
     useEffect(() => {
         const handleStart = () => {

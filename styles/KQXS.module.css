@@ -56,6 +56,10 @@
 
 .pageTitle {
     text-align: center;
+    /* ✅ FIX CLS: Reserve space for title to prevent layout shift */
+    min-height: 3rem;
+    contain: layout style paint;
+    margin: 1rem 0;
 }
 
 .header {
@@ -266,6 +270,10 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 12px;
     margin-top: 20px;
+    /* ✅ FIX CLS: Reserve space and prevent layout shifts */
+    min-height: 400px;
+    contain: layout style paint;
+    will-change: auto;
 }
 
 .infoCard {
@@ -273,6 +281,9 @@
     border-radius: 8px;
     padding: 16px;
     border: 1px solid #e5e7eb;
+    /* ✅ FIX CLS: Reserve space and prevent layout shifts */
+    min-height: 200px;
+    contain: layout style paint;
 }
 
 .infoCard h3 {
@@ -379,10 +390,16 @@
         grid-template-columns: 1fr;
         gap: 15px;
         margin-top: 30px;
+        /* ✅ FIX CLS: Reserve space on mobile */
+        min-height: 600px;
+        contain: layout style paint;
     }
 
     .infoCard {
         padding: 20px;
+        /* ✅ FIX CLS: Reserve space on mobile */
+        min-height: 250px;
+        contain: layout style paint;
     }
 
     .infoCard h3 {

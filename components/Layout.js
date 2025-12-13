@@ -419,9 +419,10 @@ export default function Layout({ children, className = '' }) {
                                         alt="Kết Quả MN"
                                         width={300}
                                         height={100}
-                                        style={{ display: 'block', maxWidth: '100%', height: 'auto', width: 'auto' }}
+                                        style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
                                         loading="lazy"
                                         fetchPriority="low"
+                                        sizes="(max-width: 768px) 200px, 300px"
                                     />
                                 </div>
                                 <p className={styles.footerDescription}>
