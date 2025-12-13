@@ -27,7 +27,7 @@ export function normalizeSiteUrl(url) {
  * @param {string} fallback - Fallback URL nếu không có env variable
  * @returns {string} - Normalized site URL
  */
-export function getSiteUrl(fallback = 'https://taodandewukong.pro') {
+export function getSiteUrl(fallback = 'https://ketquamn.com') {
     const url = process.env.NEXT_PUBLIC_SITE_URL || fallback;
     return normalizeSiteUrl(url);
 }

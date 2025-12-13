@@ -15,7 +15,7 @@ export default function ChatQRPage() {
 
     useEffect(() => {
         // Get chat URL
-        const productionUrl = 'https://taodandewukong.pro';
+        const productionUrl = 'https://ketquamn.com';
         const url = typeof window !== 'undefined' 
             ? (process.env.NODE_ENV === 'production' 
                 ? `${productionUrl}/chat` 
@@ -31,14 +31,14 @@ export default function ChatQRPage() {
     }, []);
 
     // Open Graph meta data
-    const ogTitle = 'Group Chat Chốt Dàn 3 Miền Wukong';
-    const ogDescription = 'Tham gia Group Chat để chia sẻ và thảo luận về dàn đề chốt số 3 miền cùng cộng đồng Wukong';
-    const shareUrl = chatUrl || 'https://taodandewukong.pro/chat';
+    const ogTitle = 'Group Chat Kết Quả MN';
+    const ogDescription = 'Tham gia Group Chat để chia sẻ và thảo luận về dàn đề chốt số 3 miền cùng cộng đồng Kết Quả MN';
+    const shareUrl = chatUrl || 'https://ketquamn.com/chat';
 
     return (
         <>
             <Head>
-                <title>{ogTitle} | Dàn Đề Wukong</title>
+                <title>{ogTitle} | Kết Quả MN</title>
                 <meta name="description" content={ogDescription} />
                 
                 {/* Open Graph / Facebook */}
@@ -46,17 +46,17 @@ export default function ChatQRPage() {
                 <meta property="og:url" content={shareUrl} />
                 <meta property="og:title" content={ogTitle} />
                 <meta property="og:description" content={ogDescription} />
-                <meta property="og:image" content={qrImageUrl || 'https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=https://taodandewukong.pro/chat'} />
+                <meta property="og:image" content={qrImageUrl || 'https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=https://ketquamn.com/chat'} />
                 <meta property="og:image:width" content="512" />
                 <meta property="og:image:height" content="512" />
-                <meta property="og:image:alt" content="QR Code - Group Chat Chốt Dàn 3 Miền Wukong" />
+                <meta property="og:image:alt" content="QR Code - Group Chat Kết Quả MN" />
                 
                 {/* Twitter Card */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:url" content={shareUrl} />
                 <meta name="twitter:title" content={ogTitle} />
                 <meta name="twitter:description" content={ogDescription} />
-                <meta name="twitter:image" content={qrImageUrl || 'https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=https://taodandewukong.pro/chat'} />
+                <meta name="twitter:image" content={qrImageUrl || 'https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=https://ketquamn.com/chat'} />
                 
                 {/* Redirect to chat page after 1 second */}
                 <meta httpEquiv="refresh" content="1;url=/chat" />

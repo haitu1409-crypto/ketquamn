@@ -75,7 +75,7 @@ const Dan2DPage = memo(function Dan2DPage() {
         "@type": "HowTo",
         "name": "Cách tạo dàn số 2D chuyên nghiệp",
         "description": "Hướng dẫn chi tiết cách tạo dàn số 2D từ 00-99 với phân loại theo mức độ xuất hiện",
-        "image": "https://taodandewukong.pro/imgs/dan2d1d (1).png",
+        "image": "https://ketquamn.com/imgs/dan2d1d (1).png",
         "totalTime": "PT2M",
         "estimatedCost": {
             "@type": "MonetaryAmount",
@@ -97,44 +97,44 @@ const Dan2DPage = memo(function Dan2DPage() {
         "author": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "step": [
             {
                 "@type": "HowToStep",
                 "name": "Truy cập công cụ",
-                "text": "Vào trang công cụ tạo dàn số 2D tại taodandewukong.pro/dan-2d",
-                "image": "https://taodandewukong.pro/imgs/dan2d1d (1).png",
-                "url": "https://taodandewukong.pro/dan-2d"
+                "text": "Vào trang công cụ tạo dàn số 2D tại ketquamn.com/dan-2d",
+                "image": "https://ketquamn.com/imgs/dan2d1d (1).png",
+                "url": "https://ketquamn.com/dan-2d"
             },
             {
                 "@type": "HowToStep",
                 "name": "Nhập số 2D",
                 "text": "Nhập các số 2D (00-99) vào ô text, mỗi số cách nhau bằng dấu phẩy hoặc xuống dòng",
-                "image": "https://taodandewukong.pro/imgs/dan2d1d (1).png"
+                "image": "https://ketquamn.com/imgs/dan2d1d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Chọn chế độ phân loại",
                 "text": "Chọn chế độ phân loại theo mức độ xuất hiện: Mức 1 (ít xuất hiện), Mức 2 (trung bình), Mức 3 (nhiều xuất hiện)",
-                "image": "https://taodandewukong.pro/imgs/dan2d1d (1).png"
+                "image": "https://ketquamn.com/imgs/dan2d1d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Tạo dàn số",
                 "text": "Nhấn nút 'Tạo Dàn Đề' để tạo dàn số 2D theo thuật toán Fisher-Yates",
-                "image": "https://taodandewukong.pro/imgs/dan2d1d (1).png"
+                "image": "https://ketquamn.com/imgs/dan2d1d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Xuất kết quả",
                 "text": "Xuất kết quả ra file Excel hoặc copy để sử dụng",
-                "image": "https://taodandewukong.pro/imgs/dan2d1d (1).png"
+                "image": "https://ketquamn.com/imgs/dan2d1d (1).png"
             }
         ]
     };

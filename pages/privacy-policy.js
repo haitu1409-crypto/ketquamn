@@ -4,10 +4,10 @@ const PrivacyPolicyPage = () => {
     return (
         <>
             <Head>
-                <title>Chính Sách Quyền Riêng Tư | Tạo Dàn Đề Wukong</title>
+                <title>Chính Sách Quyền Riêng Tư | Kết Quả MN</title>
                 <meta
                     name="description"
-                    content="Chính sách quyền riêng tư của Tạo Dàn Đề Wukong, mô tả cách chúng tôi thu thập và sử dụng dữ liệu người dùng."
+                    content="Chính sách quyền riêng tư của Kết Quả MN, mô tả cách chúng tôi thu thập và sử dụng dữ liệu người dùng."
                 />
             </Head>
             <main style={{ padding: '40px 16px', maxWidth: '960px', margin: '0 auto', lineHeight: 1.7 }}>
@@ -15,8 +15,8 @@ const PrivacyPolicyPage = () => {
                     Chính Sách Quyền Riêng Tư
                 </h1>
                 <p>
-                    Chính sách này trình bày cách Tạo Dàn Đề Wukong ("chúng tôi") thu thập, sử dụng và bảo vệ dữ liệu cá nhân của người
-                    dùng khi truy cập và sử dụng trang web <strong>taodandewukong.pro</strong> và các dịch vụ liên quan.
+                    Chính sách này trình bày cách Kết Quả MN ("chúng tôi") thu thập, sử dụng và bảo vệ dữ liệu cá nhân của người
+                    dùng khi truy cập và sử dụng trang web <strong>ketquamn.com</strong> và các dịch vụ liên quan.
                 </p>
 
                 <h2>1. Thông tin chúng tôi thu thập</h2>
@@ -54,7 +54,7 @@ const PrivacyPolicyPage = () => {
                     <li>Rút lại sự đồng ý đối với việc xử lý dữ liệu và hủy kết nối với ứng dụng thông qua cài đặt Facebook.</li>
                 </ul>
                 <p>
-                    Vui lòng gửi yêu cầu tới email <a href="mailto:contact@taodandewukong.pro">contact@taodandewukong.pro</a>. Chúng tôi sẽ phản hồi trong vòng 7 ngày làm việc.
+                    Vui lòng gửi yêu cầu tới email <a href="mailto:contact@ketquamn.com">contact@ketquamn.com</a>. Chúng tôi sẽ phản hồi trong vòng 7 ngày làm việc.
                 </p>
 
                 <h2>6. Cookies và công nghệ theo dõi</h2>
@@ -74,8 +74,8 @@ const PrivacyPolicyPage = () => {
                     Mọi thắc mắc liên quan đến chính sách quyền riêng tư, vui lòng liên hệ:
                 </p>
                 <ul>
-                    <li>Email: <a href="mailto:contact@taodandewukong.pro">contact@taodandewukong.pro</a></li>
-                    <li>Trang web: <a href="https://taodandewukong.pro">https://taodandewukong.pro</a></li>
+                    <li>Email: <a href="mailto:contact@ketquamn.com">contact@ketquamn.com</a></li>
+                    <li>Trang web: <a href="https://ketquamn.com">https://ketquamn.com</a></li>
                 </ul>
 
                 <p style={{ marginTop: '32px', fontStyle: 'italic' }}>

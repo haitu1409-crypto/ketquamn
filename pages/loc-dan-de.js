@@ -89,12 +89,12 @@ export default function LocDanDePage() {
         author: {
             '@type': 'Organization',
             name: 'Dàn Đề Wukong',
-            url: 'https://taodandewukong.pro'
+            url: 'https://ketquamn.com'
         },
         publisher: {
             '@type': 'Organization',
             name: 'Dàn Đề Wukong',
-            url: 'https://taodandewukong.pro'
+            url: 'https://ketquamn.com'
         }
     };
 
@@ -146,12 +146,12 @@ export default function LocDanDePage() {
         author: {
             '@type': 'Organization',
             name: 'Dàn Đề Wukong',
-            url: 'https://taodandewukong.pro'
+            url: 'https://ketquamn.com'
         },
         publisher: {
             '@type': 'Organization',
             name: 'Dàn Đề Wukong',
-            url: 'https://taodandewukong.pro'
+            url: 'https://ketquamn.com'
         }
     };
 

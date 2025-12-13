@@ -8,18 +8,18 @@
 import Head from 'next/head';
 
 export default function SEO({
-    title = 'Tạo Dàn Đề Wukong - Công Cụ Chuyên Nghiệp',
-    description = 'Công cụ tạo dàn đề và thống kê xổ số 3 miền chuyên nghiệp - Thương hiệu Wukong',
-    keywords = 'tạo dàn đề, thống kê xổ số, 3 miền, lô số, dàn 2D, dàn 3D, dàn 4D, Wukong',
+    title = 'Kết Quả MN - Kết quả xổ số miền Nam',
+    description = 'Công cụ tạo dàn đề và thống kê xổ số 3 miền chuyên nghiệp - Kết Quả MN',
+    keywords = 'tạo dàn đề, thống kê xổ số, 3 miền, lô số, dàn 2D, dàn 3D, dàn 4D, Kết Quả MN',
     url = '',
     image = '/imgs/monkey.png',
-    author = 'Dàn Đề Wukong',
+    author = 'Dàn Đề Kết Quả MN',
     type = 'website',
     publishedTime = '',
     modifiedTime = '',
     breadcrumbs = [],
 }) {
-    const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Dàn Đề Wukong';
+    const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Kết Quả MN';
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const fullUrl = siteUrl + url;
     const fullImageUrl = siteUrl + image;

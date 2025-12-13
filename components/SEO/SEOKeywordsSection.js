@@ -10,7 +10,7 @@ import styles from './SEOKeywordsSection.module.css';
 const SEOKeywordsSection = memo(function SEOKeywordsSection() {
     return (
         <div className={styles.seoKeywordsSection}>
-            <strong>TDDW</strong> - Tạo Dàn Đề Wukong |
+            <strong>Kết Quả MN</strong> - Kết quả xổ số miền Nam |
             <strong>TDDW.Pro</strong> |
             Tạo dàn số <strong>TDDW</strong> |
             Soi cầu <strong>TDDW</strong> |
@@ -43,6 +43,7 @@ const SEOKeywordsSection = memo(function SEOKeywordsSection() {
 });
 
 export default SEOKeywordsSection;
+
 
 
 

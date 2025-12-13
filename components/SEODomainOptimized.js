@@ -1,14 +1,14 @@
 import Head from 'next/head';
 
 export default function SEODomainOptimized({
-  title = 'Tạo Dàn Đề Wukong - Công Cụ Chuyên Nghiệp',
-  description = 'Công cụ tạo dàn đề và thống kê xổ số 3 miền chuyên nghiệp - Thương hiệu Wukong. Miễn phí, nhanh chóng, chính xác 100%.',
-  keywords = 'tạo dàn đề, thống kê xổ số, 3 miền, lô số, dàn 2D, dàn 3D, dàn 4D, Wukong',
+  title = 'Kết Quả MN - Kết quả xổ số miền Nam',
+  description = 'Công cụ tạo dàn đề và thống kê xổ số 3 miền chuyên nghiệp - Kết Quả MN. Miễn phí, nhanh chóng, chính xác 100%.',
+  keywords = 'tạo dàn đề, thống kê xổ số, 3 miền, lô số, dàn 2D, dàn 3D, dàn 4D, Kết Quả MN',
   canonical = '',
   ogImage = '/og-image.png',
   noindex = false
 }) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
   const fullUrl = canonical || siteUrl;
   const fullImageUrl = `${siteUrl}${ogImage}`;
 
@@ -18,7 +18,7 @@ export default function SEODomainOptimized({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Dàn Đề Wukong" />
+      <meta name="author" content="Dàn Đề Kết Quả MN" />
       <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow"} />
       <meta name="googlebot" content="index,follow" />
 
@@ -29,12 +29,12 @@ export default function SEODomainOptimized({
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
       <link rel="dns-prefetch" href="//www.google-analytics.com" />
       <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-      <link rel="dns-prefetch" href="//api.taodandewukong.pro" />
+      <link rel="dns-prefetch" href="//api.ketquamn.com" />
 
       {/* Preconnect for Critical Resources */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-      <link rel="preconnect" href="https://api.taodandewukong.pro" />
+      <link rel="preconnect" href="https://api.ketquamn.com" />
 
       {/* Open Graph */}
       <meta property="og:title" content={title} />
@@ -42,7 +42,7 @@ export default function SEODomainOptimized({
       <meta property="og:image" content={fullImageUrl} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Tạo Dàn Đề Wukong" />
+      <meta property="og:site_name" content="Kết Quả MN" />
       <meta property="og:locale" content="vi_VN" />
 
       {/* Twitter Cards */}
@@ -50,8 +50,8 @@ export default function SEODomainOptimized({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={fullImageUrl} />
-      <meta name="twitter:site" content="@taodandewukong" />
-      <meta name="twitter:creator" content="@taodandewukong" />
+      <meta name="twitter:site" content="@ketquamn" />
+      <meta name="twitter:creator" content="@ketquamn" />
 
       {/* Mobile Optimization */}
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
@@ -86,7 +86,7 @@ export default function SEODomainOptimized({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
-            name: 'Tạo Dàn Đề Wukong',
+            name: 'Kết Quả MN',
             alternateName: 'Dàn Đề Online',
             description: description,
             url: siteUrl,
@@ -109,12 +109,12 @@ export default function SEODomainOptimized({
             },
             author: {
               '@type': 'Organization',
-              name: 'Dàn Đề Wukong',
+              name: 'Dàn Đề Kết Quả MN',
               url: siteUrl,
             },
             publisher: {
               '@type': 'Organization',
-              name: 'Dàn Đề Wukong',
+              name: 'Dàn Đề Kết Quả MN',
               logo: {
                 '@type': 'ImageObject',
                 url: fullImageUrl,
@@ -145,7 +145,7 @@ export default function SEODomainOptimized({
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'Dàn Đề Wukong',
+            name: 'Dàn Đề Kết Quả MN',
             url: siteUrl,
             logo: fullImageUrl,
             description: 'Bộ công cụ tạo dàn đề chuyên nghiệp: 2D, 3D, 4D, Đặc Biệt. Miễn phí, nhanh chóng, chính xác.',

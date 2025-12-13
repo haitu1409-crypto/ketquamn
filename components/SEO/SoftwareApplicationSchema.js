@@ -14,7 +14,7 @@ export default function SoftwareApplicationSchema({ pageName = 'home' }) {
         "applicationCategory": "UtilityApplication",
         "applicationSubCategory": "Calculator",
         "operatingSystem": "Web Browser, iOS, Android, Windows, macOS",
-        "url": "https://taodandewukong.pro",
+        "url": "https://ketquamn.com",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -34,8 +34,8 @@ export default function SoftwareApplicationSchema({ pageName = 'home' }) {
         "datePublished": "2024-01-01",
         "dateModified": new Date().toISOString().split('T')[0],
         "softwareVersion": "2.0",
-        "screenshot": "https://taodandewukong.pro/imgs/wukong.png",
-        "license": "https://taodandewukong.pro/terms"
+        "screenshot": "https://ketquamn.com/imgs/wukong.png",
+        "license": "https://ketquamn.com/terms"
     };
 
     // Customize description based on page

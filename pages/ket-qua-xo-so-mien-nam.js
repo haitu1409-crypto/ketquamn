@@ -69,7 +69,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
     }, [isLiveWindow]);
 
     const siteUrl = useMemo(() =>
-        process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro',
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com',
         []
     );
 
@@ -113,7 +113,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
         },
         {
             question: 'Xem XSMN ở đâu tốt nhất?',
-            answer: 'Taodandewukong.pro cung cấp kết quả XSMN nhanh nhất, chính xác nhất. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
+            answer: 'Ketquamn.com cung cấp kết quả XSMN nhanh nhất, chính xác nhất. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
         }
     ], []);
 
@@ -132,11 +132,11 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 'dateModified': deterministicDate,
                 'author': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong'
+                    'name': 'Kết Quả MN'
                 },
                 'publisher': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN',
                     'logo': {
                         '@type': 'ImageObject',
                         'url': `${siteUrl}/imgs/wukong.png`
@@ -161,7 +161,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 'license': 'https://creativecommons.org/licenses/by/4.0/',
                 'provider': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN',
                     'url': siteUrl
                 }
             }
@@ -252,7 +252,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
 
                         <div className={styles.infoCard}>
-                            <h3>Ưu Điểm XSMN Tại Taodandewukong.pro</h3>
+                            <h3>Ưu Điểm XSMN Tại Ketquamn.com</h3>
                             <ul>
                                 <li>✅ <strong>Nhanh nhất:</strong> Cập nhật XSMN ngay sau khi quay số</li>
                                 <li>✅ <strong>Chính xác:</strong> Kết quả XSMN chính xác 100%, đối chiếu từ nguồn chính thức</li>

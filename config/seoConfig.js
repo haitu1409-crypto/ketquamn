@@ -10,9 +10,9 @@
 const { getAllKeywordsForPage, generateMetaDescription } = require('./keywordVariations');
 
 // Normalize SITE_URL to remove trailing slash to avoid double slashes in URLs
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro').replace(/\/+$/, '');
-const SITE_NAME = 'Dàn Đề Wukong';
-const SITE_DESCRIPTION = 'Bộ công cụ tạo dàn đề chuyên nghiệp hàng đầu Việt Nam';
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').replace(/\/+$/, '');
+const SITE_NAME = 'Kết Quả MN';
+const SITE_DESCRIPTION = 'Kết quả xổ số miền Nam nhanh nhất, chính xác nhất 2025';
 
 // Common Open Graph Images
 const OG_IMAGES = {
@@ -47,14 +47,14 @@ const SEO_CONFIG = {
             'tao dan de wu kong',
             'tạo dan đề wukong',
             'tao dàn de wukong',
-            'taodandewukong',
+            'ketquamn',
             'taodande wukong',
             'tao dande wukong',
             'tạo đàn đề wukong',
             'tao dan wukong',
             'tạo dàn wukong',
             'dan de wukong',
-            'taodandewukong.pro',
+            'ketquamn.com',
             'web tạo dàn đề wukong',
             
             // ✅ SHORT ABBREVIATIONS - Viết tắt ngắn (giống RBK = Rồng Bạch Kim)
@@ -205,7 +205,7 @@ const SEO_CONFIG = {
             'taodande', 'lapdanso', 'taomucso', 'lapmucso',
             
             // ✅ NO SPACE - Viết liền
-            'taodandewukong', 'taodandeso', 'lapdandeso',
+            'ketquamn', 'taodandeso', 'lapdandeso',
             'taomucso', 'lapmucso', 'taodanso',
             
             // ✅ MIXED CASE - Chữ hoa/thường
@@ -899,7 +899,7 @@ const SEO_CONFIG = {
      * ENHANCED: Competitive keywords vs xosothantai
      */
     'dau-duoi': {
-        title: 'Thống Kê Đầu Đuôi XSMB - Phân Tích Nhanh Nhất | TAODANDEWUKONG.PRO - Miễn Phí 2025',
+        title: 'Thống Kê Đầu Đuôi XSMB - Phân Tích Nhanh Nhất | ketquamn.com - Miễn Phí 2025',
         description: generateMetaDescription('dau-duoi', true),
         keywords: [
             // ✅ PRIMARY KEYWORDS
@@ -917,7 +917,7 @@ const SEO_CONFIG = {
             'bảng thống kê đầu đuôi', 'bang thong ke dau duoi',
 
             // ✅ BRAND VARIATIONS
-            'thống kê đầu đuôi taodandewukong', 'taodandewukong thống kê đầu đuôi',
+            'thống kê đầu đuôi ketquamn', 'ketquamn thống kê đầu đuôi',
             'dau duoi wukong', 'wukong thống kê đầu đuôi',
 
             // ✅ REGIONAL
@@ -941,7 +941,7 @@ const SEO_CONFIG = {
      * COMPETITIVE: vs xosothantai, xskt
      */
     'lo-gan': {
-        title: 'Thống Kê Lô Gan XSMB - Chi Tiết Hơn Xosothantai | TAODANDEWUKONG.PRO - Miễn Phí 2025',
+        title: 'Thống Kê Lô Gan XSMB - Chi Tiết Hơn Xosothantai | ketquamn.com - Miễn Phí 2025',
         description: generateMetaDescription('lo-gan', true),
         keywords: [
             // ✅ PRIMARY
@@ -981,7 +981,7 @@ const SEO_CONFIG = {
      * COMPETITIVE: vs xskt
      */
     'giai-dac-biet': {
-        title: 'Thống Kê Giải Đặc Biệt XSMB - Nhiều Tính Năng Hơn XSKT | TAODANDEWUKONG.PRO - Miễn Phí 2025',
+        title: 'Thống Kê Giải Đặc Biệt XSMB - Nhiều Tính Năng Hơn XSKT | ketquamn.com - Miễn Phí 2025',
         description: generateMetaDescription('giai-dac-biet', true),
         keywords: [
             // ✅ PRIMARY
@@ -1238,8 +1238,8 @@ const SEO_CONFIG = {
             'xsmb quay thử', 'xsmb quay thu',
             
             // ✅ BRAND VARIATIONS
-            'taodandewukong xsmb', 'wukong xsmb',
-            'taodandewukong.pro xsmb', 'kết quả xsmb wukong',
+            'ketquamn xsmb', 'wukong xsmb',
+            'ketquamn.com xsmb', 'kết quả xsmb wukong',
             'dan de wukong xsmb',
             
             // ✅ REGIONAL
@@ -1278,7 +1278,7 @@ const COMMON_META = {
     locale: 'vi_VN',
     type: 'website',
     twitterCard: 'summary_large_image',
-    twitterSite: '@taodandewukong', // Update with actual Twitter handle
+    twitterSite: '@ketquamn', // Update with actual Twitter handle
     robots: 'index, follow',
     googlebot: 'index, follow',
     author: SITE_NAME,

@@ -280,7 +280,7 @@ export default function ChatPage() {
         return (
             <>
                 <Head>
-                    <title>Chat - Group Chat | Dàn Đề Wukong</title>
+                    <title>Chat - Group Chat | Kết Quả MN</title>
                 </Head>
                 <div className={styles.chatPage}>
                     <div className={styles.loading}>
@@ -297,7 +297,7 @@ export default function ChatPage() {
         return (
             <>
                 <Head>
-                    <title>Chat - Đăng nhập | Dàn Đề Wukong</title>
+                    <title>Chat - Đăng nhập | Kết Quả MN</title>
                     <meta name="description" content="Bạn cần đăng nhập để sử dụng chat" />
                 </Head>
                 <div className={styles.chatPage}>
@@ -343,7 +343,7 @@ export default function ChatPage() {
         return (
             <>
                 <Head>
-                    <title>Chat - Group Chat | Dàn Đề Wukong</title>
+                    <title>Chat - Group Chat | Kết Quả MN</title>
                 </Head>
                 <div className={styles.chatPage}>
                     <div className={styles.errorContainer}>
@@ -366,26 +366,26 @@ export default function ChatPage() {
     // Get chat URL for sharing
     const chatUrl = typeof window !== 'undefined' 
         ? (process.env.NODE_ENV === 'production' 
-            ? 'https://taodandewukong.pro/chat' 
+            ? 'https://ketquamn.com/chat' 
             : `${window.location.origin}/chat`)
-        : 'https://taodandewukong.pro/chat';
+        : 'https://ketquamn.com/chat';
 
     const defaultOrigin = typeof window !== 'undefined'
         ? window.location.origin
-        : 'https://taodandewukong.pro';
+        : 'https://ketquamn.com';
 
     const ogImage = process.env.NODE_ENV === 'production'
-        ? 'https://taodandewukong.pro/imgs/monkey.png'
+        ? 'https://ketquamn.com/imgs/monkey.png'
         : `${defaultOrigin}/imgs/monkey.png`;
     
-    const ogTitle = 'Group Chat Chốt Dàn 3 Miền Wukong';
-    const ogDescription = 'Tham gia Group Chat để chia sẻ và thảo luận về dàn đề chốt số 3 miền cùng cộng đồng Wukong';
+    const ogTitle = 'Group Chat Kết Quả MN';
+    const ogDescription = 'Tham gia Group Chat để chia sẻ và thảo luận về dàn đề chốt số 3 miền cùng cộng đồng Kết Quả MN';
 
     return (
         <>
             <Head>
-                <title>Chat - Group Chat | Dàn Đề Wukong</title>
-                <meta name="description" content="Group chat - Trò chuyện với mọi người trong cộng đồng Dàn Đề Wukong" />
+                <title>Chat - Group Chat | Kết Quả MN</title>
+                <meta name="description" content="Group chat - Trò chuyện với mọi người trong cộng đồng Kết Quả MN" />
                 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
@@ -395,7 +395,7 @@ export default function ChatPage() {
                 <meta property="og:image" content={ogImage} />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-                <meta property="og:image:alt" content="Group Chat Chốt Dàn 3 Miền Wukong" />
+                <meta property="og:image:alt" content="Group Chat Kết Quả MN" />
                 
                 {/* Twitter Card */}
                 <meta name="twitter:card" content="summary_large_image" />

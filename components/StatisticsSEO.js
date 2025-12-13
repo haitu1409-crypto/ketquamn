@@ -15,7 +15,7 @@ const StatisticsSEO = memo(function StatisticsSEO({
     customTitle = null,
     customDescription = null 
 }) {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     
     // Memoize pageSEO để tránh re-compute
     const pageSEO = useMemo(() => getPageSEO(pageType), [pageType]);
@@ -72,12 +72,12 @@ const StatisticsSEO = memo(function StatisticsSEO({
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "creator": {
             "@type": "Organization",
-            "name": "TAODANDEWUKONG.PRO",
+            "name": "ketquamn.com",
             "url": siteUrl
         },
         "publisher": {
             "@type": "Organization",
-            "name": "TAODANDEWUKONG.PRO",
+            "name": "ketquamn.com",
             "logo": {
                 "@type": "ImageObject",
                 "url": `${siteUrl}/logo.png`
@@ -114,11 +114,11 @@ const StatisticsSEO = memo(function StatisticsSEO({
         "image": pageSEO.image,
         "author": {
             "@type": "Organization",
-            "name": "TAODANDEWUKONG.PRO"
+            "name": "ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "TAODANDEWUKONG.PRO",
+            "name": "ketquamn.com",
             "logo": {
                 "@type": "ImageObject",
                 "url": `${siteUrl}/logo.png`
@@ -151,7 +151,7 @@ const StatisticsSEO = memo(function StatisticsSEO({
             <meta property="og:image" content={pageSEO.image} />
             <meta property="og:url" content={canonical} />
             <meta property="og:type" content="article" />
-            <meta property="og:site_name" content="TAODANDEWUKONG.PRO" />
+            <meta property="og:site_name" content="ketquamn.com" />
             <meta property="og:locale" content="vi_VN" />
             
             {/* Twitter */}

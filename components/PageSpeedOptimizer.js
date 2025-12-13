@@ -63,7 +63,7 @@ const PageSpeedOptimizer = () => {
             const domains = [
                 'https://www.google-analytics.com',
                 'https://www.googletagmanager.com',
-                'https://api.taodandewukong.pro'
+                'https://api.ketquamn.com'
             ];
 
             domains.forEach(domain => {

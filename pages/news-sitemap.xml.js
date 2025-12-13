@@ -7,7 +7,7 @@
  */
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-const SITE_URL_BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro').replace(/\/+$/, '');
+const SITE_URL_BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').replace(/\/+$/, '');
 
 function escapeXml(unsafe) {
     if (!unsafe) return '';
@@ -69,7 +69,7 @@ function generateNewsSitemap(recentArticles) {
         <loc>${SITE_URL_BASE}/tin-tuc/${escapeXml(article.slug)}</loc>
         <news:news>
             <news:publication>
-                <news:name>Tạo Dàn Đề Wukong</news:name>
+                <news:name>Kết Quả MN</news:name>
                 <news:language>vi</news:language>
             </news:publication>
             <news:publication_date>${publishDate.toISOString()}</news:publication_date>

@@ -11,7 +11,7 @@ export default function ChatQRCode({ isOpen, onClose }) {
     const [copied, setCopied] = useState(false);
     
     // Use production URL for QR code (so users can scan from anywhere)
-    const productionUrl = 'https://taodandewukong.pro';
+    const productionUrl = 'https://ketquamn.com';
     const chatUrl = typeof window !== 'undefined' 
         ? (process.env.NODE_ENV === 'production' 
             ? `${productionUrl}/chat` 
@@ -28,12 +28,12 @@ export default function ChatQRCode({ isOpen, onClose }) {
     const handleShareFacebook = () => {
         // Facebook Share - sẽ crawl Open Graph tags từ /chat page
         // OG image sẽ là QR code được generate từ qr-server.com API
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(chatUrl)}&hashtag=%23DànĐềWukong`;
+        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(chatUrl)}&hashtag=%23DànĐềKết Quả MN`;
         window.open(facebookUrl, '_blank', 'width=600,height=400');
     };
 
     const handleShareTelegram = () => {
-        const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(chatUrl)}&text=${encodeURIComponent('Group Chat Chốt Dàn 3 Miền Wukong')}`;
+        const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(chatUrl)}&text=${encodeURIComponent('Group Chat Chốt Dàn 3 Miền Kết Quả MN')}`;
         window.open(telegramUrl, '_blank', 'width=600,height=400');
     };
 
@@ -81,7 +81,7 @@ export default function ChatQRCode({ isOpen, onClose }) {
                             }}
                         />
                     </div>
-                    <h4 className={styles.qrCodeTitle}>Group Chat Chốt Dàn 3 Miền Wukong</h4>
+                    <h4 className={styles.qrCodeTitle}>Group Chat Chốt Dàn 3 Miền Kết Quả MN</h4>
                     <div className={styles.qrCodeInfo}>
                         <p className={styles.qrCodeUrl}>{chatUrl}</p>
                         <div className={styles.shareButtons}>

@@ -146,12 +146,12 @@ export default function Dan9x0xPage() {
         "author": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         }
     };
 
@@ -171,7 +171,7 @@ export default function Dan9x0xPage() {
         "@type": "HowTo",
         "name": "Cách tạo dàn số 9x-0x ngẫu nhiên chuyên nghiệp",
         "description": "Hướng dẫn chi tiết cách tạo dàn số 9x-0x ngẫu nhiên với thuật toán Fisher-Yates",
-        "image": "https://taodandewukong.pro/imgs/dan9x0x (1).png",
+        "image": "https://ketquamn.com/imgs/dan9x0x (1).png",
         "totalTime": "PT2M",
         "estimatedCost": {
             "@type": "MonetaryAmount",
@@ -193,44 +193,44 @@ export default function Dan9x0xPage() {
         "author": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "step": [
             {
                 "@type": "HowToStep",
                 "name": "Truy cập công cụ",
-                "text": "Vào trang công cụ tạo dàn số 9x-0x tại taodandewukong.pro/dan-9x0x",
-                "image": "https://taodandewukong.pro/imgs/dan9x0x (1).png",
-                "url": "https://taodandewukong.pro/dan-9x0x"
+                "text": "Vào trang công cụ tạo dàn số 9x-0x tại ketquamn.com/dan-9x0x",
+                "image": "https://ketquamn.com/imgs/dan9x0x (1).png",
+                "url": "https://ketquamn.com/dan-9x0x"
             },
             {
                 "@type": "HowToStep",
                 "name": "Chọn số lượng dàn số",
                 "text": "Chọn số lượng dàn số muốn tạo (từ 1 đến 100 dàn số)",
-                "image": "https://taodandewukong.pro/imgs/dan9x0x (1).png"
+                "image": "https://ketquamn.com/imgs/dan9x0x (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Chọn số lượng số mỗi dàn",
                 "text": "Chọn số lượng số trong mỗi dàn số (từ 3 đến 10 số)",
-                "image": "https://taodandewukong.pro/imgs/dan9x0x (1).png"
+                "image": "https://ketquamn.com/imgs/dan9x0x (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Tạo dàn số ngẫu nhiên",
                 "text": "Nhấn nút 'Tạo Dàn Đề Ngẫu Nhiên' để tạo dàn số theo thuật toán Fisher-Yates",
-                "image": "https://taodandewukong.pro/imgs/dan9x0x (1).png"
+                "image": "https://ketquamn.com/imgs/dan9x0x (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Xuất kết quả",
                 "text": "Xuất kết quả ra file Excel hoặc copy để sử dụng",
-                "image": "https://taodandewukong.pro/imgs/dan9x0x (1).png"
+                "image": "https://ketquamn.com/imgs/dan9x0x (1).png"
             }
         ]
     };

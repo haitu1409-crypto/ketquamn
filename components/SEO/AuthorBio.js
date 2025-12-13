@@ -22,7 +22,7 @@ const AuthorBio = memo(function AuthorBio({
         "name": name,
         "jobTitle": title,
         "description": description,
-        "url": typeof window !== 'undefined' ? window.location.origin + "/about" : "https://taodandewukong.pro/about",
+        "url": typeof window !== 'undefined' ? window.location.origin + "/about" : "https://ketquamn.com/about",
         "knowsAbout": [
             "Tạo dàn số",
             "Xổ số",

@@ -186,7 +186,7 @@ const Home = memo(function Home() {
         normalizedDate.setHours(0, 0, 0, 0);
         const deterministicDate = normalizedDate.toISOString();
         
-        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
         
         return [
             // SoftwareApplication Schema
@@ -465,7 +465,7 @@ const Home = memo(function Home() {
                         lineHeight: '1.8',
                         textAlign: 'center'
                     }}>
-                        <strong>TDDW</strong> - Tạo Dàn Đề Wukong | 
+                        <strong>Kết Quả MN</strong> - Kết quả xổ số miền Nam | 
                         <strong>TDDW.Pro</strong> | 
                         Tạo dàn số <strong>TDDW</strong> | 
                         Soi cầu <strong>TDDW</strong> | 

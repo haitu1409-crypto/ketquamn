@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro',
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com',
     generateRobotsTxt: false, // Sử dụng dynamic robots.txt từ pages/robots.txt.js
     generateIndexSitemap: false, // Sử dụng dynamic sitemap từ pages/sitemap.xml.js
 
@@ -35,8 +35,8 @@ module.exports = {
             },
         ],
         additionalSitemaps: [
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro'}/sitemap.xml`,
-            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro'}/news-sitemap.xml`,
+            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/sitemap.xml`,
+            `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/news-sitemap.xml`,
         ],
     },
 

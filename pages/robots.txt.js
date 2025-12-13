@@ -9,7 +9,7 @@ function Robots() {
 }
 
 export async function getServerSideProps({ res }) {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     const robotsTxt = `User-agent: *
 Allow: /
@@ -80,6 +80,7 @@ Disallow: /*.json$`;
 }
 
 export default Robots;
+
 
 
 

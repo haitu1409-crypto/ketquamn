@@ -39,12 +39,12 @@ const SEOOptimizedXSMB = ({
             "@type": "LotteryGame",
             "name": "Xổ Số Miền Bắc",
             "description": "Kết quả xổ số miền Bắc chính thức",
-            "url": canonicalUrl || `https://taodandewukong.pro/ket-qua-xo-so-mien-bac/${date}`,
+            "url": canonicalUrl || `https://ketquamn.com/ket-qua-xo-so-mien-bac/${date}`,
             "datePublished": data.drawDate || new Date().toISOString(),
             "publisher": {
                 "@type": "Organization",
                 "name": "Dàn Đề Wukong",
-                "url": "https://taodandewukong.pro"
+                "url": "https://ketquamn.com"
             },
             "gameResult": {
                 "@type": "GameResult",
@@ -76,13 +76,13 @@ const SEOOptimizedXSMB = ({
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Trang chủ",
-                "item": "https://taodandewukong.pro"
+                "item": "https://ketquamn.com"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Kết quả xổ số",
-                "item": "https://taodandewukong.pro/ket-qua-xo-so-mien-bac"
+                "item": "https://ketquamn.com/ket-qua-xo-so-mien-bac"
             },
             {
                 "@type": "ListItem",

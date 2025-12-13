@@ -261,7 +261,7 @@ const TanSuatLoCap = ({ initialStats, initialMetadata, initialDays }) => {
                 </div>
 
                 <div className={styles.Group_Content}>
-                    <h2 className={styles.heading}>TAODANDEWUKONG.PRO - Thống Kê Tần Suất Lô Cặp Chính Xác Nhất</h2>
+                    <h2 className={styles.heading}>ketquamn.com - Thống Kê Tần Suất Lô Cặp Chính Xác Nhất</h2>
                     <div className={`${styles.contentWrapper} ${isExpanded ? styles.expanded : styles.collapsed}`}>
                         <h3 className={styles.h3}>Thống Kê Tần Suất Lô Cặp Là Gì?</h3>
                         <p className={styles.desc}>
@@ -279,10 +279,10 @@ const TanSuatLoCap = ({ initialStats, initialMetadata, initialDays }) => {
                         <p className={styles.desc}>- Cung cấp dữ liệu chính xác, cập nhật nhanh chóng từ kết quả xổ số.</p>
                         <p className={styles.desc}>- Giúp người chơi có thêm thông tin để tăng cơ hội trúng thưởng.</p>
                         <p className={styles.desc}>
-                            TAODANDEWUKONG.PRO cung cấp công cụ thống kê Tần Suất Lô Cặp hoàn toàn miễn phí. Chúc bạn may mắn!
+                            ketquamn.com cung cấp công cụ thống kê Tần Suất Lô Cặp hoàn toàn miễn phí. Chúc bạn may mắn!
                         </p>
                         <p className={styles.desc}>
-                            Thống kê Tần Suất Lô Cặp. Xem thống kê Tần Suất Lô Cặp hôm nay nhanh và chính xác nhất tại <a className={styles.action} href='/'>TAODANDEWUKONG.PRO.</a>
+                            Thống kê Tần Suất Lô Cặp. Xem thống kê Tần Suất Lô Cặp hôm nay nhanh và chính xác nhất tại <a className={styles.action} href='/'>ketquamn.com.</a>
                         </p>
                     </div>
                     <button

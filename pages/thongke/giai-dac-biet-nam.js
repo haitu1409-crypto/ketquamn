@@ -578,7 +578,7 @@ const GiaiDacBietThang = ({ initialStats, initialMetadata, initialDays }) => {
                         
                         <p className={styles.desc}>
                             Dữ liệu được cập nhật tự động ngay sau mỗi kỳ quay thưởng, đảm bảo tính chính xác và kịp thời. 
-                            Thống kê giải đặc biệt Miền Bắc theo năm tại <a className={styles.action} href='/'>TAODANDEWUKONG.PRO</a> giúp bạn có thêm thông tin để tham khảo khi chọn số.
+                            Thống kê giải đặc biệt Miền Bắc theo năm tại <a className={styles.action} href='/'>KETQUAMN.COM</a> giúp bạn có thêm thông tin để tham khảo khi chọn số.
                         </p>
                     </div>
                     <button

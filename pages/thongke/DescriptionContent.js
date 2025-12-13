@@ -23,10 +23,10 @@ const DescriptionContent = () => (
             Số ngày gan: số ngày mà con số lô tô đó chưa ra.
         </p>
         <p className={styles.desc}>
-            Sử dụng công cụ thống kê chuẩn xác từ các kết quả cũ, TAODANDEWUKONG.PRO cung cấp cho bạn thống kê lô gan Miền Bắc chuẩn xác nhất. Với tính năng này, người chơi sẽ có thêm thông tin tham khảo để chọn cho mình con số may mắn, mang đến cơ hội trúng thưởng cao hơn. Chúc bạn may mắn!
+            Sử dụng công cụ thống kê chuẩn xác từ các kết quả cũ, ketquamn.com cung cấp cho bạn thống kê lô gan Miền Bắc chuẩn xác nhất. Với tính năng này, người chơi sẽ có thêm thông tin tham khảo để chọn cho mình con số may mắn, mang đến cơ hội trúng thưởng cao hơn. Chúc bạn may mắn!
         </p>
         <p className={styles.desc}>
-            Thống kê lô gan. Xem thống kê lô gan hôm nay nhanh và chính xác nhất tại <a className={styles.action} href="/">TAODANDEWUKONG.PRO</a>.
+            Thống kê lô gan. Xem thống kê lô gan hôm nay nhanh và chính xác nhất tại <a className={styles.action} href="/">ketquamn.com</a>.
         </p>
     </div>
 );

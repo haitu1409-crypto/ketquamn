@@ -195,7 +195,7 @@ const getOptimizedImageUrl = (imageUrl, width, height) => {
     
     // Fix malformed URLs where apiUrl was incorrectly prepended to absolute URLs
     // Example: "http://localhost:5000https://res.cloudinary.com/..." 
-    // or "http://api1.taodandewukong.prohttps://res.cloudinary.com/..."
+    // or "http://api1.ketquamn.comhttps://res.cloudinary.com/..."
     const malformedPattern = /^(https?:\/\/[^\/]+)(https?:\/\/.+)$/;
     const malformedMatch = urlString.match(malformedPattern);
     if (malformedMatch) {
@@ -212,9 +212,9 @@ const getOptimizedImageUrl = (imageUrl, width, height) => {
     // Check if it's already an absolute URL (starts with http:// or https://)
     // This must be checked BEFORE any other processing to avoid concatenation issues
     if (urlString.startsWith('http://') || urlString.startsWith('https://')) {
-        // Fix incorrect domain: replace api.taodandewukong.pro with api1.taodandewukong.pro
-        if (urlString.includes('api.taodandewukong.pro') && !urlString.includes('api1.taodandewukong.pro')) {
-            urlString = urlString.replace(/api\.taodandewukong\.pro/g, 'api1.taodandewukong.pro');
+        // Fix incorrect domain: replace api1.ketquamn.com with api1.ketquamn.com
+        if (urlString.includes('api1.ketquamn.com') && !urlString.includes('api1.ketquamn.com')) {
+            urlString = urlString.replace(/api1\.ketquamn\.com/g, 'api1.ketquamn.com');
         }
         
         // If it's Cloudinary, optimize it
@@ -293,7 +293,7 @@ export async function getServerSideProps(context) {
     const { slug } = context.params;
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || process.env.API_URL || 'http://localhost:5000';
     // Normalize siteUrl - remove trailing slash for consistency
-    const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+    const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     const siteUrl = rawSiteUrl.replace(/\/+$/, '');
 
     try {
@@ -1396,7 +1396,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                         <meta property="og:image:alt" content={currentArticle.title} key="og-image-alt-override" />
                         <meta property="og:url" content={finalCanonical} key="og-url-override" />
                         <meta property="og:type" content="article" key="og-type-override" />
-                        <meta property="og:site_name" content="Tạo Dàn Đề Wukong" key="og-site-name-override" />
+                        <meta property="og:site_name" content="Kết Quả MN" key="og-site-name-override" />
                         <meta property="og:locale" content="vi_VN" key="og-locale-override" />
                         {process.env.NEXT_PUBLIC_FB_APP_ID && (
                             <meta property="fb:app_id" content={process.env.NEXT_PUBLIC_FB_APP_ID} key="fb-app-id" />
@@ -1418,8 +1418,8 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                         <meta name="twitter:description" content={finalDescription} key="twitter-description-override" />
                         <meta name="twitter:image" content={finalOgImage} key="twitter-image-override" />
                         <meta name="twitter:image:alt" content={currentArticle.title} key="twitter-image-alt-override" />
-                        <meta name="twitter:site" content="@taodandewukong" key="twitter-site-override" />
-                        <meta name="twitter:creator" content="@taodandewukong" key="twitter-creator-override" />
+                        <meta name="twitter:site" content="@ketquamn" key="twitter-site-override" />
+                        <meta name="twitter:creator" content="@ketquamn" key="twitter-creator-override" />
                         
                         {/* Zalo - Full set */}
                         <meta property="zalo:title" content={currentArticle.title} key="zalo-title-override" />
@@ -1435,10 +1435,10 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                         <meta property="telegram:image:height" content="630" key="telegram-image-height-override" />
                         <meta property="telegram:image:alt" content={currentArticle.title} key="telegram-image-alt-override" />
                         <meta property="telegram:url" content={finalCanonical} key="telegram-url-override" />
-                        <meta property="telegram:site_name" content="Tạo Dàn Đề Wukong" key="telegram-site-name-override" />
+                        <meta property="telegram:site_name" content="Kết Quả MN" key="telegram-site-name-override" />
                         
                         {/* LinkedIn - Uses Open Graph but needs specific tags */}
-                        <meta property="linkedin:owner" content="Tạo Dàn Đề Wukong" key="linkedin-owner-override" />
+                        <meta property="linkedin:owner" content="Kết Quả MN" key="linkedin-owner-override" />
                         
                         {/* TikTok */}
                         <meta property="tiktok:title" content={currentArticle.title} key="tiktok-title-override" />

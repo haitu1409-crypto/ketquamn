@@ -18,10 +18,10 @@ const DescriptionContent = () => (
             Kết hợp thống kê đầu đuôi với các công cụ khác như thống kê lô gan hoặc giải đặc biệt để tăng cơ hội trúng thưởng. Ưu tiên chọn các đầu/đuôi có tần suất xuất hiện cao trong thời gian gần đây, nhưng cũng lưu ý đến các số ít xuất hiện vì chúng có thể sắp về.
         </p>
         <p className={styles.desc}>
-            TAODANDEWUKONG.PRO cung cấp công cụ thống kê Đầu Đuôi loto hoàn toàn miễn phí, giúp người chơi có thêm thông tin để tăng cơ hội trúng thưởng. Chúc bạn may mắn!
+            ketquamn.com cung cấp công cụ thống kê Đầu Đuôi loto hoàn toàn miễn phí, giúp người chơi có thêm thông tin để tăng cơ hội trúng thưởng. Chúc bạn may mắn!
         </p>
         <p className={styles.desc}>
-            Thống kê Đầu Đuôi loto. Xem thống kê Đầu Đuôi hôm nay nhanh và chính xác tại <a href="https://taodandewukong.pro" className={styles.action}>TAODANDEWUKONG.PRO</a>.
+            Thống kê Đầu Đuôi loto. Xem thống kê Đầu Đuôi hôm nay nhanh và chính xác tại <a href="https://ketquamn.com" className={styles.action}>ketquamn.com</a>.
         </p>
     </div>
 );

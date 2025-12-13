@@ -377,7 +377,7 @@ export default function ChatPreview({ className }) {
             <div className={styles.header}>
                 <div className={styles.headerTitle}>
                     <MessageCircle size={16} />
-                    <span>Group Chat Wukong</span>
+                    <span>Group Chat Kết Quả MN</span>
                 </div>
                 <Link href="/chat" className={styles.openFullLink}>
                     Mở toàn màn hình →

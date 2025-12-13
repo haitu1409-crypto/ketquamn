@@ -6,7 +6,7 @@
  */
 
 // Normalize SITE_URL - remove trailing slash to avoid double slashes
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro').replace(/\/+$/, '');
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').replace(/\/+$/, '');
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

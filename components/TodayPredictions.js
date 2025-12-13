@@ -250,7 +250,7 @@ const TodayPredictions = () => {
                 "name": "Dàn Đề Wukong",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro'}/imgs/monkey.png`
+                    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/imgs/monkey.png`
                 }
             },
             "mainEntity": {
@@ -272,8 +272,8 @@ const TodayPredictions = () => {
             title: `Dự Đoán Xổ Số Miền Bắc ${timeContext} - Chuẩn Xác Nhất`,
             description: `Dự đoán XSMB ${formattedDate}: Cầu lotto đẹp, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán wukong. Cập nhật hàng ngày, độ chính xác cao ✓`,
             keywords: 'dự đoán xsmb, dự đoán xổ số miền bắc, cầu lotto, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán wukong, soi cầu miền bắc, dàn đề wukong',
-            url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro'}`,
-            image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro'}/imgs/monkey.png`,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}`,
+            image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/imgs/monkey.png`,
         };
     }, [formattedDate, isToday]);
 

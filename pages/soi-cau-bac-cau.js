@@ -72,7 +72,7 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
 
     // ✅ SEO Configuration
     const siteUrl = useMemo(() =>
-        process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro',
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com',
         []
     );
 

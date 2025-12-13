@@ -553,7 +553,7 @@ const getImageUrl = (imageUrl, options = {}) => {
 
     // Fix malformed URLs where apiUrl was incorrectly prepended to absolute URLs
     // Example: "http://localhost:5000https://res.cloudinary.com/..." 
-    // or "http://api1.taodandewukong.prohttps://res.cloudinary.com/..."
+    // or "http://api1.ketquamn.comhttps://res.cloudinary.com/..."
     const malformedPattern = /^(https?:\/\/[^\/]+)(https?:\/\/.+)$/;
     const malformedMatch = urlString.match(malformedPattern);
     if (malformedMatch) {
@@ -570,9 +570,9 @@ const getImageUrl = (imageUrl, options = {}) => {
     // Check if it's already an absolute URL (starts with http:// or https://)
     // This must be checked BEFORE any other processing to avoid concatenation issues
     if (urlString.startsWith('http://') || urlString.startsWith('https://')) {
-        // Fix incorrect domain: replace api.taodandewukong.pro with api1.taodandewukong.pro
-        if (urlString.includes('api.taodandewukong.pro') && !urlString.includes('api1.taodandewukong.pro')) {
-            urlString = urlString.replace(/api\.taodandewukong\.pro/g, 'api1.taodandewukong.pro');
+        // Fix incorrect domain: replace api1.ketquamn.com with api1.ketquamn.com
+        if (urlString.includes('api1.ketquamn.com') && !urlString.includes('api1.ketquamn.com')) {
+            urlString = urlString.replace(/api1\.ketquamn\.com/g, 'api1.ketquamn.com');
         }
         
         // Optimize Cloudinary URLs if applicable
@@ -660,7 +660,7 @@ const OptimizedImage = memo(({
 
         // Fix malformed URLs where apiUrl was incorrectly prepended to absolute URLs
         // Example: "http://localhost:5000https://res.cloudinary.com/..." 
-        // or "http://api1.taodandewukong.prohttps://res.cloudinary.com/..."
+        // or "http://api1.ketquamn.comhttps://res.cloudinary.com/..."
         const malformedPattern = /^(https?:\/\/[^\/]+)(https?:\/\/.+)$/;
         const malformedMatch = srcString.match(malformedPattern);
         if (malformedMatch) {

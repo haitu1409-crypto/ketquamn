@@ -84,7 +84,7 @@ const KQXSPage = memo(function KQXSPage() {
 
     // ✅ Cache siteUrl to avoid recalculating
     const siteUrl = useMemo(() =>
-        process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro',
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com',
         []
     );
 
@@ -136,7 +136,7 @@ const KQXSPage = memo(function KQXSPage() {
         },
         {
             question: 'Xem XSMB ở đâu tốt nhất?',
-            answer: 'Taodandewukong.pro cung cấp kết quả XSMB nhanh nhất, chính xác nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
+            answer: 'Ketquamn.com cung cấp kết quả XSMB nhanh nhất, chính xác nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
         }
     ], [siteUrl]);
 
@@ -308,7 +308,7 @@ const KQXSPage = memo(function KQXSPage() {
                         </div>
 
                         <div className={styles.infoCard}>
-                            <h3>Ưu Điểm XSMB Tại Taodandewukong.pro</h3>
+                            <h3>Ưu Điểm XSMB Tại Ketquamn.com</h3>
                             <ul>
                                 <li>✅ <strong>Nhanh nhất:</strong> Cập nhật XSMB ngay sau khi quay số, nhanh hơn <strong>xosodaiphat</strong>, <strong>xoso.com.vn</strong></li>
                                 <li>✅ <strong>Chính xác:</strong> Kết quả XSMB chính xác 100%, đối chiếu từ nguồn chính thức</li>

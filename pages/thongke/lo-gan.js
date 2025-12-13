@@ -280,7 +280,7 @@ const Logan = ({ initialStats, initialMetadata, initialDays }) => {
 
                 {/* Reserve space immediately to prevent CLS */}
                 <div className={styles.groupContent}>
-                    <h2 className={styles.heading}>TAODANDEWUKONG.PRO - Thống Kê Lô Gan Chính Xác Nhất</h2>
+                    <h2 className={styles.heading}>ketquamn.com - Thống Kê Lô Gan Chính Xác Nhất</h2>
                     <h3 className={styles.h3}>Thống kê Lô Gan Miền Bắc là gì?</h3>
                     <p className={styles.desc}>
                         Thống kê lô gan Miền Bắc là danh sách các cặp số (2 số cuối) đã lâu chưa xuất hiện trong kết quả xổ số. Số ngày gan là số ngày mà cặp số đó chưa về tính từ lần cuối cùng xuất hiện đến hôm nay. Ví dụ: nếu một cặp số có 30 ngày gan nghĩa là đã 30 ngày kể từ lần cuối cặp số đó về.

@@ -4,10 +4,10 @@ const DataDeletionPage = () => {
     return (
         <>
             <Head>
-                <title>Hướng Dẫn Xóa Dữ Liệu | Tạo Dàn Đề Wukong</title>
+                <title>Hướng Dẫn Xóa Dữ Liệu | Kết Quả MN</title>
                 <meta
                     name="description"
-                    content="Hướng dẫn yêu cầu xóa dữ liệu người dùng khỏi hệ thống Tạo Dàn Đề Wukong."
+                    content="Hướng dẫn yêu cầu xóa dữ liệu người dùng khỏi hệ thống Kết Quả MN."
                 />
             </Head>
             <main style={{ padding: '40px 16px', maxWidth: '960px', margin: '0 auto', lineHeight: 1.7 }}>
@@ -15,13 +15,13 @@ const DataDeletionPage = () => {
                     Hướng Dẫn Xóa Dữ Liệu Người Dùng
                 </h1>
                 <p>
-                    Nếu bạn muốn yêu cầu xóa dữ liệu cá nhân liên quan đến tài khoản của mình trên Tạo Dàn Đề Wukong, vui lòng thực hiện theo
+                    Nếu bạn muốn yêu cầu xóa dữ liệu cá nhân liên quan đến tài khoản của mình trên Kết Quả MN, vui lòng thực hiện theo
                     các bước bên dưới. Yêu cầu sẽ được xử lý theo quy trình nội bộ và tuân thủ các chính sách của Meta/Facebook.
                 </p>
 
                 <h2>1. Gửi yêu cầu qua email</h2>
                 <ol>
-                    <li>Soạn email tới địa chỉ <a href="mailto:contact@taodandewukong.pro">contact@taodandewukong.pro</a>.</li>
+                    <li>Soạn email tới địa chỉ <a href="mailto:contact@ketquamn.com">contact@ketquamn.com</a>.</li>
                     <li>Sử dụng tiêu đề: <strong>Yêu cầu xóa dữ liệu Facebook Login</strong>.</li>
                     <li>
                         Cung cấp các thông tin sau để chúng tôi xác minh:
@@ -53,7 +53,7 @@ const DataDeletionPage = () => {
                         overflowX: 'auto'
                     }}
                 >
-{`POST https://api.taodandewukong.pro/api/auth/facebook/delete-data
+{`POST https://api.ketquamn.com/api/auth/facebook/delete-data
 Body: {
   "userId": "<facebook_user_id>",
   "signedRequest": "<signed_request_from_facebook>"
@@ -66,8 +66,8 @@ Body: {
 
                 <h2>4. Liên hệ hỗ trợ</h2>
                 <ul>
-                    <li>Email: <a href="mailto:contact@taodandewukong.pro">contact@taodandewukong.pro</a></li>
-                    <li>Trang web: <a href="https://taodandewukong.pro">https://taodandewukong.pro</a></li>
+                    <li>Email: <a href="mailto:contact@ketquamn.com">contact@ketquamn.com</a></li>
+                    <li>Trang web: <a href="https://ketquamn.com">https://ketquamn.com</a></li>
                 </ul>
 
                 <p style={{ marginTop: '32px', fontStyle: 'italic' }}>

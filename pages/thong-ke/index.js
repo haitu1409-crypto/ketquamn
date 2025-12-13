@@ -95,7 +95,7 @@ const StatisticsOverviewPage = () => {
                 <section className={styles.heroSection}>
                     <h1 className={styles.heroTitle}>Thống Kê Xổ Số Miền Bắc Chuyên Sâu</h1>
                     <p className={styles.heroDescription}>
-                        Khám phá toàn bộ hệ thống thống kê XSMB do Tạo Dàn Đề Wukong phát triển. Các bảng dữ liệu được tối ưu cho việc soi cầu, lọc số nóng
+                        Khám phá toàn bộ hệ thống thống kê XSMB do Kết Quả MN phát triển. Các bảng dữ liệu được tối ưu cho việc soi cầu, lọc số nóng
                         – số lạnh, phát hiện chu kỳ và xây dựng chiến lược chơi dài hạn. Tất cả công cụ đều miễn phí và cập nhật liên tục hằng ngày.
                     </p>
                 </section>

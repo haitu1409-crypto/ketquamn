@@ -40,7 +40,7 @@ class LotterySocketClient {
             process.env.NEXT_PUBLIC_API_URL ||
             (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
                 ? 'http://localhost:5000' 
-                : 'https://api1.taodandewukong.pro');
+                : 'https://api1.ketquamn.com');
 
         // Log source of URL for debugging
         if (process.env.NEXT_PUBLIC_SOCKET_URL) {

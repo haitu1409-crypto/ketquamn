@@ -5,7 +5,7 @@
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 // Normalize SITE_URL - ensure it has trailing slash for homepage
-const SITE_URL_BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro').replace(/\/+$/, '');
+const SITE_URL_BASE = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').replace(/\/+$/, '');
 const SITE_URL = SITE_URL_BASE + '/';
 
 function generateSiteMap(articles) {
@@ -263,7 +263,7 @@ function generateSiteMap(articles) {
         ${isRecent ? `
         <news:news>
             <news:publication>
-                <news:name>Tạo Dàn Đề Wukong</news:name>
+                <news:name>Kết Quả MN</news:name>
                 <news:language>vi</news:language>
             </news:publication>
             <news:publication_date>${publishDate.toISOString()}</news:publication_date>

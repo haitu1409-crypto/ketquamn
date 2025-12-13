@@ -151,7 +151,7 @@ export default function DanDacBietPage() {
         "@type": "HowTo",
         "name": "Cách tạo dàn số đặc biệt chuyên nghiệp",
         "description": "Hướng dẫn chi tiết cách tạo dàn số đặc biệt với bộ lọc thông minh",
-        "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png",
+        "image": "https://ketquamn.com/imgs/dandacbiet (1).png",
         "totalTime": "PT5M",
         "estimatedCost": {
             "@type": "MonetaryAmount",
@@ -173,50 +173,50 @@ export default function DanDacBietPage() {
         "author": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "step": [
             {
                 "@type": "HowToStep",
                 "name": "Truy cập công cụ",
-                "text": "Vào trang công cụ tạo dàn số đặc biệt tại taodandewukong.pro/dan-dac-biet",
-                "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png",
-                "url": "https://taodandewukong.pro/dan-dac-biet"
+                "text": "Vào trang công cụ tạo dàn số đặc biệt tại ketquamn.com/dan-dac-biet",
+                "image": "https://ketquamn.com/imgs/dandacbiet (1).png",
+                "url": "https://ketquamn.com/dan-dac-biet"
             },
             {
                 "@type": "HowToStep",
                 "name": "Chọn phương thức lọc",
                 "text": "Chọn phương thức lọc: Lấy nhanh, Đầu-Đuôi, Chạm, Bộ, hoặc Kép",
-                "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png"
+                "image": "https://ketquamn.com/imgs/dandacbiet (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Nhập số gốc",
                 "text": "Nhập các số gốc vào ô text theo định dạng yêu cầu của từng phương thức",
-                "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png"
+                "image": "https://ketquamn.com/imgs/dandacbiet (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Cấu hình tham số",
                 "text": "Cấu hình các tham số lọc như số lượng, điều kiện, và các tiêu chí bổ sung",
-                "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png"
+                "image": "https://ketquamn.com/imgs/dandacbiet (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Tạo dàn số",
                 "text": "Nhấn nút 'Tạo Dàn Đề' để tạo dàn số đặc biệt theo thuật toán AI",
-                "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png"
+                "image": "https://ketquamn.com/imgs/dandacbiet (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Lưu và xuất kết quả",
                 "text": "Lưu kết quả vào localStorage hoặc xuất file Excel để sử dụng sau",
-                "image": "https://taodandewukong.pro/imgs/dandacbiet (1).png"
+                "image": "https://ketquamn.com/imgs/dandacbiet (1).png"
             }
         ]
     };

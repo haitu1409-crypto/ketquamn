@@ -439,7 +439,7 @@ const GiaiDacBiet = ({ initialStats, initialMetadata, initialDays }) => {
                         <h3 className={styles.h3}>Lưu ý quan trọng</h3>
                         <p className={styles.desc}>Thống kê giải đặc biệt chỉ mang tính chất tham khảo. Kết quả xổ số là ngẫu nhiên, không có quy luật cố định. Người chơi nên tham gia với tinh thần giải trí, không nên phụ thuộc hoàn toàn vào thống kê.</p>
                         
-                        <p className={styles.desc}>Dữ liệu được cập nhật tự động ngay sau mỗi kỳ quay thưởng, đảm bảo tính chính xác và kịp thời. Thống kê giải đặc biệt Miền Bắc tại <a className={styles.action} href='/'>TAODANDEWUKONG.PRO</a> giúp bạn có thêm thông tin để tham khảo khi chọn số.</p>
+                        <p className={styles.desc}>Dữ liệu được cập nhật tự động ngay sau mỗi kỳ quay thưởng, đảm bảo tính chính xác và kịp thời. Thống kê giải đặc biệt Miền Bắc tại <a className={styles.action} href='/'>ketquamn.com</a> giúp bạn có thêm thông tin để tham khảo khi chọn số.</p>
                     </div>
                     <button
                         className={styles.toggleBtn}

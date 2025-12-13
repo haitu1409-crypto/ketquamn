@@ -20,10 +20,10 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
     image,
     locale = 'vi_VN',
     type = 'website',
-    author = 'Dàn Đề Wukong',
+    author = 'Kết Quả MN',
     structuredData = null,
 }) {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     const canonicalUrl = url || siteUrl;
     const ogImage = image || `${siteUrl}/imgs/wukong.png`;
 
@@ -31,12 +31,12 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
     const bingSearchSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Tạo Dàn Đề Wukong",
+        "name": "Kết Quả MN",
         "alternateName": [
-            "Tao Dan De Wukong",
-            "TaoDanDeWukong",
-            "Dàn Đề Wukong",
-            "Dan De Wukong"
+            "Ket Qua MN",
+            "KetQuaMN",
+            "Kết Quả MN",
+            "Ket Qua MN"
         ],
         "url": siteUrl,
         "potentialAction": {
@@ -184,12 +184,12 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Organization",
-                        "name": "Dàn Đề Wukong",
+                        "name": "Kết Quả MN",
                         "alternateName": [
-                            "Tạo Dàn Đề Wukong",
-                            "Tao Dan De Wukong",
-                            "TaoDanDeWukong",
-                            "Dan De Wukong"
+                            "Kết Quả MN",
+                            "Ket Qua MN",
+                            "KetQuaMN",
+                            "Ket Qua MN"
                         ],
                         "url": siteUrl,
                         "logo": `${siteUrl}/imgs/wukong.png`,

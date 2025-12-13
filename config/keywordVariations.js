@@ -48,26 +48,26 @@ function removeDiacritics(str) {
 
 /**
  * BRAND KEYWORDS - Từ khóa thương hiệu
- * Tất cả biến thể của "tạo dàn đề wukong"
+ * Tất cả biến thể của "kết quả MN"
  */
 const BRAND_KEYWORDS = {
     primary: [
-        'tạo dàn đề wukong',
-        'tạo dàn đề wu kong',
-        'tạo dan đề wukong',
-        'tạo dàn de wukong',
+        'kết quả MN',
+        'kết quả xổ số miền Nam',
+        'ket qua MN',
+        'ket qua xo so mien Nam',
     ],
     noDiacritics: [
-        'tao dan de wukong',
-        'tao dan de wu kong',
-        'tao dan đe wukong',
-        'tao dàn de wukong',
+        'ket qua MN',
+        'ket qua xo so mien Nam',
+        'ket qua xsmn',
+        'ket qua MN',
     ],
     noSpace: [
-        'taodandewukong',
-        'taodandewukong.pro',
-        'taodandewuKong',
-        'taoDanDeWukong',
+        'ketquamn',
+        'ketquamn.com',
+        'ketquamn',
+        'ketquamn',
         // ✅ SHORT ABBREVIATIONS - Viết tắt ngắn (giống RBK)
         'tddw', 'TDDW', 'Tddw',
         'wk', 'WK', 'Wk',
@@ -109,8 +109,8 @@ const BRAND_KEYWORDS = {
         'tạo đan de wukong',
     ],
     withDomain: [
-        'taodandewukong pro',
-        'taodandewukong.pro',
+        'ketquamn pro',
+        'ketquamn.com',
         'web tạo dàn đề wukong',
         'website tao dan de wukong',
         // ✅ SHORT ABBREVIATIONS với domain
@@ -522,7 +522,7 @@ const COMPETITOR_KEYWORDS = [
     'wukong khác black myth', 'wukong khac black myth',
     
     // ✅ COMPETITIVE LONG-TAIL
-    'kangdh vs taodandewukong', 'kangdh vs wukong',
+    'kangdh vs ketquamn', 'kangdh vs wukong',
     'giaimasohoc vs wukong', 'sieuketqua vs wukong',
     'so sánh kangdh và wukong', 'so sanh kangdh va wukong',
     'wukong tốt hơn kangdh', 'wukong tot hon kangdh'
@@ -559,7 +559,7 @@ const PAGE_SPECIFIC_KEYWORDS = {
         'tao dan wukong 9x-0x', 'dan wukong 9x0x',
 
         // ✅ Viết liền (NO SPACE) - Người dùng hay gõ
-        'taodandewukong9x0x', 'taodandewukong 9x0x',
+        'ketquamn9x0x', 'ketquamn 9x0x',
         'taodanwukong9x0x', 'taodanwukong 9x0x',
         'taodande9x0x', 'taodan9x0x', 'taodan9x',
         'wukong9x0x', 'wukong9x',
@@ -597,7 +597,7 @@ const PAGE_SPECIFIC_KEYWORDS = {
         'dan 2d wukong', 'tao dan lo de 2d wukong',
 
         // ✅ Viết liền
-        'taodandewukong2d', 'taodandewukong 2d',
+        'ketquamn2d', 'ketquamn 2d',
         'taodanwukong2d', 'taodanwukong 2d',
         'taodande2d', 'taodan2d',
         'wukong2d',
@@ -623,12 +623,12 @@ const PAGE_SPECIFIC_KEYWORDS = {
      */
     dan3d4d: [
         // ✅ 3D variations
-        'tạo dàn đề wukong 3d', 'tao dan de wukong 3d', 'taodandewukong3d',
+        'tạo dàn đề wukong 3d', 'tao dan de wukong 3d', 'ketquamn3d',
         'taodanwukong3d', 'taodande3d', 'taodan3d', 'wukong3d', 'wukong 3d',
         'dàn 3d wukong', 'dan 3d wukong', '3d wukong',
 
         // ✅ 4D variations
-        'tạo dàn đề wukong 4d', 'tao dan de wukong 4d', 'taodandewukong4d',
+        'tạo dàn đề wukong 4d', 'tao dan de wukong 4d', 'ketquamn4d',
         'taodanwukong4d', 'taodande4d', 'taodan4d', 'wukong4d', 'wukong 4d',
         'dàn 4d wukong', 'dan 4d wukong', '4d wukong',
 
@@ -1020,7 +1020,7 @@ function getAllKeywordsForPage(pageType) {
  */
 function generateMetaDescription(pageType, includeVariations = true) {
     const descriptions = {
-        home: `TDDW (Tạo Dàn Đề Wukong) - Tạo dàn đề (tao dan de, lập dàn số) online miễn phí 2025. Công cụ tạo dàn số, mức số chuyên nghiệp tốt hơn kangdh, giaimasohoc, sieuketqua. Dàn đề 9x-0x, 2D, 3D, 4D. Lọc ghép dàn, nuôi dàn khung 3-5 ngày. Wukong (WK, TDDW) công cụ xổ số, không phải game. ${includeVariations ? 'Hỗ trợ: taodande, tạo dàn số, tao dan so, lập dàn số, lap dan so, tddw, wk, tdd, lô đề, lo de. ' : ''}Miễn phí 100%, không quảng cáo!`,
+        home: `Kết Quả MN - Kết quả xổ số miền Nam nhanh nhất, chính xác nhất 2025. Xem kết quả xổ số miền Nam hôm nay, XSMN, KQXSMN trực tiếp. ${includeVariations ? 'Hỗ trợ: xsmn, kqxsmn, sxmn, kết quả xổ số miền Nam, xổ số MN. ' : ''}Miễn phí 100%, không quảng cáo!`,
 
         dan9x0x: `Tạo dàn 9x-0x (tao dan 9x0x) ngẫu nhiên. Cắt dàn 9x, lọc dàn 9x, nuôi dàn khung 3 ngày. ${includeVariations ? 'Hỗ trợ: dan 9x0x, dan 9x, tao dan 9x. ' : ''}Thuật toán Fisher-Yates. Miễn phí!`,
 
@@ -1032,7 +1032,7 @@ function generateMetaDescription(pageType, includeVariations = true) {
 
         soiCauBayesian: `Soi cầu miền bắc hôm nay (soi cau mien bac hom nay) chính xác 100%. Dự đoán XSMB, soi cầu MB bằng thuật toán Bayesian. ${includeVariations ? 'Hỗ trợ: du doan XSMB, soi cau MB, thong ke vi tri XSMB. ' : ''}Miễn phí 100%!`,
 
-        'dau-duoi': `Thống kê Đầu Đuôi XSMB chi tiết, nhanh nhất. Phân tích tần suất đầu đuôi loto (00-99), bảng thống kê theo ngày. ${includeVariations ? 'Hỗ trợ: dau duoi lo to, thong ke dau duoi, bang thong ke. ' : ''}Cập nhật realtime, miễn phí 100% tại TAODANDEWUKONG.PRO!`,
+        'dau-duoi': `Thống kê Đầu Đuôi XSMB chi tiết, nhanh nhất. Phân tích tần suất đầu đuôi loto (00-99), bảng thống kê theo ngày. ${includeVariations ? 'Hỗ trợ: dau duoi lo to, thong ke dau duoi, bang thong ke. ' : ''}Cập nhật realtime, miễn phí 100% tại ketquamn.com!`,
 
         'lo-gan': `Thống kê Lô Gan XSMB chi tiết hơn xosothantai. Lô gan lâu chưa về, gan cực đại, số khan. ${includeVariations ? 'Hỗ trợ: lo gan, lo khan, so gan, gan max. ' : ''}Phân tích xu hướng, miễn phí 100%!`,
 
@@ -1044,7 +1044,7 @@ function generateMetaDescription(pageType, includeVariations = true) {
 
         'giai-dac-biet-tuan': `Thống kê Giải Đặc Biệt Theo Tuần với view lịch (Thứ 2-CN). Chọn tháng/năm, toggle thông tin chi tiết. ${includeVariations ? 'Hỗ trợ: giai dac biet theo tuan, xem theo ngay trong tuan. ' : ''}Phân tích xu hướng, miễn phí 100%!`,
 
-        'kqxs': `XSMB - Kết quả xổ số miền Bắc (xsmb, sxmb, kqxsmb, xstd) hôm nay nhanh nhất, chính xác nhất. Tường thuật trực tiếp lúc 18h15 từ trường quay. Xem XSMB 30 ngày, XSMB hôm qua, XSMB theo thứ. ${includeVariations ? 'Hỗ trợ: ket qua xo so mien bac, xsmb, sxmb, kqxsmb, xstd. ' : ''}Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Miễn phí 100% tại TAODANDEWUKONG.PRO!`
+        'kqxs': `XSMB - Kết quả xổ số miền Bắc (xsmb, sxmb, kqxsmb, xstd) hôm nay nhanh nhất, chính xác nhất. Tường thuật trực tiếp lúc 18h15 từ trường quay. Xem XSMB 30 ngày, XSMB hôm qua, XSMB theo thứ. ${includeVariations ? 'Hỗ trợ: ket qua xo so mien bac, xsmb, sxmb, kqxsmb, xstd. ' : ''}Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Miễn phí 100% tại ketquamn.com!`
     };
 
     return descriptions[pageType] || descriptions.home;
@@ -1060,7 +1060,7 @@ function getURLPatternsForPage(pageType) {
             '/',
             '/tao-dan-de',
             '/tao-dan-de-wukong',
-            '/taodandewukong'
+            '/ketquamn'
         ],
         dan9x0x: [
             '/dan-9x0x',

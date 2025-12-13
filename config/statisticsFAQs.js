@@ -6,12 +6,12 @@
 module.exports = {
     'dau-duoi': [
         {
-            question: 'Thống kê Đầu Đuôi tại TAODANDEWUKONG.PRO có tốt không?',
-            answer: 'Có! Thống kê Đầu Đuôi tại TAODANDEWUKONG.PRO cung cấp phân tích chi tiết với biểu đồ trực quan, bảng thống kê theo ngày, và xu hướng thời gian thực. Không cần đăng ký tài khoản, miễn phí 100%, và tốc độ tải trang cực nhanh.'
+            question: 'Thống kê Đầu Đuôi tại ketquamn.com có tốt không?',
+            answer: 'Có! Thống kê Đầu Đuôi tại ketquamn.com cung cấp phân tích chi tiết với biểu đồ trực quan, bảng thống kê theo ngày, và xu hướng thời gian thực. Không cần đăng ký tài khoản, miễn phí 100%, và tốc độ tải trang cực nhanh.'
         },
         {
             question: 'So với xosothantai thì thống kê đầu đuôi ở đây khác gì?',
-            answer: 'TAODANDEWUKONG.PRO cung cấp thống kê đầu đuôi với giao diện hiện đại hơn xosothantai, phân tích chi tiết theo từng ngày, tính năng so sánh xu hướng, và dữ liệu cập nhật realtime. Bạn có thể xem được cả đuôi số xuất hiện nhiều nhất và ít nhất một cách trực quan.'
+            answer: 'ketquamn.com cung cấp thống kê đầu đuôi với giao diện hiện đại hơn xosothantai, phân tích chi tiết theo từng ngày, tính năng so sánh xu hướng, và dữ liệu cập nhật realtime. Bạn có thể xem được cả đuôi số xuất hiện nhiều nhất và ít nhất một cách trực quan.'
         },
         {
             question: 'Thống kê đầu đuôi là gì và có ý nghĩa gì?',
@@ -26,11 +26,11 @@ module.exports = {
     'lo-gan': [
         {
             question: 'Thống kê lô gan chi tiết hơn xosothantai có không?',
-            answer: 'Hoàn toàn có! Thống kê lô gan tại TAODANDEWUKONG.PRO cung cấp phân tích sâu hơn xosothantai với số ngày gan chính xác, gan cực đại (gan max), xu hướng thời gian, và bảng so sánh. Dữ liệu cập nhật realtime, không cần chờ đợi như xosothantai.'
+            answer: 'Hoàn toàn có! Thống kê lô gan tại ketquamn.com cung cấp phân tích sâu hơn xosothantai với số ngày gan chính xác, gan cực đại (gan max), xu hướng thời gian, và bảng so sánh. Dữ liệu cập nhật realtime, không cần chờ đợi như xosothantai.'
         },
         {
-            question: 'Thống kê lô gan tại TAODANDEWUKONG.PRO có gì đặc biệt?',
-            answer: 'Khác biệt lớn nhất là tốc độ và độ chi tiết: TAODANDEWUKONG.PRO tải cực nhanh, giao diện đẹp và hiện đại, phân tích chi tiết với biểu đồ trực quan. Chúng tôi cung cấp insights sâu và đầy đủ để bạn đưa ra quyết định tốt nhất.'
+            question: 'Thống kê lô gan tại ketquamn.com có gì đặc biệt?',
+            answer: 'Khác biệt lớn nhất là tốc độ và độ chi tiết: ketquamn.com tải cực nhanh, giao diện đẹp và hiện đại, phân tích chi tiết với biểu đồ trực quan. Chúng tôi cung cấp insights sâu và đầy đủ để bạn đưa ra quyết định tốt nhất.'
         },
         {
             question: 'Lô gan là gì và ý nghĩa của nó?',
@@ -45,11 +45,11 @@ module.exports = {
     'giai-dac-biet': [
         {
             question: 'Thống kê giải đặc biệt nhiều tính năng hơn xskt không?',
-            answer: 'Chắc chắn! TAODANDEWUKONG.PRO cung cấp nhiều tính năng độc đáo mà xskt không có: Xem theo ngày trong tuần (view lịch), toggle hiển thị thông tin (ngày, tổng, đầu, đuôi, chẵn lẻ), phân tích xu hướng theo tuần/tháng/năm, và nhiều filter thông minh khác.'
+            answer: 'Chắc chắn! ketquamn.com cung cấp nhiều tính năng độc đáo mà xskt không có: Xem theo ngày trong tuần (view lịch), toggle hiển thị thông tin (ngày, tổng, đầu, đuôi, chẵn lẻ), phân tích xu hướng theo tuần/tháng/năm, và nhiều filter thông minh khác.'
         },
         {
-            question: 'Thống kê giải đặc biệt tại TAODANDEWUKONG.PRO có gì tốt?',
-            answer: 'Có! Chúng tôi có nhiều view khác nhau (tuần, ngày, danh sách), xem được cả giải đặc biệt đặc biệt, toggle thông tin linh hoạt, và phân tích chi tiết. TAODANDEWUKONG.PRO cung cấp insights sâu và nhiều công cụ để bạn hiểu rõ xu hướng.'
+            question: 'Thống kê giải đặc biệt tại ketquamn.com có gì tốt?',
+            answer: 'Có! Chúng tôi có nhiều view khác nhau (tuần, ngày, danh sách), xem được cả giải đặc biệt đặc biệt, toggle thông tin linh hoạt, và phân tích chi tiết. ketquamn.com cung cấp insights sâu và nhiều công cụ để bạn hiểu rõ xu hướng.'
         },
         {
             question: 'Giải đặc biệt là gì?',
@@ -57,7 +57,7 @@ module.exports = {
         },
         {
             question: 'Có thể xem giải đặc biệt theo ngày trong tuần không?',
-            answer: 'Có! Đây là tính năng độc quyền của TAODANDEWUKONG.PRO. Bạn có thể xem giải đặc biệt theo từng ngày trong tuần (Thứ 2 đến Chủ Nhật), chọn tháng/năm, và xem xu hướng giải đặc biệt trong cùng thời điểm các năm trước.'
+            answer: 'Có! Đây là tính năng độc quyền của ketquamn.com. Bạn có thể xem giải đặc biệt theo từng ngày trong tuần (Thứ 2 đến Chủ Nhật), chọn tháng/năm, và xem xu hướng giải đặc biệt trong cùng thời điểm các năm trước.'
         }
     ],
 
@@ -79,7 +79,7 @@ module.exports = {
     'tan-suat-locap': [
         {
             question: 'Tần suất lô cặp có phải công cụ độc quyền?',
-            answer: 'Đúng vậy! Tính năng thống kê tần suất lô cặp (XX-YY) với phân tích riêng lẻ số lần xuất hiện của XX và YY là độc quyền của TAODANDEWUKONG.PRO. Không có trang nào khác cung cấp phân tích chi tiết như này.'
+            answer: 'Đúng vậy! Tính năng thống kê tần suất lô cặp (XX-YY) với phân tích riêng lẻ số lần xuất hiện của XX và YY là độc quyền của ketquamn.com. Không có trang nào khác cung cấp phân tích chi tiết như này.'
         },
         {
             question: 'Lô cặp là gì?',
@@ -94,7 +94,7 @@ module.exports = {
     'giai-dac-biet-tuan': [
         {
             question: 'View lịch (calendar view) có phải tính năng độc đáo?',
-            answer: 'Chính xác! Tính năng xem giải đặc biệt theo view lịch (Thứ 2 đến Chủ Nhật) là độc quyền của TAODANDEWUKONG.PRO. Bạn có thể chọn bất kỳ tháng/năm nào để xem giải đặc biệt theo từng ngày trong tuần.'
+            answer: 'Chính xác! Tính năng xem giải đặc biệt theo view lịch (Thứ 2 đến Chủ Nhật) là độc quyền của ketquamn.com. Bạn có thể chọn bất kỳ tháng/năm nào để xem giải đặc biệt theo từng ngày trong tuần.'
         },
         {
             question: 'Làm sao sử dụng view theo tuần?',
@@ -102,7 +102,7 @@ module.exports = {
         },
         {
             question: 'View tuần giúp ích gì?',
-            answer: 'View tuần giúp bạn phát hiện xu hướng giải đặc biệt theo ngày trong tuần. Ví dụ: Thứ 6 thường về số chẵn, Chủ Nhật hay về số lẻ... Đây là insights giá trị mà chỉ có TAODANDEWUKONG.PRO cung cấp.'
+            answer: 'View tuần giúp bạn phát hiện xu hướng giải đặc biệt theo ngày trong tuần. Ví dụ: Thứ 6 thường về số chẵn, Chủ Nhật hay về số lẻ... Đây là insights giá trị mà chỉ có ketquamn.com cung cấp.'
         }
     ],
 
@@ -112,7 +112,7 @@ module.exports = {
             answer: 'Phân tích Bắc Cầu là phương pháp tìm kiếm các quy luật và pattern ẩn trong dữ liệu xổ số bằng cách "nối" các số với nhau qua các đường cầu (cột, hàng, chéo, zig-zag, nhảy). Giúp phát hiện các xu hướng và dự đoán số tiếp theo dựa trên logic, không phải ngẫu nhiên.'
         },
         {
-            question: 'Phân tích Bắc Cầu tại TAODANDEWUKONG.PRO có gì khác biệt?',
+            question: 'Phân tích Bắc Cầu tại ketquamn.com có gì khác biệt?',
             answer: 'Chúng tôi cung cấp framework tự động phát hiện hàng chục quy luật bắc cầu khác nhau: cầu cột, cầu hàng, cầu chéo, cầu zig-zag, cầu nhảy. Hiển thị trực quan với mũi tên và highlight. Tự động tạo dự đoán: Chạm, 3 Càng, Dàn Đề, Tổng, Chẵn/Lẻ.'
         },
         {

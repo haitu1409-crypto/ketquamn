@@ -172,9 +172,9 @@ function MyApp({ Component, pageProps }) {
 
             {/* ✅ Multi-Search Engine Optimizer */}
             <MultiSearchEngineOptimizer
-                title="Tạo Dàn Đề Wukong (Tao Dan De) | Ứng Dụng Tạo Mức Số 2025"
-                description="Tạo dàn đề (tao dan de) online miễn phí. Công cụ tạo dàn số, mức số chuyên nghiệp. Hỗ trợ: taodande, lô đề, dan de."
-                keywords="tạo dàn đề wukong, tao dan de wukong, taodandewukong, tạo dàn số, tao dan so, lô đề, lo de"
+                title="Kết Quả MN - Kết quả xổ số miền Nam 2025"
+                description="Kết quả xổ số miền Nam nhanh nhất, chính xác nhất. Xem kết quả XSMN, KQXSMN hôm nay."
+                keywords="kết quả xổ số miền Nam, xsmn, kqxsmn, sxmn, kết quả MN, xổ số miền Nam"
             />
 
             {/* ✅ SEO Schema - Organization */}

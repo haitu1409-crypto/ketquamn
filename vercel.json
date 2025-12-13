@@ -1,9 +1,9 @@
 {
   "version": 2,
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://api1.taodandewukong.pro",
-    "NEXT_PUBLIC_SITE_URL": "https://taodandewukong.pro",
-    "NEXT_PUBLIC_SITE_NAME": "Tạo Dàn Đề"
+    "NEXT_PUBLIC_API_URL": "https://api1.ketquamn.com",
+    "NEXT_PUBLIC_SITE_URL": "https://ketquamn.com",
+    "NEXT_PUBLIC_SITE_NAME": "Kết Quả MN"
   },
   "functions": {
     "pages/api/**/*.js": {
@@ -129,10 +129,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.taodandewukong.pro"
+          "value": "www.ketquamn.com"
         }
       ],
-      "destination": "https://taodandewukong.pro/$1",
+      "destination": "https://ketquamn.com/$1",
       "permanent": true
     },
     {

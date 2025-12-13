@@ -102,8 +102,8 @@ const PAGE_IMAGES = {
 const PAGE_SEO_CONFIG = {
     homepage: {
         title: 'TDDW - Tạo Dàn Đề, Tạo Dàn Số Online Miễn Phí | Công Cụ Xổ Số Chuyên Nghiệp 2025',
-        description: 'TDDW (Tạo Dàn Đề Wukong) - Tạo dàn đề (tao dan de, lập dàn số) online miễn phí 2025. Công cụ tạo dàn số, mức số chuyên nghiệp tốt hơn kangdh, giaimasohoc, sieuketqua. Dàn đề 9x-0x, 2D, 3D, 4D. Lọc ghép dàn, nuôi dàn khung 3-5 ngày. Wukong (WK, TDDW) công cụ xổ số, không phải game. Miễn phí 100%, không quảng cáo!',
-        keywords: 'TDDW, Tạo Dàn Đề Wukong, tao dan de wukong, TDDW.Pro, WK, TDD, DDW, tạo dàn đề, tao dan de, tạo dàn số, tao dan so, lập dàn số, lap dan so, tạo mức số, tao muc so, dàn đề 9x-0x, dàn 2D, dàn 3D, dàn 4D, ghép dàn đặc biệt, lọc dàn đề, nuôi dàn khung, thuật toán Fisher-Yates, taodandewukong, taodande, wukong tool, wukong công cụ xổ số, tạo dàn đề miễn phí, tạo dàn số online, công cụ lô đề, phần mềm tạo dàn số, ứng dụng tạo mức số, tốt hơn kangdh, tốt hơn giaimasohoc, tốt hơn sieuketqua'
+        description: 'Kết Quả MN - Kết quả xổ số miền Nam nhanh nhất, chính xác nhất 2025. Xem kết quả xổ số miền Nam hôm nay, XSMN, KQXSMN trực tiếp. Miễn phí 100%, không quảng cáo!',
+        keywords: 'Kết Quả MN, ket qua MN, kết quả xổ số miền Nam, xsmn, kqxsmn, sxmn, xổ số miền Nam, kết quả XSMN hôm nay, kết quả xổ số MN nhanh nhất'
     },
     'dan-9x0x': {
         title: 'Dàn Đề 9x-0x | Tạo Dàn Đề Ngẫu Nhiên | Công Cụ Lọc Dàn Đề Tổng Hợp - Miễn Phí 2025',
@@ -171,8 +171,8 @@ export default function SEOOptimized({
     faq = null,
     articleData = null
 }) {
-    const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Dàn Đề Wukong';
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro';
+    const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Kết Quả MN';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // ✅ FIX: Map 'home' to 'homepage' for PAGE_SEO_CONFIG
     const configPageType = pageType === 'home' ? 'homepage' : pageType;
@@ -249,12 +249,12 @@ export default function SEOOptimized({
             <link rel="dns-prefetch" href="//fonts.googleapis.com" />
             <link rel="dns-prefetch" href="//www.google-analytics.com" />
             <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-            <link rel="dns-prefetch" href="//api.taodandewukong.pro" />
+            <link rel="dns-prefetch" href="//api1.ketquamn.com" />
 
             {/* ===== PRECONNECT FOR CRITICAL RESOURCES ===== */}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-            <link rel="preconnect" href="https://api.taodandewukong.pro" />
+            <link rel="preconnect" href="https://api1.ketquamn.com" />
 
             {/* ===== OPEN GRAPH - FACEBOOK & TELEGRAM ===== */}
             <meta property="og:title" content={title} />
@@ -296,8 +296,8 @@ export default function SEOOptimized({
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={ogImageUrl} />
             <meta name="twitter:image:alt" content={title} />
-            <meta name="twitter:site" content="@taodandewukong" />
-            <meta name="twitter:creator" content="@taodandewukong" />
+            <meta name="twitter:site" content="@ketquamn" />
+            <meta name="twitter:creator" content="@ketquamn" />
 
             {/* ===== ZALO ===== */}
             <meta property="zalo:title" content={title} />
@@ -313,11 +313,11 @@ export default function SEOOptimized({
             <meta property="telegram:image:alt" content={title} />
             <meta property="telegram:url" content={fullUrl} />
             <meta property="telegram:site_name" content={siteName} />
-            <meta property="telegram:site" content="@taodandewukong" />
-            <meta property="telegram:creator" content="@taodandewukong" />
-            <meta name="telegram:channel" content="@taodandewukong" />
-            <meta name="telegram:chat" content="@taodandewukong" />
-            <meta name="telegram:bot" content="@taodandewukong" />
+            <meta property="telegram:site" content="@ketquamn" />
+            <meta property="telegram:creator" content="@ketquamn" />
+            <meta name="telegram:channel" content="@ketquamn" />
+            <meta name="telegram:chat" content="@ketquamn" />
+            <meta name="telegram:bot" content="@ketquamn" />
 
             {/* ===== TIKTOK ===== */}
             <meta property="tiktok:title" content={title} />

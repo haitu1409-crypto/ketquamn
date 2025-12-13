@@ -274,7 +274,7 @@ const TanSuatLoto = ({ initialStats, initialMetadata, initialDays }) => {
                 </div>
 
                 <div className={styles.Group_Content}>
-                    <h2 className={styles.heading}>TAODANDEWUKONG.PRO - Thống Kê Tần Suất Loto Chính Xác Nhất</h2>
+                    <h2 className={styles.heading}>ketquamn.com - Thống Kê Tần Suất Loto Chính Xác Nhất</h2>
                     <div className={`${styles.contentWrapper} ${isExpanded ? styles.expanded : styles.collapsed}`}>
                         <h3 className={styles.h3}>Thống Kê Tần Suất Loto Là Gì?</h3>
                         <p className={styles.desc}>
@@ -291,10 +291,10 @@ const TanSuatLoto = ({ initialStats, initialMetadata, initialDays }) => {
                         <p className={styles.desc}>- Cung cấp dữ liệu chính xác, cập nhật nhanh chóng từ kết quả xổ số.</p>
                         <p className={styles.desc}>- Giúp người chơi có thêm thông tin để tăng cơ hội trúng thưởng.</p>
                         <p className={styles.desc}>
-                            TAODANDEWUKONG.PRO cung cấp công cụ thống kê Tần Suất Loto hoàn toàn miễn phí. Chúc bạn may mắn!
+                            ketquamn.com cung cấp công cụ thống kê Tần Suất Loto hoàn toàn miễn phí. Chúc bạn may mắn!
                         </p>
                         <p className={styles.desc}>
-                            Thống kê Tần Suất Loto. Xem thống kê Tần Suất Loto hôm nay nhanh và chính xác nhất tại <a className={styles.action} href='/'>TAODANDEWUKONG.PRO.</a>
+                            Thống kê Tần Suất Loto. Xem thống kê Tần Suất Loto hôm nay nhanh và chính xác nhất tại <a className={styles.action} href='/'>ketquamn.com.</a>
                         </p>
                     </div>
                     <button

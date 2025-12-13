@@ -27,7 +27,7 @@ class SocketClient {
                           process.env.NEXT_PUBLIC_API_URL || 
                           (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
                               ? 'http://localhost:5000' 
-                              : 'https://api1.taodandewukong.pro');
+                              : 'https://api1.ketquamn.com');
 
         // Normalize URL: remove ws:// or wss:// prefix, use http:// or https://
         // Socket.io client will automatically convert to ws:// or wss://

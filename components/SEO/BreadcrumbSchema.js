@@ -18,7 +18,7 @@ export default function BreadcrumbSchema({ breadcrumbs }) {
             "@type": "ListItem",
             "position": index + 1,
             "name": item.name,
-            "item": `https://taodandewukong.pro${item.url}`
+            "item": `https://ketquamn.com${item.url}`
         }))
     };
 

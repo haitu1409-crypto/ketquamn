@@ -81,7 +81,7 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
         "@type": "HowTo",
         "name": "Cách tạo dàn số 3D/4D chuyên nghiệp",
         "description": "Hướng dẫn chi tiết cách tạo dàn số 3D (000-999) và 4D (0000-9999) cho cao thủ",
-        "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png",
+        "image": "https://ketquamn.com/imgs/dan3d4d (1).png",
         "totalTime": "PT3M",
         "estimatedCost": {
             "@type": "MonetaryAmount",
@@ -103,50 +103,50 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
         "author": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Dàn Đề Wukong",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         },
         "step": [
             {
                 "@type": "HowToStep",
                 "name": "Truy cập công cụ",
-                "text": "Vào trang công cụ tạo dàn số 3D/4D tại taodandewukong.pro/dan-3d4d",
-                "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png",
-                "url": "https://taodandewukong.pro/dan-3d4d"
+                "text": "Vào trang công cụ tạo dàn số 3D/4D tại ketquamn.com/dan-3d4d",
+                "image": "https://ketquamn.com/imgs/dan3d4d (1).png",
+                "url": "https://ketquamn.com/dan-3d4d"
             },
             {
                 "@type": "HowToStep",
                 "name": "Chọn loại dàn số",
                 "text": "Chọn tạo dàn số 3D (000-999) hoặc dàn số 4D (0000-9999) tùy theo nhu cầu",
-                "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png"
+                "image": "https://ketquamn.com/imgs/dan3d4d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Nhập số gốc",
                 "text": "Nhập các số gốc vào ô text, mỗi số cách nhau bằng dấu phẩy hoặc xuống dòng",
-                "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png"
+                "image": "https://ketquamn.com/imgs/dan3d4d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Chọn số lượng dàn số",
                 "text": "Chọn số lượng dàn số muốn tạo (tối đa 1000 dàn số)",
-                "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png"
+                "image": "https://ketquamn.com/imgs/dan3d4d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Tạo dàn số",
                 "text": "Nhấn nút 'Tạo Dàn Đề' để tạo dàn số 3D/4D theo thuật toán Fisher-Yates",
-                "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png"
+                "image": "https://ketquamn.com/imgs/dan3d4d (1).png"
             },
             {
                 "@type": "HowToStep",
                 "name": "Xuất kết quả",
                 "text": "Xuất kết quả ra file Excel hoặc copy để sử dụng",
-                "image": "https://taodandewukong.pro/imgs/dan3d4d (1).png"
+                "image": "https://ketquamn.com/imgs/dan3d4d (1).png"
             }
         ]
     };

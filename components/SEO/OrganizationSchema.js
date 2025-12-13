@@ -10,28 +10,28 @@ export default function OrganizationSchema() {
     const schema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "Dàn Đề Wukong",
+        "name": "Kết Quả MN",
         "alternateName": [
-            "TaoDanDeWukong",
-            "Tạo Dàn Đề Wukong",
-            "Wukong Pro"
+            "KetQuaMN",
+            "Tạo Kết Quả MN",
+            "Kết Quả MN"
         ],
-        "url": "https://taodandewukong.pro",
+        "url": "https://ketquamn.com",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://taodandewukong.pro/imgs/wukong.png",
+            "url": "https://ketquamn.com/imgs/wukong.png",
             "width": 512,
             "height": 512
         },
-        "image": "https://taodandewukong.pro/imgs/wukong.png",
+        "image": "https://ketquamn.com/imgs/wukong.png",
         "description": "Công cụ tạo dàn đề chuyên nghiệp #1 Việt Nam. Miễn phí 100%, không quảng cáo. Hỗ trợ: Dàn 9x-0x, 2D, 3D, 4D, Ghép lô xiên, Bảng tính chào, Thống kê xổ số.",
         "slogan": "Công cụ tạo dàn đề chuyên nghiệp hàng đầu Việt Nam",
         "foundingDate": "2024",
         "founder": {
             "@type": "Organization",
-            "name": "Wukong Team"
+            "name": "Kết Quả MN Team"
         },
-        "email": "support@taodandewukong.pro",
+        "email": "support@ketquamn.com",
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "VN",
@@ -45,8 +45,8 @@ export default function OrganizationSchema() {
         },
         "sameAs": [
             "https://facebook.com/taodandewukong",
-            "https://youtube.com/@taodandewukong",
-            "https://tiktok.com/@taodandewukong"
+            "https://youtube.com/@ketquamn",
+            "https://tiktok.com/@ketquamn"
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -60,7 +60,7 @@ export default function OrganizationSchema() {
             "price": "0",
             "priceCurrency": "VND",
             "availability": "https://schema.org/InStock",
-            "url": "https://taodandewukong.pro"
+            "url": "https://ketquamn.com"
         }
     };
 

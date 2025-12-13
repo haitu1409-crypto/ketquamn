@@ -70,7 +70,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
     }, [isLiveWindow]);
 
     const siteUrl = useMemo(() =>
-        process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro',
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com',
         []
     );
 
@@ -118,7 +118,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
         },
         {
             question: 'Xem XSMN ở đâu tốt nhất?',
-            answer: 'Taodandewukong.pro cung cấp kết quả XSMN nhanh nhất, chính xác nhất. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
+            answer: 'ketquamn.com cung cấp kết quả XSMN nhanh nhất, chính xác nhất. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
         }
     ], [siteUrl]);
 
@@ -257,7 +257,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
 
                         <div className={styles.infoCard}>
-                            <h3>Ưu Điểm XSMN Tại Taodandewukong.pro</h3>
+                            <h3>Ưu Điểm XSMN Tại ketquamn.com</h3>
                             <ul>
                                 <li>✅ <strong>Nhanh nhất:</strong> Cập nhật XSMN ngay sau khi quay số</li>
                                 <li>✅ <strong>Chính xác:</strong> Kết quả XSMN chính xác 100%, đối chiếu từ nguồn chính thức</li>
@@ -278,6 +278,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
 KQXSMNPage.displayName = 'KQXSMNPage';
 
 export default KQXSMNPage;
+
 
 
 
