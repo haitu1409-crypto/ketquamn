@@ -182,25 +182,10 @@ const KQXSPage = memo(function KQXSPage() {
                     '@type': 'WebPage',
                     '@id': `${siteUrl}/ket-qua-xo-so-mien-bac`
                 },
-                'keywords': seoConfig.keywords.slice(0, 50).join(', ')
+                'keywords': seoConfig.keywords.slice(0, 10).join(', ') // ✅ Reduced from 50 to 10 for performance
             },
-            generateFAQSchema(faqData),
-            {
-                '@context': 'https://schema.org',
-                '@type': 'Dataset',
-                'name': 'Kết Quả Xổ Số Miền Bắc (XSMB)',
-                'description': 'Kết quả xổ số miền Bắc (XSMB, SXMB, KQXSMB, XSTD) được cập nhật hàng ngày lúc 18h15',
-                'url': `${siteUrl}/ket-qua-xo-so-mien-bac`,
-                'temporalCoverage': '2025-01-01/..',
-                'spatialCoverage': 'Hà Nội, Miền Bắc, Việt Nam',
-                'keywords': 'xsmb, sxmb, kqxsmb, xstd, kết quả xổ số miền bắc',
-                'license': 'https://creativecommons.org/licenses/by/4.0/',
-                'provider': {
-                    '@type': 'Organization',
-                    'name': 'Kết Quả MN | KETQUAMN.COM',
-                    'url': siteUrl
-                }
-            }
+            generateFAQSchema(faqData)
+            // ✅ Removed Dataset schema to reduce structured data size and improve performance
         ];
     }, [pageTitle, pageDescription, seoConfig.keywords, siteUrl, faqData]);
 
@@ -210,7 +195,7 @@ const KQXSPage = memo(function KQXSPage() {
                 pageType="kqxs"
                 title={pageTitle}
                 description={pageDescription}
-                keywords={seoConfig.keywords.join(', ')}
+                keywords={seoConfig.keywords.slice(0, 30).join(', ')}
                 canonical={`${siteUrl}/ket-qua-xo-so-mien-bac`}
                 ogImage={`${siteUrl}/imgs/xsmb.png`}
                 breadcrumbs={[

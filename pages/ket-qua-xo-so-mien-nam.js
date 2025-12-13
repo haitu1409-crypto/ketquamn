@@ -157,25 +157,10 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                     '@type': 'WebPage',
                     '@id': `${siteUrl}/ket-qua-xo-so-mien-nam`
                 },
-                'keywords': seoConfig.keywords.slice(0, 50).join(', ')
+                'keywords': seoConfig.keywords.slice(0, 10).join(', ') // ✅ Reduced from 50 to 10 for performance
             },
-            generateFAQSchema(faqData),
-            {
-                '@context': 'https://schema.org',
-                '@type': 'Dataset',
-                'name': 'Kết Quả Xổ Số Miền Nam (XSMN)',
-                'description': 'Kết quả xổ số miền Nam (XSMN, SXMN, KQXSMN) được cập nhật hàng ngày',
-                'url': `${siteUrl}/ket-qua-xo-so-mien-nam`,
-                'temporalCoverage': '2025-01-01/..',
-                'spatialCoverage': 'Miền Nam, Việt Nam',
-                'keywords': 'xsmn, sxmn, kqxsmn, kết quả xổ số miền nam',
-                'license': 'https://creativecommons.org/licenses/by/4.0/',
-                'provider': {
-                    '@type': 'Organization',
-                    'name': 'Kết Quả MN',
-                    'url': siteUrl
-                }
-            }
+            generateFAQSchema(faqData)
+            // ✅ Removed Dataset schema to reduce structured data size and improve performance
         ];
     }, [pageTitle, pageDescription, seoConfig.keywords, siteUrl, faqData]);
 
@@ -185,7 +170,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 pageType="kqxs-xsmn"
                 title={pageTitle}
                 description={pageDescription}
-                keywords={seoConfig.keywords.join(', ')}
+                keywords={seoConfig.keywords.slice(0, 30).join(', ')}
                 canonical={`${siteUrl}/ket-qua-xo-so-mien-nam`}
                 ogImage={`${siteUrl}/imgs/xsmn.png`}
                 structuredData={structuredData}
