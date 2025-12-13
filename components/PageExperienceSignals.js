@@ -15,63 +15,35 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 
 export default function PageExperienceSignals() {
+    // ✅ Optimized: Only run on client-side, defer non-critical checks
     useEffect(() => {
-        // ✅ Mobile-friendly: Ensure viewport is set correctly
-        const ensureMobileFriendly = () => {
-            const viewport = document.querySelector('meta[name="viewport"]');
-            if (!viewport) {
-                const meta = document.createElement('meta');
-                meta.name = 'viewport';
-                meta.content = 'width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes';
-                document.head.appendChild(meta);
-            }
-        };
+        // Defer all checks to avoid blocking initial render
+        const timeoutId = setTimeout(() => {
+            // ✅ No intrusive interstitials: Remove popups that block content
+            const removeIntrusiveInterstitials = () => {
+                const overlays = document.querySelectorAll('.popup-overlay, .modal-overlay, [data-intrusive]');
+                overlays.forEach(overlay => {
+                    if (overlay.style.display !== 'none') {
+                        overlay.style.display = 'none';
+                    }
+                });
+            };
 
-        // ✅ Safe browsing: Check for malicious content
-        const checkSafeBrowsing = () => {
-            // This would typically be done server-side
-            // Here we just ensure no suspicious scripts are loaded
-            const scripts = document.querySelectorAll('script[src]');
-            scripts.forEach(script => {
-                const src = script.src;
-                if (src && !src.startsWith('http://localhost') && !src.startsWith('https://')) {
-                    console.warn('Non-HTTPS script detected:', src);
-                }
-            });
-        };
+            // ✅ Accessibility: Ensure proper ARIA labels (lightweight check)
+            const ensureAccessibility = () => {
+                const images = document.querySelectorAll('img:not([alt])');
+                images.forEach(img => {
+                    if (!img.alt) {
+                        img.alt = img.getAttribute('aria-label') || 'Image';
+                    }
+                });
+            };
 
-        // ✅ No intrusive interstitials: Remove popups that block content
-        const removeIntrusiveInterstitials = () => {
-            // Remove any full-screen overlays on page load
-            const overlays = document.querySelectorAll('.popup-overlay, .modal-overlay, [data-intrusive]');
-            overlays.forEach(overlay => {
-                if (overlay.style.display !== 'none') {
-                    overlay.style.display = 'none';
-                }
-            });
-        };
+            removeIntrusiveInterstitials();
+            ensureAccessibility();
+        }, 100); // Defer by 100ms to not block initial render
 
-        // ✅ Accessibility: Ensure proper ARIA labels
-        const ensureAccessibility = () => {
-            const images = document.querySelectorAll('img:not([alt])');
-            images.forEach(img => {
-                if (!img.alt) {
-                    img.alt = img.getAttribute('aria-label') || 'Image';
-                }
-            });
-
-            const buttons = document.querySelectorAll('button:not([aria-label]):not([aria-labelledby])');
-            buttons.forEach(button => {
-                if (!button.textContent.trim()) {
-                    button.setAttribute('aria-label', 'Button');
-                }
-            });
-        };
-
-        ensureMobileFriendly();
-        checkSafeBrowsing();
-        removeIntrusiveInterstitials();
-        ensureAccessibility();
+        return () => clearTimeout(timeoutId);
     }, []);
 
     return (

@@ -296,8 +296,8 @@ export default function UltimateSEO({
             schemas.push(articleSchema);
         }
 
-        // 6. Dataset Schema
-        if (pageType === 'dataset' || lotteryData) {
+        // 6. Dataset Schema - Only if explicitly needed
+        if (pageType === 'dataset' && lotteryData) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'Dataset',
@@ -318,23 +318,18 @@ export default function UltimateSEO({
                 spatialCoverage: {
                     '@type': 'Place',
                     name: 'Vietnam'
-                },
-                distribution: {
-                    '@type': 'DataDownload',
-                    encodingFormat: 'JSON',
-                    contentUrl: `${siteUrl}/api/lottery-data`
                 }
             });
         }
 
-        // 7. ItemList Schema
-        if (pageType === 'collection' || lotteryData) {
+        // 7. ItemList Schema - Only if explicitly needed
+        if (pageType === 'collection' && lotteryData?.items?.length > 0) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'ItemList',
                 name: title,
                 description: description,
-                itemListElement: lotteryData?.items?.map((item, index) => ({
+                itemListElement: lotteryData.items.slice(0, 10).map((item, index) => ({
                     '@type': 'ListItem',
                     position: index + 1,
                     item: {
@@ -342,30 +337,29 @@ export default function UltimateSEO({
                         name: item.name,
                         datePublished: item.date
                     }
-                })) || []
+                }))
             });
         }
 
-        // 8. ✅ NEW: HowTo Schema (cho hướng dẫn)
-        if (pageType === 'howto' && articleData?.steps) {
+        // 8. HowTo Schema - Only if explicitly needed
+        if (pageType === 'howto' && articleData?.steps?.length > 0) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'HowTo',
                 name: title,
                 description: description,
                 image: ogImageUrl,
-                step: articleData.steps.map((step, index) => ({
+                step: articleData.steps.slice(0, 10).map((step, index) => ({
                     '@type': 'HowToStep',
                     position: index + 1,
                     name: step.name,
-                    text: step.text,
-                    image: step.image || ogImageUrl
+                    text: step.text
                 }))
             });
         }
 
-        // 9. ✅ NEW: VideoObject Schema (nếu có video)
-        if (articleData?.video) {
+        // 9. VideoObject Schema - Only if explicitly needed
+        if (articleData?.video?.url) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'VideoObject',
@@ -373,8 +367,7 @@ export default function UltimateSEO({
                 description: description,
                 thumbnailUrl: articleData.video.thumbnail || ogImageUrl,
                 uploadDate: articleData.video.uploadDate || currentDate,
-                contentUrl: articleData.video.url,
-                embedUrl: articleData.video.embedUrl
+                contentUrl: articleData.video.url
             });
         }
 

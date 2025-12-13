@@ -151,63 +151,17 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
             {/* ============================================
                 STRUCTURED DATA FOR BING
                 ============================================ */}
-
-            {/* Bing Search Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(bingSearchSchema) }}
-            />
-
-            {/* BreadcrumbList Schema (Bing loves this) */}
-            {structuredData?.breadcrumbs && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            "@context": "https://schema.org",
-                            "@type": "BreadcrumbList",
-                            "itemListElement": structuredData.breadcrumbs.map((item, index) => ({
-                                "@type": "ListItem",
-                                "position": index + 1,
-                                "name": item.name,
-                                "item": item.url
-                            }))
-                        })
-                    }}
-                />
+            {/* Note: Structured data is handled by UltimateSEO to avoid duplicates */}
+            {/* Only render Bing-specific schema if structuredData is explicitly provided */}
+            {structuredData && (
+                <>
+                    {/* Bing Search Schema - Only if not already in UltimateSEO */}
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(bingSearchSchema) }}
+                    />
+                </>
             )}
-
-            {/* Organization Schema with Vietnamese focus */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "Organization",
-                        "name": "Kết Quả MN",
-                        "alternateName": [
-                            "Kết Quả MN",
-                            "Ket Qua MN",
-                            "KetQuaMN",
-                            "Ket Qua MN"
-                        ],
-                        "url": siteUrl,
-                        "logo": `${siteUrl}/logo1.png`,
-                        "description": "Bộ công cụ tạo dàn đề, tạo mức số chuyên nghiệp hàng đầu Việt Nam",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressCountry": "VN"
-                        },
-                        "areaServed": {
-                            "@type": "Country",
-                            "name": "Vietnam"
-                        },
-                        "sameAs": [
-                            // Add social media profiles here
-                        ]
-                    })
-                }}
-            />
 
             {/* ============================================
                 MOBILE APP ALTERNATE (For Bing & Google)
