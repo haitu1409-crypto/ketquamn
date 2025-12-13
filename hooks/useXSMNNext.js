@@ -15,9 +15,45 @@ import { useState, useEffect, useCallback } from 'react';
  */
 export function useXSMNLatest10(options = {}) {
     const { autoFetch = true, refreshInterval = 0, page = 1, limit = 10 } = options;
-    const [data, setData] = useState(null);
-    const [pagination, setPagination] = useState(null);
-    const [loading, setLoading] = useState(true);
+    
+    // ✅ Cache key for this specific page/limit combination
+    const cacheKey = `xsmn_latest10_${page}_${limit}`;
+    
+    const getCachedData = () => {
+        if (typeof window === 'undefined') return null;
+        try {
+            const cached = sessionStorage.getItem(cacheKey);
+            if (cached) {
+                const { data: cachedData, pagination: cachedPagination, timestamp } = JSON.parse(cached);
+                // Cache trong 2 phút
+                if (Date.now() - timestamp < 2 * 60 * 1000) {
+                    return { data: cachedData, pagination: cachedPagination };
+                }
+            }
+        } catch (e) {
+            // Silent error
+        }
+        return null;
+    };
+
+    const setCachedData = (dataToCache, paginationToCache) => {
+        if (typeof window === 'undefined') return;
+        try {
+            sessionStorage.setItem(cacheKey, JSON.stringify({
+                data: dataToCache,
+                pagination: paginationToCache,
+                timestamp: Date.now()
+            }));
+        } catch (e) {
+            // Silent error
+        }
+    };
+
+    // ✅ Initialize with cached data if available
+    const cached = getCachedData();
+    const [data, setData] = useState(cached?.data || null);
+    const [pagination, setPagination] = useState(cached?.pagination || null);
+    const [loading, setLoading] = useState(!cached);
     const [error, setError] = useState(null);
 
     const fetchData = useCallback(async () => {
@@ -27,45 +63,36 @@ export function useXSMNLatest10(options = {}) {
 
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
             const url = `${apiUrl}/api/xsmn/results/latest10?page=${page}&limit=${limit}`;
-            console.log(`🔵 Fetching XSMN: ${url}`);
             
             const response = await fetch(url);
 
             if (!response.ok) {
-                const errorText = await response.text();
-                console.error(`❌ HTTP error! status: ${response.status}`, errorText);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const result = await response.json();
-            console.log('✅ XSMN API Response:', {
-                success: result.success,
-                dataLength: result.data?.length,
-                pagination: result.pagination
-            });
 
             if (result.success && result.data) {
                 if (Array.isArray(result.data) && result.data.length > 0) {
-                    console.log(`✅ Loaded ${result.data.length} XSMN results`);
                     setData(result.data);
                     setPagination(result.pagination);
+                    // ✅ Cache the result
+                    setCachedData(result.data, result.pagination);
                 } else {
-                    console.warn('⚠️ No XSMN data in response');
                     setData([]);
                     setPagination(result.pagination || { currentPage: 1, totalPages: 1 });
+                    setCachedData([], result.pagination || { currentPage: 1, totalPages: 1 });
                 }
             } else {
-                console.error('❌ Invalid response format:', result);
                 throw new Error(result.message || 'Invalid response format');
             }
         } catch (err) {
-            console.error('❌ Error fetching XSMN results:', err);
             setError(err.message);
             setData([]);
         } finally {
             setLoading(false);
         }
-    }, [page, limit]);
+    }, [page, limit, cacheKey]);
 
     // Auto fetch on mount and when page/limit changes
     useEffect(() => {

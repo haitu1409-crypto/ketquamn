@@ -17,13 +17,7 @@ const XSMBLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
         }
     }, [pagination, onPaginationChange]);
 
-    // Debug log
-    React.useEffect(() => {
-        console.log('XSMBLatest10 data:', apiData);
-        console.log('Pagination:', pagination);
-        console.log('Loading:', loading);
-        console.log('Error:', error);
-    }, [apiData, pagination, loading, error]);
+    // ✅ Removed debug logs for production performance
 
     // Use API data if available, otherwise show empty state
     const data = apiData;
