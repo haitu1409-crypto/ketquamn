@@ -148,12 +148,12 @@ export default function Dan9x0xPage() {
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         }
     };
@@ -190,17 +190,17 @@ export default function Dan9x0xPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 9x-0x Wukong"
+                "name": "Công cụ tạo dàn số 9x-0x Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "step": [

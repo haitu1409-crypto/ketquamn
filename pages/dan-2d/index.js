@@ -94,17 +94,17 @@ const Dan2DPage = memo(function Dan2DPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 2D Wukong"
+                "name": "Công cụ tạo dàn số 2D Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "step": [

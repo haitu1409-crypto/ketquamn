@@ -191,7 +191,7 @@ class SEOContentGenerator {
             },
             "author": {
                 "@type": "Organization",
-                "name": "Dàn Đề Wukong"
+                "name": "Kết Quả MN | KETQUAMN.COM"
             },
             "datePublished": new Date().toISOString(),
             "dateModified": new Date().toISOString()

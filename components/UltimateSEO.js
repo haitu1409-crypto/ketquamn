@@ -571,7 +571,7 @@ export default function UltimateSEO({
             <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
             {/* ===== ✅ ACCESSIBILITY ===== */}
-            <html lang={lang} />
+            {/* Note: lang attribute is set in _document.js <Html lang="vi"> - do not duplicate here */}
 
             {/* ===== CUSTOM META TAGS ===== */}
             {customMeta.map((meta, index) => (

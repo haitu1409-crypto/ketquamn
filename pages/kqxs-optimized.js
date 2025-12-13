@@ -29,7 +29,7 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
         return {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Kết quả xổ số miền Bắc - Dàn Đề Wukong",
+            "name": "Kết quả xổ số miền Bắc - Kết Quả MN",
             "description": "Xem kết quả xổ số miền Bắc mới nhất, cập nhật trực tiếp từ Công ty Xổ số Điện toán Việt Nam",
             "url": "https://ketquamn.com/ket-qua-xo-so-mien-bac",
             "mainEntity": {
@@ -48,7 +48,7 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "Dàn Đề Wukong",
+                "name": "Kết Quả MN | KETQUAMN.COM",
                 "url": "https://ketquamn.com"
             }
         };
@@ -64,7 +64,7 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
                 "name": "Kết quả xổ số miền Bắc được công bố khi nào?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Kết quả xổ số miền Bắc được công bố hàng ngày lúc 18h30, trừ chủ nhật. Kết quả được cập nhật trực tiếp trên website Dàn Đề Wukong."
+                    "text": "Kết quả xổ số miền Bắc được công bố hàng ngày lúc 18h30, trừ chủ nhật. Kết quả được cập nhật trực tiếp trên website Kết Quả MN."
                 }
             },
             {
@@ -80,7 +80,7 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
                 "name": "Làm thế nào để tra cứu kết quả xổ số miền Bắc?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Bạn có thể tra cứu kết quả xổ số miền Bắc trên website Dàn Đề Wukong bằng cách chọn ngày muốn xem hoặc xem kết quả mới nhất. Kết quả được cập nhật tự động và chính xác 100%."
+                    "text": "Bạn có thể tra cứu kết quả xổ số miền Bắc trên website Kết Quả MN bằng cách chọn ngày muốn xem hoặc xem kết quả mới nhất. Kết quả được cập nhật tự động và chính xác 100%."
                 }
             }
         ]
@@ -112,16 +112,16 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
         <>
             <Head>
                 {/* Basic Meta Tags */}
-                <title>Kết quả xổ số miền Bắc mới nhất - Dàn Đề Wukong</title>
+                <title>Kết quả xổ số miền Bắc mới nhất - Kết Quả MN</title>
                 <meta name="description" content="Xem kết quả xổ số miền Bắc mới nhất, cập nhật trực tiếp từ Công ty Xổ số Điện toán Việt Nam. Tra cứu kết quả theo ngày, thống kê và phân tích." />
                 <meta name="keywords" content="kết quả xổ số miền bắc, xsmb, xổ số miền bắc, kết quả xsmb, tra cứu xổ số, thống kê xổ số" />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="Kết quả xổ số miền Bắc mới nhất - Dàn Đề Wukong" />
+                <meta property="og:title" content="Kết quả xổ số miền Bắc mới nhất - Kết Quả MN" />
                 <meta property="og:description" content="Xem kết quả xổ số miền Bắc mới nhất, cập nhật trực tiếp từ Công ty Xổ số Điện toán Việt Nam." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://ketquamn.com/ket-qua-xo-so-mien-bac" />
-                <meta property="og:site_name" content="Dàn Đề Wukong" />
+                <meta property="og:site_name" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta property="og:locale" content="vi_VN" />
 
                 {/* Twitter Card Meta Tags */}
@@ -132,9 +132,9 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
                 {/* Additional SEO Meta Tags */}
                 <meta name="robots" content="index, follow" />
                 <meta name="googlebot" content="index, follow" />
-                <meta name="author" content="Dàn Đề Wukong" />
-                <meta name="publisher" content="Dàn Đề Wukong" />
-                <meta name="copyright" content="Dàn Đề Wukong" />
+                <meta name="author" content="Kết Quả MN | KETQUAMN.COM" />
+                <meta name="publisher" content="Kết Quả MN | KETQUAMN.COM" />
+                <meta name="copyright" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta name="language" content="vi" />
                 <meta name="geo.region" content="VN" />
                 <meta name="geo.country" content="Vietnam" />
@@ -250,7 +250,7 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
                             </p>
 
                             <p>
-                                <strong>Dàn Đề Wukong</strong> cung cấp kết quả xổ số miền Bắc chính xác,
+                                <strong>Kết Quả MN</strong> cung cấp kết quả xổ số miền Bắc chính xác,
                                 cập nhật nhanh nhất để người chơi có thể tra cứu và tham khảo.
                                 Chúng tôi cam kết mang đến thông tin chính xác 100% từ nguồn chính thức.
                             </p>

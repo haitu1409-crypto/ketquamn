@@ -59,7 +59,7 @@ const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').rep
         <priority>0.8</priority>
         <news:news>
             <news:publication>
-                <news:name>Dàn Đề Wukong</news:name>
+                <news:name>Kết Quả MN | KETQUAMN.COM</news:name>
                 <news:language>vi</news:language>
             </news:publication>
             <news:publication_date>${date.toISOString()}</news:publication_date>

@@ -310,8 +310,9 @@ export default function AdvancedSEO({
     return (
         <Head>
             {/* ===== BASIC META TAGS ===== */}
-            <title>{title}</title>
-            <meta name="description" content={description} />
+            {/* Note: title and description are handled by UltimateSEO to avoid duplicates */}
+            {/* <title>{title}</title> */}
+            {/* <meta name="description" content={description} /> */}
             <meta name="keywords" content={enhancedKeywords} />
             <meta name="author" content={siteName} />
             <meta name="robots" content={noindex ? "noindex,nofollow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
@@ -414,7 +415,7 @@ export default function AdvancedSEO({
             <meta name="msapplication-config" content="/browserconfig.xml" />
 
             {/* ===== MOBILE OPTIMIZATION ===== */}
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+            {/* Note: viewport meta tag is already set in _app.js and UltimateSEO.js - removed to avoid duplicates */}
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />

@@ -557,7 +557,7 @@ const SoiCauBayesian = () => {
             {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "Soi Cầu Miền Bắc - Dàn Đề Wukong",
+                "name": "Soi Cầu Miền Bắc - Kết Quả MN",
                 "description": "Công cụ soi cầu miền bắc miễn phí chính xác nhất. Dự đoán XSMB hôm nay với AI. Soi cầu bạch thủ, lô gan, thống kê vị trí XSMB.",
                 "url": `${siteUrl}/soi-cau-mien-bac-ai`,
                 "applicationCategory": "UtilitiesApplication",
@@ -569,7 +569,7 @@ const SoiCauBayesian = () => {
                 },
                 "author": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN | KETQUAMN.COM",
                     "url": siteUrl
                 },
                 "aggregateRating": {

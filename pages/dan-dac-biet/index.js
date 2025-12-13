@@ -170,17 +170,17 @@ export default function DanDacBietPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số đặc biệt Wukong"
+                "name": "Công cụ tạo dàn số đặc biệt Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "step": [

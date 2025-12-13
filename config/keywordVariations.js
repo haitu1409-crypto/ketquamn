@@ -72,62 +72,62 @@ const BRAND_KEYWORDS = {
         'tddw', 'TDDW', 'Tddw',
         'wk', 'WK', 'Wk',
         'tdd', 'TDD', 'Tdd',
-        'ddw', 'DDW', // Dàn Đề Wukong
-        'ddwk', 'DDWK', // Dàn Đề Wukong
+        'ddw', 'DDW', // Dàn Đề
+        'ddwk', 'DDWK', // Dàn Đề
         'tdde', 'TDDE', // Tạo Dàn Đề
     ],
     hyphenated: [
-        'tao-dan-de-wukong',
-        'tao-dan-de-wu-kong',
-        'tạo-dàn-đề-wukong',
+        'tao-dan-de-ketquamn',
+        'tao-dan-de-ket-qua-mn',
+        'tạo-dàn-đề-ketquamn',
     ],
     misspellings: [
         // Sai chính tả phổ biến
-        'tạo dan de wukong',
-        'tao dàn đề wukong',
-        'tạo dàn đê wukong',
-        'tao dan đe wukong',
-        'taodande wukong',
-        'tao dande wukong',
-        'tạo đàn đề wukong',
-        'tao dan de vukong',
-        'tạo dàn đề ukong',
+        'tạo dan de ketquamn',
+        'tao dàn đề ketquamn',
+        'tạo dàn đê ketquamn',
+        'tao dan đe ketquamn',
+        'taodande ketquamn',
+        'tao dande ketquamn',
+        'tạo đàn đề ketquamn',
+        'tao dan de ketqua mn',
+        'tạo dàn đề ketquamn',
 
         // Thiếu chữ
-        'tao dan wukong',
-        'tạo dàn wukong',
-        'dan de wukong',
+        'tao dan ketquamn',
+        'tạo dàn ketquamn',
+        'dan de ketquamn',
 
         // Viết liền một phần
-        'taodande wukong',
-        'tao dande wukong',
-        'taodàn đề wukong',
+        'taodande ketquamn',
+        'tao dande ketquamn',
+        'taodàn đề ketquamn',
 
         // Mixed dấu
-        'tạo dan dề wukong',
-        'tao dàn de wukong',
-        'tạo đan de wukong',
+        'tạo dan dề ketquamn',
+        'tao dàn de ketquamn',
+        'tạo đan de ketquamn',
     ],
     withDomain: [
         'ketquamn pro',
         'ketquamn.com',
-        'web tạo dàn đề wukong',
-        'website tao dan de wukong',
+        'web tạo dàn đề ketquamn',
+        'website tao dan de ketquamn',
         // ✅ SHORT ABBREVIATIONS với domain
         'tddw.pro',
         'tddw pro',
         'tdd.pro',
         'wk.pro',
-        'wukong.pro',
+        'ketquamn.pro',
     ],
     
     // ✅ SHORT ABBREVIATIONS - Section riêng cho viết tắt ngắn (giống RBK strategy)
     shortAbbreviations: [
-        'tddw', 'TDDW', 'tdd w', 'TDD W', // Tạo Dàn Đề Wukong
-        'wk', 'WK', 'w k', 'W K', // Wukong
+        'tddw', 'TDDW', 'tdd w', 'TDD W', // Tạo Dàn Đề
+        'wk', 'WK', 'w k', 'W K', // Kết Quả
         'tdd', 'TDD', 't d d', 'T D D', // Tạo Dàn Đề
-        'ddw', 'DDW', 'd d w', 'D D W', // Dàn Đề Wukong
-        'ddwk', 'DDWK', // Dàn Đề Wukong
+        'ddw', 'DDW', 'd d w', 'D D W', // Dàn Đề
+        'ddwk', 'DDWK', // Dàn Đề
         'tdde', 'TDDE', // Tạo Dàn Đề
         // With context
         'tddw xổ số', 'tddw xo so',
@@ -510,22 +510,22 @@ const COMPETITOR_KEYWORDS = [
     'sieuketqua alternative', 'kangdh thay the',
     
     // ✅ NO GAME - Tránh nhầm với game Black Myth: Wukong
-    'wukong không phải game', 'wukong khong phai game',
-    'wukong công cụ xổ số', 'wukong cong cu xo so',
-    'wukong tool xổ số', 'wukong tool xo so',
-    'wukong tạo dàn đề', 'wukong tao dan de',
-    'wukong dàn đề', 'wukong dan de',
-    'wukong loto', 'wukong xổ số', 'wukong xo so',
-    'wukong soi cầu', 'wukong soi cau',
-    'wukong thống kê', 'wukong thong ke',
-    'dàn đề wukong khác game', 'dan de wukong khac game',
-    'wukong khác black myth', 'wukong khac black myth',
+    'ketquamn không phải game', 'ketquamn khong phai game',
+    'ketquamn công cụ xổ số', 'ketquamn cong cu xo so',
+    'ketquamn tool xổ số', 'ketquamn tool xo so',
+    'ketquamn tạo dàn đề', 'ketquamn tao dan de',
+    'ketquamn dàn đề', 'ketquamn dan de',
+    'ketquamn loto', 'ketquamn xổ số', 'ketquamn xo so',
+    'ketquamn soi cầu', 'ketquamn soi cau',
+    'ketquamn thống kê', 'ketquamn thong ke',
+    'dàn đề ketquamn khác game', 'dan de ketquamn khac game',
+    'ketquamn khác black myth', 'ketquamn khac black myth',
     
     // ✅ COMPETITIVE LONG-TAIL
-    'kangdh vs ketquamn', 'kangdh vs wukong',
-    'giaimasohoc vs wukong', 'sieuketqua vs wukong',
-    'so sánh kangdh và wukong', 'so sanh kangdh va wukong',
-    'wukong tốt hơn kangdh', 'wukong tot hon kangdh'
+    'kangdh vs ketquamn', 'kangdh vs ketquamn',
+    'giaimasohoc vs ketquamn', 'sieuketqua vs ketquamn',
+    'so sánh kangdh và ketquamn', 'so sanh kangdh va ketquamn',
+    'ketquamn tốt hơn kangdh', 'ketquamn tot hon kangdh'
 ];
 
 /**
@@ -551,37 +551,37 @@ const PAGE_SPECIFIC_KEYWORDS = {
      */
     dan9x0x: [
         // ✅ Có dấu
-        'tạo dàn đề wukong 9x0x', 'tạo dàn wukong 9x0x', 'dàn đề wukong 9x0x',
-        'tạo dàn đề wukong 9x-0x', 'dàn wukong 9x0x',
+        'tạo dàn đề ketquamn 9x0x', 'tạo dàn ketquamn 9x0x', 'dàn đề ketquamn 9x0x',
+        'tạo dàn đề ketquamn 9x-0x', 'dàn ketquamn 9x0x',
 
         // ✅ Không dấu
-        'tao dan de wukong 9x0x', 'tao dan wukong 9x0x', 'dan de wukong 9x0x',
-        'tao dan wukong 9x-0x', 'dan wukong 9x0x',
+        'tao dan de ketquamn 9x0x', 'tao dan ketquamn 9x0x', 'dan de ketquamn 9x0x',
+        'tao dan ketquamn 9x-0x', 'dan ketquamn 9x0x',
 
         // ✅ Viết liền (NO SPACE) - Người dùng hay gõ
         'ketquamn9x0x', 'ketquamn 9x0x',
-        'taodanwukong9x0x', 'taodanwukong 9x0x',
+        'taodanketquamn9x0x', 'taodanketquamn 9x0x',
         'taodande9x0x', 'taodan9x0x', 'taodan9x',
-        'wukong9x0x', 'wukong9x',
+        'ketquamn9x0x', 'ketquamn9x',
 
         // ✅ Partial spacing
-        'tao dan wukong9x0x', 'tao danwukong 9x0x',
-        'taodande wukong 9x0x', 'tao dande wukong9x0x',
+        'tao dan ketquamn9x0x', 'tao danketquamn 9x0x',
+        'taodande ketquamn 9x0x', 'tao dande ketquamn9x0x',
 
         // ✅ Hyphen variations
-        'tao-dan-de-wukong-9x0x', 'tao-dan-wukong-9x0x',
+        'tao-dan-de-ketquamn-9x0x', 'tao-dan-ketquamn-9x0x',
 
         // ✅ Shortened/Viết tắt
-        'tao dan wukong 9x', 'tao dan 9x0x', 'taodanwukong9x',
-        'wukong 9x0x', 'wukong 9x', '9x0x wukong', '9x wukong',
+        'tao dan ketquamn 9x', 'tao dan 9x0x', 'taodanketquamn9x',
+        'ketquamn 9x0x', 'ketquamn 9x', '9x0x ketquamn', '9x ketquamn',
 
         // ✅ Mixed diacritics (lẫn dấu)
-        'tạo dan wukong 9x0x', 'tao dàn wukong 9x0x',
-        'tạo dàn wukong9x0x', 'tao dan de wukong9x0x',
+        'tạo dan ketquamn 9x0x', 'tao dàn ketquamn 9x0x',
+        'tạo dàn ketquamn9x0x', 'tao dan de ketquamn9x0x',
 
         // ✅ With modifiers
-        'tạo dàn wukong 9x0x online', 'tao dan wukong 9x0x online',
-        'tạo dàn 9x0x wukong miễn phí', 'tao dan 9x0x wukong',
+        'tạo dàn ketquamn 9x0x online', 'tao dan ketquamn 9x0x online',
+        'tạo dàn 9x0x ketquamn miễn phí', 'tao dan 9x0x ketquamn',
     ],
 
     /**
@@ -589,33 +589,33 @@ const PAGE_SPECIFIC_KEYWORDS = {
      */
     dan2d: [
         // ✅ Có dấu
-        'tạo dàn đề wukong 2d', 'tạo dàn 2d wukong', 'dàn đề 2d wukong',
-        'dàn 2d wukong', 'tạo dàn lô đề 2d wukong',
+        'tạo dàn đề ketquamn 2d', 'tạo dàn 2d ketquamn', 'dàn đề 2d ketquamn',
+        'dàn 2d ketquamn', 'tạo dàn lô đề 2d ketquamn',
 
         // ✅ Không dấu
-        'tao dan de wukong 2d', 'tao dan 2d wukong', 'dan de 2d wukong',
-        'dan 2d wukong', 'tao dan lo de 2d wukong',
+        'tao dan de ketquamn 2d', 'tao dan 2d ketquamn', 'dan de 2d ketquamn',
+        'dan 2d ketquamn', 'tao dan lo de 2d ketquamn',
 
         // ✅ Viết liền
         'ketquamn2d', 'ketquamn 2d',
-        'taodanwukong2d', 'taodanwukong 2d',
+        'taodanketquamn2d', 'taodanketquamn 2d',
         'taodande2d', 'taodan2d',
-        'wukong2d',
+        'ketquamn2d',
 
         // ✅ Partial spacing
-        'tao dan wukong2d', 'tao danwukong 2d',
-        'taodande wukong 2d', 'tao dande wukong2d',
+        'tao dan ketquamn2d', 'tao danketquamn 2d',
+        'taodande ketquamn 2d', 'tao dande ketquamn2d',
 
         // ✅ Shortened
-        'tao dan wukong 2d', 'taodan2d wukong',
-        'wukong 2d', '2d wukong',
+        'tao dan ketquamn 2d', 'taodan2d ketquamn',
+        'ketquamn 2d', '2d ketquamn',
 
         // ✅ Mixed
-        'tạo dan wukong 2d', 'tao dàn wukong 2d',
-        'tạo dàn wukong2d',
+        'tạo dan ketquamn 2d', 'tao dàn ketquamn 2d',
+        'tạo dàn ketquamn2d',
 
         // ✅ With lô đề
-        'lô đề 2d wukong', 'lo de 2d wukong', 'lode2d wukong',
+        'lô đề 2d ketquamn', 'lo de 2d ketquamn', 'lode2d ketquamn',
     ],
 
     /**
@@ -623,60 +623,60 @@ const PAGE_SPECIFIC_KEYWORDS = {
      */
     dan3d4d: [
         // ✅ 3D variations
-        'tạo dàn đề wukong 3d', 'tao dan de wukong 3d', 'ketquamn3d',
-        'taodanwukong3d', 'taodande3d', 'taodan3d', 'wukong3d', 'wukong 3d',
-        'dàn 3d wukong', 'dan 3d wukong', '3d wukong',
+        'tạo dàn đề ketquamn 3d', 'tao dan de ketquamn 3d', 'ketquamn3d',
+        'taodanketquamn3d', 'taodande3d', 'taodan3d', 'ketquamn3d', 'ketquamn 3d',
+        'dàn 3d ketquamn', 'dan 3d ketquamn', '3d ketquamn',
 
         // ✅ 4D variations
-        'tạo dàn đề wukong 4d', 'tao dan de wukong 4d', 'ketquamn4d',
-        'taodanwukong4d', 'taodande4d', 'taodan4d', 'wukong4d', 'wukong 4d',
-        'dàn 4d wukong', 'dan 4d wukong', '4d wukong',
+        'tạo dàn đề ketquamn 4d', 'tao dan de ketquamn 4d', 'ketquamn4d',
+        'taodanketquamn4d', 'taodande4d', 'taodan4d', 'ketquamn4d', 'ketquamn 4d',
+        'dàn 4d ketquamn', 'dan 4d ketquamn', '4d ketquamn',
 
         // ✅ 3D4D combined
-        'tạo dàn 3d4d wukong', 'tao dan 3d4d wukong',
-        'taodanwukong3d4d', 'taodan3d4d', 'wukong 3d4d', 'wukong3d4d',
+        'tạo dàn 3d4d ketquamn', 'tao dan 3d4d ketquamn',
+        'taodanketquamn3d4d', 'taodan3d4d', 'ketquamn 3d4d', 'ketquamn3d4d',
 
         // ✅ 3 càng / 4 càng
-        'tạo dàn 3 càng wukong', 'tao dan 3 cang wukong',
-        'tạo dàn 4 càng wukong', 'tao dan 4 cang wukong',
-        '3 cang wukong', '4 cang wukong',
+        'tạo dàn 3 càng ketquamn', 'tao dan 3 cang ketquamn',
+        'tạo dàn 4 càng ketquamn', 'tao dan 4 cang ketquamn',
+        '3 cang ketquamn', '4 cang ketquamn',
     ],
 
     /**
      * DÀN ĐẶC BIỆT PAGE
      */
     danDacBiet: [
-        'tạo dàn đặc biệt wukong', 'tao dan dac biet wukong',
-        'dàn đặc biệt wukong', 'dan dac biet wukong',
-        'taodandacbietwukong', 'taodandacbiet wukong',
-        'lọc ghép dàn wukong', 'loc ghep dan wukong',
-        'lọc ghép dàn đề wukong', 'locghepdan wukong',
-        'lấy nhanh dàn đề wukong', 'lay nhanh dan de wukong',
-        'dàn 36 số wukong', 'dan 36 so wukong',
-        'dàn 50 số wukong', 'dan50so wukong',
-        'wukong dac biet', 'wukong đặc biệt',
+        'tạo dàn đặc biệt ketquamn', 'tao dan dac biet ketquamn',
+        'dàn đặc biệt ketquamn', 'dan dac biet ketquamn',
+        'taodandacbietketquamn', 'taodandacbiet ketquamn',
+        'lọc ghép dàn ketquamn', 'loc ghep dan ketquamn',
+        'lọc ghép dàn đề ketquamn', 'locghepdan ketquamn',
+        'lấy nhanh dàn đề ketquamn', 'lay nhanh dan de ketquamn',
+        'dàn 36 số ketquamn', 'dan 36 so ketquamn',
+        'dàn 50 số ketquamn', 'dan50so ketquamn',
+        'ketquamn dac biet', 'ketquamn đặc biệt',
     ],
 
     /**
      * THỐNG KÊ PAGE
      */
     thongKe: [
-        'thống kê wukong', 'thong ke wukong',
-        'thống kê xổ số wukong', 'thong ke xo so wukong',
-        'thống kê 3 miền wukong', 'thong ke 3 mien wukong',
-        'thongkewukong', 'thongke wukong',
-        'wukong thong ke', 'wukong thống kê',
-        'tk wukong', 'tkxs wukong',
+        'thống kê ketquamn', 'thong ke ketquamn',
+        'thống kê xổ số ketquamn', 'thong ke xo so ketquamn',
+        'thống kê 3 miền ketquamn', 'thong ke 3 mien ketquamn',
+        'thongkeketquamn', 'thongke ketquamn',
+        'ketquamn thong ke', 'ketquamn thống kê',
+        'tk ketquamn', 'tkxs ketquamn',
     ],
 
     /**
      * GHÉP LÔ XIÊN PAGE
      */
     ghepLoXien: [
-        'ghép lô xiên wukong', 'ghep lo xien wukong',
-        'ghép xiên wukong', 'ghep xien wukong',
-        'xiên quay wukong', 'xien quay wukong',
-        'gheploxienwukong', 'ghepxienwukong',
+        'ghép lô xiên ketquamn', 'ghep lo xien ketquamn',
+        'ghép xiên ketquamn', 'ghep xien ketquamn',
+        'xiên quay ketquamn', 'xien quay ketquamn',
+        'gheploxienketquamn', 'ghepxienketquamn',
         'ghép lotto wukong', 'ghep lotto wukong',
         'wukong xien', 'wukong xiên', 'wukong lotto',
     ],

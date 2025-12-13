@@ -142,7 +142,7 @@ const PositionSoiCauPage = ({ initialData, initialDate, initialDays }) => {
             {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "Soi Cầu Đặc Biệt Miền Bắc - Dàn Đề Wukong",
+                "name": "Soi Cầu Đặc Biệt Miền Bắc - Kết Quả MN",
                 "description": "Công cụ soi cầu đặc biệt miền bắc dựa trên phân tích vị trí số trong kết quả xổ số. Tìm kiếm pattern nhất quán để dự đoán 2 số cuối giải đặc biệt XSMB.",
                 "url": `${siteUrl}/soi-cau-dac-biet-mien-bac`,
                 "applicationCategory": "UtilitiesApplication",
@@ -154,7 +154,7 @@ const PositionSoiCauPage = ({ initialData, initialDate, initialDays }) => {
                 },
                 "author": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN | KETQUAMN.COM",
                     "url": siteUrl
                 }
             },

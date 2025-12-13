@@ -51,7 +51,7 @@ const OptimizedPositionSoiCauPage = ({ initialData, initialDate, initialDays, pe
 
                 {/* Additional SEO */}
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="Dàn Đề Wukong" />
+                <meta name="author" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
                 {/* Performance hints */}

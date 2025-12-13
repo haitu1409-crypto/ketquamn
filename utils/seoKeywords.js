@@ -118,9 +118,9 @@ export const LONG_TAIL_KEYWORDS = [
     'xổ số Việt Nam thống kê',
 
     // Brand-specific
-    'dàn số Wukong',
-    'công cụ dàn số Wukong',
-    'tạo dàn số thương hiệu Wukong'
+    'dàn số Kết Quả MN',
+    'công cụ dàn số Kết Quả MN',
+    'tạo dàn số thương hiệu Kết Quả MN'
 ];
 
 // LSI Keywords (Latent Semantic Indexing)
@@ -205,7 +205,7 @@ export const SEO_CONTENT_TEMPLATES = {
 export const PAGE_KEYWORDS = {
     home: {
         primary: 'tạo dàn số 9x-0x online',
-        secondary: ['tạo dàn số miễn phí', 'công cụ dàn số chuyên nghiệp', 'dàn số 9x-0x', 'dàn số Wukong'],
+        secondary: ['tạo dàn số miễn phí', 'công cụ dàn số chuyên nghiệp', 'dàn số 9x-0x', 'dàn số Kết Quả MN'],
         longTail: ['tạo dàn số 9x-0x online miễn phí 2025', 'công cụ tạo dàn số chuyên nghiệp nhất', 'tạo dàn số Fisher-Yates', 'dàn số 9x-0x chính xác 100%'],
         lsi: ['xổ số', 'lô số', 'miễn phí', 'chính xác', 'nhanh chóng', 'thuật toán Fisher-Yates', 'dàn số online']
     },
@@ -252,7 +252,7 @@ export const TRENDING_KEYWORDS_2025 = [
     'xổ số miền bắc 2025',
     'xổ số miền nam 2025',
     'xổ số miền trung 2025',
-    'dàn số Wukong',
+    'dàn số Kết Quả MN',
     'tạo dàn số online 2025',
     'công cụ dàn số chuyên nghiệp 2025',
     'dàn số miễn phí không giới hạn',
@@ -266,14 +266,14 @@ export const getKeywordsForPage = (pageName) => {
     return PAGE_KEYWORDS[pageName] || PAGE_KEYWORDS.home;
 };
 
-export const generateSEOTitle = (keyword, brand = 'Dàn Đề Wukong', template = 'primary') => {
+export const generateSEOTitle = (keyword, brand = 'Kết Quả MN | KETQUAMN.COM', template = 'primary') => {
     const templates = SEO_CONTENT_TEMPLATES.title;
     return templates[template]
         .replace('{keyword}', keyword)
         .replace('{brand}', brand);
 };
 
-export const generateSEODescription = (keyword, brand = 'Dàn Đề Wukong', template = 'primary') => {
+export const generateSEODescription = (keyword, brand = 'Kết Quả MN | KETQUAMN.COM', template = 'primary') => {
     const templates = SEO_CONTENT_TEMPLATES.description;
     return templates[template]
         .replace('{keyword}', keyword)

@@ -279,7 +279,7 @@ const KQXSPage = memo(function KQXSPage() {
                         </h2>
                         <p style={{ marginBottom: '15px' }}>
                             <strong>Kết quả xổ số miền Bắc (XSMB)</strong> được cập nhật hàng ngày lúc <strong>18h15</strong> từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. 
-                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Dàn Đề Wukong cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
+                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Kết Quả MN cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
                         </p>
                         <p style={{ marginBottom: '15px' }}>
                             Bạn có thể <strong>tra cứu kết quả xổ số miền Bắc</strong> theo ngày, xem <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>. 

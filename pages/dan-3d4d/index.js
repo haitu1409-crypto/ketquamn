@@ -100,17 +100,17 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 3D/4D Wukong"
+                "name": "Công cụ tạo dàn số 3D/4D Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN | KETQUAMN.COM",
             "url": "https://ketquamn.com"
         },
         "step": [

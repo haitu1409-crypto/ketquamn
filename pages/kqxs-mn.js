@@ -137,11 +137,11 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 'dateModified': deterministicDate,
                 'author': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong'
+                    'name': 'Kết Quả MN | KETQUAMN.COM'
                 },
                 'publisher': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
                     'logo': {
                         '@type': 'ImageObject',
                         'url': `${siteUrl}/imgs/wukong.png`
@@ -166,7 +166,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 'license': 'https://creativecommons.org/licenses/by/4.0/',
                 'provider': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
                     'url': siteUrl
                 }
             }

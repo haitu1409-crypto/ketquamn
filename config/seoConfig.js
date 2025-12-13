@@ -233,10 +233,10 @@ const SEO_CONFIG = {
             'ứng dụng tạo dàn số', 'ung dung tao dan so',
             
             // ✅ TRÁNH NHẦM LẪN - Game Black Myth: Wukong
-            'wukong tạo dàn đề', 'wukong dàn đề', 'wukong loto',
-            'wukong xổ số', 'wukong soi cầu', 'wukong thống kê',
-            'dàn đề wukong khác game', 'wukong công cụ xổ số',
-            'wukong không phải game', 'wukong tool xổ số',
+            'ketquamn tạo dàn đề', 'ketquamn dàn đề', 'ketquamn loto',
+            'ketquamn xổ số', 'ketquamn soi cầu', 'ketquamn thống kê',
+            'dàn đề ketquamn khác game', 'ketquamn công cụ xổ số',
+            'ketquamn không phải game', 'ketquamn tool xổ số',
 
             // Advanced features
             'ghép lotto', 'tách dàn nhanh', 'lọc ghép dàn đề', 'lọc ghép dàn',
@@ -365,8 +365,8 @@ const SEO_CONFIG = {
             'bo loc dan de',
             'thuật toán lọc dàn đề',
             'thuat toan loc dan de',
-            'loc dan de wukong',
-            'lọc dàn đề wukong'
+            'loc dan de ketquamn',
+            'lọc dàn đề ketquamn'
         ],
         url: '/loc-dan-de',
         image: OG_IMAGES.locDanDe,
@@ -707,12 +707,12 @@ const SEO_CONFIG = {
             'soi cầu MB', 'soi cau MB',
 
             // ✅ BRAND + FEATURE COMBINATIONS
-            'soi cầu wukong', 'soi cau wukong',
-            'soi cầu miền bắc wukong', 'soi cau mien bac wukong',
-            'dự đoán XSMB wukong', 'du doan XSMB wukong',
-            'soi cầu MB wukong', 'soi cau MB wukong',
-            'wukong soi cầu', 'wukong soi cau',
-            'wukong dự đoán XSMB', 'wukong du doan XSMB',
+            'soi cầu ketquamn', 'soi cau ketquamn',
+            'soi cầu miền bắc ketquamn', 'soi cau mien bac ketquamn',
+            'dự đoán XSMB ketquamn', 'du doan XSMB ketquamn',
+            'soi cầu MB ketquamn', 'soi cau MB ketquamn',
+            'ketquamn soi cầu', 'ketquamn soi cau',
+            'ketquamn dự đoán XSMB', 'ketquamn du doan XSMB',
 
             // ✅ LONG-TAIL KEYWORDS - Câu hỏi người dùng
             'soi cầu miền bắc hôm nay chính xác', 'soi cau mien bac hom nay chinh xac',

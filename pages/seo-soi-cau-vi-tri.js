@@ -74,7 +74,7 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
                 <meta name="description" content={pageDescription} />
                 <meta name="keywords" content={keywords} />
                 <meta name="robots" content="index, follow" />
-                <meta name="author" content="Dàn Đề Wukong" />
+                <meta name="author" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
                 {/* Open Graph / Facebook */}
@@ -85,7 +85,7 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
                 <meta property="og:image" content="https://yourdomain.com/images/soi-cau-vi-tri-og.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
-                <meta property="og:site_name" content="Dàn Đề Wukong" />
+                <meta property="og:site_name" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta property="og:locale" content="vi_VN" />
 
                 {/* Twitter */}
