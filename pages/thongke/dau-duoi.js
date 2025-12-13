@@ -6,7 +6,9 @@ import ThongKe from '../../components/ThongKe';
 import CongCuHot from '../../components/CongCuHot';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import StatisticsSEO from '../../components/StatisticsSEO';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Skeleton Loading Component cho bảng Đầu/Đuôi
@@ -401,18 +403,19 @@ const DauDuoi = ({ initialDauStats, initialDuoiStats, initialSpecialDauDuoiStats
     // ✅ FIX CLS: Ensure description always has valid values
     const pageDescription = `Xem thống kê Đầu Đuôi loto Xổ số Miền Bắc trong ${days} ngày. Cập nhật mới nhất ${metadata?.startDate && metadata?.endDate && metadata.startDate !== 'N/A' && metadata.endDate !== 'N/A' ? `từ ${metadata.startDate} đến ${metadata.endDate}` : 'hàng ngày'}.`;
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
+    
     return (
-        <Layout>
-            <StatisticsSEO 
-                pageType="dau-duoi"
-                metadata={{
-                    startDate: metadata.startDate,
-                    endDate: metadata.endDate,
-                    totalDraws: metadata.totalDraws
-                }}
+        <>
+            <EnhancedSEOHead
+                pageType="thong-ke"
+                customTitle={`Thống Kê Đầu Đuôi XSMB - Phân Tích Chi Tiết | Kết Quả MN`}
+                customDescription={pageDescription || 'Thống kê đầu đuôi XSMB - Phân tích đầu - đuôi lô tô cho toàn bộ giải thưởng. Lọc nhanh các con số xuất hiện nhiều nhất và đưa ra tỷ lệ % theo từng đầu/đuôi. Cập nhật hàng ngày, miễn phí 100%.'}
+                customKeywords="thống kê đầu đuôi, đầu đuôi xsmb, thống kê đầu đuôi miền bắc, phân tích đầu đuôi"
+                canonicalUrl={`${siteUrl}/thongke/dau-duoi`}
                 faq={statisticsFAQs['dau-duoi']}
-                customDescription={pageDescription}
             />
+            <Layout>
 
             <div className={styles.container}>
                 <div className={styles.titleGroup}>
@@ -834,8 +837,15 @@ const DauDuoi = ({ initialDauStats, initialDuoiStats, initialSpecialDauDuoiStats
                     <ThongKe />
                     <CongCuHot />
                 </div>
+                
+                {/* ✅ Editorial Content - Compact mode */}
+                <EditorialContent pageType="thong-ke" compact={true} />
+                
+                {/* ✅ Internal Linking SEO */}
+                <InternalLinksSection pageType="thong-ke" />
             </div>
         </Layout>
+        </>
     );
 };
 

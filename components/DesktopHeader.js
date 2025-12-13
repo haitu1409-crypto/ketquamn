@@ -81,21 +81,16 @@ export default function DesktopHeader() {
                 {/* Center Section - Logo */}
                 <div className={styles.logoSection}>
                     <Link href="/" className={styles.logo}>
-                        <div className={styles.logoIcon}>
-                            <Image
-                                src="/imgs/monkey.png"
-                                alt="Dàn Đề Wukong"
-                                width={32}
-                                height={32}
-                                className={styles.logoImage}
-                                priority
-                                sizes="32px"
-                            />
-                        </div>
-                        <span className={styles.logoText}>
-                            <span className={styles.logoTextMain}>Dàn Đề Wukong</span>
-                            <span className={styles.logoTextSub}>Công cụ chuyên nghiệp</span>
-                        </span>
+                        <Image
+                            src="/logo1.png"
+                            alt="Kết Quả MN"
+                            width={400}
+                            height={140}
+                            className={styles.logoImage}
+                            priority
+                            style={{ display: 'block', maxWidth: '100%', height: 'auto', width: 'auto' }}
+                            sizes="(max-width: 768px) 250px, 400px"
+                        />
                     </Link>
                 </div>
 

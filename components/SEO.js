@@ -12,7 +12,7 @@ export default function SEO({
     description = 'Công cụ tạo dàn đề và thống kê xổ số 3 miền chuyên nghiệp - Kết Quả MN',
     keywords = 'tạo dàn đề, thống kê xổ số, 3 miền, lô số, dàn 2D, dàn 3D, dàn 4D, Kết Quả MN',
     url = '',
-    image = '/imgs/monkey.png',
+    image = '/logo1.png',
     author = 'Dàn Đề Kết Quả MN',
     type = 'website',
     publishedTime = '',
@@ -110,7 +110,7 @@ export default function SEO({
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
             {/* ===== MOBILE OPTIMIZATION 2024 ===== */}
-            <meta name="theme-color" content="#4F46E5" />
+            <meta name="theme-color" content="#FF6B35" />
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -135,9 +135,11 @@ export default function SEO({
 
             {/* ===== FAVICON ===== */}
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="shortcut icon" href="/favicon.ico" />
 
             {/* ===== STRUCTURED DATA - JSON-LD ===== */}
             <script

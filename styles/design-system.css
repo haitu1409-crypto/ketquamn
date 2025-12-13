@@ -8,23 +8,23 @@
     /* ===== MODERN MINIMALIST COLORS ===== */
     /* Học từ: Stripe, Linear, Vercel, Notion */
 
-    /* Primary Colors - Simple Gray */
-    --color-primary-50: #F9FAFB;
-    --color-primary-100: #F3F4F6;
-    --color-primary-200: #E5E7EB;
-    --color-primary-300: #D1D5DB;
-    --color-primary-400: #9CA3AF;
-    --color-primary-500: #6B7280;
-    --color-primary-600: #4B5563;
-    --color-primary-700: #374151;
-    --color-primary-800: #1F2937;
-    --color-primary-900: #111827;
+    /* Primary Colors - Orange Theme */
+    --color-primary-50: #FFF4F0;
+    --color-primary-100: #FFE5D9;
+    --color-primary-200: #FFCCB3;
+    --color-primary-300: #FFB28D;
+    --color-primary-400: #FF9966;
+    --color-primary-500: #FF6B35;
+    --color-primary-600: #E55A2B;
+    --color-primary-700: #CC4A21;
+    --color-primary-800: #B33A17;
+    --color-primary-900: #992A0D;
 
     /* Accent Colors - Minimal use */
     --color-accent-blue: #3B82F6;
     --color-accent-purple: #8B5CF6;
     --color-accent-teal: #14B8A6;
-    --color-accent-orange: #F97316;
+    --color-accent-orange: #FF6B35;
 
     /* Simple Colors - No gradients */
     --gradient-primary: #374151;
@@ -212,9 +212,9 @@
     --color-border-medium: var(--color-gray-200);
     --color-border-dark: var(--color-gray-300);
 
-    --color-brand-primary: #667eea;
-    --color-brand-dark: #5a67d8;
-    --color-brand-light: #f0f4ff;
+    --color-brand-primary: #FF6B35;
+    --color-brand-dark: #E55A2B;
+    --color-brand-light: #FFF4F0;
 
     --color-link: var(--color-info);
     --color-link-hover: #1D4ED8;

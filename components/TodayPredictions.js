@@ -67,10 +67,10 @@ const PredictionCard = memo(({ pred, predictionDate, formattedDate }) => {
 
             {/* Hidden SEO content */}
             <meta itemProp="keywords" content={pred.keywords} />
-            <meta itemProp="author" content="Dàn Đề Wukong" />
+            <meta itemProp="author" content="Kết Quả MN | KETQUAMN.COM" />
             <div style={{ display: 'none' }} itemProp="description">
                 {pred.title} ngày {formattedDate} - {pred.keywords}.
-                Dự đoán xổ số miền bắc chính xác, cập nhật hàng ngày từ chuyên gia Dàn Đề Wukong.
+                Dự đoán xổ số miền bắc chính xác, cập nhật hàng ngày từ chuyên gia Kết Quả MN (KETQUAMN.COM).
             </div>
         </article>
     );
@@ -243,14 +243,14 @@ const TodayPredictions = () => {
             "datePublished": prediction.predictionDate,
             "author": {
                 "@type": "Organization",
-                "name": "Dàn Đề Wukong"
+                "name": "Kết Quả MN | KETQUAMN.COM"
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "Dàn Đề Wukong",
+                "name": "Kết Quả MN | KETQUAMN.COM",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/imgs/monkey.png`
+                    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/logo1.png`
                 }
             },
             "mainEntity": {
@@ -271,9 +271,9 @@ const TodayPredictions = () => {
         return {
             title: `Dự Đoán Xổ Số Miền Bắc ${timeContext} - Chuẩn Xác Nhất`,
             description: `Dự đoán XSMB ${formattedDate}: Cầu lotto đẹp, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán wukong. Cập nhật hàng ngày, độ chính xác cao ✓`,
-            keywords: 'dự đoán xsmb, dự đoán xổ số miền bắc, cầu lotto, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán wukong, soi cầu miền bắc, dàn đề wukong',
+            keywords: 'dự đoán xsmb, dự đoán xổ số miền bắc, cầu lotto, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán Kết Quả MN, soi cầu miền bắc, ketquamn.com',
             url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}`,
-            image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/imgs/monkey.png`,
+            image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/logo1.png`,
         };
     }, [formattedDate, isToday]);
 
@@ -313,7 +313,7 @@ const TodayPredictions = () => {
                     <meta property="og:description" content={seoData.description} />
                     <meta property="og:image" content={seoData.image} />
                     <meta property="og:locale" content="vi_VN" />
-                    <meta property="og:site_name" content="Dàn Đề Wukong" />
+                    <meta property="og:site_name" content="Kết Quả MN | KETQUAMN.COM" />
 
                     {/* Twitter */}
                     <meta property="twitter:card" content="summary_large_image" />

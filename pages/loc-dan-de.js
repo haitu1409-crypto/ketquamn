@@ -9,7 +9,10 @@ import { useEffect } from 'react';
 import { Layers, Target, Zap } from 'lucide-react';
 import Layout from '../components/Layout';
 import MobileNavbar from '../components/MobileNavbar';
-import SEOOptimized from '../components/SEOOptimized';
+import EnhancedSEOHead from '../components/EnhancedSEOHead';
+import EditorialContent from '../components/EditorialContent';
+import ComparisonContent from '../components/ComparisonContent';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import { getPageSEO } from '../config/seoConfig';
 import styles from '../styles/Dan9x0x.module.css';
 
@@ -157,8 +160,8 @@ export default function LocDanDePage() {
 
     return (
         <>
-            <SEOOptimized
-                pageType="loc-dan-de"
+            <EnhancedSEOHead
+                pageType="dan-de"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
@@ -218,6 +221,15 @@ export default function LocDanDePage() {
                             </div>
                         </section>
                     </div>
+                    
+                    {/* ✅ Editorial Content - Compact mode */}
+                    <EditorialContent pageType="dan-de" compact={true} />
+                    
+                    {/* ✅ Comparison Content - Compact mode */}
+                    <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                    
+                    {/* ✅ Internal Linking SEO */}
+                    <InternalLinksSection pageType="home" />
 
                 </div>
             </Layout>

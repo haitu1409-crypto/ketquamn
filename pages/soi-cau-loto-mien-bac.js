@@ -8,6 +8,8 @@ import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { getPageSEO } from '../config/seoConfig';
+import EditorialContent from '../components/EditorialContent';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import apiService from '../services/apiService';
 
 const DynamicPositionSoiCauLoto = dynamic(() => import('../components/PositionSoiCauLoto'), {
@@ -372,6 +374,12 @@ const PositionSoiCauLotoPage = ({ initialData, initialDate, initialDays }) => {
                     }
                 }
             `}</style>
+            
+            {/* ✅ Editorial Content - Compact mode */}
+            <EditorialContent pageType="soi-cau" compact={true} />
+            
+            {/* ✅ Internal Linking SEO */}
+            <InternalLinksSection pageType="soi-cau" />
         </Layout>
         </>
     );

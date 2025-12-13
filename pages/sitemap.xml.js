@@ -23,6 +23,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN | KETQUAMN.COM</image:title>
+            <image:caption>Kết quả xổ số 3 miền nhanh nhất, chính xác nhất</image:caption>
+        </image:image>
     </url>
     
     <!-- Main Tool Pages - Priority 0.95 -->
@@ -103,6 +108,23 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.95</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/xsmb.png</image:loc>
+            <image:title>Kết Quả Xổ Số Miền Bắc - XSMB</image:title>
+            <image:caption>Kết quả xổ số miền Bắc hôm nay nhanh nhất</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>${SITE_URL_BASE}/ket-qua-xo-so-mien-nam</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.95</priority>
+        <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/xsmn.png</image:loc>
+            <image:title>Kết Quả Xổ Số Miền Nam - XSMN</image:title>
+            <image:caption>Kết quả xổ số miền Nam hôm nay nhanh nhất</image:caption>
+        </image:image>
     </url>
     
     <url>

@@ -160,8 +160,8 @@ function MyApp({ Component, pageProps }) {
                 <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
                 {/* ✅ Preload critical images with fetchpriority */}
-                <link rel="preload" as="image" href="/imgs/monkey.png" fetchPriority="high" />
-                <link rel="preload" as="image" href="/imgs/wukong.png" fetchPriority="low" />
+                <link rel="preload" as="image" href="/logo1.png" fetchPriority="high" />
+                <link rel="preload" as="image" href="/logo1.png" fetchPriority="low" />
 
                 {/* ✅ Search Engine Verification */}
                 {/* TODO: Thay YOUR_GOOGLE_VERIFICATION_CODE bằng code thật từ Search Console */}
@@ -202,7 +202,7 @@ function MyApp({ Component, pageProps }) {
                     left: 0,
                     width: '100%',
                     height: '3px',
-                    background: 'linear-gradient(90deg, #4F46E5, #7C3AED)',
+                    background: 'linear-gradient(90deg, #FF6B35, #FF8C42)',
                     zIndex: 9999,
                     animation: 'loading 1s ease-in-out infinite'
                 }} />

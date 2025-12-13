@@ -7,7 +7,10 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { memo, useMemo } from 'react';
 import Layout from '../../components/Layout';
-import SEOOptimized from '../../components/SEOOptimized';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import ComparisonContent from '../../components/ComparisonContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 import PageSpeedOptimizer from '../../components/PageSpeedOptimizer';
 import MobileNavbar from '../../components/MobileNavbar';
 import styles from '../../styles/Dan2D.module.css';
@@ -141,8 +144,8 @@ const Dan2DPage = memo(function Dan2DPage() {
 
     return (
         <>
-            <SEOOptimized
-                pageType="dan-2d"
+            <EnhancedSEOHead
+                pageType="dan-de"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
@@ -150,7 +153,7 @@ const Dan2DPage = memo(function Dan2DPage() {
                 ogImage={pageSEO.image}
                 breadcrumbs={breadcrumbs}
                 faq={faqData}
-                structuredData={howToSchema}
+                structuredData={[howToSchema]}
             />
             <PageSpeedOptimizer />
 
@@ -208,6 +211,15 @@ const Dan2DPage = memo(function Dan2DPage() {
 
                     {/* Author Bio - E-E-A-T */}
                     <AuthorBio />
+                    
+                    {/* ✅ Editorial Content - Compact mode */}
+                    <EditorialContent pageType="dan-de" compact={true} />
+                    
+                    {/* ✅ Comparison Content - Compact mode */}
+                    <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                    
+                    {/* ✅ Internal Linking SEO */}
+                    <InternalLinksSection pageType="home" />
                 </div>
             </Layout>
         </>

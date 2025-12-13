@@ -43,7 +43,7 @@ const SEOOptimizedXSMB = ({
             "datePublished": data.drawDate || new Date().toISOString(),
             "publisher": {
                 "@type": "Organization",
-                "name": "Dàn Đề Wukong",
+                "name": "Kết Quả MN | KETQUAMN.COM",
                 "url": "https://ketquamn.com"
             },
             "gameResult": {
@@ -139,7 +139,7 @@ const SEOOptimizedXSMB = ({
         <>
             <Head>
                 {/* Basic Meta Tags */}
-                <title>{title || `Kết quả xổ số miền Bắc ngày ${date} - Dàn Đề Wukong`}</title>
+                <title>{title || `Kết quả xổ số miền Bắc ngày ${date} - Kết Quả MN | KETQUAMN.COM`}</title>
                 <meta name="description" content={description || `Xem kết quả xổ số miền Bắc ngày ${date}. Cập nhật trực tiếp, chính xác 100% từ Công ty Xổ số Điện toán Việt Nam.`} />
                 <meta name="keywords" content={`kết quả xổ số miền bắc, xsmb ngày ${date}, xổ số miền bắc, kết quả xsmb, ${getDayOfWeek(date)}`} />
 
@@ -148,7 +148,7 @@ const SEOOptimizedXSMB = ({
                 <meta property="og:description" content={description || `Xem kết quả xổ số miền Bắc ngày ${date}. Cập nhật trực tiếp, chính xác 100%.`} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:site_name" content="Dàn Đề Wukong" />
+                <meta property="og:site_name" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta property="og:locale" content="vi_VN" />
 
                 {/* Twitter Card Meta Tags */}
@@ -159,9 +159,9 @@ const SEOOptimizedXSMB = ({
                 {/* Additional SEO Meta Tags */}
                 <meta name="robots" content="index, follow" />
                 <meta name="googlebot" content="index, follow" />
-                <meta name="author" content="Dàn Đề Wukong" />
-                <meta name="publisher" content="Dàn Đề Wukong" />
-                <meta name="copyright" content="Dàn Đề Wukong" />
+                <meta name="author" content="Kết Quả MN" />
+                <meta name="publisher" content="Kết Quả MN | KETQUAMN.COM" />
+                <meta name="copyright" content="Kết Quả MN | KETQUAMN.COM" />
                 <meta name="language" content="vi" />
                 <meta name="geo.region" content="VN" />
                 <meta name="geo.country" content="Vietnam" />
@@ -171,6 +171,14 @@ const SEOOptimizedXSMB = ({
 
                 {/* Alternate Language Versions */}
                 <link rel="alternate" hrefLang="vi" href={canonicalUrl} />
+
+                {/* Favicon links - đảm bảo sử dụng favicon mới từ logoketquamn.png */}
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="shortcut icon" href="/favicon.ico" />
 
                 {/* Structured Data */}
                 <script
@@ -255,8 +263,8 @@ const SEOOptimizedXSMB = ({
                             Xổ số miền Bắc có 7 giải thưởng với tổng giá trị giải thưởng lên đến hàng tỷ đồng.
                         </p>
                         <p>
-                            Dàn Đề Wukong cung cấp kết quả xổ số miền Bắc chính xác, cập nhật nhanh nhất
-                            để người chơi có thể tra cứu và tham khảo.
+                            Kết Quả MN (KETQUAMN.COM) cung cấp kết quả xổ số miền Bắc chính xác, cập nhật nhanh nhất
+                            để người chơi có thể tra cứu và tham khảo. Xem kết quả xổ số 3 miền miễn phí.
                         </p>
                     </div>
                 </section>

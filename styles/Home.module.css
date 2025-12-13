@@ -46,7 +46,7 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
     color: white;
     padding: 3px 5px;
     margin-top: 5px;
@@ -106,7 +106,7 @@
     align-items: center;
     justify-content: center;
     gap: 4px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
     color: white;
     padding: 2px 2px;
     border-radius: 8px;
@@ -132,7 +132,7 @@
     gap: 2px;
     background: white;
     color: #000;
-    border: 1.2px solid #667eea;
+    border: 1.2px solid #FF6B35;
     font-weight: 700;
     height: 20px;
     font-size: 10px;
@@ -143,7 +143,7 @@
 }
 
 .heroSecondaryButton:hover {
-    background: #667eea;
+    background: #FF6B35;
     color: white;
     transform: translateY(-2px);
 }
@@ -290,13 +290,13 @@
 .quickAccessCard:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    border-color: #667eea;
+    border-color: #FF6B35;
 }
 
 .quickAccessIcon {
     width: 48px;
     height: 48px;
-    color: #667eea;
+    color: #FF6B35;
     margin-bottom: 16px;
 }
 
@@ -347,7 +347,7 @@
 }
 
 .newsLink {
-    color: #667eea;
+    color: #FF6B35;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -391,7 +391,7 @@
 }
 
 .newsReadMore {
-    color: #667eea;
+    color: #FF6B35;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
@@ -449,6 +449,17 @@
     overflow: visible;
     text-overflow: clip;
     white-space: normal;
+}
+
+.highlightDomain {
+    background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    text-shadow: 0 2px 4px rgba(255, 140, 66, 0.3);
+    position: relative;
+    display: inline-block;
 }
 
 @media (min-width: 768px) {
@@ -1338,7 +1349,7 @@
     font-weight: var(--font-bold);
     color: var(--color-gray-900);
     margin: 0 0 var(--spacing-2) 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

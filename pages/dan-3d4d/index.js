@@ -7,7 +7,10 @@ import { useState, memo, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Layout from '../../components/Layout';
-import SEOOptimized from '../../components/SEOOptimized';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import ComparisonContent from '../../components/ComparisonContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 import PageSpeedOptimizer from '../../components/PageSpeedOptimizer';
 import MobileNavbar from '../../components/MobileNavbar';
 import styles from '../../styles/Dan3D4D.module.css';
@@ -153,8 +156,8 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
 
     return (
         <>
-            <SEOOptimized
-                pageType="dan-3d4d"
+            <EnhancedSEOHead
+                pageType="dan-de"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
@@ -162,7 +165,7 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
                 ogImage={pageSEO.image}
                 breadcrumbs={breadcrumbs}
                 faq={faqData}
-                structuredData={howToSchema}
+                structuredData={[howToSchema]}
             />
             <PageSpeedOptimizer />
 
@@ -231,6 +234,15 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
 
                     {/* Author Bio */}
                     <AuthorBio />
+                    
+                    {/* ✅ Editorial Content - Compact mode */}
+                    <EditorialContent pageType="dan-de" compact={true} />
+                    
+                    {/* ✅ Comparison Content - Compact mode */}
+                    <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                    
+                    {/* ✅ Internal Linking SEO */}
+                    <InternalLinksSection pageType="home" />
                 </div>
             </Layout>
         </>

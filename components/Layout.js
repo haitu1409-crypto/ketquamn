@@ -177,24 +177,19 @@ export default function Layout({ children, className = '' }) {
                 <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
                     <nav className={styles.nav}>
                         <div className={styles.navContainer}>
-                            {/* Logo - Sử dụng ảnh con khỉ */}
+                            {/* Logo */}
                             <Link href="/" className={styles.logo}>
-                                <div className={styles.logoIcon}>
-                                    <Image
-                                        src="/imgs/monkey.png"
-                                        alt="Dàn Đề Wukong"
-                                        width={32}
-                                        height={32}
-                                        className={styles.logoImage}
-                                        priority
-                                        fetchPriority="high"
-                                        sizes="32px"
-                                    />
-                                </div>
-                                <span className={styles.logoText}>
-                                    <span className={styles.logoTextMain}>Dàn Đề Wukong</span>
-                                    <span className={styles.logoTextSub}>Công cụ chuyên nghiệp</span>
-                                </span>
+                                <Image
+                                    src="/logo1.png"
+                                    alt="Kết Quả MN"
+                                    width={350}
+                                    height={120}
+                                    className={styles.logoImage}
+                                    priority
+                                    fetchPriority="high"
+                                    style={{ display: 'block', maxWidth: '100%', height: 'auto', width: 'auto' }}
+                                    sizes="(max-width: 768px) 220px, 350px"
+                                />
                             </Link>
 
                             {/* Desktop Navigation */}
@@ -418,21 +413,20 @@ export default function Layout({ children, className = '' }) {
                         <div className={styles.footerTop}>
                             {/* About Section */}
                             <div className={styles.footerSection}>
-                                <h3 className={styles.footerTitle}>
+                                <div className={styles.footerTitle}>
                                     <Image
-                                        src="/imgs/monkey.png"
-                                        alt="Dàn Đề Wukong"
-                                        width={24}
-                                        height={24}
-                                        style={{ display: 'inline', marginRight: '8px' }}
+                                        src="/logo1.png"
+                                        alt="Kết Quả MN"
+                                        width={300}
+                                        height={100}
+                                        style={{ display: 'block', maxWidth: '100%', height: 'auto', width: 'auto' }}
                                         loading="lazy"
                                         fetchPriority="low"
                                     />
-                                    Dàn Đề Wukong
-                                </h3>
+                                </div>
                                 <p className={styles.footerDescription}>
-                                    Bộ công cụ tạo dàn số và thống kê xổ số 3 miền chuyên nghiệp hàng đầu Việt Nam.
-                                    Miễn phí, nhanh chóng, chính xác 100% - Thương hiệu Wukong.
+                                    Kết Quả MN - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất.
+                                    Công cụ tạo dàn số và thống kê xổ số 3 miền chuyên nghiệp. Miễn phí, nhanh chóng, chính xác 100%.
                                 </p>
                                 <div className={styles.footerBadges}>
                                     <span className={styles.footerBadge}>
@@ -513,7 +507,7 @@ export default function Layout({ children, className = '' }) {
                         {/* Footer Bottom */}
                         <div className={styles.footerBottom}>
                             <p className={styles.copyright}>
-                                © {new Date().getFullYear()} Dàn Đề Wukong (TDDW). Made with <Heart size={12} style={{ display: 'inline', margin: '0 2px' }} /> in Vietnam.
+                                © {new Date().getFullYear()} Kết Quả MN (TDDW). Made with <Heart size={12} style={{ display: 'inline', margin: '0 2px' }} /> in Vietnam.
                             </p>
                             <p className={styles.disclaimer}>
                                 Công cụ miễn phí cho mục đích giải trí và nghiên cứu.
@@ -537,11 +531,13 @@ export default function Layout({ children, className = '' }) {
                                     />
                                 </a>
                             </div>
-                            {/* ✅ SEO Keywords Footer (giống RBK strategy) */}
+                            {/* ✅ SEO Keywords Footer */}
                             <div className={styles.seoKeywords}>
-                                TDDW | Tạo dàn đề Wukong | Tao dan de wukong | TDDW.Pro | WK | TDD | DDW | 
-                                Tạo dàn số TDDW | Soi cầu TDDW | Chốt số TDDW | TDDW hôm nay | 
-                                Cầu lô TDDW | Dự đoán TDDW | Thống kê TDDW | TDDW miễn phí
+                                Kết Quả MN | Ket qua MN | KETQUAMN.COM | Kết quả xổ số miền Nam | Kết quả xổ số miền Bắc | 
+                                Kết quả xổ số miền Trung | XSMN | XSMB | XSMT | KQXSMN | KQXSMB | KQXSMT | 
+                                Xổ số miền Nam | Xổ số miền Bắc | Xổ số miền Trung | Kết quả xổ số hôm nay | 
+                                Kết quả xổ số mới nhất | Xem kết quả xổ số | Tra cứu kết quả xổ số | 
+                                Kết quả xổ số nhanh nhất | Kết quả xổ số chính xác | ketquamn.com miễn phí
                             </div>
                         </div>
                     </div>

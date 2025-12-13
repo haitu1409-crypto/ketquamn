@@ -102,10 +102,10 @@ const getFirstLetter = (name) => {
 };
 
 const getColorFromLetter = (letter) => {
-    if (!letter) return '#667eea';
+    if (!letter) return '#FF6B35';
     const letterUpper = letter.toUpperCase();
     const colors = [
-        '#667eea', // A
+        '#FF6B35', // A
         '#f59e0b', // B
         '#10b981', // C
         '#ef4444', // D

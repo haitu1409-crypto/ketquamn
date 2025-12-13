@@ -10,6 +10,9 @@ import Layout from '../components/Layout';
 import TodayPredictions from '../components/TodayPredictions';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import EditorialContent from '../components/EditorialContent';
+import ComparisonContent from '../components/ComparisonContent';
 import { getPageSEO } from '../config/seoConfig';
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
@@ -33,7 +36,7 @@ const LatestXSMBResults = dynamic(() => import('../components/LatestXSMBResults'
                     width: '40px', 
                     height: '40px', 
                     border: '4px solid #f3f3f3', 
-                    borderTop: '4px solid #667eea', 
+                    borderTop: '4px solid #FF6B35', 
                     borderRadius: '50%', 
                     animation: 'spin 1s linear infinite',
                     margin: '0 auto 10px'
@@ -93,7 +96,7 @@ const Home = memo(function Home() {
 
     const faqData = useMemo(() => [
         {
-            question: 'Dàn Đề Wukong có những công cụ gì?',
+            question: 'Kết Quả MN (KETQUAMN.COM) có những công cụ gì?',
             answer: 'Chúng tôi cung cấp đầy đủ bộ công cụ tạo dàn đề chuyên nghiệp: Dàn đề 9x-0x, Dàn đề 2D, Dàn đề 3D/4D, Dàn đề đặc biệt, Thống kê xổ số 3 miền, và nhiều công cụ hỗ trợ khác. Tất cả đều miễn phí 100%.'
         },
         {
@@ -193,18 +196,16 @@ const Home = memo(function Home() {
             {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
-                "name": "Dàn Đề Wukong",
+                "name": "Kết Quả MN | KETQUAMN.COM",
                 "alternateName": [
-                    "Tạo Dàn Đề Online", 
-                    "Tạo Dàn Số Wukong", 
-                    "Tạo Mức Số",
-                    "TDDW", // ✅ SHORT ABBREVIATION (giống RBK)
-                    "TDDW.Pro",
-                    "WK", // Wukong
-                    "TDD", // Tạo Dàn Đề
-                    "DDW" // Dàn Đề Wukong
+                    "Kết Quả MN", 
+                    "Ket Qua MN", 
+                    "KETQUAMN.COM",
+                    "ketquamn.com",
+                    "Kết Quả Xổ Số",
+                    "Ket Qua Xo So"
                 ],
-                "description": "Bộ công cụ tạo dàn số chuyên nghiệp hàng đầu Việt Nam. Dàn đề 9x-0x, Dàn 2D, Dàn 3D/4D, Dàn đặc biệt, Thống kê xổ số 3 miền. Tốt hơn kangdh, giaimasohoc, sieuketqua. Miễn phí 100%, thuật toán Fisher-Yates chuẩn quốc tế.",
+                "description": "Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Công cụ tạo dàn số, thống kê xổ số 3 miền chuyên nghiệp. Miễn phí 100%.",
                 "url": siteUrl,
                 "applicationCategory": "UtilitiesApplication",
                 "operatingSystem": "Web Browser",
@@ -214,15 +215,15 @@ const Home = memo(function Home() {
                 "dateModified": deterministicDate, // FIX: Deterministic date
                 "author": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN | KETQUAMN.COM",
                     "url": siteUrl
                 },
                 "publisher": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN | KETQUAMN.COM",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": `${siteUrl}/imgs/wukong.png`
+                        "url": `${siteUrl}/logo1.png`
                     }
                 },
                 "offers": {
@@ -264,10 +265,10 @@ const Home = memo(function Home() {
             {
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                "name": "Dàn Đề Wukong",
+                "name": "Kết Quả MN | KETQUAMN.COM",
                 "url": siteUrl,
-                "logo": `${siteUrl}/imgs/wukong.png`,
-                "description": "Công cụ tạo dàn đề, tạo dàn số chuyên nghiệp hàng đầu Việt Nam. Tốt hơn kangdh, giaimasohoc, sieuketqua. Miễn phí 100%.",
+                "logo": `${siteUrl}/logo1.png`,
+                "description": "Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số 3 miền nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT. Công cụ tạo dàn số, thống kê xổ số chuyên nghiệp. Miễn phí 100%.",
                 "sameAs": [
                     siteUrl
                 ],
@@ -282,15 +283,15 @@ const Home = memo(function Home() {
             {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "name": "Dàn Đề Wukong",
+                "name": "Kết Quả MN | KETQUAMN.COM",
                 "url": siteUrl,
-                "description": "Tạo dàn đề, tạo dàn số online miễn phí. Công cụ chuyên nghiệp tốt hơn kangdh, giaimasohoc, sieuketqua.",
+                "description": "Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số 3 miền nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT. Công cụ tạo dàn số, thống kê xổ số chuyên nghiệp. Miễn phí 100%.",
                 "publisher": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN | KETQUAMN.COM",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": `${siteUrl}/imgs/wukong.png`
+                        "url": `${siteUrl}/logo1.png`
                     }
                 },
                 "potentialAction": {
@@ -339,12 +340,8 @@ const Home = memo(function Home() {
                 <div className={styles.container}>
                     {/* Hero Section - Landing Page */}
                     <header className={styles.header}>
-                        <div className={styles.heroBadge}>
-                            <Sparkles className={styles.heroBadgeIcon} />
-                            <span>Bộ công cụ chuyên nghiệp</span>
-                        </div>
                         <h1 className={styles.mainTitle}>
-                            Công Cụ Xổ Số Wukong
+                            KẾT QUẢ XỔ SỐ <span className={styles.highlightDomain}>KETQUAMN.COM</span>
                         </h1>
                         <div className={styles.heroActions}>
                             {/* Group 1 */}
@@ -466,35 +463,42 @@ const Home = memo(function Home() {
                         textAlign: 'center'
                     }}>
                         <strong>Kết Quả MN</strong> - Kết quả xổ số miền Nam | 
-                        <strong>TDDW.Pro</strong> | 
-                        Tạo dàn số <strong>TDDW</strong> | 
-                        Soi cầu <strong>TDDW</strong> | 
-                        Chốt số <strong>TDDW</strong> | 
-                        <strong>TDDW</strong> hôm nay | 
-                        Cầu lô <strong>TDDW</strong> | 
-                        Dự đoán <strong>TDDW</strong> | 
-                        Thống kê <strong>TDDW</strong> | 
-                        <strong>TDDW</strong> miễn phí | 
-                        Tạo dàn đề online <strong>TDDW</strong> | 
-                        <strong>TDDW</strong> công cụ xổ số | 
-                        <strong>TDDW</strong> loto | 
-                        <strong>TDDW</strong> lô đề | 
-                        <strong>TDDW</strong> tốt hơn kangdh | 
-                        <strong>TDDW</strong> vs giaimasohoc | 
-                        <strong>WK</strong> tool | 
-                        <strong>WK</strong> soi cầu | 
-                        <strong>TDD</strong> công cụ | 
-                        Dàn đề <strong>WK</strong> | 
-                        Mức số <strong>TDDW</strong> | 
-                        Tạo mức số <strong>TDDW</strong> | 
-                        Lập dàn số <strong>TDDW</strong> | 
-                        <strong>TDDW</strong> 2025 | 
-                        <strong>TDDW</strong> mới nhất | 
-                        TDDW xổ số miền bắc | 
-                        TDDW kết quả xổ số | 
-                        TDDW thống kê 3 miền
+                        <strong>KETQUAMN.COM</strong> | 
+                        Kết quả xổ số miền Bắc | 
+                        Kết quả xổ số miền Trung | 
+                        <strong>XSMN</strong> | 
+                        <strong>XSMB</strong> | 
+                        <strong>XSMT</strong> | 
+                        <strong>KQXSMN</strong> | 
+                        <strong>KQXSMB</strong> | 
+                        <strong>KQXSMT</strong> | 
+                        Kết quả xổ số hôm nay | 
+                        Kết quả xổ số mới nhất | 
+                        Xem kết quả xổ số | 
+                        Tra cứu kết quả xổ số | 
+                        Kết quả xổ số nhanh nhất | 
+                        Kết quả xổ số chính xác | 
+                        Xổ số miền Nam | 
+                        Xổ số miền Bắc | 
+                        Xổ số miền Trung | 
+                        ketquamn.com miễn phí | 
+                        Kết Quả MN công cụ xổ số | 
+                        Kết Quả MN thống kê 3 miền | 
+                        Kết Quả MN soi cầu | 
+                        Kết Quả MN dự đoán | 
+                        Kết Quả MN 2025 | 
+                        Kết Quả MN mới nhất
                     </div>
                 </div>
+                
+                {/* ✅ Editorial Content - Compact mode, chỉ hiển thị ngắn gọn */}
+                <EditorialContent pageType="home" compact={true} />
+                
+                {/* ✅ Comparison Content - Compact mode, ẩn full comparison */}
+                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                
+                {/* ✅ Internal Linking SEO - Gray Hat Technique */}
+                <InternalLinksSection pageType="home" />
             </Layout>
         </>
     );

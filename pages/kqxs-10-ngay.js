@@ -24,7 +24,7 @@ export default function KQXS10NgayPage() {
     return (
         <>
             <Head>
-                <title>10 Kết Quả XSMB Mới Nhất - Dàn Đề Wukong</title>
+                <title>10 Kết Quả XSMB Mới Nhất - Kết Quả MN | KETQUAMN.COM</title>
                 <meta name="description" content="Xem 10 kết quả xổ số miền Bắc mới nhất. Cập nhật trực tiếp, chính xác 100%." />
                 <meta name="keywords" content="kết quả xổ số, xsmb, 10 kết quả mới nhất, xổ số miền bắc" />
                 <meta name="robots" content="index, follow" />
@@ -32,10 +32,16 @@ export default function KQXS10NgayPage() {
                 <meta name="bingbot" content="index, follow" />
                 <meta name="coccocbot" content="index, follow" />
                 <link rel="canonical" href={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/kqxs-10-ngay`} />
-                <meta property="og:title" content="10 Kết Quả XSMB Mới Nhất - Dàn Đề Wukong" />
+                <meta property="og:title" content="10 Kết Quả XSMB Mới Nhất - Kết Quả MN | KETQUAMN.COM" />
                 <meta property="og:description" content="Xem 10 kết quả xổ số miền Bắc mới nhất. Cập nhật trực tiếp, chính xác 100%." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/kqxs-10-ngay`} />
+                {/* Favicon links - đảm bảo sử dụng favicon mới */}
+                <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
             </Head>
 
             <Layout>

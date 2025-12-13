@@ -20,12 +20,12 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
     image,
     locale = 'vi_VN',
     type = 'website',
-    author = 'Kết Quả MN',
+    author = 'Kết Quả MN | KETQUAMN.COM',
     structuredData = null,
 }) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     const canonicalUrl = url || siteUrl;
-    const ogImage = image || `${siteUrl}/imgs/wukong.png`;
+    const ogImage = image || `${siteUrl}/logo1.png`;
 
     // ✅ BING-SPECIFIC STRUCTURED DATA
     const bingSearchSchema = {
@@ -192,7 +192,7 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
                             "Ket Qua MN"
                         ],
                         "url": siteUrl,
-                        "logo": `${siteUrl}/imgs/wukong.png`,
+                        "logo": `${siteUrl}/logo1.png`,
                         "description": "Bộ công cụ tạo dàn đề, tạo mức số chuyên nghiệp hàng đầu Việt Nam",
                         "address": {
                             "@type": "PostalAddress",

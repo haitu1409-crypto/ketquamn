@@ -7,7 +7,9 @@ import styles from '../../styles/tansuatLoto.module.css';
 import ThongKe from '../../components/ThongKe';
 import CongCuHot from '../../components/CongCuHot';
 import Link from 'next/link';
-import StatisticsSEO from '../../components/StatisticsSEO';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Skeleton Loading Component cho bảng Tần Suất Loto
@@ -114,7 +116,6 @@ const TanSuatLoto = ({ initialStats, initialMetadata, initialDays }) => {
     };
 
     const pageTitle = getTitle();
-    const pageDescription = `Xem bảng thống kê Tần Suất Loto Xổ số Miền Bắc trong ${metadata.filterType || ''}. Cập nhật dữ liệu từ ${metadata.startDate || ''} đến ${metadata.endDate || ''}.`;
 
     // Chia dữ liệu thành 2 phần: 00-49 và 50-99
     const leftStats = Array.isArray(stats) ? stats.slice(0, 50) : []; // 00-49
@@ -127,15 +128,20 @@ const TanSuatLoto = ({ initialStats, initialMetadata, initialDays }) => {
     const stdDev = Math.sqrt(variance);
     const highlightThreshold = mean + stdDev;
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
+    const pageDescription = `Tần suất xuất hiện lô tô 00-99 với highlight số nóng/lạnh. Có tuỳ chọn 30, 60, 90, 120, 180 và 365 ngày để đưa ra quyết định chính xác.`;
+    
     return (
-        <Layout>
-            <StatisticsSEO
-                pageType="tan-suat-loto"
-                metadata={metadata}
-                faq={statisticsFAQs['tan-suat-loto']}
+        <>
+            <EnhancedSEOHead
+                pageType="thong-ke"
+                customTitle={`Thống Kê Tần Suất Lô Tô XSMB - Phân Tích Chi Tiết | Kết Quả MN`}
                 customDescription={pageDescription}
+                customKeywords="thống kê tần suất, tần suất lô tô, số nóng số lạnh, tần suất xsmb"
+                canonicalUrl={`${siteUrl}/thongke/tan-suat-loto`}
+                faq={statisticsFAQs['tan-suat-loto']}
             />
-
+            <Layout>
             <div className={styles.container}>
                 <div className={styles.titleGroup}>
                     <h1 className={styles.title}>{pageTitle}</h1>
@@ -318,7 +324,14 @@ const TanSuatLoto = ({ initialStats, initialMetadata, initialDays }) => {
             >
                 ↑
             </button>
+            
+            {/* ✅ Editorial Content - Compact mode */}
+            <EditorialContent pageType="thong-ke" compact={true} />
+            
+            {/* ✅ Internal Linking SEO */}
+            <InternalLinksSection pageType="thong-ke" />
         </Layout>
+        </>
     );
 };
 

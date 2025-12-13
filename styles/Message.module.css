@@ -338,7 +338,7 @@
 .replyPreview {
     padding: 8px 12px;
     margin-bottom: 8px;
-    border-left: 3px solid #667eea;
+    border-left: 3px solid #FF6B35;
     background: rgba(102, 126, 234, 0.05);
     border-radius: 6px;
     cursor: pointer;
@@ -359,7 +359,7 @@
 .replyPreviewSender {
     font-size: 12px;
     font-weight: 600;
-    color: #667eea;
+    color: #FF6B35;
     line-height: 1.2;
 }
 
@@ -435,7 +435,7 @@
 }
 
 .mention {
-    color: #667eea;
+    color: #FF6B35;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
@@ -449,7 +449,7 @@
 }
 
 .ownMessage .mention {
-    color: #667eea;
+    color: #FF6B35;
     /* background: rgba(255, 255, 255, 0.2); */
 }
 
@@ -543,7 +543,7 @@
 
 /* Legacy icon styles - kept for compatibility */
 .iconLike {
-    color: #667eea;
+    color: #FF6B35;
     opacity: 0.7;
     cursor: pointer;
     transition: all 0.2s;
@@ -556,8 +556,8 @@
 
 .iconLike.iconActive {
     opacity: 1;
-    color: #667eea;
-    fill: #667eea;
+    color: #FF6B35;
+    fill: #FF6B35;
 }
 
 .iconHeart {
@@ -602,7 +602,7 @@
 .selectedMessage {
     background: rgba(102, 126, 234, 0.1);
     border-radius: 8px;
-    border: 2px solid #667eea;
+    border: 2px solid #FF6B35;
 }
 
 .checkboxContainer {
@@ -617,7 +617,7 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #667eea;
+    accent-color: #FF6B35;
 }
 
 /* Mobile responsive */

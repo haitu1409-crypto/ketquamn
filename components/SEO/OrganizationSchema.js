@@ -19,13 +19,13 @@ export default function OrganizationSchema() {
         "url": "https://ketquamn.com",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://ketquamn.com/imgs/wukong.png",
+            "url": "https://ketquamn.com/logo1.png",
             "width": 512,
             "height": 512
         },
-        "image": "https://ketquamn.com/imgs/wukong.png",
-        "description": "Công cụ tạo dàn đề chuyên nghiệp #1 Việt Nam. Miễn phí 100%, không quảng cáo. Hỗ trợ: Dàn 9x-0x, 2D, 3D, 4D, Ghép lô xiên, Bảng tính chào, Thống kê xổ số.",
-        "slogan": "Công cụ tạo dàn đề chuyên nghiệp hàng đầu Việt Nam",
+        "image": "https://ketquamn.com/logo1.png",
+        "description": "Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Công cụ tạo dàn số, thống kê xổ số 3 miền chuyên nghiệp. Miễn phí 100%.",
+        "slogan": "Kết quả xổ số 3 miền nhanh nhất, chính xác nhất",
         "foundingDate": "2024",
         "founder": {
             "@type": "Organization",

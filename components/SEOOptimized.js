@@ -9,12 +9,12 @@ import Head from 'next/head';
 // Cấu hình hình ảnh cho từng page - Updated với 5 OG images mới
 const PAGE_IMAGES = {
     homepage: {
-        og: '/imgs/wukong.png',
-        twitter: '/imgs/wukong.png',
-        facebook: '/imgs/wukong.png',
-        zalo: '/imgs/wukong.png',
-        telegram: '/imgs/wukong.png',
-        tiktok: '/imgs/wukong.png'
+        og: '/logo1.png',
+        twitter: '/logo1.png',
+        facebook: '/logo1.png',
+        zalo: '/logo1.png',
+        telegram: '/logo1.png',
+        tiktok: '/logo1.png'
     },
     'dan-9x0x': {
         og: '/imgs/dan9x0x (1).png',
@@ -72,38 +72,54 @@ const PAGE_IMAGES = {
         telegram: '/imgs/xsmb.png',
         tiktok: '/imgs/xsmb.png'
     },
+    'kqxs-xsmn': {
+        og: '/imgs/xsmn.png',
+        twitter: '/imgs/xsmn.png',
+        facebook: '/imgs/xsmn.png',
+        zalo: '/imgs/xsmn.png',
+        telegram: '/imgs/xsmn.png',
+        tiktok: '/imgs/xsmn.png'
+    },
+    'kqxs-mn': {
+        og: '/imgs/xsmn.png',
+        twitter: '/imgs/xsmn.png',
+        facebook: '/imgs/xsmn.png',
+        zalo: '/imgs/xsmn.png',
+        telegram: '/imgs/xsmn.png',
+        tiktok: '/imgs/xsmn.png'
+    },
     'content': {
-        og: '/imgs/wukong.png',
-        twitter: '/imgs/wukong.png',
-        facebook: '/imgs/wukong.png',
-        zalo: '/imgs/wukong.png',
-        telegram: '/imgs/wukong.png',
-        tiktok: '/imgs/wukong.png'
+        og: '/logo1.png',
+        twitter: '/logo1.png',
+        facebook: '/logo1.png',
+        zalo: '/logo1.png',
+        telegram: '/logo1.png',
+        tiktok: '/logo1.png'
     },
     'tin-tuc': {
-        og: '/imgs/wukong.png',
-        twitter: '/imgs/wukong.png',
-        facebook: '/imgs/wukong.png',
-        zalo: '/imgs/wukong.png',
-        telegram: '/imgs/wukong.png',
-        tiktok: '/imgs/wukong.png'
+        og: '/logo1.png',
+        twitter: '/logo1.png',
+        facebook: '/logo1.png',
+        zalo: '/logo1.png',
+        telegram: '/logo1.png',
+        tiktok: '/logo1.png'
     },
     'faq': {
-        og: '/imgs/monkey.png',
-        twitter: '/imgs/monkey.png',
-        facebook: '/imgs/monkey.png',
-        zalo: '/imgs/monkey.png',
-        telegram: '/imgs/monkey.png',
-        tiktok: '/imgs/monkey.png'
+        og: '/logo1.png',
+        twitter: '/logo1.png',
+        facebook: '/logo1.png',
+        zalo: '/logo1.png',
+        telegram: '/logo1.png',
+        tiktok: '/logo1.png'
     }
 };
 
 // Cấu hình title và description cho từng page
 const PAGE_SEO_CONFIG = {
     homepage: {
-        title: 'TDDW - Tạo Dàn Đề, Tạo Dàn Số Online Miễn Phí | Công Cụ Xổ Số Chuyên Nghiệp 2025',
-        description: 'Kết Quả MN - Kết quả xổ số miền Nam nhanh nhất, chính xác nhất 2025. Xem kết quả xổ số miền Nam hôm nay, XSMN, KQXSMN trực tiếp. Miễn phí 100%, không quảng cáo!',
-        keywords: 'Kết Quả MN, ket qua MN, kết quả xổ số miền Nam, xsmn, kqxsmn, sxmn, xổ số miền Nam, kết quả XSMN hôm nay, kết quả xổ số MN nhanh nhất'
+        title: 'Kết Quả MN | KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Nhanh Nhất, Chính Xác Nhất 2025',
+        description: 'Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Xem kết quả xổ số hôm nay, tra cứu kết quả xổ số, thống kê xổ số 3 miền. Miễn phí 100%, cập nhật trực tiếp.',
+        keywords: 'Kết Quả MN, ket qua MN, KETQUAMN.COM, ketquamn.com, kết quả xổ số miền Nam, kết quả xổ số miền Bắc, kết quả xổ số miền Trung, xsmn, xsmb, xsmt, kqxsmn, kqxsmb, kqxsmt, xem kết quả xổ số, tra cứu kết quả xổ số, kết quả xổ số hôm nay, kết quả xổ số mới nhất'
     },
     'dan-9x0x': {
         title: 'Dàn Đề 9x-0x | Tạo Dàn Đề Ngẫu Nhiên | Công Cụ Lọc Dàn Đề Tổng Hợp - Miễn Phí 2025',
@@ -133,7 +149,7 @@ const PAGE_SEO_CONFIG = {
     'thong-ke': {
         title: 'Xem Kết Quả Xổ Số | Kết Quả Xổ Số Nhanh Nhất | Thống Kê Xổ Số 3 Miền - Miễn Phí 2025',
         description: 'Xem kết quả xổ số, kết quả xổ số nhanh nhất tại Việt Nam. Thống kê xổ số 3 miền (Bắc-Nam-Trung) chuyên nghiệp. Lập bảng thống kê chốt dàn, công cụ theo dõi xu hướng và phân tích dữ liệu xổ số để tối ưu chiến lược chơi dàn số. Cập nhật realtime, chính xác 100%.',
-        keywords: 'xem kết quả xổ số, kết quả xổ số, kết quả xổ số nhanh nhất, thống kê xổ số, lập bảng thống kê chốt dàn 3 miền, thống kê chốt dàn, bảng thống kê xổ số, thống kê miền bắc, thống kê miền nam, thống kê miền trung, phân tích xổ số, xu hướng xổ số, thống kê lô đề, bảng thống kê chính xác, thống kê xổ số realtime, dàn số Wukong, thống kê xổ số miễn phí, công cụ thống kê xổ số, phân tích dữ liệu xổ số, xổ số miền bắc, xổ số miền nam, xổ số miền trung, chốt dàn số'
+        keywords: 'xem kết quả xổ số, kết quả xổ số, kết quả xổ số nhanh nhất, thống kê xổ số, lập bảng thống kê chốt dàn 3 miền, thống kê chốt dàn, bảng thống kê xổ số, thống kê miền bắc, thống kê miền nam, thống kê miền trung, phân tích xổ số, xu hướng xổ số, thống kê lô đề, bảng thống kê chính xác, thống kê xổ số realtime, Kết Quả MN, ketquamn.com, thống kê xổ số miễn phí, công cụ thống kê xổ số, phân tích dữ liệu xổ số, xổ số miền bắc, xổ số miền nam, xổ số miền trung, chốt dàn số'
     },
     'content': {
         title: 'Hướng Dẫn Chơi Xổ Số & Mẹo Tăng Tỷ Lệ Trúng - Công Cụ Chuyên Nghiệp 2025',
@@ -154,6 +170,16 @@ const PAGE_SEO_CONFIG = {
         title: 'Tạo Dàn Đề 9x-0x Chuyên Nghiệp | Phần Mềm AI, Trí Tuệ Nhân Tạo - Miễn Phí 2025',
         description: 'Tạo dàn số 9x-0x ngẫu nhiên chuyên nghiệp với thuật toán Fisher-Yates chuẩn quốc tế. Phần mềm AI, trí tuệ nhân tạo. Bộ lọc dàn số tổng hợp thông minh, miễn phí 100%, chính xác cho xổ số 3 miền.',
         keywords: 'tạo dàn số 9x-0x, dàn số 9x-0x, công cụ tạo dàn số, dàn số ngẫu nhiên, bộ lọc dàn số, thuật toán Fisher-Yates, xổ số 3 miền, lô đề, tạo dàn số miễn phí, dàn số chuyên nghiệp, taodande, phần mềm AI, AI Tools, trí tuệ nhân tạo'
+    },
+    'kqxs-xsmn': {
+        title: 'Kết Quả MN | KETQUAMN.COM - XSMN Kết Quả Xổ Số Miền Nam Hôm Nay Nhanh Nhất | KQXSMN - SXMN 2025',
+        description: 'Kết Quả MN (KETQUAMN.COM) - XSMN kết quả xổ số miền Nam (xsmn, sxmn, kqxsmn) hôm nay nhanh nhất, chính xác nhất. Xem kết quả XSMN trực tiếp, tra cứu kết quả xổ số miền Nam, XSMN 30 ngày. Tốt hơn xosodaiphat, xoso.com.vn. Miễn phí 100%!',
+        keywords: 'XSMN, xsmn, kết quả xổ số miền Nam, ket qua xo so mien nam, KQXSMN, kqxsmn, SXMN, sxmn, xổ số miền Nam, xo so mien nam, xsmn hôm nay, xsmn hom nay, kết quả xsmn, ket qua xsmn, xem kết quả xsmn, tra cứu xsmn, xsmn mới nhất, xsmn nhanh nhất, Kết Quả MN xsmn, ketquamn.com xsmn'
+    },
+    'kqxs-mn': {
+        title: 'Kết Quả MN | KETQUAMN.COM - XSMN Kết Quả Xổ Số Miền Nam Hôm Nay Nhanh Nhất | KQXSMN - SXMN 2025',
+        description: 'Kết Quả MN (KETQUAMN.COM) - XSMN kết quả xổ số miền Nam (xsmn, sxmn, kqxsmn) hôm nay nhanh nhất, chính xác nhất. Xem kết quả XSMN trực tiếp, tra cứu kết quả xổ số miền Nam, XSMN 30 ngày. Tốt hơn xosodaiphat, xoso.com.vn. Miễn phí 100%!',
+        keywords: 'XSMN, xsmn, kết quả xổ số miền Nam, ket qua xo so mien nam, KQXSMN, kqxsmn, SXMN, sxmn, xổ số miền Nam, xo so mien nam, xsmn hôm nay, xsmn hom nay, kết quả xsmn, ket qua xsmn, xem kết quả xsmn, tra cứu xsmn, xsmn mới nhất, xsmn nhanh nhất, Kết Quả MN xsmn, ketquamn.com xsmn'
     }
 };
 
@@ -332,8 +358,8 @@ export default function SEOOptimized({
             <meta name="apple-mobile-web-app-title" content="Tạo Dàn Đề" />
 
             {/* ===== THEME COLOR ===== */}
-            <meta name="theme-color" content="#4F46E5" />
-            <meta name="msapplication-TileColor" content="#4F46E5" />
+            <meta name="theme-color" content="#FF6B35" />
+            <meta name="msapplication-TileColor" content="#FF6B35" />
             <meta name="msapplication-config" content="/browserconfig.xml" />
 
             {/* ===== PERFORMANCE HINTS ===== */}
@@ -347,8 +373,12 @@ export default function SEOOptimized({
 
             {/* ===== PWA ===== */}
             <link rel="manifest" href="/manifest.json" />
-            <link rel="icon" href="/favicon.ico" />
-            <link rel="apple-touch-icon" href="/icon-192.png" />
+            <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+            <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+            <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+            <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="shortcut icon" href="/favicon.ico" />
 
             {/* ===== STRUCTURED DATA - WEB APPLICATION ===== */}
             <script

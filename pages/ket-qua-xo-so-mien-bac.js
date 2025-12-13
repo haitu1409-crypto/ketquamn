@@ -15,6 +15,9 @@ import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { isWithinLiveWindow } from '../utils/lotteryUtils';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import { ContentWrapper } from '../components/ContentWrapper';
+import EditorialContent from '../components/EditorialContent';
 
 const LiveResult = dynamic(() => import('../components/LiveResult'), {
     loading: () => (
@@ -157,14 +160,14 @@ const KQXSPage = memo(function KQXSPage() {
                 'dateModified': deterministicDate,
                 'author': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong'
+                    'name': 'Kết Quả MN | KETQUAMN.COM'
                 },
                 'publisher': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
                     'logo': {
                         '@type': 'ImageObject',
-                        'url': `${siteUrl}/imgs/wukong.png`
+                        'url': `${siteUrl}/logo1.png`
                     }
                 },
                 'mainEntityOfPage': {
@@ -186,7 +189,7 @@ const KQXSPage = memo(function KQXSPage() {
                 'license': 'https://creativecommons.org/licenses/by/4.0/',
                 'provider': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
                     'url': siteUrl
                 }
             }
@@ -202,6 +205,12 @@ const KQXSPage = memo(function KQXSPage() {
                 keywords={seoConfig.keywords.join(', ')}
                 canonical={`${siteUrl}/ket-qua-xo-so-mien-bac`}
                 ogImage={`${siteUrl}/imgs/xsmb.png`}
+                breadcrumbs={[
+                    { name: 'Trang chủ', url: siteUrl },
+                    { name: 'Kết Quả Xổ Số Miền Bắc', url: `${siteUrl}/ket-qua-xo-so-mien-bac` }
+                ]}
+                faq={faqData}
+                structuredData={structuredData}
                 structuredData={structuredData}
             />
 
@@ -373,6 +382,12 @@ const KQXSPage = memo(function KQXSPage() {
                             </ul>
                         </div>
                     </div>
+                    
+                    {/* ✅ Editorial Content - Compact mode */}
+                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
+                    
+                    {/* ✅ Internal Linking SEO - Gray Hat Technique */}
+                    <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
                 </div>
             </Layout>
         </>

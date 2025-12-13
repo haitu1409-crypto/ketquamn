@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { Activity, Award, Calendar, Layers, Percent, TrendingUp } from 'lucide-react';
 
 import Layout from '../../components/Layout';
-import SEOOptimized from '../../components/SEOOptimized';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 
 import styles from '../../styles/thongKeOverview.module.css';
 
@@ -87,9 +89,19 @@ const StatisticCard = ({ tool }) => (
 );
 
 const StatisticsOverviewPage = () => {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
+    
     return (
-        <Layout>
-            <SEOOptimized pageType="thong-ke" />
+        <>
+            <EnhancedSEOHead
+                pageType="thong-ke"
+                customTitle="Thống Kê Xổ Số Miền Bắc - Phân Tích Chi Tiết | Kết Quả MN"
+                customDescription="Thống kê xổ số miền Bắc chuyên sâu: Lô gan, Tần suất, Đầu đuôi, Giải đặc biệt. Phân tích dữ liệu XSMB từ 30-365 ngày. Công cụ thống kê miễn phí, cập nhật hàng ngày. Tốt hơn xosodaiphat, xoso.com.vn."
+                customKeywords="thống kê xổ số, thống kê xsmb, lô gan, tần suất lô tô, đầu đuôi, giải đặc biệt, phân tích xổ số, thống kê xổ số miền bắc, thống kê xổ số tốt nhất"
+                canonicalUrl={`${siteUrl}/thong-ke`}
+                faq={FAQS}
+            />
+            <Layout>
 
             <main id="main-content" className={styles.pageContainer}>
                 <section className={styles.heroSection}>
@@ -117,8 +129,15 @@ const StatisticsOverviewPage = () => {
                         ))}
                     </div>
                 </section>
+                
+                {/* ✅ Editorial Content - Compact mode */}
+                <EditorialContent pageType="thong-ke" compact={true} />
+                
+                {/* ✅ Internal Linking SEO */}
+                <InternalLinksSection pageType="thong-ke" />
             </main>
         </Layout>
+        </>
     );
 };
 

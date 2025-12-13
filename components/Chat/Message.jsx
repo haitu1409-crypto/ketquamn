@@ -39,10 +39,10 @@ const Message = memo(function Message({ message, isOwn, showAvatar, formatTime, 
     
     // Tạo màu từ chữ cái đầu tiên
     const getColorFromLetter = (letter) => {
-        if (!letter) return '#667eea';
+        if (!letter) return '#FF6B35';
         const letterUpper = letter.toUpperCase();
         const colors = [
-            '#667eea', // A - Xanh dương
+            '#FF6B35', // A - Xanh dương
             '#f59e0b', // B - Cam
             '#10b981', // C - Xanh lá
             '#ef4444', // D - Đỏ

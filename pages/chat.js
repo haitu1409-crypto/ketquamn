@@ -375,8 +375,8 @@ export default function ChatPage() {
         : 'https://ketquamn.com';
 
     const ogImage = process.env.NODE_ENV === 'production'
-        ? 'https://ketquamn.com/imgs/monkey.png'
-        : `${defaultOrigin}/imgs/monkey.png`;
+        ? 'https://ketquamn.com/logo1.png'
+        : `${defaultOrigin}/logo1.png`;
     
     const ogTitle = 'Group Chat Kết Quả MN';
     const ogDescription = 'Tham gia Group Chat để chia sẻ và thảo luận về dàn đề chốt số 3 miền cùng cộng đồng Kết Quả MN';

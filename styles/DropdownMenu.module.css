@@ -12,7 +12,7 @@
     background: transparent;
     color: var(--color-gray-700);
     font-size: 15px;
-    font-weight: var(--font-medium);
+    font-weight: 700;
     cursor: pointer;
     transition: all var(--transition-base);
     border-radius: var(--border-radius-md);
@@ -71,6 +71,7 @@ a.dropdownToggle {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -147,4 +148,3 @@ a.dropdownToggle {
         font-size: 1rem;
     }
 }
-

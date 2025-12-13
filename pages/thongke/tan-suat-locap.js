@@ -8,7 +8,9 @@ import styles from '../../styles/tansuatLoCap.module.css';
 import ThongKe from '../../components/ThongKe';
 import CongCuHot from '../../components/CongCuHot';
 import Link from 'next/link';
-import StatisticsSEO from '../../components/StatisticsSEO';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Skeleton Loading Component
@@ -138,7 +140,6 @@ const TanSuatLoCap = ({ initialStats, initialMetadata, initialDays }) => {
     };
 
     const pageTitle = getTitle();
-    const pageDescription = `Xem bảng thống kê Tần Suất Lô Cặp Xổ số Miền Bắc trong ${metadata.filterType || ''}. Cập nhật dữ liệu từ ${metadata.startDate || ''} đến ${metadata.endDate || ''}.`;
 
     // Tính ngưỡng highlight (trung bình + 1 độ lệch chuẩn)
     const counts = stats.map(stat => stat.count);
@@ -147,15 +148,20 @@ const TanSuatLoCap = ({ initialStats, initialMetadata, initialDays }) => {
     const stdDev = Math.sqrt(variance);
     const highlightThreshold = mean + stdDev;
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
+    const pageDescription = `Phân tích các cặp số song hành XX-YY cùng xuất hiện. Tính toán phần trăm và tổng số lần xuất hiện của từng cặp để chọn chiến thuật xiên.`;
+    
     return (
-        <Layout>
-            <StatisticsSEO 
-                pageType="tan-suat-locap"
-                metadata={metadata}
-                faq={statisticsFAQs['tan-suat-locap']}
+        <>
+            <EnhancedSEOHead
+                pageType="thong-ke"
+                customTitle={`Thống Kê Tần Suất Lô Cặp XSMB - Phân Tích Chi Tiết | Kết Quả MN`}
                 customDescription={pageDescription}
+                customKeywords="thống kê tần suất lô cặp, lô cặp xsmb, cặp số song hành, tần suất lô cặp"
+                canonicalUrl={`${siteUrl}/thongke/tan-suat-locap`}
+                faq={statisticsFAQs['tan-suat-locap']}
             />
-
+            <Layout>
             <div className={styles.container}>
                 <div className={styles.titleGroup}>
                     <h1 className={styles.title}>{pageTitle}</h1>
@@ -306,7 +312,14 @@ const TanSuatLoCap = ({ initialStats, initialMetadata, initialDays }) => {
                 <ThongKe />
                 <CongCuHot />
             </div>
+            
+            {/* ✅ Editorial Content - Compact mode */}
+            <EditorialContent pageType="thong-ke" compact={true} />
+            
+            {/* ✅ Internal Linking SEO */}
+            <InternalLinksSection pageType="thong-ke" />
         </Layout>
+        </>
     );
 };
 

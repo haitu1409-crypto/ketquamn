@@ -7,6 +7,8 @@ import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import Layout from '../components/Layout';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
+import EditorialContent from '../components/EditorialContent';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import styles from '../styles/giaidacbiet.module.css';
 import soiCauStyles from '../styles/soiCauBacCau.module.css';
 import ThongKe from '../components/ThongKe';
@@ -1613,6 +1615,12 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
                 >
                     ↑
                 </button>
+                
+                {/* ✅ Editorial Content - Compact mode */}
+                <EditorialContent pageType="soi-cau" compact={true} />
+                
+                {/* ✅ Internal Linking SEO */}
+                <InternalLinksSection pageType="soi-cau" />
             </Layout>
         </>
     );

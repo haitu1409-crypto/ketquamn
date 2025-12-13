@@ -10,7 +10,7 @@ export default function SoftwareApplicationSchema({ pageName = 'home' }) {
     const baseSchema = {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Dàn Đề Wukong",
+        "name": "Kết Quả MN | KETQUAMN.COM",
         "applicationCategory": "UtilityApplication",
         "applicationSubCategory": "Calculator",
         "operatingSystem": "Web Browser, iOS, Android, Windows, macOS",
@@ -29,18 +29,18 @@ export default function SoftwareApplicationSchema({ pageName = 'home' }) {
         },
         "author": {
             "@type": "Organization",
-            "name": "Wukong Team"
+            "name": "Kết Quả MN Team"
         },
         "datePublished": "2024-01-01",
         "dateModified": new Date().toISOString().split('T')[0],
         "softwareVersion": "2.0",
-        "screenshot": "https://ketquamn.com/imgs/wukong.png",
+        "screenshot": "https://ketquamn.com/logo1.png",
         "license": "https://ketquamn.com/terms"
     };
 
     // Customize description based on page
     const descriptions = {
-        home: "Công cụ tạo dàn đề chuyên nghiệp #1 Việt Nam. Miễn phí 100%, không quảng cáo.",
+        home: "Kết Quả MN - Kết quả xổ số 3 miền nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT. Công cụ tạo dàn số, thống kê xổ số chuyên nghiệp. Miễn phí 100%.",
         dan9x0x: "Tạo dàn 9x-0x ngẫu nhiên với thuật toán Fisher-Yates. Cắt dàn, lọc dàn, nuôi dàn khung.",
         dan2d: "Tạo dàn 2D (00-99) chuyên nghiệp. Bạch thủ, song thủ, lô đá. Lấy nhanh dàn đề.",
         dan3d4d: "Tạo dàn 3D-4D, ghép lotto 3-4 càng. Tách dàn AB-BC-CD tự động.",

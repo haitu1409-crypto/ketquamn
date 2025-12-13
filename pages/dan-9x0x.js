@@ -12,7 +12,10 @@ import MobileNavbar from '../components/MobileNavbar';
 // ✅ Optimized: Import all icons at once
 import { Target, BarChart3, Star, Zap, CheckCircle, Filter } from 'lucide-react';
 import styles from '../styles/Dan9x0x.module.css';
-import SEOOptimized from '../components/SEOOptimized';
+import EnhancedSEOHead from '../components/EnhancedSEOHead';
+import EditorialContent from '../components/EditorialContent';
+import ComparisonContent from '../components/ComparisonContent';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import { getPageSEO } from '../config/seoConfig';
 
 // ✅ Lazy load non-critical components
@@ -237,12 +240,12 @@ export default function Dan9x0xPage() {
 
     return (
         <>
-            <SEOOptimized
-                pageType="dan-9x0x"
+            <EnhancedSEOHead
+                pageType="dan-de"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
-                canonicalUrl={pageSEO.canonical}
+                canonicalUrl={`${siteUrl}/dan-9x0x`}
                 ogImage={pageSEO.image}
                 breadcrumbs={breadcrumbs}
                 faq={faqData}
@@ -379,6 +382,15 @@ export default function Dan9x0xPage() {
                     {/* Author Bio - E-E-A-T */}
                     <AuthorBio />
                 </div>
+                
+                {/* ✅ Editorial Content - Compact mode */}
+                <EditorialContent pageType="dan-de" compact={true} />
+                
+                {/* ✅ Comparison Content - Compact mode */}
+                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                
+                {/* ✅ Internal Linking SEO */}
+                <InternalLinksSection pageType="home" />
             </Layout>
             <SEOAnalytics />
         </>

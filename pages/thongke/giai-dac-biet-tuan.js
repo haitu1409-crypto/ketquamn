@@ -6,7 +6,9 @@ import CongCuHot from '../../components/CongCuHot';
 import { apiMB } from '../api/kqxsMB';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import StatisticsSEO from '../../components/StatisticsSEO';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Skeleton Loading Component cho bảng 7 cột (Thứ 2 đến CN)
@@ -205,17 +207,19 @@ const GiaiDacBietTheoTuan = ({ initialStats, initialMetadata, initialMonth, init
     const pageTitle = getTitle();
     const pageDescription = `Xem thống kê giải đặc biệt theo tuần Miền Bắc trong tháng ${month}/${year}.`;
 
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
+    
     return (
-        <Layout>
-            <StatisticsSEO 
-                pageType="giai-dac-biet-tuan"
-                metadata={{
-                    startDate: metadata.startDate,
-                    endDate: metadata.endDate
-                }}
+        <>
+            <EnhancedSEOHead
+                pageType="thong-ke"
+                customTitle={`Thống Kê Giải Đặc Biệt Theo Tuần XSMB | Kết Quả MN`}
+                customDescription={pageDescription || 'Xem giải đặc biệt theo từng ngày trong tuần để phát hiện quy luật lặp lại. Hỗ trợ chế độ lịch giúp quan sát nhanh chu kỳ. Cập nhật hàng ngày, miễn phí 100%.'}
+                customKeywords="thống kê giải đặc biệt theo tuần, gdb theo tuần, giải đặc biệt theo ngày"
+                canonicalUrl={`${siteUrl}/thongke/giai-dac-biet-tuan`}
                 faq={statisticsFAQs['giai-dac-biet-tuan']}
-                customDescription={pageDescription}
             />
+            <Layout>
 
             <div className={styles.container}>
                 <div className={styles.titleGroup}>
@@ -394,7 +398,14 @@ const GiaiDacBietTheoTuan = ({ initialStats, initialMetadata, initialMonth, init
             >
                 ↑
             </button>
+            
+            {/* ✅ Editorial Content - Compact mode */}
+            <EditorialContent pageType="thong-ke" compact={true} />
+            
+            {/* ✅ Internal Linking SEO */}
+            <InternalLinksSection pageType="thong-ke" />
         </Layout>
+        </>
     );
 };
 

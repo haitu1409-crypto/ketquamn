@@ -31,7 +31,7 @@ const ArticleSEO = ({
             imageUrl = `${siteUrl}/${image}`;
         }
     } else {
-        imageUrl = `${siteUrl}/imgs/wukong.png`;
+        imageUrl = `${siteUrl}/logo1.png`;
     }
     
     // Determine image type from URL extension
@@ -69,7 +69,7 @@ const ArticleSEO = ({
             name: siteName,
             logo: {
                 '@type': 'ImageObject',
-                url: `${siteUrl}/logo.png`
+                url: `${siteUrl}/logo1.png`
             }
         },
         mainEntityOfPage: {

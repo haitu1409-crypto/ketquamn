@@ -11,12 +11,12 @@ const { getAllKeywordsForPage, generateMetaDescription } = require('./keywordVar
 
 // Normalize SITE_URL to remove trailing slash to avoid double slashes in URLs
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').replace(/\/+$/, '');
-const SITE_NAME = 'Kết Quả MN';
-const SITE_DESCRIPTION = 'Kết quả xổ số miền Nam nhanh nhất, chính xác nhất 2025';
+const SITE_NAME = 'Kết Quả MN | KETQUAMN.COM';
+const SITE_DESCRIPTION = 'Kết Quả MN - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Cập nhật trực tiếp, miễn phí 100%';
 
 // Common Open Graph Images
 const OG_IMAGES = {
-    default: `${SITE_URL}/imgs/wukong.png`,
+    default: `${SITE_URL}/logo1.png`,
     dan9x0x: `${SITE_URL}/imgs/dan9x0x (1).png`,
     locDanDe: `${SITE_URL}/imgs/dan9x0x (1).png`,
     dan2d: `${SITE_URL}/imgs/dan2d1d (1).png`,
@@ -24,6 +24,7 @@ const OG_IMAGES = {
     danDacBiet: `${SITE_URL}/imgs/dandacbiet (1).png`,
     thongKe: `${SITE_URL}/imgs/thongke (1).png`,
     xsmb: `${SITE_URL}/imgs/xsmb.png`,
+    xsmn: `${SITE_URL}/imgs/xsmn.png`,
 };
 
 /**
@@ -37,41 +38,109 @@ const SEO_CONFIG = {
      * ENHANCED: Keyword variations for multi-search engine optimization
      */
     home: {
-        title: 'TDDW - Tạo Dàn Đề, Tạo Dàn Số Online Miễn Phí | Công Cụ Xổ Số Chuyên Nghiệp 2025',
-        description: generateMetaDescription('home', true),
+        title: 'Kết Quả MN | KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Nhanh Nhất, Chính Xác Nhất 2025',
+        description: 'Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Xem kết quả xổ số hôm nay, tra cứu kết quả xổ số, thống kê xổ số 3 miền. Miễn phí 100%, cập nhật trực tiếp.',
         keywords: [
             // ✅ BRAND VARIATIONS - Tất cả cách gõ tìm kiếm
-            'tạo dàn đề wukong',
-            'tao dan de wukong',
-            'tạo dàn đề wu kong',
-            'tao dan de wu kong',
-            'tạo dan đề wukong',
-            'tao dàn de wukong',
-            'ketquamn',
-            'taodande wukong',
-            'tao dande wukong',
-            'tạo đàn đề wukong',
-            'tao dan wukong',
-            'tạo dàn wukong',
-            'dan de wukong',
-            'ketquamn.com',
-            'web tạo dàn đề wukong',
+            'Kết Quả MN', 'ket qua MN', 'KETQUAMN.COM', 'ketquamn.com',
+            'Ket Qua MN', 'KetQuaMN', 'ketquamn', 'KETQUAMN',
+            'ket qua mn', 'ket-qua-mn', 'ket_qua_mn',
             
-            // ✅ SHORT ABBREVIATIONS - Viết tắt ngắn (giống RBK = Rồng Bạch Kim)
-            'tddw', 'TDDW', 'tdd w', 'tdd-w', 'tdd_w',
-            'wk', 'WK', 'w k', 'w-k', 'w_k',
-            'tdd', 'TDD', 't d d', 't-d-d',
-            'wukong', 'Wukong', 'WUKONG', 'wu kong',
-            'ddw', 'DDW', 'd d w', 'd-d-w', // Dàn Đề Wukong
-            'ddwk', 'DDWK', // Dàn Đề Wukong
-            'tdde', 'TDDE', // Tạo Dàn Đề
-            'tdd pro', 'tddw.pro', 'tddw pro',
-
-            // ✅ CORE KEYWORDS - Từ khóa chính (có dấu + không dấu)
-            'tạo dàn đề', 'tao dan de', 'tạo dan đề', 'tao dàn de', 'tạo đàn đề',
-            'taodande', 'tao-dan-de', 'tạo-dàn-đề', 'taodàndề',
-            'tạo dàn số', 'tao dan so', 'tạo dan số', 'tao dàn so', 'taodanso',
-            'tạo mức số', 'tao muc so', 'tạo muc số', 'taomucso',
+            // ✅ CORE KEYWORDS - Kết quả xổ số (có dấu + không dấu)
+            'kết quả xổ số', 'ket qua xo so', 'ket qua xổ số', 'kết quả xo so',
+            'ketquaxoso', 'ket-qua-xo-so', 'ket_qua_xo_so',
+            'kết quả xổ số miền Nam', 'ket qua xo so mien Nam', 'ket qua xo so mien nam',
+            'kết quả xổ số miền Bắc', 'ket qua xo so mien Bac', 'ket qua xo so mien bac',
+            'kết quả xổ số miền Trung', 'ket qua xo so mien Trung', 'ket qua xo so mien trung',
+            'kết quả xổ số 3 miền', 'ket qua xo so 3 mien',
+            
+            // ✅ XỔ SỐ VIẾT TẮT
+            'XSMN', 'xsmn', 'XSMB', 'xsmb', 'XSMT', 'xsmt',
+            'KQXSMN', 'kqxsmn', 'KQXSMB', 'kqxsmb', 'KQXSMT', 'kqxsmt',
+            'SXMN', 'sxmn', 'SXMB', 'sxmb', 'SXMT', 'sxmt',
+            
+            // ✅ TIME-BASED KEYWORDS
+            'kết quả xổ số hôm nay', 'ket qua xo so hom nay',
+            'kết quả xổ số mới nhất', 'ket qua xo so moi nhat',
+            'kết quả xổ số ngày hôm nay', 'ket qua xo so ngay hom nay',
+            'xem kết quả xổ số', 'xem ket qua xo so',
+            'tra cứu kết quả xổ số', 'tra cuu ket qua xo so',
+            'kết quả xổ số nhanh nhất', 'ket qua xo so nhanh nhat',
+            'kết quả xổ số chính xác', 'ket qua xo so chinh xac',
+            
+            // ✅ REGIONAL KEYWORDS
+            'xổ số miền Nam', 'xo so mien Nam', 'xo so mien nam',
+            'xổ số miền Bắc', 'xo so mien Bac', 'xo so mien bac',
+            'xổ số miền Trung', 'xo so mien Trung', 'xo so mien trung',
+            'xổ số 3 miền', 'xo so 3 mien',
+            
+            // ✅ ACTION KEYWORDS
+            'xem kết quả xổ số hôm nay', 'xem ket qua xo so hom nay',
+            'tra cứu kết quả xổ số miền Nam', 'tra cuu ket qua xo so mien nam',
+            'tra cứu kết quả xổ số miền Bắc', 'tra cuu ket qua xo so mien bac',
+            'xem kết quả XSMN', 'xem ket qua XSMN',
+            'xem kết quả XSMB', 'xem ket qua XSMB',
+            'xem kết quả XSMT', 'xem ket qua XSMT',
+            
+            // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh
+            // KETQUA04.NET / KETQUA.NET - Target brand
+            'ketqua04.net', 'ketqua04', 'ketqua.net', 'ketqua 04', 'ket qua 04',
+            'ketqua04.net alternative', 'thay thế ketqua04.net', 'ketqua04.net tốt hơn',
+            'ketqua04.net vs ketquamn', 'so sánh ketqua04.net', 'tốt hơn ketqua04.net',
+            'ketqua04.net kết quả xổ số', 'ketqua04.net xsmn', 'ketqua04.net xsmb',
+            'ketqua04.net tra cứu', 'ketqua04.net hôm nay', 'ketqua04.net mới nhất',
+            
+            // XOSODAIPHAT
+            'kết quả xổ số xosodaiphat', 'ket qua xo so xosodaiphat',
+            'kết quả xổ số tốt hơn xosodaiphat', 'ket qua xo so tot hon xosodaiphat',
+            'xosodaiphat.com alternative', 'thay thế xosodaiphat.com', 'xosodaiphat.com tốt hơn',
+            'xosodaiphat.com vs ketquamn', 'so sánh xosodaiphat.com', 'tốt hơn xosodaiphat.com',
+            'xosodaiphat.com kết quả xổ số', 'xosodaiphat.com xsmn', 'xosodaiphat.com xsmb',
+            
+            // XOSO.COM.VN
+            'kết quả xổ số xoso', 'ket qua xo so xoso',
+            'kết quả xổ số tốt hơn xoso', 'ket qua xo so tot hon xoso',
+            'xoso.com.vn alternative', 'thay thế xoso.com.vn', 'xoso.com.vn tốt hơn',
+            'xoso.com.vn vs ketquamn', 'so sánh xoso.com.vn', 'tốt hơn xoso.com.vn',
+            'xoso.com.vn kết quả xổ số', 'xoso.com.vn xsmn', 'xoso.com.vn xsmb',
+            
+            // XSKT.COM.VN
+            'kết quả xổ số xskt', 'ket qua xo so xskt',
+            'kết quả xổ số tốt hơn xskt', 'ket qua xo so tot hon xskt',
+            'xskt.com.vn alternative', 'thay thế xskt.com.vn', 'xskt.com.vn tốt hơn',
+            'xskt.com.vn vs ketquamn', 'so sánh xskt.com.vn', 'tốt hơn xskt.com.vn',
+            
+            // XSMN.MOBI
+            'kết quả xổ số xsmn.mobi', 'ket qua xo so xsmn.mobi',
+            'xsmn.mobi alternative', 'thay thế xsmn.mobi', 'xsmn.mobi tốt hơn',
+            'xsmn.mobi vs ketquamn', 'so sánh xsmn.mobi', 'tốt hơn xsmn.mobi',
+            
+            // KETQUA.NET
+            'kết quả xổ số ketqua.net', 'ket qua xo so ketqua.net',
+            
+            // COMPARISON
+            'kết quả xổ số nào tốt nhất', 'ket qua xo so nao tot nhat',
+            'kết quả xổ số nhanh nhất', 'ket qua xo so nhanh nhat',
+            'kết quả xổ số chính xác nhất', 'ket qua xo so chinh xac nhat',
+            
+            // ✅ LONG-TAIL KEYWORDS
+            'xem kết quả xổ số miền Nam hôm nay', 'xem ket qua xo so mien nam hom nay',
+            'xem kết quả xổ số miền Bắc hôm nay', 'xem ket qua xo so mien bac hom nay',
+            'tra cứu kết quả xổ số 3 miền', 'tra cuu ket qua xo so 3 mien',
+            'bảng kết quả xổ số', 'bang ket qua xo so',
+            'danh sách kết quả xổ số', 'danh sach ket qua xo so',
+            
+            // ✅ THỐNG KÊ KEYWORDS
+            'thống kê xổ số', 'thong ke xo so',
+            'thống kê xổ số 3 miền', 'thong ke xo so 3 mien',
+            'thống kê XSMN', 'thong ke XSMN',
+            'thống kê XSMB', 'thong ke XSMB',
+            'thống kê XSMT', 'thong ke XSMT',
+            
+            // ✅ CÔNG CỤ XỔ SỐ (giữ lại một phần)
+            'tạo dàn đề', 'tao dan de',
+            'soi cầu', 'soi cau',
+            'dự đoán xổ số', 'du doan xo so',
             
             // ✅ ĐỒNG NGHĨA - Các từ có nghĩa tương tự
             'lập dàn đề', 'lap dan de', 'lập dàn số', 'lap dan so',
@@ -1128,8 +1197,8 @@ const SEO_CONFIG = {
      * ENHANCED: Tối ưu với keywords variations, time-based, competitive
      */
     'kqxs': {
-        title: 'XSMB - Kết Quả Xổ Số Miền Bắc Đài Truyền Thống Hôm Nay | SXMB - KQXSMB - XSTD Nhanh Nhất 2025',
-        description: 'XSMB - Kết quả xổ số miền Bắc đài truyền thống (xsmb, sxmb, kqxsmb, xstd) hôm nay nhanh nhất, chính xác nhất. Tường thuật trực tiếp lúc 18h15 từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. Xem XSMB 30 ngày, XSMB hôm qua, XSMB theo thứ. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Miễn phí 100%!',
+        title: 'Kết Quả MN | KETQUAMN.COM - XSMB Kết Quả Xổ Số Miền Bắc Hôm Nay Nhanh Nhất | SXMB - KQXSMB - XSTD 2025',
+        description: 'Kết Quả MN (KETQUAMN.COM) - XSMB kết quả xổ số miền Bắc đài truyền thống (xsmb, sxmb, kqxsmb, xstd) hôm nay nhanh nhất, chính xác nhất. Tường thuật trực tiếp lúc 18h15 từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. Xem XSMB 30 ngày, XSMB hôm qua, XSMB theo thứ. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Miễn phí 100%!',
         keywords: [
             // ✅ PRIMARY KEYWORDS - Từ khóa chính volume cao
             'xsmb', 'XSMB', 'xs mb', 'xổ số mb',
@@ -1238,9 +1307,9 @@ const SEO_CONFIG = {
             'xsmb quay thử', 'xsmb quay thu',
             
             // ✅ BRAND VARIATIONS
-            'ketquamn xsmb', 'wukong xsmb',
-            'ketquamn.com xsmb', 'kết quả xsmb wukong',
-            'dan de wukong xsmb',
+            'Kết Quả MN xsmb', 'ket qua MN xsmb', 'KETQUAMN.COM xsmb',
+            'ketquamn.com xsmb', 'ketquamn xsmb',
+            'Kết Quả MN XSMB', 'ket qua MN XSMB',
             
             // ✅ REGIONAL
             'kết quả xổ số 3 miền', 'ket qua xo so 3 mien',

@@ -6,6 +6,11 @@
 
 import SEOOptimized from './SEOOptimized';
 import MultiSearchEngineOptimizer from './MultiSearchEngineOptimizer';
+import AdvancedSEO from './AdvancedSEO';
+import UltimateSEO from './UltimateSEO';
+import CoreWebVitalsOptimizer from './CoreWebVitalsOptimizer';
+import PageExperienceSignals from './PageExperienceSignals';
+import BrandTargetingSEO from './BrandTargetingSEO';
 import { memo } from 'react';
 
 const EnhancedSEOHead = memo(function EnhancedSEOHead({
@@ -19,7 +24,7 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
     faq,
     structuredData = [],
     locale = 'vi_VN',
-    author = 'Dàn Đề Wukong',
+    author = 'Kết Quả MN | KETQUAMN.COM',
     // Backward compatibility: support both 'title' and 'customTitle'
     title,
     description,
@@ -33,21 +38,47 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
     const finalCanonical = canonicalUrl || canonical;
     return (
         <>
-            {/* ✅ SEOOptimized - Existing SEO component */}
-            <SEOOptimized
-                pageType={pageType}
-                customTitle={finalTitle}
-                customDescription={finalDescription}
-                customKeywords={finalKeywords}
+            {/* ✅ UltimateSEO - Latest 2024-2025 SEO Standards (E-E-A-T, Core Web Vitals, Helpful Content) */}
+            <UltimateSEO
+                title={finalTitle}
+                description={finalDescription}
+                keywords={finalKeywords}
                 canonical={finalCanonical}
-                canonicalUrl={finalCanonical}
                 ogImage={ogImage}
+                pageType={pageType === 'home' ? 'website' : (pageType === 'article' ? 'article' : 'website')}
+                author={author}
+                structuredData={structuredData}
                 breadcrumbs={breadcrumbs}
                 faq={faq}
-                structuredData={structuredData}
+                articleData={pageType === 'article' ? { publishedTime: new Date().toISOString(), modifiedTime: new Date().toISOString() } : null}
+                helpfulContent={true}
+                originalContent={true}
+                contentQuality="high"
+                noindex={false}
             />
 
-            {/* ✅ MultiSearchEngineOptimizer - Enhanced for Bing, Cốc Cốc */}
+            {/* ✅ Core Web Vitals Optimizer - LCP, FID, CLS optimization */}
+            <CoreWebVitalsOptimizer />
+
+            {/* ✅ Page Experience Signals - Mobile-friendly, Safe browsing, No intrusive interstitials */}
+            <PageExperienceSignals />
+
+            {/* ✅ AdvancedSEO - White Hat + Gray Hat SEO nâng cao (backup) */}
+            <AdvancedSEO
+                title={finalTitle}
+                description={finalDescription}
+                keywords={finalKeywords}
+                canonical={finalCanonical}
+                ogImage={ogImage}
+                pageType={pageType === 'home' ? 'website' : (pageType === 'article' ? 'article' : 'website')}
+                structuredData={structuredData}
+                breadcrumbs={breadcrumbs}
+                faq={faq}
+                articleData={pageType === 'article' ? { publishedTime: new Date().toISOString(), modifiedTime: new Date().toISOString() } : null}
+                noindex={false}
+            />
+
+            {/* ✅ MultiSearchEngineOptimizer - Enhanced for Bing, Cốc Cốc, Yandex, Baidu */}
             <MultiSearchEngineOptimizer
                 title={finalTitle}
                 description={finalDescription}
@@ -58,6 +89,12 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
                 type={pageType === 'home' ? 'website' : 'article'}
                 author={author}
                 structuredData={structuredData}
+            />
+
+            {/* ✅ Brand Targeting SEO - Xuất hiện khi tìm kiếm tên các trang nổi tiếng */}
+            <BrandTargetingSEO
+                targetBrands={['ketqua04.net', 'xosodaiphat.com', 'xoso.com.vn', 'xskt.com.vn']}
+                includeComparison={true}
             />
         </>
     );

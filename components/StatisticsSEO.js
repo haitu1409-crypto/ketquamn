@@ -80,7 +80,7 @@ const StatisticsSEO = memo(function StatisticsSEO({
             "name": "ketquamn.com",
             "logo": {
                 "@type": "ImageObject",
-                "url": `${siteUrl}/logo.png`
+                "url": `${siteUrl}/logo1.png`
             }
         },
         "datePublished": metadata.startDate || new Date().toISOString().split('T')[0],
@@ -121,7 +121,7 @@ const StatisticsSEO = memo(function StatisticsSEO({
             "name": "ketquamn.com",
             "logo": {
                 "@type": "ImageObject",
-                "url": `${siteUrl}/logo.png`
+                "url": `${siteUrl}/logo1.png`
             }
         },
         "datePublished": metadata.startDate || new Date().toISOString(),

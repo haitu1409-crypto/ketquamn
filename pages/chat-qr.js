@@ -92,7 +92,7 @@ export default function ChatQRPage() {
                                 level="H"
                                 includeMargin={true}
                                 imageSettings={{
-                                    src: '/imgs/monkey.png',
+                                    src: '/logo1.png',
                                     height: 60,
                                     width: 60,
                                     excavate: true,

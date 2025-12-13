@@ -6,7 +6,10 @@
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import Layout from '../../components/Layout';
-import SEOOptimized from '../../components/SEOOptimized';
+import EnhancedSEOHead from '../../components/EnhancedSEOHead';
+import EditorialContent from '../../components/EditorialContent';
+import ComparisonContent from '../../components/ComparisonContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 import PageSpeedOptimizer from '../../components/PageSpeedOptimizer';
 import MobileNavbar from '../../components/MobileNavbar';
 import AOSWrapper from '../../components/AOSWrapper';
@@ -223,8 +226,8 @@ export default function DanDacBietPage() {
 
     return (
         <>
-            <SEOOptimized
-                pageType="dan-dac-biet"
+            <EnhancedSEOHead
+                pageType="dan-de"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
@@ -232,7 +235,7 @@ export default function DanDacBietPage() {
                 ogImage={pageSEO.image}
                 breadcrumbs={breadcrumbs}
                 faq={faqData}
-                structuredData={howToSchema}
+                structuredData={[howToSchema]}
             />
             <PageSpeedOptimizer />
 
@@ -329,6 +332,15 @@ export default function DanDacBietPage() {
 
                         {/* Author Bio */}
                         <AuthorBio />
+                        
+                        {/* ✅ Editorial Content - Compact mode */}
+                        <EditorialContent pageType="dan-de" compact={true} />
+                        
+                        {/* ✅ Comparison Content - Compact mode */}
+                        <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                        
+                        {/* ✅ Internal Linking SEO */}
+                        <InternalLinksSection pageType="home" />
 
                     </div>
                 </AOSWrapper>

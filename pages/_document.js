@@ -33,12 +33,15 @@ export default function Document() {
 
                 {/* ===== SYSTEM FONTS ONLY - No external font loading ===== */}
 
-                {/* ===== FAVICONS - Sử dụng favicon.ico chính thức ===== */}
+                {/* ===== FAVICONS - Tạo từ logoketquamn.png với kích thước chuẩn ===== */}
+                {/* Favicon chính - trình duyệt sẽ tự chọn kích thước phù hợp */}
                 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+                {/* Apple Touch Icon - cho iOS */}
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                {/* Shortcut icon */}
                 <link rel="shortcut icon" href="/favicon.ico" />
 
                 {/* ===== PWA ICONS ===== */}
@@ -48,8 +51,8 @@ export default function Document() {
                 <link rel="manifest" href="/manifest.json" />
 
                 {/* ===== THEME COLOR - Cập nhật cho thương hiệu con khỉ ===== */}
-                <meta name="theme-color" content="#667eea" />
-                <meta name="msapplication-TileColor" content="#667eea" />
+                <meta name="theme-color" content="#FF6B35" />
+                <meta name="msapplication-TileColor" content="#FF6B35" />
                 <meta name="msapplication-TileImage" content="/icon-192.png" />
 
                 {/* ===== DMCA SITE VERIFICATION ===== */}
@@ -59,7 +62,7 @@ export default function Document() {
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-                <meta name="apple-mobile-web-app-title" content="Dàn Đề Wukong" />
+                <meta name="apple-mobile-web-app-title" content="Kết Quả MN" />
 
                 {/* ===== MICROSOFT TILES ===== */}
                 <meta name="msapplication-config" content="/browserconfig.xml" />
@@ -118,7 +121,7 @@ export default function Document() {
             
             /* Focus visible for accessibility */
             :focus-visible {
-              outline: 2px solid #4F46E5;
+              outline: 2px solid #FF6B35;
               outline-offset: 2px;
             }
             

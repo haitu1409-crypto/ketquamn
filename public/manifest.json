@@ -10,13 +10,13 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/imgs/wukong.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/imgs/wukong.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -32,14 +32,14 @@
       "short_name": "Dàn 9x",
       "description": "Tạo dàn 9x-0x ngẫu nhiên",
       "url": "/dan-9x0x",
-      "icons": [{ "src": "/imgs/wukong.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "96x96" }]
     },
     {
       "name": "Tạo Dàn 2D",
       "short_name": "Dàn 2D",
       "description": "Tạo dàn 2D (00-99)",
       "url": "/dan-2d",
-      "icons": [{ "src": "/imgs/wukong.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "96x96" }]
     }
   ],
   "screenshots": [
