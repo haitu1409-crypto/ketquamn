@@ -12,9 +12,17 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
-import { ContentWrapper } from '../components/ContentWrapper';
-import EditorialContent from '../components/EditorialContent';
+
+// ✅ Lazy load SEO components to improve initial page load performance
+const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null
+});
+
+const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null
+});
 import { isWithinLiveWindowXSMN } from '../utils/lotteryUtils';
 
 const LiveResultXSMN = dynamic(() => import('../components/LiveResultXSMN'), {
@@ -267,10 +275,8 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
                     </div>
 
-                    {/* ✅ Editorial Content - Compact mode */}
+                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
                     <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
-
-                    {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />
                 </div>
             </Layout>
