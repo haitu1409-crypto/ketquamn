@@ -178,7 +178,6 @@ const KQXSMNPage = memo(function KQXSMNPage() {
 
             <Layout>
                 <div className={styles.container}>
-                    {/* ✅ LCP Element: H1 title with fetchpriority hint */}
                     <h1 className={styles.pageTitle} style={{ contain: 'layout style paint' }}>
                         {h1Title}
                     </h1>

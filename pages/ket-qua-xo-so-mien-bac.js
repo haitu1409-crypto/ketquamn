@@ -214,7 +214,7 @@ const KQXSPage = memo(function KQXSPage() {
                         </div>
                     )}
 
-                    {/* ✅ LCP Element: H1 title - Critical content */}
+                    {/* Header Section - ✅ LCP Element: Add fetchpriority hint */}
                     <h1 className={styles.pageTitle} style={{ contain: 'layout style paint' }}>
                         {h1Title}
                     </h1>

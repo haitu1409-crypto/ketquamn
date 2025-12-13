@@ -70,10 +70,16 @@ body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: var(--color-gray-900);
-  /* ✅ Performance: Background image loaded after initial render to improve LCP */
-  /* Fallback background color - prevents layout shift */
+  /* Background image with overlay for better text readability */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url('/imgs/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* Fallback background color */
   background-color: var(--bg-secondary);
-  /* Background image will be loaded via JavaScript after page load */
   min-height: 100vh;
   /* ✅ Fix: Ensure only one scroll */
   height: 100%;

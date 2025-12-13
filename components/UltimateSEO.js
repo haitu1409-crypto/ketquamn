@@ -557,9 +557,11 @@ export default function UltimateSEO({
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />
             <meta name="apple-mobile-web-app-title" content="Kết Quả MN" />
 
-            {/* ===== ✅ SECURITY HEADERS ===== */}
-            {/* Note: Security headers are set via HTTP headers in vercel.json, not meta tags */}
-            {/* X-Frame-Options, X-Content-Type-Options, X-XSS-Protection, Referrer-Policy are configured in vercel.json */}
+            {/* ===== ✅ SECURITY HEADERS (via meta tags where possible) ===== */}
+            <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+            <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
+            <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+            <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
             {/* ===== ✅ ACCESSIBILITY ===== */}
             {/* Note: lang attribute is set in _document.js <Html lang="vi"> - do not duplicate here */}

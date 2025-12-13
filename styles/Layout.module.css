@@ -499,10 +499,11 @@
     overflow: visible;
     /* padding: var(--spacing-6) 0; */
     animation: fadeIn var(--transition-slow) ease-out;
-    /* ✅ Performance: Background image loaded after initial render to improve LCP */
-    /* ✅ Prevent layout shift while background loads */
-    background-color: #f8fafc;
-    /* Background image will be loaded via JavaScript after page load */
+    background-image: url('/imgs/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     /* Fallback background color */
     /* background-color: var(--bg-secondary); */
     /* ✅ CRITICAL: Ensure main doesn't create stacking context that breaks sticky */
