@@ -53,12 +53,11 @@ export default function PageExperienceSignals() {
             <meta name="apple-mobile-web-app-capable" content="yes" />
             
             {/* ✅ Safe browsing signals */}
-            <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-            <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
-            <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+            {/* Note: Security headers are set via HTTP headers in vercel.json, not meta tags */}
+            {/* X-Frame-Options, X-Content-Type-Options, X-XSS-Protection are configured in vercel.json */}
             
             {/* ✅ HTTPS enforcement */}
-            <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+            {/* Note: HSTS should be set via HTTP headers, not meta tags */}
             
             {/* ✅ No intrusive interstitials */}
             <meta name="no-intrusive-interstitials" content="true" />

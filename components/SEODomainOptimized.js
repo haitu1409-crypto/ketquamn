@@ -70,9 +70,7 @@ export default function SEODomainOptimized({
       <meta name="preload" content="true" />
 
       {/* Security Headers */}
-      <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-      <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-      <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+      {/* Note: Security headers are set via HTTP headers in vercel.json, not meta tags */}
 
       {/* PWA */}
       <link rel="manifest" href="/manifest.json" />
