@@ -506,6 +506,12 @@
     background-attachment: fixed;
     /* Fallback background color */
     /* background-color: var(--bg-secondary); */
+    
+    /* ✅ Mobile: Không sử dụng background image */
+    @media (max-width: 768px) {
+        background-image: none;
+        background-color: var(--bg-secondary, #f8f9fa);
+    }
     /* ✅ CRITICAL: Ensure main doesn't create stacking context that breaks sticky */
     position: relative;
     z-index: 1;

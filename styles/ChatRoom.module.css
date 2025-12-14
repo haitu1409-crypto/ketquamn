@@ -328,6 +328,19 @@
     background-image: url('/imgs/backgroundChatPrive.png');
 }
 
+/* ✅ Mobile: Không sử dụng background image */
+@media (max-width: 768px) {
+    .messagesContainer {
+        background-image: none;
+        background-color: #f5f5f5;
+    }
+    
+    .messagesContainer.privateChatBackground {
+        background-image: none;
+        background-color: #f5f5f5;
+    }
+}
+
 .loading {
     display: flex;
     flex-direction: column;
