@@ -26,7 +26,8 @@ export default function Document() {
                 {/* Removed unnecessary preloads to avoid browser warnings */}
 
                 {/* ===== CRITICAL CSS FOR CLS PREVENTION ===== */}
-                {/* ✅ REMOVED: External CSS preload causes FOUC - using inline CSS instead */}
+                <link rel="preload" href="/styles/critical.css" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+                <noscript><link rel="stylesheet" href="/styles/critical.css" /></noscript>
 
                 {/* ===== GOOGLE ANALYTICS (gtag.js) - LAZY LOAD ===== */}
                 {/* ✅ Performance: Defer GTM loading to reduce blocking time */}
@@ -115,8 +116,9 @@ export default function Document() {
               font-size: 0.875rem;
               color: #6b7280;
               line-height: 1.5;
-              /* ✅ Fix CLS: Reserve space to prevent layout shift - like old version */
+              /* ✅ Fix CLS: Reserve space to prevent layout shift */
               min-height: 60px;
+              contain: layout style;
               font-display: swap;
             }
             
@@ -139,21 +141,60 @@ export default function Document() {
               margin: 1rem 0;
               color: #666;
               font-weight: 500;
-              /* ✅ Fix CLS: Reserve space for loading states - like old version */
+              /* ✅ Fix CLS: Reserve space for loading states */
               min-height: 200px;
+              contain: layout style;
             }
             
-            /* ✅ CLS Prevention for TodayPredictions - like old version */
+            /* ✅ CLS Prevention for TodayPredictions */
             .today-predictions-container,
             [class*="TodayPredictions"] {
+              contain: layout style;
               height: auto;
             }
             
-            /* ✅ CLS Prevention for dynamic components - like old version but without contain */
+            /* ✅ CLS Prevention for dynamic components */
             [class*="dynamic"],
             [class*="lazy"] {
               min-height: 150px;
-              height: auto;
+              height: 150px;
+              contain: layout style;
+              overflow: hidden;
+            }
+            
+            /* ✅ CRITICAL: Prevent layout shift for subtitle element */
+            [class*="subtitle"],
+            p[class*="subtitle"] {
+              contain: layout style !important;
+              font-display: swap !important;
+              overflow: hidden !important;
+              text-overflow: ellipsis !important;
+              white-space: nowrap !important;
+            }
+            
+            /* ✅ CRITICAL: Prevent layout shift for text elements */
+            h1, h2, h3, h4, h5, h6 {
+              font-display: swap !important;
+              contain: layout style !important;
+            }
+            
+            h1 {
+            }
+            
+            h2 {
+              min-height: 2rem !important;
+              height: 2rem !important;
+              overflow: hidden !important;
+              text-overflow: ellipsis !important;
+              white-space: nowrap !important;
+            }
+            
+            h3 {
+              min-height: 1.75rem !important;
+              height: 1.75rem !important;
+              overflow: hidden !important;
+              text-overflow: ellipsis !important;
+              white-space: nowrap !important;
             }
             
             @keyframes loading {
