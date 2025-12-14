@@ -10,10 +10,20 @@ import Layout from '../components/Layout';
 import TodayPredictions from '../components/TodayPredictions';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
-import EditorialContent from '../components/EditorialContent';
-import ComparisonContent from '../components/ComparisonContent';
 import { getPageSEO } from '../config/seoConfig';
+// ✅ Dynamic import SEO components to prevent layout shift on initial mount
+const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null // Don't show loading placeholder - prevents layout shift
+});
+const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null // Don't show loading placeholder - prevents layout shift
+});
+const ComparisonContent = dynamic(() => import('../components/ComparisonContent'), {
+    ssr: false,
+    loading: () => null // Don't show loading placeholder - prevents layout shift
+});
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
 import { Dice6, Target, BarChart3, Star, Zap, CheckCircle, Heart, Smartphone, Sparkles, Calendar, Activity, TrendingUp, Award, Percent } from 'lucide-react';
@@ -81,6 +91,19 @@ const ThongKeNhanh = dynamic(() => import('../components/ThongKeNhanh'), {
 
 // ✅ Memoized Homepage component for better performance
 const Home = memo(function Home() {
+    // ✅ Delay render SEO components to prevent layout shift on initial mount
+    const [showSEOComponents, setShowSEOComponents] = useState(false);
+    
+    useEffect(() => {
+        // ✅ Only render SEO components after page has fully mounted and rendered
+        // This prevents layout shift on initial mount
+        const timer = setTimeout(() => {
+            setShowSEOComponents(true);
+        }, 100); // Small delay to ensure page is fully rendered
+        
+        return () => clearTimeout(timer);
+    }, []);
+    
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
 
     // Get SEO config for homepage
@@ -491,14 +514,19 @@ const Home = memo(function Home() {
                     </div>
                 </div>
                 
-                {/* ✅ Editorial Content - Compact mode, chỉ hiển thị ngắn gọn */}
-                <EditorialContent pageType="home" compact={true} />
-                
-                {/* ✅ Comparison Content - Compact mode, ẩn full comparison */}
-                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
-                
-                {/* ✅ Internal Linking SEO - Gray Hat Technique */}
-                <InternalLinksSection pageType="home" />
+                {/* ✅ SEO Components - Delay render to prevent layout shift on initial mount */}
+                {showSEOComponents && (
+                    <>
+                        {/* ✅ Editorial Content - Compact mode, chỉ hiển thị ngắn gọn */}
+                        <EditorialContent pageType="home" compact={true} />
+                        
+                        {/* ✅ Comparison Content - Compact mode, ẩn full comparison */}
+                        <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                        
+                        {/* ✅ Internal Linking SEO - Gray Hat Technique */}
+                        <InternalLinksSection pageType="home" />
+                    </>
+                )}
             </Layout>
         </>
     );

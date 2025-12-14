@@ -41,8 +41,18 @@ const KQXSMNPage = memo(function KQXSMNPage() {
     const [pagination, setPagination] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(null);
     const [isLiveWindow, setIsLiveWindow] = useState(false);
+    // ✅ Delay render SEO components to prevent layout shift on initial mount
+    const [showSEOComponents, setShowSEOComponents] = useState(false);
 
     const intervalRef = useRef(null);
+    
+    // ✅ Delay render SEO components after page has fully mounted
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowSEOComponents(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handlePageChange = useCallback((newPage) => {
         if (newPage >= 1 && newPage <= totalPages) {
@@ -260,9 +270,13 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
                     </div>
 
-                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
-                    <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />
+                    {/* ✅ SEO Components - Delay render to prevent layout shift on initial mount */}
+                    {showSEOComponents && (
+                        <>
+                            <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
+                            <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />
+                        </>
+                    )}
                 </div>
             </Layout>
         </>

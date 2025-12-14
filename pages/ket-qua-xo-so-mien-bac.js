@@ -43,9 +43,19 @@ const KQXSPage = memo(function KQXSPage() {
     const [pagination, setPagination] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(null);
     const [isLiveWindow, setIsLiveWindow] = useState(false);
+    // ✅ Delay render SEO components to prevent layout shift on initial mount
+    const [showSEOComponents, setShowSEOComponents] = useState(false);
 
     // ✅ Use ref to store interval ID and avoid re-creating interval
     const intervalRef = useRef(null);
+    
+    // ✅ Delay render SEO components after page has fully mounted
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowSEOComponents(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
 
     // Handle page change - Memoized with useCallback
     const handlePageChange = useCallback((newPage) => {
@@ -310,9 +320,13 @@ const KQXSPage = memo(function KQXSPage() {
                         {/* ✅ SEO: Internal links - Removed duplicate section */}
                     </div>
                     
-                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
-                    <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
+                    {/* ✅ SEO Components - Delay render to prevent layout shift on initial mount */}
+                    {showSEOComponents && (
+                        <>
+                            <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
+                            <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
+                        </>
+                    )}
                 </div>
             </Layout>
         </>
