@@ -70,6 +70,7 @@ body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
   color: var(--color-gray-900);
+  /* ✅ PERFORMANCE: Background image chỉ hiển thị trên desktop */
   /* Background image with overlay for better text readability */
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
@@ -81,6 +82,15 @@ body {
   /* Fallback background color */
   background-color: var(--bg-secondary);
   min-height: 100vh;
+}
+
+/* ✅ PERFORMANCE: Ẩn background image trên mobile để tăng hiệu suất (tiết kiệm ~317KB) */
+@media (max-width: 767px) {
+  body {
+    background-image: none !important;
+    background-color: var(--bg-secondary);
+    /* Sử dụng màu nền thay vì hình ảnh trên mobile */
+  }
   /* ✅ Fix: Ensure only one scroll */
   height: 100%;
   overflow-x: hidden;
