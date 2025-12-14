@@ -28,43 +28,43 @@ export default function UltimateSEO({
     keywords = '',
     canonical,
     ogImage,
-    
+
     // Page Type
     pageType = 'website',
-    
+
     // E-E-A-T Signals
     author = null,
     authorProfile = null,
     expertise = null,
     experience = null,
     trustworthiness = null,
-    
+
     // Content Quality
     contentQuality = 'high',
     helpfulContent = true,
     originalContent = true,
-    
+
     // Structured Data
     structuredData = [],
     breadcrumbs = [],
     faq = [],
     articleData = null,
     lotteryData = null,
-    
+
     // Performance
     preloadImages = [],
     preconnectDomains = [],
-    
+
     // Security
     csp = null,
-    
+
     // Accessibility
     lang = 'vi',
-    
+
     // Robots
     noindex = false,
     nofollow = false,
-    
+
     // Additional
     customMeta = [],
     customLinks = [],
@@ -84,7 +84,7 @@ export default function UltimateSEO({
             authoritativeness: 'Trang web được tin cậy bởi hàng nghìn người dùng mỗi ngày',
             trustworthiness: trustworthiness || 'Dữ liệu chính xác, cập nhật nhanh, miễn phí 100%'
         };
-        
+
         if (author) {
             data.author = {
                 name: author,
@@ -93,7 +93,7 @@ export default function UltimateSEO({
                 experience: experience || '5+ năm kinh nghiệm'
             };
         }
-        
+
         return data;
     }, [author, authorProfile, expertise, experience, trustworthiness, siteUrl]);
 
@@ -375,7 +375,7 @@ export default function UltimateSEO({
 
         // Merge với structured data từ props
         // ✅ FIX: Filter out FAQPage from structuredData props if faq prop is provided (to avoid duplicates)
-        const filteredStructuredData = Array.isArray(structuredData) 
+        const filteredStructuredData = Array.isArray(structuredData)
             ? structuredData.filter(schema => {
                 // Remove FAQPage schema if faq prop is provided (UltimateSEO already creates it)
                 if (faq && faq.length > 0 && schema && schema['@type'] === 'FAQPage') {
@@ -389,11 +389,11 @@ export default function UltimateSEO({
                 }
                 return Boolean(schema);
             });
-        
+
         return [...schemas, ...filteredStructuredData];
     }, [
-        title, description, keywords, canonical, ogImage, pageType, structuredData, 
-        breadcrumbs, faq, articleData, lotteryData, siteUrl, siteName, fullUrl, 
+        title, description, keywords, canonical, ogImage, pageType, structuredData,
+        breadcrumbs, faq, articleData, lotteryData, siteUrl, siteName, fullUrl,
         ogImageUrl, currentDate, currentYear, eeatData
     ]);
 
@@ -402,12 +402,12 @@ export default function UltimateSEO({
         const directives = [];
         if (noindex) directives.push('noindex');
         else directives.push('index');
-        
+
         if (nofollow) directives.push('nofollow');
         else directives.push('follow');
-        
+
         directives.push('max-snippet:-1', 'max-image-preview:large', 'max-video-preview:-1');
-        
+
         return directives.join(', ');
     }, [noindex, nofollow]);
 
@@ -418,7 +418,7 @@ export default function UltimateSEO({
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
             <meta name="author" content={author || siteName} />
-            
+
             {/* ===== ROBOTS - Multi-Search Engine ===== */}
             <meta name="robots" content={robotsContent} />
             <meta name="googlebot" content={robotsContent} />
@@ -531,6 +531,7 @@ export default function UltimateSEO({
             <meta name="coccoc-site-verification" content="" />
 
             {/* ===== STRUCTURED DATA ===== */}
+            {/* ✅ FIX: Structured data doesn't block rendering, but we ensure it's non-blocking */}
             {enhancedStructuredData.map((schema, index) => (
                 <script
                     key={`structured-data-${index}`}
@@ -547,7 +548,7 @@ export default function UltimateSEO({
             <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            
+
             {/* Preconnect to custom domains */}
             {preconnectDomains.map((domain, index) => (
                 <link key={`preconnect-${index}`} rel="preconnect" href={domain} />
@@ -555,10 +556,10 @@ export default function UltimateSEO({
 
             {/* Preload critical images */}
             {preloadImages.map((image, index) => (
-                <link 
-                    key={`preload-${index}`} 
-                    rel="preload" 
-                    as="image" 
+                <link
+                    key={`preload-${index}`}
+                    rel="preload"
+                    as="image"
                     href={image.url}
                     fetchPriority={image.priority || 'high'}
                 />
@@ -569,7 +570,7 @@ export default function UltimateSEO({
             <meta name="msapplication-TileColor" content="#FF6B35" />
 
             {/* ===== ✅ MOBILE OPTIMIZATION ===== */}
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            {/* ✅ FIX: Viewport meta tag removed - already set in _app.js to prevent layout shift */}
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />

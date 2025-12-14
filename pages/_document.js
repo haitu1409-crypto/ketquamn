@@ -10,6 +10,8 @@ export default function Document() {
     return (
         <Html lang="vi" translate="no">
             <Head>
+                {/* ✅ CRITICAL: Viewport must be set in _document.js for earliest possible setting to prevent layout shift */}
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {/* ✅ Prevent Google Translate extension from auto-translating */}
                 <meta name="google" content="notranslate" />
                 {/* ===== DNS PREFETCH & PRECONNECT ===== */}

@@ -114,10 +114,10 @@ function MyApp({ Component, pageProps }) {
                         document.body.scrollTop = 0;
                     }
                 };
-                
+
                 // Reset immediately
                 resetScroll();
-                
+
                 // Reset again after a short delay to catch any delayed scroll restoration
                 requestAnimationFrame(() => {
                     resetScroll();
@@ -150,7 +150,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                {/* ✅ FIX: Viewport removed from _app.js - already set in _document.js for earliest possible setting to prevent layout shift */}
                 <meta charSet="utf-8" />
 
                 {/* ✅ Critical resource hints for LCP optimization */}
