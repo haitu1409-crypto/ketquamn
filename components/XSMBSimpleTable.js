@@ -82,8 +82,9 @@ const XSMBSimpleTable = ({
     // ✅ Fix hydration: Chỉ dùng apiData sau khi đã mount trên client
     const data = propData || (isMounted ? apiData : null);
 
-    // Loading state - hiển thị khi đang loading và chưa có data
-    if (loading && showLoading && !data) {
+    // ✅ OPTIMIZED: Không hiển thị loading nếu đã có data hoặc đang trên server
+    // Loading state - chỉ hiển thị khi thực sự đang loading và chưa có data
+    if (loading && showLoading && !data && isMounted) {
         return (
             <div className={`${styles.container} ${className}`}>
                 <div className={styles.loadingMessage}>

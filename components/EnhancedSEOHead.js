@@ -1,16 +1,10 @@
 /**
  * Enhanced SEO Head Component
- * Wrapper component kết hợp SEOOptimized và MultiSearchEngineOptimizer
- * Sử dụng cho tất cả pages
+ * ✅ OPTIMIZED: Simplified to use only SEOOptimized for better performance
+ * Similar to old project structure for fast initial load
  */
 
 import SEOOptimized from './SEOOptimized';
-import MultiSearchEngineOptimizer from './MultiSearchEngineOptimizer';
-import AdvancedSEO from './AdvancedSEO';
-import UltimateSEO from './UltimateSEO';
-import CoreWebVitalsOptimizer from './CoreWebVitalsOptimizer';
-import PageExperienceSignals from './PageExperienceSignals';
-import BrandTargetingSEO from './BrandTargetingSEO';
 import { memo } from 'react';
 
 const EnhancedSEOHead = memo(function EnhancedSEOHead({
@@ -36,49 +30,20 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
     const finalDescription = customDescription || description;
     const finalKeywords = customKeywords || keywords;
     const finalCanonical = canonicalUrl || canonical;
+    
     return (
-        <>
-            {/* ✅ UltimateSEO - Latest 2024-2025 SEO Standards (E-E-A-T, Core Web Vitals, Helpful Content) */}
-            {/* Main SEO component - contains all essential meta tags and structured data */}
-            <UltimateSEO
-                title={finalTitle}
-                description={finalDescription}
-                keywords={finalKeywords}
-                canonical={finalCanonical}
-                ogImage={ogImage}
-                pageType={pageType === 'home' ? 'website' : (pageType === 'article' ? 'article' : 'website')}
-                author={author}
-                structuredData={structuredData}
-                breadcrumbs={breadcrumbs}
-                faq={faq}
-                articleData={pageType === 'article' ? { publishedTime: new Date().toISOString(), modifiedTime: new Date().toISOString() } : null}
-                helpfulContent={true}
-                originalContent={true}
-                contentQuality="high"
-                noindex={false}
-            />
-
-            {/* ✅ MultiSearchEngineOptimizer - Enhanced for Bing, Cốc Cốc, Yandex, Baidu */}
-            {/* Only additional meta tags for other search engines - no duplicate structured data */}
-            <MultiSearchEngineOptimizer
-                title={finalTitle}
-                description={finalDescription}
-                keywords={finalKeywords}
-                url={finalCanonical}
-                image={ogImage}
-                locale={locale}
-                type={pageType === 'home' ? 'website' : 'article'}
-                author={author}
-                structuredData={null}
-            />
-
-            {/* ✅ Page Experience Signals - Lightweight, only meta tags */}
-            <PageExperienceSignals />
-
-            {/* ❌ REMOVED: AdvancedSEO - Duplicate of UltimateSEO, causing performance issues */}
-            {/* ❌ REMOVED: CoreWebVitalsOptimizer - Loading external CDN script slows down page */}
-            {/* ❌ REMOVED: BrandTargetingSEO - Can be lazy loaded or moved to specific pages only */}
-        </>
+        <SEOOptimized
+            pageType={pageType}
+            title={finalTitle}
+            description={finalDescription}
+            keywords={finalKeywords}
+            canonical={finalCanonical}
+            ogImage={ogImage}
+            breadcrumbs={breadcrumbs}
+            faq={faq}
+            structuredData={structuredData}
+            author={author}
+        />
     );
 });
 
