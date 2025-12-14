@@ -43,7 +43,8 @@ body {
     margin-top: auto;
     min-height: 100px;
     background: #f9fafb;
-    /* ✅ REMOVED: contain property causes rendering issues on mount */
+    /* ✅ CRITICAL: Fix layout shifts */
+    contain: layout style paint;
     position: relative;
 }
 
@@ -87,7 +88,8 @@ img {
     height: 300px;
     overflow: hidden;
     position: relative;
-    /* ✅ REMOVED: contain property causes rendering issues on mount */
+    /* Prevent layout shifts */
+    contain: layout style paint;
 }
 
 .slidesContainer {
@@ -457,32 +459,39 @@ td {
 
 /* ✅ CRITICAL: ThongKe specific CLS fixes */
 .thongKeContainer {
+    contain: layout style paint;
     position: relative;
     min-height: 100vh;
     overflow-x: hidden;
-    /* ✅ REMOVED: contain property causes rendering issues on mount */
 }
 
 .thongKeActionBar {
     min-height: 80px;
+    height: 80px;
+    contain: layout style paint;
     position: relative;
-    /* ✅ REMOVED: contain and fixed height - causes layout issues */
+    will-change: auto;
 }
 
 .thongKeContent {
     min-height: 500px;
+    height: 500px;
+    contain: layout style paint;
     position: relative;
-    /* ✅ REMOVED: contain and fixed height - causes layout issues */
+    will-change: auto;
 }
 
 .thongKeTableContainer {
     min-height: 400px;
+    height: 400px;
+    contain: layout style paint;
     position: relative;
-    /* ✅ REMOVED: contain and fixed height - causes layout issues */
+    will-change: auto;
 }
 
 .thongKeSubtitle {
     min-height: 24px;
+    height: 24px;
+    contain: layout style paint;
     position: relative;
-    /* ✅ REMOVED: contain and fixed height - causes layout issues */
 }

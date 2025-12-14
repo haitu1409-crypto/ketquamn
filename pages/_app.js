@@ -150,7 +150,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
 
                 {/* ✅ Critical resource hints for LCP optimization */}
@@ -161,7 +161,7 @@ function MyApp({ Component, pageProps }) {
 
                 {/* ✅ Preload critical images with fetchpriority */}
                 <link rel="preload" as="image" href="/logo1.png" fetchPriority="high" />
-                {/* ✅ REMOVED: Duplicate preload for same image */}
+                <link rel="preload" as="image" href="/logo1.png" fetchPriority="low" />
 
                 {/* ✅ Search Engine Verification */}
                 {/* TODO: Thay YOUR_GOOGLE_VERIFICATION_CODE bằng code thật từ Search Console */}

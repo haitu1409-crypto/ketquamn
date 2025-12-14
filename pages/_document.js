@@ -8,10 +8,9 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
     return (
-        <Html lang="vi">
+        <Html lang="vi" translate="no">
             <Head>
                 {/* ✅ Prevent Google Translate extension from auto-translating */}
-                {/* ✅ REMOVED: translate="no" may cause layout issues - keeping only meta tag */}
                 <meta name="google" content="notranslate" />
                 {/* ===== DNS PREFETCH & PRECONNECT ===== */}
                 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -78,19 +77,15 @@ export default function Document() {
               visibility: visible;
               opacity: 1;
               scroll-behavior: smooth;
-              /* ✅ Ensure font is set immediately - prevent layout shift */
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
             }
             
             body {
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
               margin: 0;
               padding: 0;
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
               line-height: 1.6;
-              /* ✅ Ensure font is applied immediately - prevent layout shift */
-              font-size: 16px;
             }
             
             /* Critical above-the-fold styles */

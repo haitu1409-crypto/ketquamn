@@ -10,8 +10,45 @@
   font-display: swap !important;
 }
 
-/* ✅ REMOVED: Aggressive contain properties cause rendering issues on mount */
-/* Let components handle their own layout with proper CSS modules */
+/* Reserve space for TodayPredictions component */
+.today-predictions-container,
+[class*="TodayPredictions"] {
+  contain: layout style !important;
+  height: auto !important;
+}
+
+/* Reserve space for subtitle element (the one causing CLS) */
+[class*="subtitle"],
+p[class*="subtitle"] {
+  contain: layout style !important;
+  font-display: swap !important;
+}
+
+/* Reserve space for dynamic components */
+[class*="dynamic"],
+[class*="lazy"] {
+  min-height: 150px !important;
+  contain: layout style !important;
+}
+
+/* Prevent layout shifts for images */
+img {
+  height: auto !important;
+  max-width: 100% !important;
+  contain: layout style !important;
+}
+
+/* Prevent layout shifts for icons */
+svg {
+  contain: layout style !important;
+}
+
+/* Reserve space for loading states */
+[class*="loading"],
+[class*="skeleton"] {
+  min-height: 200px !important;
+  contain: layout style !important;
+}
 
 /* ===== MOBILE OPTIMIZATIONS ===== */
 @media (max-width: 768px) {
@@ -26,8 +63,11 @@
   }
 }
 
-/* ✅ REMOVED: contain property causes rendering issues */
 /* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.contain-layout {
+  contain: layout style !important;
+}
+
 .prevent-shift {
   will-change: auto !important;
   transform: translateZ(0) !important;
@@ -50,5 +90,5 @@
   animation: loading-shimmer 1.5s infinite;
   border-radius: 8px;
   min-height: 200px !important;
-  /* ✅ REMOVED: contain property causes rendering issues */
+  contain: layout style !important;
 }
