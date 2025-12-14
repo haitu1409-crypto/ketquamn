@@ -31,25 +31,15 @@ const XSMBSimpleTable = ({
     onDataLoad,
     onError
 }) => {
-    // ✅ Fix hydration: Chỉ fetch trên client
-    const [isMounted, setIsMounted] = React.useState(false);
-
-    React.useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    // ✅ OPTIMIZED: Chỉ fetch client-side nếu không có propData (server-side data)
-    // Nếu có propData, không cần fetch ngay (chỉ fetch để refresh nếu cần)
-    const shouldFetch = !propData && isMounted;
-    
+    // ✅ GIỐNG DỰ ÁN CŨ: Fetch ngay lập tức, không cần mount check
     const xsmbTodayHook = useXSMBNextToday({
-        autoFetch: shouldFetch && useToday && autoFetch,
+        autoFetch: useToday && autoFetch,
         refreshInterval: useToday ? refreshInterval : 0
     });
 
     const xsmbHook = useXSMBNext({
         date: useToday ? 'latest' : date,
-        autoFetch: shouldFetch && !useToday && autoFetch,
+        autoFetch: !useToday && autoFetch,
         refreshInterval: !useToday ? refreshInterval : 0
     });
 
@@ -57,7 +47,7 @@ const XSMBSimpleTable = ({
     const { data: apiData, loading, error, refetch } = useToday ? xsmbTodayHook : xsmbHook;
 
     // Debug: Log để kiểm tra dữ liệu (chỉ khi cần thiết)
-    if (process.env.NODE_ENV === 'development' && isMounted) {
+    if (process.env.NODE_ENV === 'development') {
         console.log('🔍 XSMBSimpleTable data source:', {
             propData: !!propData,
             apiData: !!apiData,
@@ -81,14 +71,11 @@ const XSMBSimpleTable = ({
         }
     }, [error, onError]);
 
-    // ✅ CRITICAL: Ưu tiên propData (server-side data) để render ngay lập tức
-    // Nếu có propData, dùng ngay (render trên cả server và client)
-    // Nếu không có propData, dùng apiData sau khi mount trên client
-    const data = propData || (isMounted ? apiData : null);
+    // ✅ GIỐNG DỰ ÁN CŨ: Sử dụng dữ liệu từ API hoặc prop - CHỈ dữ liệu thật, không có fallback
+    const data = propData || apiData;
 
-    // ✅ OPTIMIZED: Không hiển thị loading nếu đã có data hoặc đang trên server
-    // Loading state - chỉ hiển thị khi thực sự đang loading và chưa có data
-    if (loading && showLoading && !data && isMounted) {
+    // ✅ GIỐNG DỰ ÁN CŨ: Loading state - hiển thị khi đang loading và chưa có data
+    if (loading && showLoading && !data) {
         return (
             <div className={`${styles.container} ${className}`}>
                 <div className={styles.loadingMessage}>
@@ -117,11 +104,18 @@ const XSMBSimpleTable = ({
         );
     }
 
-    // ✅ CRITICAL: Nếu không có data, return null để không render gì
-    // Điều này đảm bảo server không render text trước khi có data
-    // Component sẽ được render lại khi có data từ client-side fetch
+    // ✅ GIỐNG DỰ ÁN CŨ: Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
     if (!data) {
-        // ✅ Không render gì cả - để parent component quyết định hiển thị skeleton
+        if (showLoading) {
+            return (
+                <div className={`${styles.container} ${className}`}>
+                    <div className={styles.loadingMessage}>
+                        <div className={styles.spinner}></div>
+                        <p>Đang tải dữ liệu kết quả xổ số...</p>
+                    </div>
+                </div>
+            );
+        }
         return null;
     }
 

@@ -28,9 +28,33 @@ import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
 import { Dice6, Target, BarChart3, Star, Zap, CheckCircle, Heart, Smartphone, Sparkles, Calendar, Activity, TrendingUp, Award, Percent } from 'lucide-react';
 
-// ✅ OPTIMIZED: Lazy load LatestXSMBResults with SSR enabled, no visible loading state
+// ✅ Lazy load LatestXSMBResults with SSR enabled for SEO (GIỐNG DỰ ÁN CŨ)
 const LatestXSMBResults = dynamic(() => import('../components/LatestXSMBResults'), {
-    loading: () => null, // ✅ OPTIMIZED: No visible loading state to prevent layout shift
+    loading: () => (
+        <div style={{ 
+            minHeight: '400px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            background: '#fff',
+            borderRadius: '8px',
+            margin: '20px 0',
+            contain: 'layout style' 
+        }}>
+            <div style={{ textAlign: 'center' }}>
+                <div style={{ 
+                    width: '40px', 
+                    height: '40px', 
+                    border: '4px solid #f3f3f3', 
+                    borderTop: '4px solid #FF6B35', 
+                    borderRadius: '50%', 
+                    animation: 'spin 1s linear infinite',
+                    margin: '0 auto 10px'
+                }}></div>
+                <p>Đang tải kết quả xổ số...</p>
+            </div>
+        </div>
+    ),
     ssr: true  // ✅ Enable SSR để Googlebot thấy được nội dung
 });
 
@@ -387,7 +411,7 @@ const Home = memo(function Home({ initialXSMBData = null }) {
                         {/* Left Column - Main Content */}
                         <div className={styles.leftColumn}>
                             {/* Latest XSMB Results */}
-                            <LatestXSMBResults initialData={initialXSMBData} />
+                            <LatestXSMBResults />
 
                             {/* Today Predictions - Mobile Only */}
                             <div className={styles.mobileOnlyTodayPredictions}>
@@ -491,47 +515,6 @@ const Home = memo(function Home({ initialXSMBData = null }) {
 // ✅ Export memoized component
 export default Home;
 
-// ✅ CRITICAL: Fetch data server-side để render ngay lập tức
-// ✅ OPTIMIZED: Giảm timeout và đảm bảo fetch nhanh
-export async function getServerSideProps() {
-    try {
-        // ✅ CRITICAL: Set timeout hợp lý (8s) để đảm bảo có data trước khi render
-        const fetchWithTimeout = (promise, timeoutMs = 8000) => {
-            return Promise.race([
-                promise,
-                new Promise((_, reject) => 
-                    setTimeout(() => reject(new Error('API timeout')), timeoutMs)
-                )
-            ]);
-        };
-
-        // Import API service
-        const { getLatestXSMBNext } = await import('../services/xsmbApi');
-        
-        // ✅ CRITICAL: Fetch với timeout ngắn, nhưng đảm bảo có data trước khi render
-        let xsmbData = null;
-        try {
-            xsmbData = await fetchWithTimeout(getLatestXSMBNext(), 8000);
-        } catch (error) {
-            // ✅ Nếu API fail, vẫn return null để component fetch client-side
-            // Nhưng không block server-side rendering
-            xsmbData = null;
-        }
-
-        // ✅ CRITICAL: Luôn return props, kể cả khi data = null
-        // Component sẽ xử lý việc hiển thị skeleton
-        return {
-            props: {
-                initialXSMBData: xsmbData,
-            },
-        };
-    } catch (error) {
-        // ✅ Silent fail - return null để page render ngay
-        return {
-            props: {
-                initialXSMBData: null,
-            },
-        };
-    }
-}
+// ✅ REMOVED: getServerSideProps - Fetch client-side giống dự án cũ để tránh delay
+// Dự án cũ không có getServerSideProps và fetch client-side ngay, render loading placeholder
 

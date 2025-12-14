@@ -43,7 +43,7 @@ const LiveResult = dynamic(() => import('./LiveResult'), {
     ssr: false
 });
 
-const LatestXSMBResults = ({ initialData = null }) => {
+const LatestXSMBResults = () => {
     const [isLiveWindow, setIsLiveWindow] = useState(false);
     const intervalRef = useRef(null);
 
@@ -73,48 +73,6 @@ const LatestXSMBResults = ({ initialData = null }) => {
         };
     }, [isLiveWindow]);
 
-    // ✅ CRITICAL: Chỉ render khi có data hoặc đang trong live window
-    // Không render header/text nếu chưa có data để tránh "vỡ bố cục"
-    const hasData = initialData !== null;
-    
-    // ✅ Nếu không có data và không phải live window, không render gì (hoặc skeleton)
-    if (!hasData && !isLiveWindow) {
-        // ✅ Render skeleton với kích thước cố định để không bị layout shift
-        return (
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <h2 className={styles.title}>
-                        Kết Quả Xổ Số Miền Bắc Mới Nhất
-                    </h2>
-                </div>
-                <div className={styles.content} style={{ minHeight: '400px' }}>
-                    <div style={{ 
-                        width: '100%', 
-                        height: '400px', 
-                        background: '#f3f3f3', 
-                        borderRadius: '8px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}>
-                        <div style={{ textAlign: 'center' }}>
-                            <div style={{ 
-                                width: '40px', 
-                                height: '40px', 
-                                border: '4px solid #f3f3f3', 
-                                borderTop: '4px solid #FF6B35', 
-                                borderRadius: '50%', 
-                                animation: 'spin 1s linear infinite',
-                                margin: '0 auto 10px'
-                            }}></div>
-                            <p style={{ color: '#666' }}>Đang tải dữ liệu...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className={styles.container}>
             {!isLiveWindow && (
@@ -130,11 +88,10 @@ const LatestXSMBResults = ({ initialData = null }) => {
                     <LiveResult />
                 ) : (
                     <XSMBSimpleTable
-                        data={initialData}
                         date="latest"
                         autoFetch={true}
                         showLoto={true}
-                        showLoading={false}
+                        showLoading={true}
                         showError={true}
                         className={styles.tableWrapper}
                     />
