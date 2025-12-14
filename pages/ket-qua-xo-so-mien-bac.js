@@ -103,17 +103,17 @@ const KQXSPage = memo(function KQXSPage() {
 
     // ✅ Memoize page titles and description
     const pageTitle = useMemo(() =>
-        `XSMB - Kết Quả Xổ Số Miền Bắc Đài Truyền Thống Hôm Nay ${today} | SXMB - KQXSMB - XSTD Nhanh Nhất 2025`,
+        `XSMB - Kết Quả Xổ Số Miền Bắc Hôm Nay ${today} | Tốt Hơn Xosodaiphat, Xoso.com.vn, Xskt.com.vn - SXMB - KQXSMB - XSTD Nhanh Nhất 2025`,
         [today]
     );
 
     const h1Title = useMemo(() =>
-        `XSMB - Kết Quả Xổ Số Miền Bắc Đài Truyền Thống Hôm Nay ${today}`,
+        `Kết Quả Xổ Số Miền Bắc Hôm Nay ${today} - XSMB`,
         [today]
     );
 
     const pageDescription = useMemo(() =>
-        `XSMB - Kết quả xổ số miền Bắc đài truyền thống (xsmb, sxmb, kqxsmb, xstd) hôm nay ${today} nhanh nhất, chính xác nhất. Tường thuật trực tiếp lúc 18h15 từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. Xem XSMB 30 ngày, XSMB hôm qua, XSMB ${dayOfWeek}. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Miễn phí 100%!`,
+        `XSMB - Kết quả xổ số miền Bắc đài truyền thống (xsmb, sxmb, kqxsmb, xstd) hôm nay ${today} nhanh nhất, chính xác nhất. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn, xsmn.mobi, ketqua.net. Tường thuật trực tiếp lúc 18h15 từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. Xem XSMB 30 ngày, XSMB hôm qua, XSMB ${dayOfWeek}. Miễn phí 100%!`,
         [today, dayOfWeek]
     );
 
@@ -276,7 +276,7 @@ const KQXSPage = memo(function KQXSPage() {
                         </h2>
                         <p style={{ marginBottom: '15px' }}>
                             <strong>Kết quả xổ số miền Bắc (XSMB)</strong> được cập nhật hàng ngày lúc <strong>18h15</strong> từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. 
-                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Dàn Đề Wukong cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
+                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Kết Quả MN (KETQUAMN.COM) cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
                         </p>
                         <p style={{ marginBottom: '15px' }}>
                             Bạn có thể <strong>tra cứu kết quả xổ số miền Bắc</strong> theo ngày, xem <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>. 

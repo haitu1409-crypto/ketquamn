@@ -44,7 +44,7 @@ export default function OrganizationSchema() {
             "areaServed": "VN"
         },
         "sameAs": [
-            "https://facebook.com/taodandewukong",
+            "https://facebook.com/ketquamn",
             "https://youtube.com/@ketquamn",
             "https://tiktok.com/@ketquamn"
         ],

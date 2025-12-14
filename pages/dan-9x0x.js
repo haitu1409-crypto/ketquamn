@@ -38,7 +38,7 @@ const DanDeGenerator = dynamic(() => import('../components/DanDeGenerator'), {
 });
 
 export default function Dan9x0xPage() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://ketquamn.com');
 
     // Get SEO config
     const pageSEO = getPageSEO('dan9x0x');
@@ -145,12 +145,12 @@ export default function Dan9x0xPage() {
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         }
     };
@@ -187,17 +187,17 @@ export default function Dan9x0xPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 9x-0x Wukong"
+                "name": "Công cụ tạo dàn số 9x-0x Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "step": [
@@ -317,7 +317,7 @@ export default function Dan9x0xPage() {
                     {/* Mobile Navbar */}
                     <MobileNavbar currentPage="dan-9x0x" showCurrentPageItems={false} />
 
-                    {/* Wukong Slider */}
+                    {/* Kết Quả MN Slider */}
                     {/* <WukongSlider /> */}
 
                     {/* Main Generator Section */}

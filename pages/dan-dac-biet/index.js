@@ -71,7 +71,7 @@ const TaoDanBo = dynamic(() => import('../../components/DanDe/TaoDanBo'), {
 });
 
 export default function DanDacBietPage() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // Get SEO config
     const pageSEO = getPageSEO('danDacBiet');
@@ -167,17 +167,17 @@ export default function DanDacBietPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số đặc biệt Wukong"
+                "name": "Công cụ tạo dàn số đặc biệt Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "step": [

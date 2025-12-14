@@ -100,7 +100,7 @@ const TodayPredictions = () => {
             specialContent: "Cầu đặc biệt: 12345, 23456, 34567, 45678, 56789",
             doubleJumpContent: "Cầu 2 nháy: 12-21, 23-32, 34-43, 45-54, 56-65",
             topTableContent: "Bảng lô top: 12, 23, 34, 45, 56, 67, 78, 89, 90, 01",
-            wukongContent: "Dự đoán wukong: 12, 23, 34, 45, 56, 67, 78, 89, 90, 01"
+            wukongContent: "Dự đoán Kết Quả MN: 12, 23, 34, 45, 56, 67, 78, 89, 90, 01"
         };
     }, []);
 
@@ -221,13 +221,13 @@ const TodayPredictions = () => {
             },
             {
                 id: 'wukong',
-                title: `Dự đoán wukong`,
+                title: `Dự đoán Kết Quả MN`,
                 subtitle: dateText,
                 content: prediction.wukongContent,
                 icon: Sparkles,
                 gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
                 color: '#43e97b',
-                keywords: 'dự đoán wukong, bạch thủ lô, song thủ lô, lô xiên 2, lô kép'
+                keywords: 'dự đoán xổ số, bạch thủ lô, song thủ lô, lô xiên 2, lô kép, Kết Quả MN'
             }
         ];
     }, [prediction, formatDate]);
@@ -239,7 +239,7 @@ const TodayPredictions = () => {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": `Dự Đoán Xổ Số Miền Bắc Ngày ${formatDate(prediction.predictionDate)}`,
-            "description": `Dự đoán xổ số miền bắc hôm nay ${formatDate(prediction.predictionDate)}: Cầu lotto đẹp, cầu đặc biệt, bảng lô top, dự đoán wukong chính xác nhất`,
+            "description": `Dự đoán xổ số miền bắc hôm nay ${formatDate(prediction.predictionDate)}: Cầu lotto đẹp, cầu đặc biệt, bảng lô top, dự đoán Kết Quả MN chính xác nhất`,
             "datePublished": prediction.predictionDate,
             "author": {
                 "@type": "Organization",
@@ -270,7 +270,7 @@ const TodayPredictions = () => {
         const timeContext = isToday ? 'Hôm Nay' : `Ngày ${formattedDate}`;
         return {
             title: `Dự Đoán Xổ Số Miền Bắc ${timeContext} - Chuẩn Xác Nhất`,
-            description: `Dự đoán XSMB ${formattedDate}: Cầu lotto đẹp, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán wukong. Cập nhật hàng ngày, độ chính xác cao ✓`,
+            description: `Dự đoán XSMB ${formattedDate}: Cầu lotto đẹp, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán Kết Quả MN. Cập nhật hàng ngày, độ chính xác cao ✓`,
             keywords: 'dự đoán xsmb, dự đoán xổ số miền bắc, cầu lotto, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán Kết Quả MN, soi cầu miền bắc, ketquamn.com',
             url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}`,
             image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/logo1.png`,

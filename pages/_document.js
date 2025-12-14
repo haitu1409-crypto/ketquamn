@@ -10,13 +10,31 @@ export default function Document() {
     return (
         <Html lang="vi">
             <Head>
-                {/* ===== DNS PREFETCH & PRECONNECT ===== */}
+                {/* ===== DNS PREFETCH & PRECONNECT (Enhanced) ===== */}
+                {/* Google Services */}
                 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
                 <link rel="dns-prefetch" href="https://www.google-analytics.com" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="dns-prefetch" href="https://www.google.com" />
+                <link rel="dns-prefetch" href="https://www.google.com.vn" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link rel="preconnect" href="https://www.googletagmanager.com" />
+                
+                {/* API & CDN */}
+                <link rel="dns-prefetch" href="https://api1.ketquamn.com" />
+                <link rel="preconnect" href="https://api1.ketquamn.com" />
+                <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+                <link rel="preconnect" href="https://res.cloudinary.com" />
+                
+                {/* Search Engines */}
+                <link rel="dns-prefetch" href="https://www.bing.com" />
+                <link rel="dns-prefetch" href="https://coccoc.com" />
+                
+                {/* Social Media */}
+                <link rel="dns-prefetch" href="https://www.facebook.com" />
+                <link rel="dns-prefetch" href="https://www.youtube.com" />
+                <link rel="dns-prefetch" href="https://www.tiktok.com" />
 
                 {/* ===== CRITICAL RESOURCE PRELOAD ===== */}
                 {/* Only preload critical resources that are used immediately above the fold */}
@@ -62,7 +80,7 @@ export default function Document() {
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-                <meta name="apple-mobile-web-app-title" content="Dàn Đề Wukong" />
+                <meta name="apple-mobile-web-app-title" content="Kết Quả MN" />
 
                 {/* ===== MICROSOFT TILES ===== */}
                 <meta name="msapplication-config" content="/browserconfig.xml" />

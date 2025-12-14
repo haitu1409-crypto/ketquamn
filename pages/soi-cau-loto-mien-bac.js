@@ -197,7 +197,7 @@ const PositionSoiCauLotoPage = ({ initialData, initialDate, initialDays }) => {
             {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "Soi Cầu Lô Tô Miền Bắc - Dàn Đề Wukong",
+                "name": "Soi Cầu Lô Tô Miền Bắc - Kết Quả MN",
                 "description": "Công cụ soi cầu lô tô miền bắc dựa trên phân tích vị trí số. Dự đoán lô tô XSMB chính xác, tìm pattern nhất quán.",
                 "url": `${siteUrl}/soi-cau-loto-mien-bac`,
                 "applicationCategory": "UtilitiesApplication",
@@ -209,7 +209,7 @@ const PositionSoiCauLotoPage = ({ initialData, initialDate, initialDays }) => {
                 },
                 "author": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN",
                     "url": siteUrl
                 }
             },

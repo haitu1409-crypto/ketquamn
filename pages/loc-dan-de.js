@@ -19,7 +19,7 @@ const DanDeFilter = dynamic(() => import('../components/DanDeFilter'), {
 });
 
 export default function LocDanDePage() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://ketquamn.com');
     const pageSEO = getPageSEO('locDanDe');
 
     useEffect(() => {
@@ -88,12 +88,12 @@ export default function LocDanDePage() {
         ],
         author: {
             '@type': 'Organization',
-            name: 'Dàn Đề Wukong',
+            name: 'Kết Quả MN',
             url: 'https://ketquamn.com'
         },
         publisher: {
             '@type': 'Organization',
-            name: 'Dàn Đề Wukong',
+            name: 'Kết Quả MN',
             url: 'https://ketquamn.com'
         }
     };
@@ -113,7 +113,7 @@ export default function LocDanDePage() {
         tool: [
             {
                 '@type': 'HowToTool',
-                name: 'Công Cụ Lọc Dàn Đề Wukong'
+                name: 'Công Cụ Lọc Dàn Đề Kết Quả MN'
             }
         ],
         step: [
@@ -145,12 +145,12 @@ export default function LocDanDePage() {
         ],
         author: {
             '@type': 'Organization',
-            name: 'Dàn Đề Wukong',
+            name: 'Kết Quả MN',
             url: 'https://ketquamn.com'
         },
         publisher: {
             '@type': 'Organization',
-            name: 'Dàn Đề Wukong',
+            name: 'Kết Quả MN',
             url: 'https://ketquamn.com'
         }
     };

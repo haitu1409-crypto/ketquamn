@@ -1339,7 +1339,7 @@ export default function NewsPage() {
     // Ref to prevent multiple simultaneous API calls
     const isLoadingRef = useRef(false);
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001');
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://ketquamn.com');
 
     // Enhanced data loading with better error handling and performance optimization
     const loadData = useCallback(async () => {
@@ -1525,7 +1525,7 @@ export default function NewsPage() {
 
     // Enhanced SEO Data - Optimized for social sharing preview
     const seoData = useMemo(() => {
-        const ogImageUrl = `${siteUrl}/imgs/wukong.png`;
+        const ogImageUrl = `${siteUrl}/logo1.png`;
         return {
             title: 'Tin Tức Game - LMHT, Liên Quân, TFT | Cập Nhật 24/7',
             description: 'Tin tức game mới nhất về Liên Minh Huyền Thoại, Liên Quân Mobile, Đấu Trường Chân Lý TFT. Hướng dẫn, meta, review chuyên sâu. Cập nhật 24/7.',
@@ -1548,7 +1548,7 @@ export default function NewsPage() {
             name: 'S-Games - Tin Tức Game & Esports',
             logo: {
                 '@type': 'ImageObject',
-                url: `${siteUrl}/imgs/wukong.png`
+                url: `${siteUrl}/logo1.png`
             }
         },
         mainEntity: {

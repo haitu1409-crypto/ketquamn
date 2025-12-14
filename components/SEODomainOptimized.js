@@ -154,9 +154,9 @@ export default function SEODomainOptimized({
             logo: fullImageUrl,
             description: 'Bộ công cụ tạo dàn đề chuyên nghiệp: 2D, 3D, 4D, Đặc Biệt. Miễn phí, nhanh chóng, chính xác.',
             sameAs: [
-              'https://www.facebook.com/taodandewukong',
-              'https://t.me/taodandewukong',
-              'https://zalo.me/taodandewukong',
+              'https://www.facebook.com/ketquamn',
+              'https://t.me/ketquamn',
+              'https://zalo.me/ketquamn',
             ],
             contactPoint: {
               '@type': 'ContactPoint',

@@ -922,7 +922,7 @@ export default function EditArticle() {
         setIsAuthenticated(true);
     };
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     const categories = [
         { value: 'lien-minh-huyen-thoai', label: 'Liên Minh Huyền Thoại' },

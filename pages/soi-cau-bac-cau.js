@@ -114,7 +114,7 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
             {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "Vẽ Đường Cầu Soi Cầu Miền Bắc - Dàn Đề Wukong",
+                "name": "Vẽ Đường Cầu Soi Cầu Miền Bắc - Kết Quả MN",
                 "description": "Công cụ vẽ đường cầu soi cầu miền bắc với định vị chính xác từng chữ số trong mỗi ô. Phân tích pattern, vẽ đường cầu kết nối, tìm quy luật số.",
                 "url": `${siteUrl}/soi-cau-bac-cau`,
                 "applicationCategory": "UtilitiesApplication",
@@ -126,7 +126,7 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
                 },
                 "author": {
                     "@type": "Organization",
-                    "name": "Dàn Đề Wukong",
+                    "name": "Kết Quả MN",
                     "url": siteUrl
                 }
             },

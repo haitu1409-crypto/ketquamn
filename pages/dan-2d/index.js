@@ -39,7 +39,7 @@ const Dan2DGenerator = dynamic(() => import('../../components/DanDe/Dan2DGenerat
 
 // ✅ Memoized Dan2D Page component
 const Dan2DPage = memo(function Dan2DPage() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // Get SEO config
     const pageSEO = getPageSEO('dan2d');
@@ -91,17 +91,17 @@ const Dan2DPage = memo(function Dan2DPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 2D Wukong"
+                "name": "Công cụ tạo dàn số 2D Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "step": [

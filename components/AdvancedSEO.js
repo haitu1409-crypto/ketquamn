@@ -20,6 +20,8 @@
 
 import Head from 'next/head';
 import { useMemo } from 'react';
+import { getCompetitorKeywords, getCompetitorComparisonSchema } from './CompetitorSEOKeywords';
+import RichSnippetsOptimizer from './RichSnippetsOptimizer';
 
 export default function AdvancedSEO({
     title,
@@ -55,9 +57,10 @@ export default function AdvancedSEO({
         return density;
     }, [keywords]);
 
-    // ✅ GRAY HAT: LSI Keywords (Latent Semantic Indexing)
+    // ✅ GRAY HAT: LSI Keywords (Latent Semantic Indexing) - Mở rộng với nhiều variations
     const lsiKeywords = useMemo(() => {
-        const baseKeywords = keywords.split(',').map(k => k.trim());
+        if (!keywords) return [];
+        const baseKeywords = keywords.split(',').map(k => k.trim()).filter(Boolean);
         const lsi = [];
         
         // Thêm các từ liên quan ngữ nghĩa
@@ -66,25 +69,67 @@ export default function AdvancedSEO({
             
             // Kết quả xổ số
             if (lower.includes('kết quả') || lower.includes('ket qua')) {
-                lsi.push('tra cứu kết quả', 'xem kết quả', 'kết quả mới nhất', 'kết quả hôm nay');
+                lsi.push(
+                    'tra cứu kết quả', 'xem kết quả', 'kết quả mới nhất', 'kết quả hôm nay',
+                    'ket qua moi nhat', 'ket qua hom nay', 'ket qua xo so', 'ket qua xs',
+                    'kqxs', 'kq xs', 'ket qua', 'ketqua', 'kết quả', 'ket qua xo so',
+                    'xem ket qua', 'tra cuu ket qua', 'ket qua nhanh nhat', 'ket qua chinh xac'
+                );
             }
             
             // Xổ số miền
             if (lower.includes('miền nam') || lower.includes('mien nam')) {
-                lsi.push('xsmn', 'kqxsmn', 'sxmn', 'xổ số miền nam', 'xo so mien nam');
+                lsi.push(
+                    'xsmn', 'kqxsmn', 'sxmn', 'xổ số miền nam', 'xo so mien nam',
+                    'xsmn hom nay', 'xsmn ngay hom nay', 'ket qua xsmn', 'ket qua xsmn hom nay',
+                    'xsmn moi nhat', 'xsmn nhanh nhat', 'xsmn chinh xac', 'xsmn 30 ngay'
+                );
             }
             if (lower.includes('miền bắc') || lower.includes('mien bac')) {
-                lsi.push('xsmb', 'kqxsmb', 'sxmb', 'xổ số miền bắc', 'xo so mien bac');
+                lsi.push(
+                    'xsmb', 'kqxsmb', 'sxmb', 'xổ số miền bắc', 'xo so mien bac',
+                    'xsmb hom nay', 'xsmb ngay hom nay', 'ket qua xsmb', 'ket qua xsmb hom nay',
+                    'xsmb moi nhat', 'xsmb nhanh nhat', 'xsmb chinh xac', 'xsmb 30 ngay',
+                    'xstd', 'xo so thu do', 'xổ số thủ đô'
+                );
             }
             if (lower.includes('miền trung') || lower.includes('mien trung')) {
-                lsi.push('xsmt', 'kqxsmt', 'sxmt', 'xổ số miền trung', 'xo so mien trung');
+                lsi.push(
+                    'xsmt', 'kqxsmt', 'sxmt', 'xổ số miền trung', 'xo so mien trung',
+                    'xsmt hom nay', 'xsmt ngay hom nay', 'ket qua xsmt', 'ket qua xsmt hom nay',
+                    'xsmt moi nhat', 'xsmt nhanh nhat', 'xsmt chinh xac', 'xsmt 30 ngay'
+                );
             }
             
             // Thống kê
             if (lower.includes('thống kê') || lower.includes('thong ke')) {
-                lsi.push('phân tích', 'số liệu', 'bảng thống kê', 'thống kê chi tiết');
+                lsi.push(
+                    'phân tích', 'số liệu', 'bảng thống kê', 'thống kê chi tiết',
+                    'thong ke xo so', 'thong ke xs', 'thong ke 3 mien', 'thong ke chuyen sau',
+                    'phan tich xo so', 'so lieu xo so', 'bang thong ke', 'thong ke chi tiet'
+                );
+            }
+            
+            // Soi cầu
+            if (lower.includes('soi cầu') || lower.includes('soi cau')) {
+                lsi.push(
+                    'soi cau', 'soi cầu', 'soi cau chinh xac', 'soi cau mien phi',
+                    'soi cau vip', 'soi cau mb', 'soi cau mn', 'soi cau mt',
+                    'du doan xo so', 'du doan ket qua', 'chot so', 'chốt số'
+                );
             }
         });
+        
+        // Thêm các LSI keywords chung cho tất cả pages
+        lsi.push(
+            'xo so', 'xổ số', 'xoso', 'xosố', 'xo so kien thiet', 'xổ số kiến thiết',
+            'ket qua', 'ketqua', 'kết quả', 'kqxs', 'kq xs', 'kqxsmn', 'kqxsmb', 'kqxsmt',
+            'xsmn', 'xsmb', 'xsmt', 'sxmn', 'sxmb', 'sxmt',
+            'ket qua xo so hom nay', 'ket qua xo so moi nhat', 'ket qua xo so nhanh nhat',
+            'xem ket qua xo so', 'tra cuu ket qua xo so', 'ket qua xo so chinh xac',
+            'ket qua xo so 3 mien', 'ket qua xo so mien nam', 'ket qua xo so mien bac',
+            'ket qua xo so mien trung', 'ket qua xo so hôm nay', 'ket qua xo so ngay hom nay'
+        );
         
         return [...new Set(lsi)]; // Remove duplicates
     }, [keywords]);
@@ -282,30 +327,89 @@ export default function AdvancedSEO({
             });
         }
 
-        // 8. LocalBusiness Schema (nếu cần)
-        if (pageType === 'local') {
-            schemas.push({
-                '@context': 'https://schema.org',
-                '@type': 'LocalBusiness',
+        // 8. Service Schema (cho tất cả pages - tăng CTR)
+        schemas.push({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            serviceType: 'Kết Quả Xổ Số Online',
+            provider: {
+                '@type': 'Organization',
                 name: siteName,
-                image: `${siteUrl}/logo1.png`,
-                address: {
-                    '@type': 'PostalAddress',
-                    addressCountry: 'VN'
+                url: siteUrl,
+                logo: {
+                    '@type': 'ImageObject',
+                    url: `${siteUrl}/logo1.png`
                 }
-            });
-        }
+            },
+            areaServed: {
+                '@type': 'Country',
+                name: 'Vietnam'
+            },
+            description: 'Dịch vụ cung cấp kết quả xổ số 3 miền (miền Bắc, miền Nam, miền Trung) nhanh nhất, chính xác nhất. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn, xsmn.mobi, ketqua.net. Công cụ tạo dàn đề, soi cầu, thống kê xổ số chuyên nghiệp. Miễn phí 100%.',
+            offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'VND',
+                availability: 'https://schema.org/InStock',
+                url: siteUrl
+            }
+        });
 
+        // 9. LocalBusiness Schema (cho tất cả pages - tăng CTR)
+        schemas.push({
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            name: siteName,
+            alternateName: ['Ket Qua MN', 'KetQuaMN', 'KETQUAMN.COM'],
+            image: `${siteUrl}/logo1.png`,
+            url: siteUrl,
+            description: description,
+            address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'VN',
+                addressLocality: 'Vietnam'
+            },
+            telephone: '+84',
+            priceRange: 'Miễn phí',
+            openingHours: 'Mo-Su 00:00-23:59',
+            aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.9',
+                reviewCount: '2500',
+                bestRating: '5',
+                worstRating: '1'
+            }
+        });
+
+        // ✅ COMPETITOR TARGETING: Add competitor comparison schema
+        const competitorSchema = getCompetitorComparisonSchema(pageType);
+        if (competitorSchema) {
+            schemas.push(competitorSchema);
+        }
+        
         // Merge với structured data từ props
         return [...schemas, ...(Array.isArray(structuredData) ? structuredData : [structuredData].filter(Boolean))];
     }, [title, description, keywords, canonical, ogImage, pageType, structuredData, breadcrumbs, faq, articleData, lotteryData, siteUrl, siteName, fullUrl, ogImageUrl, currentDate]);
 
-    // ✅ GRAY HAT: Meta keywords với LSI
+    // ✅ COMPETITOR TARGETING: Thêm competitor keywords
+    const competitorKeywords = useMemo(() => {
+        try {
+            // Extract pageType from canonical URL or use default
+            const pageType = canonical?.includes('soi-cau') ? 'soi-cau' : 
+                            canonical?.includes('ket-qua-xo-so') ? 'kqxs' : 'home';
+            return getCompetitorKeywords(pageType);
+        } catch (error) {
+            console.warn('Error getting competitor keywords:', error);
+            return [];
+        }
+    }, [canonical]);
+    
+    // ✅ GRAY HAT: Meta keywords với LSI + Competitor keywords
     const enhancedKeywords = useMemo(() => {
-        const baseKeywords = keywords.split(',').map(k => k.trim());
-        const combined = [...baseKeywords, ...lsiKeywords];
+        const baseKeywords = keywords ? keywords.split(',').map(k => k.trim()) : [];
+        const combined = [...baseKeywords, ...lsiKeywords, ...competitorKeywords];
         return [...new Set(combined)].join(', ');
-    }, [keywords, lsiKeywords]);
+    }, [keywords, lsiKeywords, competitorKeywords]);
 
     return (
         <Head>
@@ -419,6 +523,18 @@ export default function AdvancedSEO({
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />
             <meta name="apple-mobile-web-app-title" content="Kết Quả MN" />
+            
+            {/* ===== RICH SNIPPETS OPTIMIZER ===== */}
+            <RichSnippetsOptimizer
+                faqs={faq}
+                review={{
+                    itemName: siteName,
+                    rating: 4.9,
+                    reviewCount: 2500,
+                    bestRating: 5,
+                    worstRating: 1
+                }}
+            />
         </Head>
     );
 }

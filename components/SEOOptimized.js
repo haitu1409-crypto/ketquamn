@@ -124,17 +124,17 @@ const PAGE_SEO_CONFIG = {
     'dan-9x0x': {
         title: 'Dàn Đề 9x-0x | Tạo Dàn Đề Ngẫu Nhiên | Công Cụ Lọc Dàn Đề Tổng Hợp - Miễn Phí 2025',
         description: 'Tạo dàn số 9x-0x ngẫu nhiên với thuật toán Fisher-Yates chuẩn quốc tế. Công cụ lọc dàn số tổng hợp, tạo dàn số miễn phí. Hỗ trợ xuất Excel, lưu trữ kết quả. Phần mềm AI chuyên nghiệp.',
-        keywords: 'dàn số 9x-0x, tạo dàn số ngẫu nhiên, lọc dàn số tổng hợp, thuật toán Fisher-Yates, công cụ dàn số, tạo dàn số miễn phí, phần mềm AI, dàn số Wukong, công cụ xổ số chuyên nghiệp'
+        keywords: 'dàn số 9x-0x, tạo dàn số ngẫu nhiên, lọc dàn số tổng hợp, thuật toán Fisher-Yates, công cụ dàn số, tạo dàn số miễn phí, phần mềm AI, Kết Quả MN, công cụ xổ số chuyên nghiệp'
     },
     'loc-dan-de': {
         title: 'Lọc Dàn Đề Tổng Hợp | Bộ Lọc Số 9x-0x, 3X, 2X Siêu Cấp - Miễn Phí 2025',
         description: 'Lọc dàn đề tổng hợp từ mọi nguồn: 9x-0x, 3X, 2X, 1X, 0X. Hỗ trợ thêm số mong muốn, loại bỏ số đặc biệt, bỏ kép bằng, chọn bộ số đặc biệt, chạm, tổng. Thuật toán ưu tiên tần suất kết hợp random thông minh.',
-        keywords: 'lọc dàn đề, loc dan de, lọc dàn đề tổng hợp, lọc dàn 9x, cắt dàn 9x, lọc dàn đề miễn phí, bộ lọc dàn đề, lọc dàn đề theo chạm, lọc dàn đề theo tổng, bỏ kép bằng, bộ số đặc biệt, công cụ lọc dàn đề wukong'
+        keywords: 'lọc dàn đề, loc dan de, lọc dàn đề tổng hợp, lọc dàn 9x, cắt dàn 9x, lọc dàn đề miễn phí, bộ lọc dàn đề, lọc dàn đề theo chạm, lọc dàn đề theo tổng, bỏ kép bằng, bộ số đặc biệt, công cụ lọc dàn đề Kết Quả MN'
     },
     'dan-dac-biet': {
         title: 'Ghép Dàn Đặc Biệt | Lọc Dàn Đặc Biệt | Dàn Theo Tổng, Chạm, Kép Bằng - Miễn Phí 2025',
         description: 'Ghép dàn đặc biệt, lọc dàn đặc biệt với bộ lọc thông minh: Lấy nhanh, Đầu-Đuôi, Chạm, Bộ, Kép. Dàn theo tổng, dàn theo chạm, dàn kép bằng. Cắt dàn, lọc dàn. Thuật toán AI tiên tiến. Miễn phí không giới hạn.',
-        keywords: 'ghép dàn đặc biệt, lọc dàn đặc biệt, tạo dàn xiên, tạo dàn 3 càng, tạo dàn đặc biệt, bộ lọc dàn số, lọc số đặc biệt, đầu đuôi số, chạm số, kép bằng, dàn số đặc biệt, bộ lọc thông minh, tạo dàn đặc biệt online, dàn số Wukong, lọc dàn số chuyên nghiệp, bộ lọc số chính xác, dàn đặc biệt miễn phí, công cụ lọc số, thuật toán lọc dàn số, dàn theo tổng, dàn theo chạm, dàn kép bằng, cắt dàn, lọc dàn, phần mềm AI, AI Tools, trí tuệ nhân tạo'
+        keywords: 'ghép dàn đặc biệt, lọc dàn đặc biệt, tạo dàn xiên, tạo dàn 3 càng, tạo dàn đặc biệt, bộ lọc dàn số, lọc số đặc biệt, đầu đuôi số, chạm số, kép bằng, dàn số đặc biệt, bộ lọc thông minh, tạo dàn đặc biệt online, Kết Quả MN, lọc dàn số chuyên nghiệp, bộ lọc số chính xác, dàn đặc biệt miễn phí, công cụ lọc số, thuật toán lọc dàn số, dàn theo tổng, dàn theo chạm, dàn kép bằng, cắt dàn, lọc dàn, phần mềm AI, AI Tools, trí tuệ nhân tạo'
     },
     'dan-2d': {
         title: 'Tạo Dàn Số 2D | Tạo Dàn Đề 2D (00-99) | Ứng Dụng Tạo Mức Số - Miễn Phí 2025',
@@ -470,9 +470,9 @@ export default function SEOOptimized({
                         logo: ogImageUrl,
                         description: 'Bộ công cụ tạo dàn số chuyên nghiệp: 2D, 3D, 4D, Đặc Biệt. Miễn phí, nhanh chóng, chính xác.',
                         sameAs: [
-                            'https://www.facebook.com/taodandewukong',
-                            'https://t.me/taodandewukong',
-                            'https://zalo.me/taodandewukong',
+                            'https://www.facebook.com/ketquamn',
+                            'https://t.me/ketquamn',
+                            'https://zalo.me/ketquamn',
                         ],
                         contactPoint: {
                             '@type': 'ContactPoint',

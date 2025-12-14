@@ -17,7 +17,7 @@ const ArticleSEO = ({
     readingTime = '',
     canonical = ''
 }) => {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     const fullUrl = url || siteUrl;
     const canonicalUrl = canonical || fullUrl;
     // Ensure image URL is absolute and properly formatted

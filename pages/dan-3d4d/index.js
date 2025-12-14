@@ -41,7 +41,7 @@ const Dan4DGenerator = dynamic(() => import('../../components/DanDe/Dan4DGenerat
 // ✅ Memoized Dan3D4D Page component
 const Dan3D4DPage = memo(function Dan3D4DPage() {
     const [selectedType, setSelectedType] = useState('3D');
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // Get SEO config
     const pageSEO = getPageSEO('dan3d4d');
@@ -97,17 +97,17 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 3D/4D Wukong"
+                "name": "Công cụ tạo dàn số 3D/4D Kết Quả MN"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Dàn Đề Wukong",
+            "name": "Kết Quả MN",
             "url": "https://ketquamn.com"
         },
         "step": [

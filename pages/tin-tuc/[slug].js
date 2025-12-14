@@ -184,13 +184,13 @@ const optimizeCloudinaryUrl = (imageUrl, options = {}) => {
 // Helper to get optimized image URL
 const getOptimizedImageUrl = (imageUrl, width, height) => {
     if (!imageUrl || imageUrl === 'null' || imageUrl === 'undefined' || imageUrl === '') {
-        return '/imgs/wukong.png';
+        return '/logo1.png';
     }
     
     // Convert to string and trim
     let urlString = String(imageUrl).trim();
     if (!urlString) {
-        return '/imgs/wukong.png';
+        return '/logo1.png';
     }
     
     // Fix malformed URLs where apiUrl was incorrectly prepended to absolute URLs
@@ -254,7 +254,7 @@ const getOptimizedImageUrl = (imageUrl, width, height) => {
         }
         // Last resort: return fallback
         console.warn('Invalid image URL:', imageUrl);
-        return '/imgs/wukong.png';
+        return '/logo1.png';
     }
 };
 // ✅ Removed duplicate CSS import to reduce bundle size
@@ -332,7 +332,7 @@ export async function getServerSideProps(context) {
             const article = result.data;
             
             // Prepare SEO data
-            let ogImageUrl = `${siteUrl}/imgs/wukong.png`;
+            let ogImageUrl = `${siteUrl}/logo1.png`;
             if (article.featuredImage?.url) {
                 if (article.featuredImage.url.startsWith('http://') || article.featuredImage.url.startsWith('https://')) {
                     ogImageUrl = article.featuredImage.url;
@@ -413,7 +413,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
 
     // Normalize siteUrl to avoid hydration mismatch (remove trailing slash)
     const siteUrl = useMemo(() => {
-        const url = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3001';
+        const url = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
         return url.replace(/\/+$/, ''); // Remove trailing slashes for consistency
     }, []);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
@@ -1126,7 +1126,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
         const wordCount = currentArticle.content?.split(/\s+/).length || 0;
         
         // Ensure image URL is absolute
-        let imageUrl = `${siteUrl}/imgs/wukong.png`;
+        let imageUrl = `${siteUrl}/logo1.png`;
         if (currentArticle.featuredImage?.url) {
             if (currentArticle.featuredImage.url.startsWith('http://') || currentArticle.featuredImage.url.startsWith('https://')) {
                 imageUrl = currentArticle.featuredImage.url;
@@ -1161,7 +1161,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                 name: 'S-Games - Tin Tức Game & Esports',
                 logo: {
                     '@type': 'ImageObject',
-                    url: `${siteUrl}/imgs/wukong.png`,
+                    url: `${siteUrl}/logo1.png`,
                     width: 512,
                     height: 512
                 }
@@ -1233,7 +1233,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
             : rawDescription;
 
         // Ensure ogImage is absolute URL for proper social sharing preview
-        let ogImageUrl = `${siteUrl}/imgs/wukong.png`;
+        let ogImageUrl = `${siteUrl}/logo1.png`;
         if (currentArticle.featuredImage?.url) {
             if (currentArticle.featuredImage.url.startsWith('http://') || currentArticle.featuredImage.url.startsWith('https://')) {
                 ogImageUrl = currentArticle.featuredImage.url;
@@ -1377,7 +1377,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
     const finalDescription = currentSeoData?.description || (currentArticle ? (currentArticle.metaDescription || currentArticle.excerpt || currentArticle.title) : 'Tin tức game mới nhất');
     const finalOgImage = currentSeoData?.image || (currentArticle?.featuredImage?.url ? 
         (currentArticle.featuredImage.url.startsWith('http') ? currentArticle.featuredImage.url : `${siteUrl}${currentArticle.featuredImage.url.startsWith('/') ? currentArticle.featuredImage.url : '/' + currentArticle.featuredImage.url}`)
-        : `${siteUrl}/imgs/wukong.png`);
+        : `${siteUrl}/logo1.png`);
     const finalCanonical = currentSeoData?.url || (currentArticle ? `${siteUrl}/tin-tuc/${currentArticle.slug}` : siteUrl);
 
     return (
@@ -1700,7 +1700,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                                                     className={styles.relatedCard}
                                                 >
                                                     <Image
-                                                        src={getOptimizedImageUrl(relatedArticle.featuredImage?.url, 300, 200) || '/imgs/wukong.png'}
+                                                        src={getOptimizedImageUrl(relatedArticle.featuredImage?.url, 300, 200) || '/logo1.png'}
                                                         alt={relatedArticle.title}
                                                         width={300}
                                                         height={200}
@@ -1744,7 +1744,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                                                     className={styles.trendingCard}
                                                 >
                                                     <Image
-                                                        src={getOptimizedImageUrl(trendingArticle.featuredImage?.url, 400, 250) || '/imgs/wukong.png'}
+                                                        src={getOptimizedImageUrl(trendingArticle.featuredImage?.url, 400, 250) || '/logo1.png'}
                                                         alt={trendingArticle.title}
                                                         width={400}
                                                         height={250}
@@ -1792,7 +1792,7 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
                                                         className={styles.sidebarArticle}
                                                     >
                                                         <Image
-                                                            src={getOptimizedImageUrl(article.featuredImage?.url, 160, 120) || '/imgs/wukong.png'}
+                                                            src={getOptimizedImageUrl(article.featuredImage?.url, 160, 120) || '/logo1.png'}
                                                             alt={article.title}
                                                             width={160}
                                                             height={120}

@@ -79,7 +79,7 @@ const ThongKeNhanh = dynamic(() => import('../components/ThongKeNhanh'), {
 
 // ✅ Memoized Homepage component for better performance
 const Home = memo(function Home() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://ketquamn.com');
 
     // Get SEO config for homepage
     const pageSEO = getPageSEO('home');
@@ -339,7 +339,7 @@ const Home = memo(function Home() {
                     {/* Hero Section - Landing Page */}
                     <header className={styles.header}>
                         <h1 className={styles.mainTitle}>
-                            KẾT QUẢ XỔ SỐ <span className={styles.highlightDomain}>KETQUAMN.COM</span>
+                            Kết Quả Xổ Số 3 Miền Hôm Nay - <span className={styles.highlightDomain}>KETQUAMN.COM</span>
                         </h1>
                         <div className={styles.heroActions}>
                             {/* Group 1 */}

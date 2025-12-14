@@ -38,8 +38,8 @@ const SEO_CONFIG = {
      * ENHANCED: Keyword variations for multi-search engine optimization
      */
     home: {
-        title: 'Kết Quả MN | KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Nhanh Nhất, Chính Xác Nhất 2025',
-        description: 'Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Xem kết quả xổ số hôm nay, tra cứu kết quả xổ số, thống kê xổ số 3 miền. Miễn phí 100%, cập nhật trực tiếp.',
+        title: 'Kết Quả MN | KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Hôm Nay - Tốt Hơn Xosodaiphat, Xoso.com.vn, Xskt.com.vn - KQXS - XSKT - XSMN - XSMB - XSMT Nhanh Nhất, Chính Xác Nhất 2025',
+        description: 'Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn, xsmn.mobi. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Xem kết quả xổ số hôm nay, tra cứu kết quả xổ số, thống kê xổ số 3 miền. Miễn phí 100%, cập nhật trực tiếp.',
         keywords: [
             // ✅ BRAND VARIATIONS - Tất cả cách gõ tìm kiếm
             'Kết Quả MN', 'ket qua MN', 'KETQUAMN.COM', 'ketquamn.com',
@@ -82,29 +82,69 @@ const SEO_CONFIG = {
             'xem kết quả XSMB', 'xem ket qua XSMB',
             'xem kết quả XSMT', 'xem ket qua XSMT',
             
-            // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh
-            // XOSODAIPHAT
+            // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh (MỞ RỘNG)
+            // XOSODAIPHAT - Target mạnh
             'kết quả xổ số xosodaiphat', 'ket qua xo so xosodaiphat',
             'kết quả xổ số tốt hơn xosodaiphat', 'ket qua xo so tot hon xosodaiphat',
+            'xosodaiphat alternative', 'thay thế xosodaiphat', 'xosodaiphat vs ketquamn',
+            'xosodaiphat hay ketquamn', 'ketquamn tốt hơn xosodaiphat',
+            'xosodaiphat chậm', 'xosodaiphat lỗi', 'ketquamn nhanh hơn xosodaiphat',
+            'xosodaiphat.com kết quả xổ số', 'xosodaiphat xsmb', 'xosodaiphat xsmn',
             
-            // XOSO.COM.VN
+            // XOSO.COM.VN - Target mạnh
             'kết quả xổ số xoso', 'ket qua xo so xoso',
             'kết quả xổ số tốt hơn xoso', 'ket qua xo so tot hon xoso',
+            'xoso.com.vn alternative', 'thay thế xoso.com.vn', 'xoso.com.vn vs ketquamn',
+            'xoso hay ketquamn', 'ketquamn tốt hơn xoso',
+            'xoso.com.vn chậm', 'xoso.com.vn lỗi', 'ketquamn nhanh hơn xoso',
+            'xoso.com.vn kết quả xổ số', 'xoso xsmb', 'xoso xsmn',
             
-            // XSKT.COM.VN
+            // XSKT.COM.VN - Target mạnh
             'kết quả xổ số xskt', 'ket qua xo so xskt',
             'kết quả xổ số tốt hơn xskt', 'ket qua xo so tot hon xskt',
+            'xskt.com.vn alternative', 'thay thế xskt.com.vn', 'xskt.com.vn vs ketquamn',
+            'xskt hay ketquamn', 'ketquamn tốt hơn xskt',
+            'xskt.com.vn chậm', 'xskt.com.vn lỗi', 'ketquamn nhanh hơn xskt',
+            'xskt.com.vn kết quả xổ số', 'xskt xsmb', 'xskt soi cầu',
             
-            // XSMN.MOBI
+            // XSMN.MOBI - Target mạnh
             'kết quả xổ số xsmn.mobi', 'ket qua xo so xsmn.mobi',
+            'xsmn.mobi alternative', 'thay thế xsmn.mobi', 'xsmn.mobi vs ketquamn',
+            'xsmn.mobi hay ketquamn', 'ketquamn tốt hơn xsmn.mobi',
+            'xsmn.mobi chậm', 'xsmn.mobi lỗi', 'ketquamn nhanh hơn xsmn.mobi',
+            'xsmn.mobi kết quả xổ số', 'xsmn.mobi xsmn',
             
-            // KETQUA.NET
+            // XOSOTHANTAI.MOBI - Target mạnh
+            'xosothantai.mobi alternative', 'thay thế xosothantai', 'xosothantai vs ketquamn',
+            'xosothantai hay ketquamn', 'ketquamn tốt hơn xosothantai',
+            'xosothantai chậm', 'xosothantai lỗi', 'ketquamn nhanh hơn xosothantai',
+            'xosothantai soi cầu', 'xosothantai thống kê',
+            
+            // ATRUNGROI.COM - Target mạnh
+            'atrungroi.com alternative', 'thay thế atrungroi', 'atrungroi vs ketquamn',
+            'atrungroi hay ketquamn', 'ketquamn tốt hơn atrungroi',
+            'atrungroi chậm', 'atrungroi lỗi', 'ketquamn nhanh hơn atrungroi',
+            'atrungroi soi cầu', 'atrungroi dự đoán', 'a trúng rồi soi cầu',
+            
+            // XSMN247.ME / XỔ SỐ MINH NGỌC - Target mạnh
+            'xsmn247.me alternative', 'thay thế xsmn247', 'xsmn247 vs ketquamn',
+            'xsmn247 hay ketquamn', 'ketquamn tốt hơn xsmn247',
+            'xsmn247 chậm', 'xsmn247 lỗi', 'ketquamn nhanh hơn xsmn247',
+            'xsmn247 kết quả xổ số', 'xổ số minh ngọc 247', 'xo so minh ngoc 247',
+            
+            // KETQUA.NET - Target mạnh
             'kết quả xổ số ketqua.net', 'ket qua xo so ketqua.net',
+            'ketqua.net alternative', 'thay thế ketqua.net', 'ketqua.net vs ketquamn',
+            'ketqua.net hay ketquamn', 'ketquamn tốt hơn ketqua.net',
+            'ketqua.net chậm', 'ketqua.net lỗi', 'ketquamn nhanh hơn ketqua.net',
             
-            // COMPARISON
+            // COMPARISON - So sánh tổng thể
             'kết quả xổ số nào tốt nhất', 'ket qua xo so nao tot nhat',
             'kết quả xổ số nhanh nhất', 'ket qua xo so nhanh nhat',
             'kết quả xổ số chính xác nhất', 'ket qua xo so chinh xac nhat',
+            'kết quả xổ số uy tín nhất', 'ket qua xo so uy tin nhat',
+            'trang xổ số nào tốt nhất', 'trang xo so nao tot nhat',
+            'web xổ số nào tốt nhất', 'web xo so nao tot nhat',
             
             // ✅ LONG-TAIL KEYWORDS
             'xem kết quả xổ số miền Nam hôm nay', 'xem ket qua xo so mien nam hom nay',
@@ -215,11 +255,10 @@ const SEO_CONFIG = {
             'phần mềm tạo dàn số', 'phan mem tao dan so',
             'ứng dụng tạo dàn số', 'ung dung tao dan so',
             
-            // ✅ TRÁNH NHẦM LẪN - Game Black Myth: Wukong
-            'wukong tạo dàn đề', 'wukong dàn đề', 'wukong loto',
-            'wukong xổ số', 'wukong soi cầu', 'wukong thống kê',
-            'dàn đề wukong khác game', 'wukong công cụ xổ số',
-            'wukong không phải game', 'wukong tool xổ số',
+            // ✅ BRAND KEYWORDS - Kết Quả MN
+            'Kết Quả MN tạo dàn đề', 'Kết Quả MN dàn đề', 'Kết Quả MN loto',
+            'Kết Quả MN xổ số', 'Kết Quả MN soi cầu', 'Kết Quả MN thống kê',
+            'ketquamn công cụ xổ số', 'ketquamn tool xổ số',
 
             // Advanced features
             'ghép lotto', 'tách dàn nhanh', 'lọc ghép dàn đề', 'lọc ghép dàn',
@@ -348,8 +387,8 @@ const SEO_CONFIG = {
             'bo loc dan de',
             'thuật toán lọc dàn đề',
             'thuat toan loc dan de',
-            'loc dan de wukong',
-            'lọc dàn đề wukong'
+            'loc dan de ketquamn',
+            'lọc dàn đề Kết Quả MN'
         ],
         url: '/loc-dan-de',
         image: OG_IMAGES.locDanDe,
@@ -690,12 +729,12 @@ const SEO_CONFIG = {
             'soi cầu MB', 'soi cau MB',
 
             // ✅ BRAND + FEATURE COMBINATIONS
-            'soi cầu wukong', 'soi cau wukong',
-            'soi cầu miền bắc wukong', 'soi cau mien bac wukong',
-            'dự đoán XSMB wukong', 'du doan XSMB wukong',
-            'soi cầu MB wukong', 'soi cau MB wukong',
-            'wukong soi cầu', 'wukong soi cau',
-            'wukong dự đoán XSMB', 'wukong du doan XSMB',
+            'soi cầu Kết Quả MN', 'soi cau ketquamn',
+            'soi cầu miền bắc Kết Quả MN', 'soi cau mien bac ketquamn',
+            'dự đoán XSMB Kết Quả MN', 'du doan XSMB ketquamn',
+            'soi cầu MB Kết Quả MN', 'soi cau MB ketquamn',
+            'Kết Quả MN soi cầu', 'ketquamn soi cau',
+            'Kết Quả MN dự đoán XSMB', 'ketquamn du doan XSMB',
 
             // ✅ LONG-TAIL KEYWORDS - Câu hỏi người dùng
             'soi cầu miền bắc hôm nay chính xác', 'soi cau mien bac hom nay chinh xac',
@@ -970,7 +1009,7 @@ const SEO_CONFIG = {
 
             // ✅ BRAND VARIATIONS
             'thống kê đầu đuôi ketquamn', 'ketquamn thống kê đầu đuôi',
-            'dau duoi wukong', 'wukong thống kê đầu đuôi',
+            'dau duoi ketquamn', 'Kết Quả MN thống kê đầu đuôi',
 
             // ✅ REGIONAL
             'thống kê đầu đuôi 3 miền', 'thống kê đầu đuôi xổ số'

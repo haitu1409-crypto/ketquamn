@@ -85,17 +85,17 @@ const KQXSMNPage = memo(function KQXSMNPage() {
     }, []);
 
     const pageTitle = useMemo(() =>
-        `XSMN - Kết Quả Xổ Số Miền Nam Hôm Nay ${today} | SXMN - KQXSMN Nhanh Nhất 2025`,
+        `XSMN - Kết Quả Xổ Số Miền Nam Hôm Nay ${today} | Tốt Hơn Xosodaiphat, Xoso.com.vn, Xskt.com.vn - SXMN - KQXSMN Nhanh Nhất 2025`,
         [today]
     );
 
     const h1Title = useMemo(() =>
-        `XSMN - Kết Quả Xổ Số Miền Nam Hôm Nay ${today}`,
+        `Kết Quả Xổ Số Miền Nam Hôm Nay ${today} - XSMN`,
         [today]
     );
 
     const pageDescription = useMemo(() =>
-        `XSMN - Kết quả xổ số miền Nam (xsmn, sxmn, kqxsmn) hôm nay ${today} nhanh nhất, chính xác nhất. Tường thuật trực tiếp từ các tỉnh miền Nam. Xem XSMN 30 ngày, XSMN hôm qua, XSMN ${dayOfWeek}. Miễn phí 100%!`,
+        `XSMN - Kết quả xổ số miền Nam (xsmn, sxmn, kqxsmn) hôm nay ${today} nhanh nhất, chính xác nhất. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn, xsmn.mobi, ketqua.net. Tường thuật trực tiếp từ các tỉnh miền Nam. Xem XSMN 30 ngày, XSMN hôm qua, XSMN ${dayOfWeek}. Miễn phí 100%!`,
         [today, dayOfWeek]
     );
 

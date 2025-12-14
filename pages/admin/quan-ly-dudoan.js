@@ -241,7 +241,7 @@ export default function ManagePredictions() {
                                             </div>
 
                                             <div className={styles.predictionSection}>
-                                                <h4>Dự đoán Wukong</h4>
+                                                <h4>Dự đoán Kết Quả MN</h4>
                                                 <div
                                                     className={styles.predictionPreview}
                                                     dangerouslySetInnerHTML={{

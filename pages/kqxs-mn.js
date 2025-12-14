@@ -144,7 +144,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                     'name': 'Kết Quả MN | KETQUAMN.COM',
                     'logo': {
                         '@type': 'ImageObject',
-                        'url': `${siteUrl}/imgs/wukong.png`
+                        'url': `${siteUrl}/logo1.png`
                     }
                 },
                 'mainEntityOfPage': {

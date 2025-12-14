@@ -450,12 +450,22 @@ export default function Layout({ children, className = '' }) {
                                 <ul className={styles.footerLinks}>
                                     <li>
                                         <Link href="/ket-qua-xo-so-mien-bac" className={styles.footerLink}>
-                                            Kết Quả Xổ Số
+                                            Kết Quả Xổ Số Miền Bắc
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/" className={styles.footerLink}>
+                                        <Link href="/ket-qua-xo-so-mien-nam" className={styles.footerLink}>
+                                            Kết Quả Xổ Số Miền Nam
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/dan-9x0x" className={styles.footerLink}>
                                             Dàn 9x-0x
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/loc-dan-de" className={styles.footerLink}>
+                                            Lọc Dàn Đề
                                         </Link>
                                     </li>
                                     <li>
@@ -491,8 +501,23 @@ export default function Layout({ children, className = '' }) {
                                         </Link>
                                     </li>
                                     <li>
+                                        <Link href="/soi-cau-dac-biet-mien-bac" className={styles.footerLink}>
+                                            Soi Cầu Đặc Biệt
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/soi-cau-loto-mien-bac" className={styles.footerLink}>
+                                            Soi Cầu Lô Tô
+                                        </Link>
+                                    </li>
+                                    <li>
                                         <Link href="/soi-cau-bac-cau" className={styles.footerLink}>
                                             Vẽ Đường Cầu
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/tin-tuc" className={styles.footerLink}>
+                                            Tin Tức Xổ Số
                                         </Link>
                                     </li>
                                     <li>
@@ -502,12 +527,49 @@ export default function Layout({ children, className = '' }) {
                                     </li>
                                 </ul>
                             </div>
+
+                            {/* Kết Quả Xổ Số Section - Internal Linking */}
+                            <div className={styles.footerSection}>
+                                <h4 className={styles.footerSectionTitle}>Kết Quả Xổ Số</h4>
+                                <ul className={styles.footerLinks}>
+                                    <li>
+                                        <Link href="/ket-qua-xo-so-mien-bac" className={styles.footerLink}>
+                                            XSMB - Xổ Số Miền Bắc
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/ket-qua-xo-so-mien-nam" className={styles.footerLink}>
+                                            XSMN - Xổ Số Miền Nam
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/kqxs-10-ngay" className={styles.footerLink}>
+                                            Kết Quả 10 Ngày
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/thongke/lo-gan" className={styles.footerLink}>
+                                            Thống Kê Lô Gan
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/thongke/giai-dac-biet" className={styles.footerLink}>
+                                            Thống Kê Giải Đặc Biệt
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/thongke/dau-duoi" className={styles.footerLink}>
+                                            Thống Kê Đầu Đuôi
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Footer Bottom */}
                         <div className={styles.footerBottom}>
                             <p className={styles.copyright}>
-                                © {new Date().getFullYear()} Kết Quả MN (TDDW). Made with <Heart size={12} style={{ display: 'inline', margin: '0 2px' }} /> in Vietnam.
+                                © {new Date().getFullYear()} Kết Quả MN | KETQUAMN.COM. Made with <Heart size={12} style={{ display: 'inline', margin: '0 2px' }} /> in Vietnam.
                             </p>
                             <p className={styles.disclaimer}>
                                 Công cụ miễn phí cho mục đích giải trí và nghiên cứu.

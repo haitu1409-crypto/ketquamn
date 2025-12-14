@@ -179,7 +179,7 @@ export default function AdminDashboard() {
         setIsAuthenticated(false);
     };
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // SEO Data
     const seoData = {

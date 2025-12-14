@@ -1,6 +1,6 @@
 /**
  * Trang Đăng Bài Dự Đoán Xổ Số
- * 4 loại dự đoán: Lotto, Đặc biệt, Bảng lô top, Wukong
+ * 4 loại dự đoán: Lotto, Đặc biệt, Bảng lô top, Kết Quả MN
  */
 
 import React, { useState, useEffect } from 'react';
@@ -299,7 +299,7 @@ export default function PredictionEditor() {
         setIsAuthenticated(true);
     };
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // Handlers
     const handleInputChange = (field, value) => {
@@ -340,7 +340,7 @@ export default function PredictionEditor() {
         }
 
         if (!formData.wukongContent.trim()) {
-            newErrors.wukongContent = 'Nội dung Dự đoán wukong là bắt buộc';
+            newErrors.wukongContent = 'Nội dung Dự đoán Kết Quả MN là bắt buộc';
         }
 
         setErrors(newErrors);
@@ -462,7 +462,7 @@ export default function PredictionEditor() {
                     <div className={styles.container}>
                         <h1 className={styles.pageTitle}>Đăng Dự Đoán Xổ Số</h1>
                         <p className={styles.pageSubtitle}>
-                            Đăng bài dự đoán với 5 loại: Cầu Lotto, Cầu Đặc biệt, Cầu 2 nháy, Bảng lô top, Dự đoán Wukong
+                            Đăng bài dự đoán với 5 loại: Cầu Lotto, Cầu Đặc biệt, Cầu 2 nháy, Bảng lô top, Dự đoán Kết Quả MN
                         </p>
                     </div>
                 </div>
@@ -534,13 +534,13 @@ export default function PredictionEditor() {
                                     placeholder="Nhập nội dung Bảng lô top dạng HTML (có thể dùng bảng table)..."
                                 />
 
-                                {/* Dự đoán Wukong */}
+                                {/* Dự đoán Kết Quả MN */}
                                 <HTMLEditor
-                                    label={`Dự đoán Wukong ngày: ${formatDate(formData.predictionDate)}`}
+                                    label={`Dự đoán Kết Quả MN ngày: ${formatDate(formData.predictionDate)}`}
                                     value={formData.wukongContent}
                                     onChange={(value) => handleInputChange('wukongContent', value)}
                                     error={errors.wukongContent}
-                                    placeholder="Nhập nội dung dự đoán Wukong dạng HTML..."
+                                    placeholder="Nhập nội dung dự đoán Kết Quả MN dạng HTML..."
                                 />
 
                                 {/* Author */}

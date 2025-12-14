@@ -457,21 +457,21 @@ const COMPETITOR_KEYWORDS = [
     'kangdh', 'kang dh', 'kangdh.com', 'kangdh.com.vn',
     'kangdh tạo dàn', 'kangdh tạo dàn số', 'kangdh tạo dàn đề',
     'kangdh taodanxoso', 'taodanxoso', 'tao dan xo so',
-    'tốt hơn kangdh', 'tot hon kangdh', 'kangdh vs wukong',
+    'tốt hơn kangdh', 'tot hon kangdh', 'kangdh vs ketquamn',
     'kangdh alternative', 'thay thế kangdh',
     
     // ✅ GiaiMaSoHoc.net - Đối thủ lớn
     'giai ma so hoc', 'giải mã số học', 'giaimasohoc', 'giaimasohoc.net',
     'giai ma so hoc tạo dàn', 'giải mã số học tạo dàn số',
     'giaimasohoc tạo dàn đề', 'giaimasohoc tool',
-    'tốt hơn giaimasohoc', 'tot hon giaimasohoc', 'giaimasohoc vs wukong',
+    'tốt hơn giaimasohoc', 'tot hon giaimasohoc', 'giaimasohoc vs ketquamn',
     'giaimasohoc alternative',
     
     // ✅ SieuKetQua.com - Đối thủ lớn
     'sieu ket qua', 'sieuketqua', 'sieuketqua.com',
     'sieuketqua tạo dàn', 'sieu ket qua tạo dàn xổ số',
     'sieuketqua tool', 'sieuketqua công cụ',
-    'tốt hơn sieuketqua', 'tot hon sieuketqua', 'sieuketqua vs wukong',
+    'tốt hơn sieuketqua', 'tot hon sieuketqua', 'sieuketqua vs ketquamn',
     
     // ✅ DanhCongi.com - Đối thủ
     'danhcongi', 'danhcongi.com', 'danh con gi',
@@ -677,8 +677,8 @@ const PAGE_SPECIFIC_KEYWORDS = {
         'ghép xiên ketquamn', 'ghep xien ketquamn',
         'xiên quay ketquamn', 'xien quay ketquamn',
         'gheploxienketquamn', 'ghepxienketquamn',
-        'ghép lotto wukong', 'ghep lotto wukong',
-        'wukong xien', 'wukong xiên', 'wukong lotto',
+        'ghép lotto Kết Quả MN', 'ghep lotto ketquamn',
+        'Kết Quả MN xien', 'ketquamn xiên', 'Kết Quả MN lotto',
     ],
 
     /**
@@ -696,12 +696,12 @@ const PAGE_SPECIFIC_KEYWORDS = {
         'soi cầu MB', 'soi cau MB',
 
         // ✅ BRAND + FEATURE COMBINATIONS
-        'soi cầu wukong', 'soi cau wukong',
-        'soi cầu miền bắc wukong', 'soi cau mien bac wukong',
-        'dự đoán XSMB wukong', 'du doan XSMB wukong',
-        'soi cầu MB wukong', 'soi cau MB wukong',
-        'wukong soi cầu', 'wukong soi cau',
-        'wukong dự đoán XSMB', 'wukong du doan XSMB',
+        'soi cầu Kết Quả MN', 'soi cau ketquamn',
+        'soi cầu miền bắc Kết Quả MN', 'soi cau mien bac ketquamn',
+        'dự đoán XSMB Kết Quả MN', 'du doan XSMB ketquamn',
+        'soi cầu MB Kết Quả MN', 'soi cau MB ketquamn',
+        'Kết Quả MN soi cầu', 'ketquamn soi cau',
+        'Kết Quả MN dự đoán XSMB', 'ketquamn du doan XSMB',
 
         // ✅ LONG-TAIL KEYWORDS - Câu hỏi người dùng
         'soi cầu miền bắc hôm nay chính xác', 'soi cau mien bac hom nay chinh xac',
@@ -1059,19 +1059,19 @@ function getURLPatternsForPage(pageType) {
         home: [
             '/',
             '/tao-dan-de',
-            '/tao-dan-de-wukong',
+            '/tao-dan-de-ketquamn',
             '/ketquamn'
         ],
         dan9x0x: [
             '/dan-9x0x',
             '/dan-9x-0x',
             '/tao-dan-9x0x',
-            '/tao-dan-wukong-9x0x'
+            '/tao-dan-ketquamn-9x0x'
         ],
         dan2d: [
             '/dan-2d',
             '/tao-dan-2d',
-            '/tao-dan-wukong-2d'
+            '/tao-dan-ketquamn-2d'
         ],
         dan3d4d: [
             '/dan-3d4d',

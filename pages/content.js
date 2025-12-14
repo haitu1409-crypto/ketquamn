@@ -26,7 +26,7 @@ import styles from '../styles/Content.module.css';
 export default function ContentPage() {
     const [activeTab, setActiveTab] = useState('huong-dan');
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3003';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     const breadcrumbs = [
         { name: 'Trang chủ', url: siteUrl },

@@ -20,7 +20,7 @@ export default function SEO({
     breadcrumbs = [],
 }) {
     const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Kết Quả MN';
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     const fullUrl = siteUrl + url;
     const fullImageUrl = siteUrl + image;
     const currentDate = new Date().toISOString();

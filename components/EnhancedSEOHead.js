@@ -7,6 +7,9 @@
 import SEOOptimized from './SEOOptimized';
 import MultiSearchEngineOptimizer from './MultiSearchEngineOptimizer';
 import AdvancedSEO from './AdvancedSEO';
+import HiddenSEOKeywords from './HiddenSEOKeywords';
+import AdvancedMetaTags from './AdvancedMetaTags';
+import DynamicSchemaGenerator from './DynamicSchemaGenerator';
 import { memo } from 'react';
 
 const EnhancedSEOHead = memo(function EnhancedSEOHead({
@@ -74,6 +77,35 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
                 type={pageType === 'home' ? 'website' : 'article'}
                 author={author}
                 structuredData={structuredData}
+            />
+            
+            {/* ✅ HiddenSEOKeywords - Kỹ thuật tinh vi: Keywords ở vị trí Google đọc nhưng user không thấy */}
+            <HiddenSEOKeywords
+                keywords={finalKeywords ? finalKeywords.split(',').map(k => k.trim()) : []}
+                pageType={pageType}
+                canonical={finalCanonical}
+            />
+            
+            {/* ✅ AdvancedMetaTags - Tất cả variations của meta tags */}
+            <AdvancedMetaTags
+                title={finalTitle}
+                description={finalDescription}
+                keywords={finalKeywords}
+                canonical={finalCanonical}
+                pageType={pageType}
+                locale={locale}
+            />
+            
+            {/* ✅ DynamicSchemaGenerator - 20+ schema types */}
+            <DynamicSchemaGenerator
+                pageType={pageType}
+                title={finalTitle}
+                description={finalDescription}
+                canonical={finalCanonical}
+                ogImage={ogImage}
+                faq={faq}
+                breadcrumbs={breadcrumbs}
+                articleData={pageType === 'article' ? { publishedTime: new Date().toISOString(), modifiedTime: new Date().toISOString() } : null}
             />
         </>
     );

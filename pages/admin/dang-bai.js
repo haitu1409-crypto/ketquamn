@@ -1495,7 +1495,7 @@ export default function PostEditor() {
         setIsAuthenticated(true);
     };
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // Categories - Đồng bộ với back-end và front-end tin-tuc.js
     const categories = [
