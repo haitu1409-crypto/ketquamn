@@ -8,9 +8,20 @@ import dynamic from 'next/dynamic';
 import { memo, useMemo } from 'react';
 import Layout from '../../components/Layout';
 import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-import EditorialContent from '../../components/EditorialContent';
-import ComparisonContent from '../../components/ComparisonContent';
-import { InternalLinksSection } from '../../components/InternalLinkingSEO';
+// ✅ OPTIMIZED: Dynamic import để không block initial render
+import dynamic from 'next/dynamic';
+const EditorialContent = dynamic(() => import('../../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null
+});
+const ComparisonContent = dynamic(() => import('../../components/ComparisonContent'), {
+    ssr: false,
+    loading: () => null
+});
+const InternalLinksSection = dynamic(() => import('../../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null
+});
 import PageSpeedOptimizer from '../../components/PageSpeedOptimizer';
 import MobileNavbar from '../../components/MobileNavbar';
 import styles from '../../styles/Dan2D.module.css';

@@ -7,8 +7,16 @@ import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import Layout from '../components/Layout';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
-import EditorialContent from '../components/EditorialContent';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
+// ✅ OPTIMIZED: Dynamic import để không block initial render
+import dynamic from 'next/dynamic';
+const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null
+});
+const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null
+});
 import styles from '../styles/giaidacbiet.module.css';
 import soiCauStyles from '../styles/soiCauBacCau.module.css';
 import ThongKe from '../components/ThongKe';

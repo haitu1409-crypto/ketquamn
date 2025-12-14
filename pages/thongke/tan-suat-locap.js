@@ -9,8 +9,16 @@ import ThongKe from '../../components/ThongKe';
 import CongCuHot from '../../components/CongCuHot';
 import Link from 'next/link';
 import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-import EditorialContent from '../../components/EditorialContent';
-import { InternalLinksSection } from '../../components/InternalLinkingSEO';
+// ✅ OPTIMIZED: Dynamic import để không block initial render
+import dynamic from 'next/dynamic';
+const EditorialContent = dynamic(() => import('../../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null
+});
+const InternalLinksSection = dynamic(() => import('../../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null
+});
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Skeleton Loading Component

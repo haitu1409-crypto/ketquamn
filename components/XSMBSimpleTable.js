@@ -32,6 +32,7 @@ const XSMBSimpleTable = ({
     onError
 }) => {
     // ✅ GIỐNG DỰ ÁN CŨ: Fetch ngay lập tức, không cần mount check
+    // Hook sẽ tự động sử dụng cached data nếu có
     const xsmbTodayHook = useXSMBNextToday({
         autoFetch: useToday && autoFetch,
         refreshInterval: useToday ? refreshInterval : 0

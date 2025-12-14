@@ -13,9 +13,20 @@ import MobileNavbar from '../components/MobileNavbar';
 import { Target, BarChart3, Star, Zap, CheckCircle, Filter } from 'lucide-react';
 import styles from '../styles/Dan9x0x.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-import EditorialContent from '../components/EditorialContent';
-import ComparisonContent from '../components/ComparisonContent';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
+// ✅ OPTIMIZED: Dynamic import để không block initial render
+import dynamic from 'next/dynamic';
+const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null
+});
+const ComparisonContent = dynamic(() => import('../components/ComparisonContent'), {
+    ssr: false,
+    loading: () => null
+});
+const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null
+});
 import { getPageSEO } from '../config/seoConfig';
 
 // ✅ Lazy load non-critical components

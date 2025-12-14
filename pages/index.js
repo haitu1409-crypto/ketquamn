@@ -28,33 +28,9 @@ import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
 import { Dice6, Target, BarChart3, Star, Zap, CheckCircle, Heart, Smartphone, Sparkles, Calendar, Activity, TrendingUp, Award, Percent } from 'lucide-react';
 
-// ✅ Lazy load LatestXSMBResults with SSR enabled for SEO (GIỐNG DỰ ÁN CŨ)
+// ✅ OPTIMIZED: Lazy load LatestXSMBResults with SSR enabled, no visible loading state
 const LatestXSMBResults = dynamic(() => import('../components/LatestXSMBResults'), {
-    loading: () => (
-        <div style={{ 
-            minHeight: '400px', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            background: '#fff',
-            borderRadius: '8px',
-            margin: '20px 0',
-            contain: 'layout style' 
-        }}>
-            <div style={{ textAlign: 'center' }}>
-                <div style={{ 
-                    width: '40px', 
-                    height: '40px', 
-                    border: '4px solid #f3f3f3', 
-                    borderTop: '4px solid #FF6B35', 
-                    borderRadius: '50%', 
-                    animation: 'spin 1s linear infinite',
-                    margin: '0 auto 10px'
-                }}></div>
-                <p>Đang tải kết quả xổ số...</p>
-            </div>
-        </div>
-    ),
+    loading: () => null, // ✅ OPTIMIZED: No visible loading state to prevent layout shift
     ssr: true  // ✅ Enable SSR để Googlebot thấy được nội dung
 });
 
@@ -515,6 +491,6 @@ const Home = memo(function Home({ initialXSMBData = null }) {
 // ✅ Export memoized component
 export default Home;
 
-// ✅ REMOVED: getServerSideProps - Fetch client-side giống dự án cũ để tránh delay
-// Dự án cũ không có getServerSideProps và fetch client-side ngay, render loading placeholder
+// ✅ REMOVED: getServerSideProps - Dự án cũ không có, fetch client-side với cached data
+// Điều này đảm bảo page render ngay, không block bởi API call
 

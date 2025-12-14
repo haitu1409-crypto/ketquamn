@@ -4,8 +4,16 @@ import { Activity, Award, Calendar, Layers, Percent, TrendingUp } from 'lucide-r
 
 import Layout from '../../components/Layout';
 import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-import EditorialContent from '../../components/EditorialContent';
-import { InternalLinksSection } from '../../components/InternalLinkingSEO';
+// ✅ OPTIMIZED: Dynamic import để không block initial render
+import dynamic from 'next/dynamic';
+const EditorialContent = dynamic(() => import('../../components/EditorialContent'), {
+    ssr: false,
+    loading: () => null
+});
+const InternalLinksSection = dynamic(() => import('../../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => null
+});
 
 import styles from '../../styles/thongKeOverview.module.css';
 
