@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import { memo, useMemo, useCallback } from 'react';
 import Layout from '../components/Layout';
 import TodayPredictions from '../components/TodayPredictions';
+import TableDate from '../components/tableDateKQXS';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { InternalLinksSection } from '../components/InternalLinkingSEO';
@@ -341,58 +342,10 @@ const Home = memo(function Home() {
                         <h1 className={styles.mainTitle}>
                             Kết Quả Xổ Số 3 Miền Hôm Nay - <span className={styles.highlightDomain}>KETQUAMN.COM</span>
                         </h1>
-                        <div className={styles.heroActions}>
-                            {/* Group 1 */}
-                            <Link href="/dan-9x0x" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Tạo Dàn Đề 9x-0x</span>
-                            </Link>
-                            <Link href="/loc-dan-de" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Lọc Dàn Đề 9x-0x</span>
-                            </Link>
-                            <Link href="/dan-2d" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Dàn 2D/1D</span>
-                            </Link>
-                            <Link href="/dan-3d4d" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Dàn 3D/4D</span>
-                            </Link>
-
-                            {/* Group 2 */}
-                            <Link href="/ket-qua-xo-so-mien-bac" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Kết Quả Xổ Số</span>
-                            </Link>
-                            <Link href="/soi-cau-dac-biet-mien-bac" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Soi Cầu Đặc Biệt</span>
-                            </Link>
-                            <Link href="/soi-cau-mien-bac-ai" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Soi Cầu AI</span>
-                            </Link>
-                            <Link href="/dan-dac-biet" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Dàn Đặc Biệt</span>
-                            </Link>
-
-                            {/* Group 3 */}
-                            <Link href="/thongke/lo-gan" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Lô Gan</span>
-                            </Link>
-                            <Link href="/thongke/dau-duoi" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Đầu Đuôi</span>
-                            </Link>
-                            <Link href="/thongke/giai-dac-biet" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Giải ĐB</span>
-                            </Link>
-                            <Link href="/thongke/giai-dac-biet-tuan" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>ĐB Tuần</span>
-                            </Link>
-
-                            {/* Group 4 */}
-                            <Link href="/thongke/tan-suat-loto" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Tần Suất Lô Tô</span>
-                            </Link>
-                            <Link href="/thongke/tan-suat-locap" className={styles.heroSecondaryButton} prefetch={false}>
-                                <span>Tần Suất Lô Cặp</span>
-                            </Link>
-                        </div>
                     </header>
+                    
+                    {/* Table Date - Lịch xổ số 3 miền */}
+                    <TableDate />
 
                     {/* Main Content Layout - 2 Columns */}
                     <div className={styles.mainContentLayout}>

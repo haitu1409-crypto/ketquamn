@@ -8,6 +8,7 @@ import { useState, useEffect, useCallback, useMemo, memo, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import XSMNLatest10Table from '../components/XSMNLatest10Table';
+import TableDate from '../components/tableDateKQXS';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
@@ -186,6 +187,9 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                     <h1 className={styles.pageTitle} style={{ contain: 'layout style paint' }}>
                         {h1Title}
                     </h1>
+
+                    {/* Table Date - Lịch xổ số 3 miền */}
+                    <TableDate />
 
                     {isLiveWindow && (
                         <div className={styles.liveSection}>

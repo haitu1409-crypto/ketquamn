@@ -10,6 +10,7 @@ import { useState, useEffect, useCallback, useMemo, memo, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '../components/Layout';
 import XSMBLatest10Table from '../components/XSMBLatest10Table';
+import TableDate from '../components/tableDateKQXS';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
@@ -213,16 +214,19 @@ const KQXSPage = memo(function KQXSPage() {
 
             <Layout>
                 <div className={styles.container}>
+                    {/* Header Section - ✅ LCP Element: Add fetchpriority hint */}
+                    <h1 className={styles.pageTitle} style={{ contain: 'layout style paint' }}>
+                        {h1Title}
+                    </h1>
+
+                    {/* Table Date - Lịch xổ số 3 miền */}
+                    <TableDate />
+
                     {isLiveWindow && (
                         <div className={styles.liveSection}>
                             <LiveResult showChatPreview={true} />
                         </div>
                     )}
-
-                    {/* Header Section - ✅ LCP Element: Add fetchpriority hint */}
-                    <h1 className={styles.pageTitle} style={{ contain: 'layout style paint' }}>
-                        {h1Title}
-                    </h1>
 
                     {/* Results Section - ✅ FIX CLS: Container with reserved space */}
                     <div className={styles.resultsSection}>

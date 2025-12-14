@@ -266,6 +266,20 @@ export default function Layout({ children, className = '' }) {
                                 {/* Mobile Navigation */}
                                 <div className={`${styles.mobileNav} ${isMenuOpen ? styles.mobileNavOpen : ''}`}>
                                 <div className={styles.mobileNavContent} onClick={handleLinkClick}>
+                                        {/* Logo - Mobile */}
+                                        <Link href="/" className={styles.mobileNavLogo} onClick={() => setIsMenuOpen(false)}>
+                                            <Image
+                                                src="/logo1.png"
+                                                alt="Kết Quả MN"
+                                                width={250}
+                                                height={85}
+                                                className={styles.mobileNavLogoImage}
+                                                priority={false}
+                                                loading="lazy"
+                                                style={{ display: 'block', maxWidth: '100%', height: 'auto', width: 'auto' }}
+                                            />
+                                        </Link>
+
                                         {/* Auth Button - Mobile (top) */}
                                         <div className={styles.mobileAuthButton}>
                                             <AuthButton variant="mobile" />
@@ -400,6 +414,138 @@ export default function Layout({ children, className = '' }) {
                         )}
                     </nav>
                 </header>
+
+                {/* Hero Actions - Global Navigation */}
+                <div className={styles.heroActions}>
+                    <Link 
+                        href="/ket-qua-xo-so-mien-bac" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/ket-qua-xo-so-mien-bac' || router.asPath === '/ket-qua-xo-so-mien-bac') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="XSMB"
+                    >
+                        XSMB
+                    </Link>
+                    <Link 
+                        href="/ket-qua-xo-so-mien-nam" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/ket-qua-xo-so-mien-nam' || router.asPath === '/ket-qua-xo-so-mien-nam') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="XSMN"
+                    >
+                        XSMN
+                    </Link>
+                    <Link 
+                        href="/dan-9x0x" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/dan-9x0x' || router.asPath === '/dan-9x0x') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Tạo Dàn Đề 9x-0x"
+                    >
+                        Tạo Dàn Đề 9x-0x
+                    </Link>
+                    <Link 
+                        href="/loc-dan-de" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/loc-dan-de' || router.asPath === '/loc-dan-de') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Lọc Dàn Đề 9x-0x"
+                    >
+                        Lọc Dàn Đề 9x-0x
+                    </Link>
+                    <Link 
+                        href="/dan-2d" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/dan-2d' || router.asPath === '/dan-2d') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Dàn 2D/1D"
+                    >
+                        Dàn 2D/1D
+                    </Link>
+                    <Link 
+                        href="/dan-3d4d" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/dan-3d4d' || router.asPath === '/dan-3d4d') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Dàn 3D/4D"
+                    >
+                        Dàn 3D/4D
+                    </Link>
+                    <Link 
+                        href="/ket-qua-xo-so-mien-bac" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/ket-qua-xo-so-mien-bac' || router.asPath === '/ket-qua-xo-so-mien-bac') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Kết Quả Xổ Số"
+                    >
+                        Kết Quả Xổ Số
+                    </Link>
+                    <Link 
+                        href="/soi-cau-dac-biet-mien-bac" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/soi-cau-dac-biet-mien-bac' || router.asPath === '/soi-cau-dac-biet-mien-bac') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Soi Cầu Đặc Biệt"
+                    >
+                        Soi Cầu Đặc Biệt
+                    </Link>
+                    <Link 
+                        href="/soi-cau-mien-bac-ai" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/soi-cau-mien-bac-ai' || router.asPath === '/soi-cau-mien-bac-ai') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Soi Cầu AI"
+                    >
+                        Soi Cầu AI
+                    </Link>
+                    <Link 
+                        href="/dan-dac-biet" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/dan-dac-biet' || router.asPath === '/dan-dac-biet') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Dàn Đặc Biệt"
+                    >
+                        Dàn Đặc Biệt
+                    </Link>
+                    <Link 
+                        href="/thongke/lo-gan" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/thongke/lo-gan' || router.asPath === '/thongke/lo-gan') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Lô Gan"
+                    >
+                        Lô Gan
+                    </Link>
+                    <Link 
+                        href="/thongke/dau-duoi" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/thongke/dau-duoi' || router.asPath === '/thongke/dau-duoi') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Đầu Đuôi"
+                    >
+                        Đầu Đuôi
+                    </Link>
+                    <Link 
+                        href="/thongke/giai-dac-biet" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/thongke/giai-dac-biet' || router.asPath === '/thongke/giai-dac-biet') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Giải ĐB"
+                    >
+                        Giải ĐB
+                    </Link>
+                    <Link 
+                        href="/thongke/giai-dac-biet-tuan" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/thongke/giai-dac-biet-tuan' || router.asPath === '/thongke/giai-dac-biet-tuan') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="ĐB Tuần"
+                    >
+                        ĐB Tuần
+                    </Link>
+                    <Link 
+                        href="/thongke/tan-suat-loto" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/thongke/tan-suat-loto' || router.asPath === '/thongke/tan-suat-loto') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Tần Suất Lô Tô"
+                    >
+                        Tần Suất Lô Tô
+                    </Link>
+                    <Link 
+                        href="/thongke/tan-suat-locap" 
+                        className={`${styles.heroActionLink} ${(router.pathname === '/thongke/tan-suat-locap' || router.asPath === '/thongke/tan-suat-locap') ? styles.active : ''}`} 
+                        prefetch={false} 
+                        title="Tần Suất Lô Cặp"
+                    >
+                        Tần Suất Lô Cặp
+                    </Link>
+                </div>
 
                 {/* Main Content */}
                 <main id="main-content" className={`${styles.main} ${className}`}>

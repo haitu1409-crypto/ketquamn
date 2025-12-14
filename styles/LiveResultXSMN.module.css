@@ -34,6 +34,8 @@
     width: auto;
     margin: 0 auto;
     flex: 1;
+    overflow-x: auto;
+    min-width: 0;
 }
 
 .sideTablesContainer {
@@ -47,7 +49,6 @@
 
 .kqxs {
     width: 100%;
-    border: 1px solid #e80000;
     border-radius: 8px;
     text-align: center;
     margin-bottom: 30px;
@@ -55,6 +56,7 @@
 }
 
 .headerTop {
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -64,7 +66,7 @@
     white-space: pre-wrap;
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin: 0;
 }
 
 .kqxs__action {
@@ -91,7 +93,7 @@
 }
 
 .header {
-    padding: 15px 0 10px 0;
+    padding: 10px 0 5px 0;
     background-color: #ffeca0;
 }
 
@@ -174,6 +176,7 @@
     max-width: 100%;
     table-layout: auto;
     margin: 0 auto;
+    min-width: fit-content;
 }
 
 .tableXS th,
@@ -276,9 +279,13 @@
     min-width: 108px;
 }
 
-.running_5 {}
+.running_5 {
+    min-width: 70px;
+}
 
-.running_6 {}
+.running_6 {
+    min-width: 84px;
+}
 
 .running_number.highlight {
     color: red;
@@ -306,12 +313,14 @@
 /* Animation styles */
 .digit_container {
     display: inline-flex;
+    gap: 0;
 }
 
 .digit_rolling {
     display: inline-block;
-    min-width: 18px;
-    padding: 0 2px;
+    min-width: 14px;
+    padding: 0;
+    margin: 0;
     text-align: center;
     font-size: 20px;
     font-weight: 700;
@@ -389,6 +398,7 @@
     margin: 0;
     background: #ffffff;
     table-layout: fixed;
+    text-align: center;
     width: auto;
     max-width: 280px;
     min-width: 260px;
@@ -545,6 +555,7 @@
 
 .dit th:not(:first-child) {
     font-size: 14px !important;
+    text-align: center !important;
     padding: 3px 2px !important;
     white-space: nowrap;
     overflow: hidden;
@@ -652,7 +663,6 @@
 
     .dauDataCol,
     .ditDataCol {
-        width: auto !important;
         min-width: 0 !important;
         max-width: none !important;
         padding: 0 !important;
@@ -666,7 +676,6 @@
         font-size: 18px;
         width: 100%;
         font-weight: 700;
-        margin-bottom: 5px;
     }
 
     .header {
@@ -724,7 +733,7 @@
     }
 
     .prizeNumber {
-        font-size: 18px;
+        font-size: 20px;
         margin: 1px 0;
     }
 
