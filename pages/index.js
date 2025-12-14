@@ -494,23 +494,16 @@ export default Home;
 // ✅ CRITICAL: Fetch data server-side để render ngay lập tức
 export async function getServerSideProps() {
     try {
-        // ✅ CRITICAL: Import API service - sử dụng dynamic import để tránh bundle size
+        // Import API service
         const { getLatestXSMBNext } = await import('../services/xsmbApi');
         
-        // ✅ Fetch latest XSMB data server-side với timeout
+        // Fetch latest XSMB data server-side
         let xsmbData = null;
         try {
-            // ✅ Set timeout để tránh block quá lâu
-            const fetchPromise = getLatestXSMBNext();
-            const timeoutPromise = new Promise((_, reject) => 
-                setTimeout(() => reject(new Error('Timeout')), 3000)
-            );
-            
-            xsmbData = await Promise.race([fetchPromise, timeoutPromise]);
+            xsmbData = await getLatestXSMBNext();
         } catch (error) {
-            // ✅ Silent fail - không log error để tránh spam logs
-            // Component sẽ fetch client-side nếu server-side fail
-            xsmbData = null;
+            console.error('Error fetching XSMB data in getServerSideProps:', error);
+            // Continue without data - component will fetch client-side
         }
 
         return {
@@ -519,7 +512,7 @@ export async function getServerSideProps() {
             },
         };
     } catch (error) {
-        // ✅ Silent fail - return null để component fetch client-side
+        console.error('Error in getServerSideProps:', error);
         return {
             props: {
                 initialXSMBData: null,

@@ -8,24 +8,17 @@ import axios from 'axios';
 // Base URL của backend API
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
-// ✅ CRITICAL FIX: Hàm tạo userId - hoạt động cả server-side và client-side
+// Hàm tạo userId ngẫu nhiên (từ kqxsMB.js)
 const getUserId = () => {
-    // ✅ Server-side: return default user ID
-    if (typeof window === 'undefined') {
-        return 'server-user';
-    }
-    // ✅ Client-side: sử dụng localStorage
-    try {
+    if (typeof window !== 'undefined') {
         let userId = localStorage.getItem('userId');
         if (!userId) {
             userId = Math.random().toString(36).substring(2);
             localStorage.setItem('userId', userId);
         }
         return userId;
-    } catch (e) {
-        // Fallback nếu localStorage không available
-        return 'default-user';
     }
+    return 'default-user';
 };
 
 // Tạo axios instance với cấu hình mặc định
@@ -67,7 +60,7 @@ const retryRequest = async (requestFn, maxRetries = 2, delay = 3000) => {
 const transformBackendData = (backendData) => {
     if (!backendData) return null;
 
-    // ✅ Removed console.log để tăng performance
+    console.log('🔍 Backend data received:', backendData);
 
     // Format ngày
     const formatDate = (dateString) => {

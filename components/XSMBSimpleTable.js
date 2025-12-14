@@ -81,10 +81,9 @@ const XSMBSimpleTable = ({
         }
     }, [error, onError]);
 
-    // ✅ CRITICAL FIX: Ưu tiên propData (server-side data) để render ngay lập tức
-    // Nếu có propData, dùng ngay (render trên cả server và client, không cần chờ mount)
+    // ✅ OPTIMIZED: Ưu tiên propData (server-side data) để render ngay lập tức
+    // Nếu có propData, dùng ngay (không cần chờ mount)
     // Nếu không có propData, dùng apiData sau khi mount
-    // Điều này đảm bảo server-side data được hiển thị ngay từ đầu, không có delay
     const data = propData || (isMounted ? apiData : null);
 
     // ✅ OPTIMIZED: Không hiển thị loading nếu đã có data hoặc đang trên server
@@ -118,11 +117,9 @@ const XSMBSimpleTable = ({
         );
     }
 
-    // ✅ CRITICAL FIX: Nếu có propData, render ngay (không cần chờ mount)
-    // Nếu không có data và đang trên server, return null (không render loading trên server)
+    // Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
     if (!data) {
-        // ✅ Chỉ hiển thị loading trên client sau khi mount, không hiển thị trên server
-        if (showLoading && isMounted) {
+        if (showLoading) {
             return (
                 <div className={`${styles.container} ${className}`}>
                     <div className={styles.loadingMessage}>
@@ -132,7 +129,6 @@ const XSMBSimpleTable = ({
                 </div>
             );
         }
-        // ✅ Trên server, return null để tránh hydration mismatch
         return null;
     }
 
