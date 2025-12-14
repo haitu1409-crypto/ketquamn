@@ -83,37 +83,20 @@ const SEO_CONFIG = {
             'xem kết quả XSMT', 'xem ket qua XSMT',
             
             // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh
-            // KETQUA04.NET / KETQUA.NET - Target brand
-            'ketqua04.net', 'ketqua04', 'ketqua.net', 'ketqua 04', 'ket qua 04',
-            'ketqua04.net alternative', 'thay thế ketqua04.net', 'ketqua04.net tốt hơn',
-            'ketqua04.net vs ketquamn', 'so sánh ketqua04.net', 'tốt hơn ketqua04.net',
-            'ketqua04.net kết quả xổ số', 'ketqua04.net xsmn', 'ketqua04.net xsmb',
-            'ketqua04.net tra cứu', 'ketqua04.net hôm nay', 'ketqua04.net mới nhất',
-            
             // XOSODAIPHAT
             'kết quả xổ số xosodaiphat', 'ket qua xo so xosodaiphat',
             'kết quả xổ số tốt hơn xosodaiphat', 'ket qua xo so tot hon xosodaiphat',
-            'xosodaiphat.com alternative', 'thay thế xosodaiphat.com', 'xosodaiphat.com tốt hơn',
-            'xosodaiphat.com vs ketquamn', 'so sánh xosodaiphat.com', 'tốt hơn xosodaiphat.com',
-            'xosodaiphat.com kết quả xổ số', 'xosodaiphat.com xsmn', 'xosodaiphat.com xsmb',
             
             // XOSO.COM.VN
             'kết quả xổ số xoso', 'ket qua xo so xoso',
             'kết quả xổ số tốt hơn xoso', 'ket qua xo so tot hon xoso',
-            'xoso.com.vn alternative', 'thay thế xoso.com.vn', 'xoso.com.vn tốt hơn',
-            'xoso.com.vn vs ketquamn', 'so sánh xoso.com.vn', 'tốt hơn xoso.com.vn',
-            'xoso.com.vn kết quả xổ số', 'xoso.com.vn xsmn', 'xoso.com.vn xsmb',
             
             // XSKT.COM.VN
             'kết quả xổ số xskt', 'ket qua xo so xskt',
             'kết quả xổ số tốt hơn xskt', 'ket qua xo so tot hon xskt',
-            'xskt.com.vn alternative', 'thay thế xskt.com.vn', 'xskt.com.vn tốt hơn',
-            'xskt.com.vn vs ketquamn', 'so sánh xskt.com.vn', 'tốt hơn xskt.com.vn',
             
             // XSMN.MOBI
             'kết quả xổ số xsmn.mobi', 'ket qua xo so xsmn.mobi',
-            'xsmn.mobi alternative', 'thay thế xsmn.mobi', 'xsmn.mobi tốt hơn',
-            'xsmn.mobi vs ketquamn', 'so sánh xsmn.mobi', 'tốt hơn xsmn.mobi',
             
             // KETQUA.NET
             'kết quả xổ số ketqua.net', 'ket qua xo so ketqua.net',
@@ -233,10 +216,10 @@ const SEO_CONFIG = {
             'ứng dụng tạo dàn số', 'ung dung tao dan so',
             
             // ✅ TRÁNH NHẦM LẪN - Game Black Myth: Wukong
-            'ketquamn tạo dàn đề', 'ketquamn dàn đề', 'ketquamn loto',
-            'ketquamn xổ số', 'ketquamn soi cầu', 'ketquamn thống kê',
-            'dàn đề ketquamn khác game', 'ketquamn công cụ xổ số',
-            'ketquamn không phải game', 'ketquamn tool xổ số',
+            'wukong tạo dàn đề', 'wukong dàn đề', 'wukong loto',
+            'wukong xổ số', 'wukong soi cầu', 'wukong thống kê',
+            'dàn đề wukong khác game', 'wukong công cụ xổ số',
+            'wukong không phải game', 'wukong tool xổ số',
 
             // Advanced features
             'ghép lotto', 'tách dàn nhanh', 'lọc ghép dàn đề', 'lọc ghép dàn',
@@ -365,8 +348,8 @@ const SEO_CONFIG = {
             'bo loc dan de',
             'thuật toán lọc dàn đề',
             'thuat toan loc dan de',
-            'loc dan de ketquamn',
-            'lọc dàn đề ketquamn'
+            'loc dan de wukong',
+            'lọc dàn đề wukong'
         ],
         url: '/loc-dan-de',
         image: OG_IMAGES.locDanDe,
@@ -707,12 +690,12 @@ const SEO_CONFIG = {
             'soi cầu MB', 'soi cau MB',
 
             // ✅ BRAND + FEATURE COMBINATIONS
-            'soi cầu ketquamn', 'soi cau ketquamn',
-            'soi cầu miền bắc ketquamn', 'soi cau mien bac ketquamn',
-            'dự đoán XSMB ketquamn', 'du doan XSMB ketquamn',
-            'soi cầu MB ketquamn', 'soi cau MB ketquamn',
-            'ketquamn soi cầu', 'ketquamn soi cau',
-            'ketquamn dự đoán XSMB', 'ketquamn du doan XSMB',
+            'soi cầu wukong', 'soi cau wukong',
+            'soi cầu miền bắc wukong', 'soi cau mien bac wukong',
+            'dự đoán XSMB wukong', 'du doan XSMB wukong',
+            'soi cầu MB wukong', 'soi cau MB wukong',
+            'wukong soi cầu', 'wukong soi cau',
+            'wukong dự đoán XSMB', 'wukong du doan XSMB',
 
             // ✅ LONG-TAIL KEYWORDS - Câu hỏi người dùng
             'soi cầu miền bắc hôm nay chính xác', 'soi cau mien bac hom nay chinh xac',
@@ -1351,7 +1334,7 @@ const COMMON_META = {
     robots: 'index, follow',
     googlebot: 'index, follow',
     author: SITE_NAME,
-    viewport: 'width=device-width, initial-scale=1',
+    viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
     themeColor: '#FF6B35',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black-translucent'

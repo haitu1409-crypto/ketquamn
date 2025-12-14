@@ -12,7 +12,6 @@ import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import EditorialContent from '../components/EditorialContent';
-import ComparisonContent from '../components/ComparisonContent';
 import { getPageSEO } from '../config/seoConfig';
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
@@ -446,7 +445,7 @@ const Home = memo(function Home() {
                         {/* Right Column - Today Predictions (Desktop Only) */}
                         <div className={styles.rightColumn}>
                             <div className={styles.desktopOnlyTodayPredictions}>
-                                <TodayPredictions instanceId="desktop" />
+                                <TodayPredictions />
                             </div>
                         </div>
                     </div>
@@ -491,11 +490,8 @@ const Home = memo(function Home() {
                     </div>
                 </div>
                 
-                {/* ✅ Editorial Content - Compact mode, chỉ hiển thị ngắn gọn */}
-                <EditorialContent pageType="home" compact={true} />
-                
-                {/* ✅ Comparison Content - Compact mode, ẩn full comparison */}
-                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                {/* ✅ Editorial Content - Thêm giá trị thực sự để tránh thin content */}
+                <EditorialContent pageType="home" />
                 
                 {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                 <InternalLinksSection pageType="home" />

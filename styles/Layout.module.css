@@ -137,7 +137,7 @@
 
 @media (min-width: 768px) {
     .navContainer {
-        /* padding: var(--spacing-3) var(--spacing-5); */
+        padding: var(--spacing-3) var(--spacing-5);
         /* ✅ CRITICAL: Allow dropdown to overflow on desktop */
         overflow: visible;
     }
@@ -145,7 +145,7 @@
 
 @media (min-width: 1024px) {
     .navContainer {
-        /* padding: var(--spacing-3) var(--spacing-6); */
+        padding: var(--spacing-3) var(--spacing-6);
     }
 }
 

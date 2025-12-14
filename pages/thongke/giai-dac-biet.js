@@ -5,9 +5,7 @@ import styles from '../../styles/giaidacbiet.module.css';
 import { apiMB } from '../api/kqxsMB';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-import EditorialContent from '../../components/EditorialContent';
-import { InternalLinksSection } from '../../components/InternalLinkingSEO';
+import StatisticsSEO from '../../components/StatisticsSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Skeleton Loading Component cho bảng 7 cột (Thứ 2 đến CN)
@@ -218,19 +216,18 @@ const GiaiDacBiet = ({ initialStats, initialMetadata, initialDays }) => {
     // ✅ FIX CLS: Ensure description always has valid values
     const pageDescription = `Xem danh sách giải đặc biệt Miền Bắc trong ${metadata?.filterType || ''}.`;
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
-    
     return (
-        <>
-            <EnhancedSEOHead
-                pageType="thong-ke"
-                customTitle={`Thống Kê Giải Đặc Biệt XSMB - Phân Tích Chi Tiết | Kết Quả MN`}
-                customDescription={pageDescription || 'Thống kê giải đặc biệt XSMB - Bảng giải đặc biệt nhiều năm với khả năng lọc theo tháng, quý và ghi chú số nóng, số lạnh. Có biểu đồ độ lệch từng giải. Cập nhật hàng ngày, miễn phí 100%.'}
-                customKeywords="thống kê giải đặc biệt, giải đặc biệt xsmb, thống kê gdb, số nóng số lạnh"
-                canonicalUrl={`${siteUrl}/thongke/giai-dac-biet`}
+        <Layout>
+            <StatisticsSEO 
+                pageType="giai-dac-biet"
+                metadata={{
+                    startDate: metadata.startDate,
+                    endDate: metadata.endDate
+                }}
                 faq={statisticsFAQs['giai-dac-biet']}
+                customDescription={pageDescription}
             />
-            <Layout>
+
             <div className={styles.container}>
                 <div className={styles.titleGroup}>
                     <h1 className={styles.title}>{pageTitle}</h1>
@@ -463,14 +460,7 @@ const GiaiDacBiet = ({ initialStats, initialMetadata, initialDays }) => {
             >
                 ↑
             </button>
-            
-            {/* ✅ Editorial Content - Compact mode */}
-            <EditorialContent pageType="thong-ke" compact={true} />
-            
-            {/* ✅ Internal Linking SEO */}
-            <InternalLinksSection pageType="thong-ke" />
         </Layout>
-        </>
     );
 };
 

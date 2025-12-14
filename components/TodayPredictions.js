@@ -28,9 +28,7 @@ const FacebookIcon = ({ size = 20, className }) => (
 );
 
 // Memoized PredictionCard component để tránh re-render không cần thiết
-const PredictionCard = memo(({ pred, predictionDate, formattedDate, instanceId = '' }) => {
-    // ✅ FIX: Add unique instance ID to prevent duplicate IDs when component is rendered multiple times
-    const uniqueId = `prediction-title-${pred.id}${instanceId ? `-${instanceId}` : ''}`;
+const PredictionCard = memo(({ pred, predictionDate, formattedDate }) => {
 
     return (
         <article
@@ -42,13 +40,13 @@ const PredictionCard = memo(({ pred, predictionDate, formattedDate, instanceId =
             itemScope
             itemType="https://schema.org/Article"
             data-prediction-type={pred.id}
-            aria-labelledby={uniqueId}
+            aria-labelledby={`prediction-title-${pred.id}`}
         >
             <header className={styles.cardHeader}>
                 <div>
                     <h3
                         className={styles.cardTitle}
-                        id={uniqueId}
+                        id={`prediction-title-${pred.id}`}
                         itemProp="headline"
                     >
                         {pred.title}
@@ -80,7 +78,7 @@ const PredictionCard = memo(({ pred, predictionDate, formattedDate, instanceId =
 
 PredictionCard.displayName = 'PredictionCard';
 
-const TodayPredictions = ({ instanceId = '' }) => {
+const TodayPredictions = () => {
     const router = useRouter();
     const [prediction, setPrediction] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -102,7 +100,7 @@ const TodayPredictions = ({ instanceId = '' }) => {
             specialContent: "Cầu đặc biệt: 12345, 23456, 34567, 45678, 56789",
             doubleJumpContent: "Cầu 2 nháy: 12-21, 23-32, 34-43, 45-54, 56-65",
             topTableContent: "Bảng lô top: 12, 23, 34, 45, 56, 67, 78, 89, 90, 01",
-            wukongContent: "Dự đoán ketquamn: 12, 23, 34, 45, 56, 67, 78, 89, 90, 01"
+            wukongContent: "Dự đoán wukong: 12, 23, 34, 45, 56, 67, 78, 89, 90, 01"
         };
     }, []);
 
@@ -222,14 +220,14 @@ const TodayPredictions = ({ instanceId = '' }) => {
                 keywords: 'bảng lô top, lô hot, lô nhiều người chơi, thống kê lô, lô đề'
             },
             {
-                id: 'ketquamn',
-                title: `Dự đoán ketquamn`,
+                id: 'wukong',
+                title: `Dự đoán wukong`,
                 subtitle: dateText,
                 content: prediction.wukongContent,
                 icon: Sparkles,
                 gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
                 color: '#43e97b',
-                keywords: 'dự đoán ketquamn, bạch thủ lô, song thủ lô, lô xiên 2, lô kép'
+                keywords: 'dự đoán wukong, bạch thủ lô, song thủ lô, lô xiên 2, lô kép'
             }
         ];
     }, [prediction, formatDate]);
@@ -237,54 +235,33 @@ const TodayPredictions = ({ instanceId = '' }) => {
     // Memoized structured data cho SEO
     const structuredData = useMemo(() => {
         if (!prediction || predictions.length === 0) return {};
-        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
-        
-        // ✅ FIX: WebPage should not have ItemList in mainEntity - separate schemas
         return {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": `Dự Đoán Xổ Số Miền Bắc Ngày ${formatDate(prediction.predictionDate)}`,
-            "description": `Dự đoán xổ số miền bắc hôm nay ${formatDate(prediction.predictionDate)}: Cầu lotto đẹp, cầu đặc biệt, bảng lô top, dự đoán ketquamn chính xác nhất`,
+            "description": `Dự đoán xổ số miền bắc hôm nay ${formatDate(prediction.predictionDate)}: Cầu lotto đẹp, cầu đặc biệt, bảng lô top, dự đoán wukong chính xác nhất`,
             "datePublished": prediction.predictionDate,
             "author": {
                 "@type": "Organization",
-                "name": "Kết Quả MN | KETQUAMN.COM",
-                "url": siteUrl
+                "name": "Kết Quả MN | KETQUAMN.COM"
             },
             "publisher": {
                 "@type": "Organization",
                 "name": "Kết Quả MN | KETQUAMN.COM",
-                "url": siteUrl,
                 "logo": {
                     "@type": "ImageObject",
-                    "url": `${siteUrl}/logo1.png`,
-                    "width": 512,
-                    "height": 512
+                    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/logo1.png`
                 }
-            }
-            // ✅ REMOVED: ItemList should be separate schema, not in WebPage mainEntity
-        };
-    }, [prediction, predictions, formatDate]);
-    
-    // ✅ FIX: Separate ItemList schema if needed
-    const itemListSchema = useMemo(() => {
-        if (!prediction || predictions.length === 0) return null;
-        return {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": `Danh sách dự đoán xổ số miền bắc ngày ${formatDate(prediction.predictionDate)}`,
-            "numberOfItems": predictions.length,
-            "itemListElement": predictions.map((pred, index) => ({
-                "@type": "ListItem",
-                "position": index + 1,
-                "name": pred.title,
-                "description": pred.keywords,
-                "item": {
-                    "@type": "WebPage",
+            },
+            "mainEntity": {
+                "@type": "ItemList",
+                "itemListElement": predictions.map((pred, index) => ({
+                    "@type": "ListItem",
+                    "position": index + 1,
                     "name": pred.title,
                     "description": pred.keywords
-                }
-            }))
+                }))
+            }
         };
     }, [prediction, predictions, formatDate]);
 
@@ -293,7 +270,7 @@ const TodayPredictions = ({ instanceId = '' }) => {
         const timeContext = isToday ? 'Hôm Nay' : `Ngày ${formattedDate}`;
         return {
             title: `Dự Đoán Xổ Số Miền Bắc ${timeContext} - Chuẩn Xác Nhất`,
-            description: `Dự đoán XSMB ${formattedDate}: Cầu lotto đẹp, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán ketquamn. Cập nhật hàng ngày, độ chính xác cao ✓`,
+            description: `Dự đoán XSMB ${formattedDate}: Cầu lotto đẹp, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán wukong. Cập nhật hàng ngày, độ chính xác cao ✓`,
             keywords: 'dự đoán xsmb, dự đoán xổ số miền bắc, cầu lotto, cầu đặc biệt, cầu 2 nháy, bảng lô top, dự đoán Kết Quả MN, soi cầu miền bắc, ketquamn.com',
             url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}`,
             image: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/logo1.png`,
@@ -354,20 +331,6 @@ const TodayPredictions = ({ instanceId = '' }) => {
             
             {/* ✅ Structured Data vẫn render cho SEO (không ảnh hưởng title) */}
             <Head>
-                {/* WebPage Structured Data */}
-                {structuredData && Object.keys(structuredData).length > 0 && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-                    />
-                )}
-                {/* ItemList Structured Data - Separate schema */}
-                {itemListSchema && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-                    />
-                )}
                 {/* Preconnect for performance */}
                 <link rel="preconnect" href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'} />
                 <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'} />
@@ -395,7 +358,6 @@ const TodayPredictions = ({ instanceId = '' }) => {
                             pred={pred}
                             predictionDate={prediction.predictionDate}
                             formattedDate={formattedDate}
-                            instanceId={instanceId}
                         />
                     ))}
                 </div>

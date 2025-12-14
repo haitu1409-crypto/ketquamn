@@ -114,10 +114,10 @@ function MyApp({ Component, pageProps }) {
                         document.body.scrollTop = 0;
                     }
                 };
-
+                
                 // Reset immediately
                 resetScroll();
-
+                
                 // Reset again after a short delay to catch any delayed scroll restoration
                 requestAnimationFrame(() => {
                     resetScroll();
@@ -156,8 +156,8 @@ function MyApp({ Component, pageProps }) {
                 {/* ✅ Critical resource hints for LCP optimization */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-                <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
                 {/* ✅ Preload critical images with fetchpriority */}
                 <link rel="preload" as="image" href="/logo1.png" fetchPriority="high" />

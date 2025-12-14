@@ -7,8 +7,6 @@ import React, { useState, useMemo } from 'react';
 import Layout from '../components/Layout';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { getPageSEO } from '../config/seoConfig';
-import EditorialContent from '../components/EditorialContent';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import PositionSoiCau from '../components/PositionSoiCau';
 import apiService from '../services/apiService';
 
@@ -142,7 +140,7 @@ const PositionSoiCauPage = ({ initialData, initialDate, initialDays }) => {
             {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "Soi Cầu Đặc Biệt Miền Bắc - Kết Quả MN",
+                "name": "Soi Cầu Đặc Biệt Miền Bắc - Dàn Đề Wukong",
                 "description": "Công cụ soi cầu đặc biệt miền bắc dựa trên phân tích vị trí số trong kết quả xổ số. Tìm kiếm pattern nhất quán để dự đoán 2 số cuối giải đặc biệt XSMB.",
                 "url": `${siteUrl}/soi-cau-dac-biet-mien-bac`,
                 "applicationCategory": "UtilitiesApplication",
@@ -154,7 +152,7 @@ const PositionSoiCauPage = ({ initialData, initialDate, initialDays }) => {
                 },
                 "author": {
                     "@type": "Organization",
-                    "name": "Kết Quả MN | KETQUAMN.COM",
+                    "name": "Dàn Đề Wukong",
                     "url": siteUrl
                 }
             },
@@ -307,12 +305,6 @@ const PositionSoiCauPage = ({ initialData, initialDate, initialDays }) => {
                     }
                 }
             `}            </style>
-            
-            {/* ✅ Editorial Content - Compact mode */}
-            <EditorialContent pageType="soi-cau" compact={true} />
-            
-            {/* ✅ Internal Linking SEO */}
-            <InternalLinksSection pageType="soi-cau" />
         </Layout>
         </>
     );

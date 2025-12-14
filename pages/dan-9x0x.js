@@ -12,10 +12,7 @@ import MobileNavbar from '../components/MobileNavbar';
 // ✅ Optimized: Import all icons at once
 import { Target, BarChart3, Star, Zap, CheckCircle, Filter } from 'lucide-react';
 import styles from '../styles/Dan9x0x.module.css';
-import EnhancedSEOHead from '../components/EnhancedSEOHead';
-import EditorialContent from '../components/EditorialContent';
-import ComparisonContent from '../components/ComparisonContent';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import SEOOptimized from '../components/SEOOptimized';
 import { getPageSEO } from '../config/seoConfig';
 
 // ✅ Lazy load non-critical components
@@ -148,12 +145,12 @@ export default function Dan9x0xPage() {
         ],
         "author": {
             "@type": "Organization",
-            "name": "Kết Quả MN | KETQUAMN.COM",
+            "name": "Dàn Đề Wukong",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Kết Quả MN | KETQUAMN.COM",
+            "name": "Dàn Đề Wukong",
             "url": "https://ketquamn.com"
         }
     };
@@ -190,17 +187,17 @@ export default function Dan9x0xPage() {
         "tool": [
             {
                 "@type": "HowToTool",
-                "name": "Công cụ tạo dàn số 9x-0x Kết Quả MN"
+                "name": "Công cụ tạo dàn số 9x-0x Wukong"
             }
         ],
         "author": {
             "@type": "Organization",
-            "name": "Kết Quả MN | KETQUAMN.COM",
+            "name": "Dàn Đề Wukong",
             "url": "https://ketquamn.com"
         },
         "publisher": {
             "@type": "Organization",
-            "name": "Kết Quả MN | KETQUAMN.COM",
+            "name": "Dàn Đề Wukong",
             "url": "https://ketquamn.com"
         },
         "step": [
@@ -240,12 +237,12 @@ export default function Dan9x0xPage() {
 
     return (
         <>
-            <EnhancedSEOHead
-                pageType="dan-de"
+            <SEOOptimized
+                pageType="dan-9x0x"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
-                canonicalUrl={`${siteUrl}/dan-9x0x`}
+                canonicalUrl={pageSEO.canonical}
                 ogImage={pageSEO.image}
                 breadcrumbs={breadcrumbs}
                 faq={faqData}
@@ -255,7 +252,7 @@ export default function Dan9x0xPage() {
             {/* Core Web Vitals & Mobile SEO Optimization */}
             <Head>
                 {/* Mobile-first viewport optimization */}
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
@@ -274,8 +271,8 @@ export default function Dan9x0xPage() {
                 {/* <link rel="preload" href="/api/dande/generate" as="fetch" crossOrigin="anonymous" /> */}
 
                 {/* DNS prefetch for external resources */}
-                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-                <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 
                 {/* Resource hints */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -382,15 +379,6 @@ export default function Dan9x0xPage() {
                     {/* Author Bio - E-E-A-T */}
                     <AuthorBio />
                 </div>
-                
-                {/* ✅ Editorial Content - Compact mode */}
-                <EditorialContent pageType="dan-de" compact={true} />
-                
-                {/* ✅ Comparison Content - Compact mode */}
-                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
-                
-                {/* ✅ Internal Linking SEO */}
-                <InternalLinksSection pageType="home" />
             </Layout>
             <SEOAnalytics />
         </>

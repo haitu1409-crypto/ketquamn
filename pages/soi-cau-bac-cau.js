@@ -7,8 +7,6 @@ import React, { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import Layout from '../components/Layout';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
-import EditorialContent from '../components/EditorialContent';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
 import styles from '../styles/giaidacbiet.module.css';
 import soiCauStyles from '../styles/soiCauBacCau.module.css';
 import ThongKe from '../components/ThongKe';
@@ -116,7 +114,7 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
             {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "Vẽ Đường Cầu Soi Cầu Miền Bắc - Kết Quả MN",
+                "name": "Vẽ Đường Cầu Soi Cầu Miền Bắc - Dàn Đề Wukong",
                 "description": "Công cụ vẽ đường cầu soi cầu miền bắc với định vị chính xác từng chữ số trong mỗi ô. Phân tích pattern, vẽ đường cầu kết nối, tìm quy luật số.",
                 "url": `${siteUrl}/soi-cau-bac-cau`,
                 "applicationCategory": "UtilitiesApplication",
@@ -128,7 +126,7 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
                 },
                 "author": {
                     "@type": "Organization",
-                    "name": "Kết Quả MN | KETQUAMN.COM",
+                    "name": "Dàn Đề Wukong",
                     "url": siteUrl
                 }
             },
@@ -1615,12 +1613,6 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
                 >
                     ↑
                 </button>
-                
-                {/* ✅ Editorial Content - Compact mode */}
-                <EditorialContent pageType="soi-cau" compact={true} />
-                
-                {/* ✅ Internal Linking SEO */}
-                <InternalLinksSection pageType="soi-cau" />
             </Layout>
         </>
     );

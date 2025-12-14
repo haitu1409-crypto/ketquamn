@@ -8,12 +8,8 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
     return (
-        <Html lang="vi" translate="no">
+        <Html lang="vi">
             <Head>
-                {/* ✅ CRITICAL: Viewport must be set in _document.js for earliest possible setting to prevent layout shift */}
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                {/* ✅ Prevent Google Translate extension from auto-translating */}
-                <meta name="google" content="notranslate" />
                 {/* ===== DNS PREFETCH & PRECONNECT ===== */}
                 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
                 <link rel="dns-prefetch" href="https://www.google-analytics.com" />

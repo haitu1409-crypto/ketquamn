@@ -264,10 +264,10 @@ const KQXSPage = memo(function KQXSPage() {
                     </div>
 
                     {/* ✅ SEO: Thêm paragraph content để Google có đủ text để index */}
-                    <div style={{
-                        marginBottom: '30px',
-                        padding: '20px',
-                        backgroundColor: '#f8f9fa',
+                    <div style={{ 
+                        marginBottom: '30px', 
+                        padding: '20px', 
+                        backgroundColor: '#f8f9fa', 
                         borderRadius: '8px',
                         lineHeight: '1.8',
                         fontSize: '16px',
@@ -277,16 +277,16 @@ const KQXSPage = memo(function KQXSPage() {
                             Kết Quả Xổ Số Miền Bắc - XSMB Hôm Nay
                         </h2>
                         <p style={{ marginBottom: '15px' }}>
-                            <strong>Kết quả xổ số miền Bắc (XSMB)</strong> được cập nhật hàng ngày lúc <strong>18h15</strong> từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội.
-                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Kết Quả MN cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
+                            <strong>Kết quả xổ số miền Bắc (XSMB)</strong> được cập nhật hàng ngày lúc <strong>18h15</strong> từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. 
+                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Dàn Đề Wukong cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
                         </p>
                         <p style={{ marginBottom: '15px' }}>
-                            Bạn có thể <strong>tra cứu kết quả xổ số miền Bắc</strong> theo ngày, xem <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>.
+                            Bạn có thể <strong>tra cứu kết quả xổ số miền Bắc</strong> theo ngày, xem <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>. 
                             Kết quả được sắp xếp từ mới nhất đến cũ nhất, mỗi trang hiển thị 10 kết quả để dễ dàng theo dõi.
                         </p>
                         <p>
-                            <strong>Xổ số miền Bắc</strong> có 7 giải thưởng: <strong>Giải Đặc biệt</strong> (1 giải), <strong>Giải Nhất</strong> (1 giải),
-                            <strong>Giải Nhì</strong> (2 giải), <strong>Giải Ba</strong> (6 giải), <strong>Giải Tư</strong> (4 giải),
+                            <strong>Xổ số miền Bắc</strong> có 7 giải thưởng: <strong>Giải Đặc biệt</strong> (1 giải), <strong>Giải Nhất</strong> (1 giải), 
+                            <strong>Giải Nhì</strong> (2 giải), <strong>Giải Ba</strong> (6 giải), <strong>Giải Tư</strong> (4 giải), 
                             <strong>Giải Năm</strong> (6 giải), <strong>Giải Sáu</strong> (3 giải), <strong>Giải Bảy</strong> (4 giải).
                         </p>
                     </div>
@@ -381,10 +381,10 @@ const KQXSPage = memo(function KQXSPage() {
                             </ul>
                         </div>
                     </div>
-
-                    {/* ✅ Editorial Content - Compact mode */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
-
+                    
+                    {/* ✅ Editorial Content - Thêm giá trị thực sự để tránh thin content */}
+                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" />
+                    
                     {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
                 </div>

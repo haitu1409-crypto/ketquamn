@@ -101,5 +101,3 @@ export function generateSEOContentSuggestions(content, primaryKeyword, secondary
     return suggestions;
 }
 
-
-

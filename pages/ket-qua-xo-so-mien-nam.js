@@ -267,8 +267,8 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
                     </div>
 
-                    {/* ✅ Editorial Content - Compact mode */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
+                    {/* ✅ Editorial Content - Thêm giá trị thực sự để tránh thin content */}
+                    <EditorialContent pageType="ket-qua-xo-so-mien-nam" />
 
                     {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />

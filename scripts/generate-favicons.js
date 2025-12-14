@@ -28,7 +28,7 @@ async function generateFavicons() {
         // Tạo từng favicon
         for (const favicon of faviconSizes) {
             const outputPath = path.join(outputDir, favicon.name);
-
+            
             await sharp(inputImage)
                 .resize(favicon.size, favicon.size, {
                     fit: 'contain',
@@ -49,11 +49,11 @@ async function generateFavicons() {
             })
             .png()
             .toFile(icoPath);
-
+        
         console.log(`✅ Đã tạo: favicon.ico (32x32px)`);
 
         console.log('\n✨ Hoàn thành! Tất cả favicons đã được tạo thành công.');
-
+        
     } catch (error) {
         console.error('❌ Lỗi khi tạo favicons:', error);
         process.exit(1);
@@ -61,6 +61,4 @@ async function generateFavicons() {
 }
 
 generateFavicons();
-
-
 

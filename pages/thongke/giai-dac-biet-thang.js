@@ -5,9 +5,7 @@
 
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import Layout from '../../components/Layout';
-import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-import EditorialContent from '../../components/EditorialContent';
-import { InternalLinksSection } from '../../components/InternalLinkingSEO';
+import StatisticsSEO from '../../components/StatisticsSEO';
 import styles from '../../styles/giaiDacBietThang.module.css';
 import { apiMB } from '../api/kqxsMB';
 import Link from 'next/link';
@@ -241,19 +239,18 @@ const GiaiDacBietThang = ({ initialStats, initialMetadata, initialDays }) => {
     // ✅ FIX CLS: Ensure description always has valid values
     const pageDescription = `Xem thống kê giải đặc biệt Miền Bắc theo dạng lưới 12 tháng (12 cột x 31 dòng) trong ${metadata?.filterType || ''}.`;
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
-    
     return (
-        <>
-            <EnhancedSEOHead
-                pageType="thong-ke"
-                customTitle={`Thống Kê Giải Đặc Biệt Theo Tháng XSMB | Kết Quả MN`}
-                customDescription={pageDescription || 'Thống kê giải đặc biệt theo tháng - Xem giải đặc biệt theo từng tháng trong năm để phát hiện quy luật. Cập nhật hàng ngày, miễn phí 100%.'}
-                customKeywords="thống kê giải đặc biệt theo tháng, gdb theo tháng, giải đặc biệt theo năm"
-                canonicalUrl={`${siteUrl}/thongke/giai-dac-biet-thang`}
-                faq={statisticsFAQs['giai-dac-biet-thang']}
+        <Layout>
+            <StatisticsSEO 
+                pageType="giai-dac-biet"
+                metadata={{
+                    startDate: metadata.startDate,
+                    endDate: metadata.endDate
+                }}
+                faq={statisticsFAQs['giai-dac-biet']}
+                customDescription={pageDescription}
+                customTitle={pageTitle}
             />
-            <Layout>
 
             <div className={styles.container}>
                 <div className={styles.titleGroup}>
@@ -599,13 +596,7 @@ const GiaiDacBietThang = ({ initialStats, initialMetadata, initialDays }) => {
             >
                 ↑
             </button>
-            {/* ✅ Editorial Content - Compact mode */}
-            <EditorialContent pageType="thong-ke" compact={true} />
-            
-            {/* ✅ Internal Linking SEO */}
-            <InternalLinksSection pageType="thong-ke" />
         </Layout>
-        </>
     );
 };
 

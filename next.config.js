@@ -1,31 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-
+    swcMinify: true,
+    
     // ✅ SEO & Performance Optimizations
     poweredByHeader: false,
     compress: true,
-
+    
     // ✅ Image Optimization
     images: {
         formats: ['image/avif', 'image/webp'],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         minimumCacheTTL: 60,
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'api.ketquamn.com',
-                pathname: '/uploads/**',
-            },
-            {
-                protocol: 'https',
-                hostname: 'api.taodandewukong.pro',
-                pathname: '/uploads/**',
-            },
-        ],
     },
-
+    
     // ✅ Security Headers
     async headers() {
         return [
@@ -49,7 +38,10 @@ const nextConfig = {
                         key: 'X-Content-Type-Options',
                         value: 'nosniff'
                     },
-                    // ✅ REMOVED: X-XSS-Protection is deprecated and unnecessary (Content-Security-Policy is sufficient)
+                    {
+                        key: 'X-XSS-Protection',
+                        value: '1; mode=block'
+                    },
                     {
                         key: 'Referrer-Policy',
                         value: 'strict-origin-when-cross-origin'
@@ -80,7 +72,7 @@ const nextConfig = {
             },
         ];
     },
-
+    
     // ✅ Redirects for SEO
     async redirects() {
         return [
@@ -88,13 +80,13 @@ const nextConfig = {
             // Add your redirects here
         ];
     },
-
+    
     // ✅ Experimental Features for Performance
     experimental: {
         optimizeCss: true,
         optimizePackageImports: ['lucide-react', 'date-fns'],
     },
-
+    
     // ✅ Webpack Optimizations
     webpack: (config, { isServer }) => {
         // Optimize bundle size

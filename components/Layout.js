@@ -30,16 +30,11 @@ export default function Layout({ children, className = '' }) {
 
     // Handle scroll effect
     useEffect(() => {
-        // ✅ FIX: Check window scroll position on mount to avoid hydration mismatch
-        if (typeof window !== 'undefined') {
+        const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
-            
-            const handleScroll = () => {
-                setIsScrolled(window.scrollY > 20);
-            };
-            window.addEventListener('scroll', handleScroll);
-            return () => window.removeEventListener('scroll', handleScroll);
-        }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     // Close mobile menu on route change
@@ -76,7 +71,7 @@ export default function Layout({ children, className = '' }) {
 
         // Preload the page for faster navigation
         const href = e.target.closest('a')?.href;
-        if (href && typeof window !== 'undefined' && href !== window.location.href) {
+        if (href && href !== window.location.href) {
             // Prefetch the page
             router.prefetch(href).catch(err => {
                 console.log('Prefetch failed:', err);
@@ -511,8 +506,8 @@ export default function Layout({ children, className = '' }) {
 
                         {/* Footer Bottom */}
                         <div className={styles.footerBottom}>
-                            <p className={styles.copyright} suppressHydrationWarning>
-                                © {new Date().getFullYear()} Kết Quả MN (KETQUAMN.COM). Made with <Heart size={12} style={{ display: 'inline', margin: '0 2px' }} /> in Vietnam.
+                            <p className={styles.copyright}>
+                                © {new Date().getFullYear()} Kết Quả MN (TDDW). Made with <Heart size={12} style={{ display: 'inline', margin: '0 2px' }} /> in Vietnam.
                             </p>
                             <p className={styles.disclaimer}>
                                 Công cụ miễn phí cho mục đích giải trí và nghiên cứu.
@@ -520,7 +515,7 @@ export default function Layout({ children, className = '' }) {
                             {/* DMCA Badge */}
                             <div className={styles.dmcaContainer}>
                                 <a 
-                                    href="https://www.dmca.com/Protection/Status.aspx?ID=66ebf140-1580-488b-897e-a251a37c14a6" 
+                                    href="//www.dmca.com/Protection/Status.aspx?ID=66ebf140-1580-488b-897e-a251a37c14a6" 
                                     title="DMCA.com Protection Status" 
                                     className="dmca-badge"
                                     target="_blank"

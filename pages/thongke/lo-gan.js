@@ -5,9 +5,7 @@ import { apiMB } from '../api/kqxsMB';
 import styles from '../../styles/logan.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-import EditorialContent from '../../components/EditorialContent';
-import { InternalLinksSection } from '../../components/InternalLinkingSEO';
+import StatisticsSEO from '../../components/StatisticsSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Lazy load non-critical components
@@ -187,19 +185,19 @@ const Logan = ({ initialStats, initialMetadata, initialDays }) => {
     // ✅ FIX CLS: Ensure description always has valid values
     const pageDescription = `Xem bảng thống kê Lô Gan Miền Bắc lâu chưa về nhất. Cập nhật dữ liệu từ ${metadata?.startDate || 'N/A'} đến ${metadata?.endDate || 'hàng ngày'}.`;
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
-    
     return (
-        <>
-            <EnhancedSEOHead
-                pageType="thong-ke"
-                customTitle={`Thống Kê Lô Gan XSMB - Phân Tích Chi Tiết | Kết Quả MN`}
-                customDescription={pageDescription || 'Thống kê lô gan XSMB - Theo dõi các con lô đã lâu chưa về, số lần gan cực đại và lịch sử về của từng con số. Hỗ trợ chọn điểm vào hợp lý. Cập nhật hàng ngày, miễn phí 100%.'}
-                customKeywords="thống kê lô gan, lô gan xsmb, số gan, lô gan cực đại, thống kê lô gan miền bắc"
-                canonicalUrl={`${siteUrl}/thongke/lo-gan`}
+        <Layout>
+            {/* ✅ REMOVED: CSS module preload - Next.js bundles CSS modules automatically */}
+            {/* Preloading CSS modules from /styles/ causes MIME type errors */}
+            <StatisticsSEO
+                pageType="lo-gan"
+                metadata={{
+                    startDate: metadata.startDate,
+                    endDate: metadata.endDate
+                }}
                 faq={statisticsFAQs['lo-gan']}
+                customDescription={pageDescription}
             />
-            <Layout>
 
             <div className={styles.container}>
                 <div className={styles.titleGroup} data-lcp="true">
@@ -320,15 +318,8 @@ const Logan = ({ initialStats, initialMetadata, initialDays }) => {
                         </Suspense>
                     </div>
                 </div>
-                
-                {/* ✅ Editorial Content - Compact mode */}
-                <EditorialContent pageType="thong-ke" compact={true} />
-                
-                {/* ✅ Internal Linking SEO */}
-                <InternalLinksSection pageType="thong-ke" />
             </div>
         </Layout>
-        </>
     );
 };
 

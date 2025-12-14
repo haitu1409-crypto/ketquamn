@@ -10,7 +10,6 @@ import AdvancedSEO from './AdvancedSEO';
 import UltimateSEO from './UltimateSEO';
 import CoreWebVitalsOptimizer from './CoreWebVitalsOptimizer';
 import PageExperienceSignals from './PageExperienceSignals';
-import BrandTargetingSEO from './BrandTargetingSEO';
 import { memo } from 'react';
 
 const EnhancedSEOHead = memo(function EnhancedSEOHead({
@@ -89,12 +88,6 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
                 type={pageType === 'home' ? 'website' : 'article'}
                 author={author}
                 structuredData={structuredData}
-            />
-
-            {/* ✅ Brand Targeting SEO - Xuất hiện khi tìm kiếm tên các trang nổi tiếng */}
-            <BrandTargetingSEO
-                targetBrands={['ketqua04.net', 'xosodaiphat.com', 'xoso.com.vn', 'xskt.com.vn']}
-                includeComparison={true}
             />
         </>
     );

@@ -5,7 +5,7 @@ export default function SEODomainOptimized({
   description = 'Công cụ tạo dàn đề và thống kê xổ số 3 miền chuyên nghiệp - Kết Quả MN. Miễn phí, nhanh chóng, chính xác 100%.',
   keywords = 'tạo dàn đề, thống kê xổ số, 3 miền, lô số, dàn 2D, dàn 3D, dàn 4D, Kết Quả MN',
   canonical = '',
-  ogImage = '/logo1.png',
+  ogImage = '/og-image.png',
   noindex = false
 }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
@@ -26,10 +26,10 @@ export default function SEODomainOptimized({
       <link rel="canonical" href={fullUrl} />
 
       {/* DNS Prefetch for Performance */}
-      <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-      <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-      <link rel="dns-prefetch" href="https://api.ketquamn.com" />
+      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="//www.google-analytics.com" />
+      <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      <link rel="dns-prefetch" href="//api.ketquamn.com" />
 
       {/* Preconnect for Critical Resources */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,7 +54,7 @@ export default function SEODomainOptimized({
       <meta name="twitter:creator" content="@ketquamn" />
 
       {/* Mobile Optimization */}
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />

@@ -9,10 +9,7 @@ import { useEffect } from 'react';
 import { Layers, Target, Zap } from 'lucide-react';
 import Layout from '../components/Layout';
 import MobileNavbar from '../components/MobileNavbar';
-import EnhancedSEOHead from '../components/EnhancedSEOHead';
-import EditorialContent from '../components/EditorialContent';
-import ComparisonContent from '../components/ComparisonContent';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import SEOOptimized from '../components/SEOOptimized';
 import { getPageSEO } from '../config/seoConfig';
 import styles from '../styles/Dan9x0x.module.css';
 
@@ -91,12 +88,12 @@ export default function LocDanDePage() {
         ],
         author: {
             '@type': 'Organization',
-            name: 'Kết Quả MN | KETQUAMN.COM',
+            name: 'Dàn Đề Wukong',
             url: 'https://ketquamn.com'
         },
         publisher: {
             '@type': 'Organization',
-            name: 'Kết Quả MN | KETQUAMN.COM',
+            name: 'Dàn Đề Wukong',
             url: 'https://ketquamn.com'
         }
     };
@@ -116,7 +113,7 @@ export default function LocDanDePage() {
         tool: [
             {
                 '@type': 'HowToTool',
-                name: 'Công Cụ Lọc Dàn Đề Kết Quả MN'
+                name: 'Công Cụ Lọc Dàn Đề Wukong'
             }
         ],
         step: [
@@ -148,20 +145,20 @@ export default function LocDanDePage() {
         ],
         author: {
             '@type': 'Organization',
-            name: 'Kết Quả MN | KETQUAMN.COM',
+            name: 'Dàn Đề Wukong',
             url: 'https://ketquamn.com'
         },
         publisher: {
             '@type': 'Organization',
-            name: 'Kết Quả MN | KETQUAMN.COM',
+            name: 'Dàn Đề Wukong',
             url: 'https://ketquamn.com'
         }
     };
 
     return (
         <>
-            <EnhancedSEOHead
-                pageType="dan-de"
+            <SEOOptimized
+                pageType="loc-dan-de"
                 customTitle={pageSEO.title}
                 customDescription={pageSEO.description}
                 customKeywords={pageSEO.keywords.join(', ')}
@@ -173,7 +170,7 @@ export default function LocDanDePage() {
             />
 
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
                 <meta name="format-detection" content="telephone=no" />
                 <meta name="theme-color" content="#3b82f6" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -221,15 +218,6 @@ export default function LocDanDePage() {
                             </div>
                         </section>
                     </div>
-                    
-                    {/* ✅ Editorial Content - Compact mode */}
-                    <EditorialContent pageType="dan-de" compact={true} />
-                    
-                    {/* ✅ Comparison Content - Compact mode */}
-                    <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
-                    
-                    {/* ✅ Internal Linking SEO */}
-                    <InternalLinksSection pageType="home" />
 
                 </div>
             </Layout>

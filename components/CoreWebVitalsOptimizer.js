@@ -14,11 +14,6 @@ import Script from 'next/script';
 
 export default function CoreWebVitalsOptimizer() {
     useEffect(() => {
-        // ✅ FIX: Only run on client to avoid hydration mismatch
-        if (typeof window === 'undefined' || typeof document === 'undefined') {
-            return;
-        }
-
         // ✅ LCP Optimization: Preload critical resources
         const preloadCriticalResources = () => {
             // Preload logo (LCP element)
@@ -91,8 +86,8 @@ export default function CoreWebVitalsOptimizer() {
                                     });
                                 }
                                 
-                                // Log to console in development (check at runtime to avoid hydration mismatch)
-                                if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+                                // Log to console in development
+                                if (process.env.NODE_ENV === 'development') {
                                     console.log('Web Vital:', metric.name, metric.value);
                                 }
                             }
@@ -118,5 +113,4 @@ export default function CoreWebVitalsOptimizer() {
         </>
     );
 }
-
 
