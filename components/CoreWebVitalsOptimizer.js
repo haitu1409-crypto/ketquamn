@@ -19,55 +19,15 @@ export default function CoreWebVitalsOptimizer() {
             return;
         }
 
-        // ✅ LCP Optimization: Preload critical resources
-        const preloadCriticalResources = () => {
-            // Preload logo (LCP element)
-            const logoLink = document.createElement('link');
-            logoLink.rel = 'preload';
-            logoLink.as = 'image';
-            logoLink.href = '/logo1.png';
-            logoLink.fetchPriority = 'high';
-            document.head.appendChild(logoLink);
-
-            // Preload critical fonts
-            const fontLink = document.createElement('link');
-            fontLink.rel = 'preload';
-            fontLink.as = 'font';
-            fontLink.type = 'font/woff2';
-            fontLink.crossOrigin = 'anonymous';
-            fontLink.href = '/fonts/inter-var.woff2';
-            document.head.appendChild(fontLink);
-        };
-
-        // ✅ CLS Optimization: Reserve space for images
-        const reserveImageSpace = () => {
-            const images = document.querySelectorAll('img:not([width]):not([height])');
-            images.forEach(img => {
-                if (!img.width || !img.height) {
-                    // Set aspect ratio to prevent layout shift
-                    img.style.aspectRatio = '16/9';
-                    img.style.objectFit = 'cover';
-                }
-            });
-        };
-
-        // ✅ FID Optimization: Defer non-critical scripts
-        const deferNonCriticalScripts = () => {
-            const scripts = document.querySelectorAll('script[data-defer]');
-            scripts.forEach(script => {
-                if (script.src) {
-                    const newScript = document.createElement('script');
-                    newScript.src = script.src;
-                    newScript.async = true;
-                    newScript.defer = true;
-                    script.parentNode.replaceChild(newScript, script);
-                }
-            });
-        };
-
-        preloadCriticalResources();
-        reserveImageSpace();
-        deferNonCriticalScripts();
+        // ✅ REMOVED: preloadCriticalResources() - Causes layout shift on mount
+        // Preload links should be in _document.js <Head>, not added dynamically via JS
+        // Dynamic addition of preload links can cause FOUC and layout shifts
+        
+        // ✅ REMOVED: reserveImageSpace() - Causes layout shift on mount
+        // Images should have width/height attributes in HTML, not set via JS
+        
+        // ✅ REMOVED: deferNonCriticalScripts() - Can cause script loading issues
+        // Scripts should be properly configured in Next.js config
     }, []);
 
     return (

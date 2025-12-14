@@ -161,7 +161,7 @@ function MyApp({ Component, pageProps }) {
 
                 {/* ✅ Preload critical images with fetchpriority */}
                 <link rel="preload" as="image" href="/logo1.png" fetchPriority="high" />
-                <link rel="preload" as="image" href="/logo1.png" fetchPriority="low" />
+                {/* ✅ REMOVED: Duplicate preload for same image */}
 
                 {/* ✅ Search Engine Verification */}
                 {/* TODO: Thay YOUR_GOOGLE_VERIFICATION_CODE bằng code thật từ Search Console */}
