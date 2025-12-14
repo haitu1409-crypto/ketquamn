@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styles from '../styles/tableDateKQXS.module.css';
 import Link from 'next/link';
 
 const TableDate = () => {
+    const router = useRouter();
     const [currentDate, setCurrentDate] = useState('');
     const [dayOfWeek, setDayOfWeek] = useState('');
     const [hasBroadcasted, setHasBroadcasted] = useState({ north: false, central: false, south: false });
@@ -181,6 +183,14 @@ const TableDate = () => {
         isApproaching.central ? "17h15" :
             isApproaching.north ? "18h15" : "";
 
+    // Xác định URL tương ứng
+    const approachingUrl = approachingRegion === "Miền Nam" ? "/ket-qua-xo-so-mien-nam" :
+        approachingRegion === "Miền Trung" ? "/ket-qua-xo-so-mien-trung" :
+            "/ket-qua-xo-so-mien-bac";
+
+    // Chỉ hiển thị link nếu không phải đang ở trang tương ứng
+    const shouldShowLink = approachingRegion && router.pathname !== approachingUrl;
+
     // Tìm số hàng tối đa để căn chỉnh bảng
     const maxRows = Math.max(
         currentStations.north.length,
@@ -199,9 +209,11 @@ const TableDate = () => {
                         <p className={styles.desc}>
                             Tường thuật trực tiếp KQXS {approachingRegion} lúc {approachingTime}
                         </p>
-                        <Link href={`/${approachingRegion === "Miền Nam" ? "ket-qua-xo-so-mien-nam" : approachingRegion === "Miền Trung" ? "ket-qua-xo-so-mien-trung" : "ket-qua-xo-so-mien-bac"}`} className={styles.action}>
-                            Xem Ngay
-                        </Link>
+                        {shouldShowLink && (
+                            <Link href={approachingUrl} className={styles.action} prefetch={false}>
+                                Xem Ngay
+                            </Link>
+                        )}
                     </div>
                 )}
                 <table className={styles.table}>
