@@ -21,8 +21,7 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 	const [specialDauDuoiBoxLoading, setSpecialDauDuoiBoxLoading] = useState(true);
 	const [specialDauDuoiBoxError, setSpecialDauDuoiBoxError] = useState(null);
 	const [specialDauDuoiMetadata, setSpecialDauDuoiMetadata] = useState({});
-	// ✅ OPTIMIZED: Không hiển thị loading ngay từ đầu để tránh layout shift
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const isUpdatingRef = useRef(false);
 	
@@ -56,8 +55,7 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 	}, []);
 
 	const fetchData = useCallback(async () => {
-		// ✅ OPTIMIZED: Chỉ set loading khi thực sự cần (không set ngay để tránh visible loading)
-		// setLoading(true); // Removed để tránh loading state visible
+		setLoading(true);
 		setError(null);
 		isUpdatingRef.current = true;
 		try {

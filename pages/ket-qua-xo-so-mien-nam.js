@@ -16,12 +16,12 @@ import EnhancedSEOHead from '../components/EnhancedSEOHead';
 // ✅ Lazy load SEO components to improve initial page load performance
 const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
     ssr: false,
-    loading: () => <div style={{ minHeight: '100px', contain: 'layout style' }}></div>
+    loading: () => null
 });
 
 const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
     ssr: false,
-    loading: () => <div style={{ minHeight: '150px', contain: 'layout style' }}></div>
+    loading: () => null
 });
 import { isWithinLiveWindowXSMN } from '../utils/lotteryUtils';
 
@@ -260,11 +260,9 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
                     </div>
 
-                    {/* ✅ SEO Content - Lazy loaded after main content to prevent CLS */}
-                    <div style={{ contain: 'layout style', minHeight: '250px' }}>
-                        <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
-                        <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />
-                    </div>
+                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
+                    <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
+                    <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />
                 </div>
             </Layout>
         </>

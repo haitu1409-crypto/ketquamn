@@ -6,16 +6,8 @@ import styles from '../../styles/logan.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import EnhancedSEOHead from '../../components/EnhancedSEOHead';
-// ✅ OPTIMIZED: Dynamic import để không block initial render
-import dynamic from 'next/dynamic';
-const EditorialContent = dynamic(() => import('../../components/EditorialContent'), {
-    ssr: false,
-    loading: () => null
-});
-const InternalLinksSection = dynamic(() => import('../../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
-    ssr: false,
-    loading: () => null
-});
+import EditorialContent from '../../components/EditorialContent';
+import { InternalLinksSection } from '../../components/InternalLinkingSEO';
 const statisticsFAQs = require('../../config/statisticsFAQs');
 
 // Lazy load non-critical components

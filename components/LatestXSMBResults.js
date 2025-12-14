@@ -43,7 +43,6 @@ const LiveResult = dynamic(() => import('./LiveResult'), {
     ssr: false
 });
 
-// ✅ GIỐNG DỰ ÁN CŨ: Không nhận initialData, fetch client-side với cached data
 const LatestXSMBResults = () => {
     const [isLiveWindow, setIsLiveWindow] = useState(false);
     const intervalRef = useRef(null);

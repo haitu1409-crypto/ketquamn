@@ -70,15 +70,14 @@ const Analytics = () => {
             }
         };
 
-        // ✅ OPTIMIZED: Load GA sau khi page đã render hoàn toàn (delay 3s)
-        // Đảm bảo không block initial render
+        // ✅ Load GA after page is interactive (reduces blocking)
         if (document.readyState === 'complete') {
-            // Page already loaded, wait longer to not block rendering
-            setTimeout(loadGA, 3000);
+            // Page already loaded, wait a bit to not block rendering
+            setTimeout(loadGA, 2000);
         } else {
             // Wait for page load, then defer GA loading
             window.addEventListener('load', () => {
-                setTimeout(loadGA, 3000);
+                setTimeout(loadGA, 2000);
             });
         }
 

@@ -30,9 +30,8 @@ const XSMBLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
     // Get displayed data
     const displayedData = data?.slice(0, displayedCount) || [];
 
-    // ✅ OPTIMIZED: Chỉ hiển thị loading khi thực sự cần (không có data)
     // Loading state - ✅ FIX CLS: Use skeleton with fixed height
-    if (loading && !data) {
+    if (loading) {
         return (
             <div className={styles.container}>
                 {/* ✅ Skeleton loader with fixed height to prevent CLS */}

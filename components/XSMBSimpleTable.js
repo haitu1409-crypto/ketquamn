@@ -31,16 +31,22 @@ const XSMBSimpleTable = ({
     onDataLoad,
     onError
 }) => {
-    // ✅ GIỐNG DỰ ÁN CŨ: Fetch ngay lập tức, không cần mount check
-    // Hook sẽ tự động sử dụng cached data nếu có
+    // ✅ Fix hydration: Chỉ fetch trên client
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    // Sử dụng hook để fetch dữ liệu từ API - chỉ khi đã mount
     const xsmbTodayHook = useXSMBNextToday({
-        autoFetch: useToday && autoFetch,
+        autoFetch: isMounted && useToday && autoFetch,
         refreshInterval: useToday ? refreshInterval : 0
     });
 
     const xsmbHook = useXSMBNext({
         date: useToday ? 'latest' : date,
-        autoFetch: !useToday && autoFetch,
+        autoFetch: isMounted && !useToday && autoFetch,
         refreshInterval: !useToday ? refreshInterval : 0
     });
 
@@ -48,7 +54,7 @@ const XSMBSimpleTable = ({
     const { data: apiData, loading, error, refetch } = useToday ? xsmbTodayHook : xsmbHook;
 
     // Debug: Log để kiểm tra dữ liệu (chỉ khi cần thiết)
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development' && isMounted) {
         console.log('🔍 XSMBSimpleTable data source:', {
             propData: !!propData,
             apiData: !!apiData,
@@ -72,10 +78,11 @@ const XSMBSimpleTable = ({
         }
     }, [error, onError]);
 
-    // ✅ GIỐNG DỰ ÁN CŨ: Sử dụng dữ liệu từ API hoặc prop - CHỈ dữ liệu thật, không có fallback
-    const data = propData || apiData;
+    // Sử dụng dữ liệu từ API hoặc prop - CHỈ dữ liệu thật, không có fallback
+    // ✅ Fix hydration: Chỉ dùng apiData sau khi đã mount trên client
+    const data = propData || (isMounted ? apiData : null);
 
-    // ✅ GIỐNG DỰ ÁN CŨ: Loading state - hiển thị khi đang loading và chưa có data
+    // Loading state - hiển thị khi đang loading và chưa có data
     if (loading && showLoading && !data) {
         return (
             <div className={`${styles.container} ${className}`}>
@@ -105,7 +112,7 @@ const XSMBSimpleTable = ({
         );
     }
 
-    // ✅ GIỐNG DỰ ÁN CŨ: Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
+    // Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
     if (!data) {
         if (showLoading) {
             return (

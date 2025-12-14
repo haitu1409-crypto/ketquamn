@@ -10,28 +10,42 @@ import Layout from '../components/Layout';
 import TodayPredictions from '../components/TodayPredictions';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-// ✅ OPTIMIZED: Lazy load SEO components without loading states to prevent visible loading
-const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
-    ssr: false,
-    loading: () => null // No loading state to prevent visible loading
-});
-const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
-    ssr: false,
-    loading: () => null // No loading state to prevent visible loading
-});
-const ComparisonContent = dynamic(() => import('../components/ComparisonContent'), {
-    ssr: false,
-    loading: () => null // No loading state to prevent visible loading
-});
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import EditorialContent from '../components/EditorialContent';
+import ComparisonContent from '../components/ComparisonContent';
 import { getPageSEO } from '../config/seoConfig';
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
 import { Dice6, Target, BarChart3, Star, Zap, CheckCircle, Heart, Smartphone, Sparkles, Calendar, Activity, TrendingUp, Award, Percent } from 'lucide-react';
 
-// ✅ OPTIMIZED: Lazy load LatestXSMBResults with SSR enabled, no visible loading state
+// ✅ Lazy load LatestXSMBResults with SSR enabled for SEO
 const LatestXSMBResults = dynamic(() => import('../components/LatestXSMBResults'), {
-    loading: () => null, // ✅ OPTIMIZED: No visible loading state to prevent layout shift
-    ssr: true  // ✅ Enable SSR để Googlebot thấy được nội dung
+    loading: () => (
+        <div style={{ 
+            minHeight: '400px', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            background: '#fff',
+            borderRadius: '8px',
+            margin: '20px 0',
+            contain: 'layout style' 
+        }}>
+            <div style={{ textAlign: 'center' }}>
+                <div style={{ 
+                    width: '40px', 
+                    height: '40px', 
+                    border: '4px solid #f3f3f3', 
+                    borderTop: '4px solid #FF6B35', 
+                    borderRadius: '50%', 
+                    animation: 'spin 1s linear infinite',
+                    margin: '0 auto 10px'
+                }}></div>
+                <p>Đang tải kết quả xổ số...</p>
+            </div>
+        </div>
+    ),
+    ssr: true  // ✅ SỬA: Enable SSR để Googlebot thấy được nội dung
 });
 
 // ✅ Lazy load SEO components with SSR enabled for SEO
@@ -66,7 +80,7 @@ const ThongKeNhanh = dynamic(() => import('../components/ThongKeNhanh'), {
 });
 
 // ✅ Memoized Homepage component for better performance
-const Home = memo(function Home({ initialXSMBData = null }) {
+const Home = memo(function Home() {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
 
     // Get SEO config for homepage
@@ -477,12 +491,14 @@ const Home = memo(function Home({ initialXSMBData = null }) {
                     </div>
                 </div>
                 
-                {/* ✅ SEO Content - Lazy loaded after main content to prevent CLS */}
-                <div style={{ contain: 'layout style', minHeight: '350px' }}>
-                    <EditorialContent pageType="home" compact={true} />
-                    <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
-                    <InternalLinksSection pageType="home" />
-                </div>
+                {/* ✅ Editorial Content - Compact mode, chỉ hiển thị ngắn gọn */}
+                <EditorialContent pageType="home" compact={true} />
+                
+                {/* ✅ Comparison Content - Compact mode, ẩn full comparison */}
+                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                
+                {/* ✅ Internal Linking SEO - Gray Hat Technique */}
+                <InternalLinksSection pageType="home" />
             </Layout>
         </>
     );
@@ -490,7 +506,4 @@ const Home = memo(function Home({ initialXSMBData = null }) {
 
 // ✅ Export memoized component
 export default Home;
-
-// ✅ REMOVED: getServerSideProps - Dự án cũ không có, fetch client-side với cached data
-// Điều này đảm bảo page render ngay, không block bởi API call
 

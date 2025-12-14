@@ -30,30 +30,24 @@ export function sendToConsole({ name, delta, value, id, rating }) {
 }
 
 // Web Vitals Component
-// ✅ OPTIMIZED: Defer loading để không block initial render
 export default function WebVitals() {
     useEffect(() => {
-        // ✅ OPTIMIZED: Chỉ load sau khi page đã render (delay 2s)
         if (typeof window !== 'undefined') {
-            const timer = setTimeout(() => {
-                // Dynamic import to reduce initial bundle
-                import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB, onINP }) => {
-                    const sendMetric = process.env.NODE_ENV === 'production'
-                        ? sendToGoogleAnalytics
-                        : sendToConsole;
+            // Dynamic import to reduce initial bundle
+            import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB, onINP }) => {
+                const sendMetric = process.env.NODE_ENV === 'production'
+                    ? sendToGoogleAnalytics
+                    : sendToConsole;
 
-                    onCLS(sendMetric);
-                    onFID(sendMetric);
-                    onFCP(sendMetric);
-                    onLCP(sendMetric);
-                    onTTFB(sendMetric);
-                    onINP(sendMetric);
-                }).catch(err => {
-                    // Silent fail - không log error
-                });
-            }, 2000); // Delay 2s để không block initial render
-
-            return () => clearTimeout(timer);
+                onCLS(sendMetric);
+                onFID(sendMetric);
+                onFCP(sendMetric);
+                onLCP(sendMetric);
+                onTTFB(sendMetric);
+                onINP(sendMetric);
+            }).catch(err => {
+                console.error('Failed to load web-vitals:', err);
+            });
         }
     }, []);
 

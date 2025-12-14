@@ -18,17 +18,17 @@ import dynamic from 'next/dynamic';
 import reportWebVitals from '../lib/reportWebVitals';
 import { AuthProvider } from '../hooks/useAuth';
 
-// ✅ OPTIMIZED: Disable MultiSearchEngineOptimizer in _app.js - Already handled by EnhancedSEOHead
-// const MultiSearchEngineOptimizer = dynamic(() => import('../components/MultiSearchEngineOptimizer'), {
-//     ssr: true,
-//     loading: () => null
-// });
+// ✅ Multi-Search Engine Optimizer - For Bing, Cốc Cốc, Google
+const MultiSearchEngineOptimizer = dynamic(() => import('../components/MultiSearchEngineOptimizer'), {
+    ssr: true,  // SSR for SEO
+    loading: () => null
+});
 
-// ✅ OPTIMIZED: Disable OrganizationSchema in _app.js - Already handled by SEOOptimized
-// const OrganizationSchema = dynamic(() => import('../components/SEO/OrganizationSchema'), {
-//     ssr: true,
-//     loading: () => null
-// });
+// ✅ SEO Schema Components
+const OrganizationSchema = dynamic(() => import('../components/SEO/OrganizationSchema'), {
+    ssr: true,
+    loading: () => null
+});
 
 // Lazy load heavy components with proper error handling
 const Analytics = dynamic(() => import('../components/Analytics'), {
@@ -55,7 +55,7 @@ const GoogleAnalytics = dynamic(() => import('../components/GoogleAnalytics'), {
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter();
-    // ✅ REMOVED: isLoading state to prevent visible loading on route changes
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         // Log app version (optional)
@@ -90,17 +90,17 @@ function MyApp({ Component, pageProps }) {
         }
     }, [router.pathname]);
 
-    // ✅ OPTIMIZED: Handle route changes without loading state
+    // Handle route changes for smooth navigation
     useEffect(() => {
         const handleStart = () => {
-            // ✅ REMOVED: setIsLoading(true) to prevent visible loading
+            setIsLoading(true);
             // ✅ Reset scroll position to top when navigation starts
             if (typeof window !== 'undefined') {
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             }
         };
         const handleComplete = () => {
-            // ✅ REMOVED: setIsLoading(false) to prevent visible loading
+            setIsLoading(false);
             // ✅ Ensure scroll is at top when navigation completes (backup)
             if (typeof window !== 'undefined') {
                 // Use multiple strategies to ensure scroll reset
@@ -128,7 +128,7 @@ function MyApp({ Component, pageProps }) {
             }
         };
         const handleError = () => {
-            // ✅ REMOVED: setIsLoading(false) to prevent visible loading
+            setIsLoading(false);
             console.log('Route change error occurred');
             // ✅ Reset scroll even on error
             if (typeof window !== 'undefined') {
@@ -170,26 +170,43 @@ function MyApp({ Component, pageProps }) {
                 <meta name="coccoc-verification" content={process.env.NEXT_PUBLIC_COCCOC_VERIFICATION || "YOUR_COCCOC_VERIFICATION_CODE"} />
             </Head>
 
-            {/* ✅ REMOVED: MultiSearchEngineOptimizer - Already handled by EnhancedSEOHead */}
-            {/* ✅ REMOVED: OrganizationSchema - Already handled by SEOOptimized */}
+            {/* ✅ Multi-Search Engine Optimizer */}
+            <MultiSearchEngineOptimizer
+                title="Kết Quả MN - Kết quả xổ số miền Nam 2025"
+                description="Kết quả xổ số miền Nam nhanh nhất, chính xác nhất. Xem kết quả XSMN, KQXSMN hôm nay."
+                keywords="kết quả xổ số miền Nam, xsmn, kqxsmn, sxmn, kết quả MN, xổ số miền Nam"
+            />
 
-            {/* ✅ OPTIMIZED: Defer Analytics và Web Vitals - chỉ load sau khi page đã render */}
-            {/* Google Analytics - Deferred để không block initial render */}
-            {typeof window !== 'undefined' && (
-                <>
-                    <Analytics />
-                    <GoogleAnalytics />
-                    {/* Web Vitals Tracking - Deferred để không block initial render */}
-                    <WebVitals />
-                    <WebVitalsMonitor />
-                </>
-            )}
+            {/* ✅ SEO Schema - Organization */}
+            <OrganizationSchema />
+
+            {/* Google Analytics */}
+            <Analytics />
+            <GoogleAnalytics />
+
+            {/* Web Vitals Tracking */}
+            <WebVitals />
+
+            {/* Enhanced Web Vitals Monitor */}
+            <WebVitalsMonitor />
 
             {/* SEO Analytics Enhanced - Temporarily disabled */}
             {/* <SEOAnalyticsEnhanced /> */}
 
 
-            {/* ✅ REMOVED: Loading indicator - Causes visible loading on initial mount */}
+            {/* Loading indicator */}
+            {isLoading && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '3px',
+                    background: 'linear-gradient(90deg, #FF6B35, #FF8C42)',
+                    zIndex: 9999,
+                    animation: 'loading 1s ease-in-out infinite'
+                }} />
+            )}
 
             {/* Main Component */}
             <AuthProvider>
