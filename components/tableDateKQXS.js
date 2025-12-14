@@ -89,19 +89,41 @@ const TableDate = () => {
 
     useEffect(() => {
         const updateDateAndStations = () => {
+            // Lấy thời gian Việt Nam (UTC+7) - Asia/Ho_Chi_Minh
             const now = new Date();
+            
+            // Sử dụng Intl để lấy giờ Việt Nam chính xác
+            const vietnamFormatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'Asia/Ho_Chi_Minh',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+
+            const parts = vietnamFormatter.formatToParts(now);
+            const vietnamDate = {
+                year: parseInt(parts.find(p => p.type === 'year').value),
+                month: parseInt(parts.find(p => p.type === 'month').value) - 1, // Month is 0-indexed
+                day: parseInt(parts.find(p => p.type === 'day').value),
+                hour: parseInt(parts.find(p => p.type === 'hour').value),
+                minute: parseInt(parts.find(p => p.type === 'minute').value),
+                second: parseInt(parts.find(p => p.type === 'second').value)
+            };
+
+            // Tạo Date object từ giờ Việt Nam để dùng getDay()
+            const vietnamDateObj = new Date(vietnamDate.year, vietnamDate.month, vietnamDate.day, vietnamDate.hour, vietnamDate.minute, vietnamDate.second);
 
             // Định dạng ngày: 20/04/2025
-            const formattedDate = now.toLocaleDateString('vi-VN', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric',
-            });
+            const formattedDate = `${String(vietnamDate.day).padStart(2, '0')}/${String(vietnamDate.month + 1).padStart(2, '0')}/${vietnamDate.year}`;
             setCurrentDate(formattedDate);
 
             // Xác định thứ trong tuần
             const daysOfWeek = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
-            const dayOfWeek = daysOfWeek[now.getDay()];
+            const dayOfWeek = daysOfWeek[vietnamDateObj.getDay()];
             setDayOfWeek(dayOfWeek);
 
             // Lấy danh sách đài theo ngày
@@ -114,9 +136,9 @@ const TableDate = () => {
                 south: southStations,
             });
 
-            // Kiểm tra trạng thái
-            const currentHour = now.getHours();
-            const currentMinute = now.getMinutes();
+            // Kiểm tra trạng thái - sử dụng giờ Việt Nam
+            const currentHour = vietnamDate.hour;
+            const currentMinute = vietnamDate.minute;
             const currentTime = currentHour * 60 + currentMinute;
 
             const northStart = 18 * 60 + 15; // 18:15
