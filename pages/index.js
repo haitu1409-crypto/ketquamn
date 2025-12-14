@@ -66,7 +66,7 @@ const ThongKeNhanh = dynamic(() => import('../components/ThongKeNhanh'), {
 });
 
 // ✅ Memoized Homepage component for better performance
-const Home = memo(function Home() {
+const Home = memo(function Home({ initialXSMBData = null }) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000');
 
     // Get SEO config for homepage
@@ -387,7 +387,7 @@ const Home = memo(function Home() {
                         {/* Left Column - Main Content */}
                         <div className={styles.leftColumn}>
                             {/* Latest XSMB Results */}
-                            <LatestXSMBResults />
+                            <LatestXSMBResults initialData={initialXSMBData} />
 
                             {/* Today Predictions - Mobile Only */}
                             <div className={styles.mobileOnlyTodayPredictions}>
@@ -490,4 +490,34 @@ const Home = memo(function Home() {
 
 // ✅ Export memoized component
 export default Home;
+
+// ✅ CRITICAL: Fetch data server-side để render ngay lập tức
+export async function getServerSideProps() {
+    try {
+        // Import API service
+        const { getLatestXSMBNext } = await import('../services/xsmbApi');
+        
+        // Fetch latest XSMB data server-side
+        let xsmbData = null;
+        try {
+            xsmbData = await getLatestXSMBNext();
+        } catch (error) {
+            console.error('Error fetching XSMB data in getServerSideProps:', error);
+            // Continue without data - component will fetch client-side
+        }
+
+        return {
+            props: {
+                initialXSMBData: xsmbData,
+            },
+        };
+    } catch (error) {
+        console.error('Error in getServerSideProps:', error);
+        return {
+            props: {
+                initialXSMBData: null,
+            },
+        };
+    }
+}
 

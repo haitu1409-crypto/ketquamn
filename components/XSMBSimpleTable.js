@@ -38,15 +38,18 @@ const XSMBSimpleTable = ({
         setIsMounted(true);
     }, []);
 
-    // Sử dụng hook để fetch dữ liệu từ API - chỉ khi đã mount
+    // ✅ OPTIMIZED: Chỉ fetch client-side nếu không có propData (server-side data)
+    // Nếu có propData, không cần fetch ngay (chỉ fetch để refresh nếu cần)
+    const shouldFetch = !propData && isMounted;
+    
     const xsmbTodayHook = useXSMBNextToday({
-        autoFetch: isMounted && useToday && autoFetch,
+        autoFetch: shouldFetch && useToday && autoFetch,
         refreshInterval: useToday ? refreshInterval : 0
     });
 
     const xsmbHook = useXSMBNext({
         date: useToday ? 'latest' : date,
-        autoFetch: isMounted && !useToday && autoFetch,
+        autoFetch: shouldFetch && !useToday && autoFetch,
         refreshInterval: !useToday ? refreshInterval : 0
     });
 
@@ -78,8 +81,9 @@ const XSMBSimpleTable = ({
         }
     }, [error, onError]);
 
-    // Sử dụng dữ liệu từ API hoặc prop - CHỈ dữ liệu thật, không có fallback
-    // ✅ Fix hydration: Chỉ dùng apiData sau khi đã mount trên client
+    // ✅ OPTIMIZED: Ưu tiên propData (server-side data) để render ngay lập tức
+    // Nếu có propData, dùng ngay (không cần chờ mount)
+    // Nếu không có propData, dùng apiData sau khi mount
     const data = propData || (isMounted ? apiData : null);
 
     // ✅ OPTIMIZED: Không hiển thị loading nếu đã có data hoặc đang trên server
