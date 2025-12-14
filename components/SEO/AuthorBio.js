@@ -13,6 +13,8 @@ const AuthorBio = memo(function AuthorBio({
     users = "100,000+",
     description = "Đội ngũ chuyên gia với hơn 10 năm kinh nghiệm trong lĩnh vực xổ số và lô số. Phát triển các công cụ chuyên nghiệp phục vụ hơn 100,000 người chơi trên toàn quốc."
 }) {
+    // ✅ FIX: Use environment variable to ensure consistent URL between server and client
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     // Author Schema Markup
     const authorSchema = {
@@ -22,7 +24,7 @@ const AuthorBio = memo(function AuthorBio({
         "name": name,
         "jobTitle": title,
         "description": description,
-        "url": typeof window !== 'undefined' ? window.location.origin + "/about" : "https://ketquamn.com/about",
+        "url": `${siteUrl}/about`,
         "knowsAbout": [
             "Tạo dàn số",
             "Xổ số",

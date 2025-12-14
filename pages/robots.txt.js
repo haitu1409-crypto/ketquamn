@@ -17,6 +17,7 @@ Allow: /
 # Sitemap
 Sitemap: ${baseUrl}/sitemap.xml
 Sitemap: ${baseUrl}/news-sitemap.xml
+Sitemap: ${baseUrl}/sitemap-lottery.xml
 
 # Crawl-delay for respectful crawling (Từ dự án cũ - Index nhanh)
 Crawl-delay: 1

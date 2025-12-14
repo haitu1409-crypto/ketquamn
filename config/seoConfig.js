@@ -1351,7 +1351,7 @@ const COMMON_META = {
     robots: 'index, follow',
     googlebot: 'index, follow',
     author: SITE_NAME,
-    viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
+    viewport: 'width=device-width, initial-scale=1',
     themeColor: '#FF6B35',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black-translucent'

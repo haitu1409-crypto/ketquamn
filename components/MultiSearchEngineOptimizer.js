@@ -197,9 +197,9 @@ const MultiSearchEngineOptimizer = memo(function MultiSearchEngineOptimizer({
             <link rel="preconnect" href="https://coccoc.com" />
 
             {/* DNS Prefetch for faster discovery */}
-            <link rel="dns-prefetch" href="//www.google.com" />
-            <link rel="dns-prefetch" href="//www.bing.com" />
-            <link rel="dns-prefetch" href="//coccoc.com" />
+            <link rel="dns-prefetch" href="https://www.google.com" />
+            <link rel="dns-prefetch" href="https://www.bing.com" />
+            <link rel="dns-prefetch" href="https://coccoc.com" />
         </Head>
     );
 });

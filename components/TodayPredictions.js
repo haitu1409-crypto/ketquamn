@@ -28,7 +28,9 @@ const FacebookIcon = ({ size = 20, className }) => (
 );
 
 // Memoized PredictionCard component để tránh re-render không cần thiết
-const PredictionCard = memo(({ pred, predictionDate, formattedDate }) => {
+const PredictionCard = memo(({ pred, predictionDate, formattedDate, instanceId = '' }) => {
+    // ✅ FIX: Add unique instance ID to prevent duplicate IDs when component is rendered multiple times
+    const uniqueId = `prediction-title-${pred.id}${instanceId ? `-${instanceId}` : ''}`;
 
     return (
         <article
@@ -40,13 +42,13 @@ const PredictionCard = memo(({ pred, predictionDate, formattedDate }) => {
             itemScope
             itemType="https://schema.org/Article"
             data-prediction-type={pred.id}
-            aria-labelledby={`prediction-title-${pred.id}`}
+            aria-labelledby={uniqueId}
         >
             <header className={styles.cardHeader}>
                 <div>
                     <h3
                         className={styles.cardTitle}
-                        id={`prediction-title-${pred.id}`}
+                        id={uniqueId}
                         itemProp="headline"
                     >
                         {pred.title}
@@ -78,7 +80,7 @@ const PredictionCard = memo(({ pred, predictionDate, formattedDate }) => {
 
 PredictionCard.displayName = 'PredictionCard';
 
-const TodayPredictions = () => {
+const TodayPredictions = ({ instanceId = '' }) => {
     const router = useRouter();
     const [prediction, setPrediction] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -235,6 +237,9 @@ const TodayPredictions = () => {
     // Memoized structured data cho SEO
     const structuredData = useMemo(() => {
         if (!prediction || predictions.length === 0) return {};
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
+        
+        // ✅ FIX: WebPage should not have ItemList in mainEntity - separate schemas
         return {
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -243,25 +248,43 @@ const TodayPredictions = () => {
             "datePublished": prediction.predictionDate,
             "author": {
                 "@type": "Organization",
-                "name": "Kết Quả MN | KETQUAMN.COM"
+                "name": "Kết Quả MN | KETQUAMN.COM",
+                "url": siteUrl
             },
             "publisher": {
                 "@type": "Organization",
                 "name": "Kết Quả MN | KETQUAMN.COM",
+                "url": siteUrl,
                 "logo": {
                     "@type": "ImageObject",
-                    "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com'}/logo1.png`
+                    "url": `${siteUrl}/logo1.png`,
+                    "width": 512,
+                    "height": 512
                 }
-            },
-            "mainEntity": {
-                "@type": "ItemList",
-                "itemListElement": predictions.map((pred, index) => ({
-                    "@type": "ListItem",
-                    "position": index + 1,
+            }
+            // ✅ REMOVED: ItemList should be separate schema, not in WebPage mainEntity
+        };
+    }, [prediction, predictions, formatDate]);
+    
+    // ✅ FIX: Separate ItemList schema if needed
+    const itemListSchema = useMemo(() => {
+        if (!prediction || predictions.length === 0) return null;
+        return {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": `Danh sách dự đoán xổ số miền bắc ngày ${formatDate(prediction.predictionDate)}`,
+            "numberOfItems": predictions.length,
+            "itemListElement": predictions.map((pred, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": pred.title,
+                "description": pred.keywords,
+                "item": {
+                    "@type": "WebPage",
                     "name": pred.title,
                     "description": pred.keywords
-                }))
-            }
+                }
+            }))
         };
     }, [prediction, predictions, formatDate]);
 
@@ -331,6 +354,20 @@ const TodayPredictions = () => {
             
             {/* ✅ Structured Data vẫn render cho SEO (không ảnh hưởng title) */}
             <Head>
+                {/* WebPage Structured Data */}
+                {structuredData && Object.keys(structuredData).length > 0 && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+                    />
+                )}
+                {/* ItemList Structured Data - Separate schema */}
+                {itemListSchema && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+                    />
+                )}
                 {/* Preconnect for performance */}
                 <link rel="preconnect" href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'} />
                 <link rel="dns-prefetch" href={process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'} />
@@ -358,6 +395,7 @@ const TodayPredictions = () => {
                             pred={pred}
                             predictionDate={prediction.predictionDate}
                             formattedDate={formattedDate}
+                            instanceId={instanceId}
                         />
                     ))}
                 </div>

@@ -9,42 +9,18 @@
  * - Core Web Vitals
  * 
  * Dựa trên: https://developers.google.com/search/docs/appearance/page-experience
+ * 
+ * ✅ FIXED: Loại bỏ logic DOM manipulation trong useEffect để tránh layout shift
+ * Logic sửa đổi DOM sẽ gây ra layout shift khi trang load, chỉ giữ lại meta tags
  */
 
-import { useEffect } from 'react';
 import Head from 'next/head';
 
 export default function PageExperienceSignals() {
-    // ✅ Optimized: Only run on client-side, defer non-critical checks
-    useEffect(() => {
-        // Defer all checks to avoid blocking initial render
-        const timeoutId = setTimeout(() => {
-            // ✅ No intrusive interstitials: Remove popups that block content
-            const removeIntrusiveInterstitials = () => {
-                const overlays = document.querySelectorAll('.popup-overlay, .modal-overlay, [data-intrusive]');
-                overlays.forEach(overlay => {
-                    if (overlay.style.display !== 'none') {
-                        overlay.style.display = 'none';
-                    }
-                });
-            };
-
-            // ✅ Accessibility: Ensure proper ARIA labels (lightweight check)
-            const ensureAccessibility = () => {
-                const images = document.querySelectorAll('img:not([alt])');
-                images.forEach(img => {
-                    if (!img.alt) {
-                        img.alt = img.getAttribute('aria-label') || 'Image';
-                    }
-                });
-            };
-
-            removeIntrusiveInterstitials();
-            ensureAccessibility();
-        }, 100); // Defer by 100ms to not block initial render
-
-        return () => clearTimeout(timeoutId);
-    }, []);
+    // ✅ REMOVED: useEffect với DOM manipulation gây layout shift
+    // Logic removeIntrusiveInterstitials và ensureAccessibility đã được loại bỏ
+    // vì chúng thay đổi DOM sau khi mount, gây ra layout shift
+    // Nếu cần logic này, nên chạy sau khi page đã render hoàn toàn (sau 500ms+)
 
     return (
         <Head>
@@ -54,8 +30,8 @@ export default function PageExperienceSignals() {
             
             {/* ✅ Safe browsing signals */}
             <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-            <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
-            <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+            {/* ✅ REMOVED: X-Frame-Options - Must be set via HTTP headers only, not meta tags */}
+            {/* ✅ REMOVED: X-XSS-Protection - Deprecated, Content-Security-Policy is sufficient */}
             
             {/* ✅ HTTPS enforcement */}
             <meta httpEquiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />

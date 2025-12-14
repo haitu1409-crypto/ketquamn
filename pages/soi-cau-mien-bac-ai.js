@@ -757,6 +757,7 @@ const SoiCauBayesian = () => {
                             <select
                                 value={selectedType}
                                 onChange={(e) => handleTypeChange(e.target.value)}
+                                aria-label="Chọn loại dự đoán xổ số"
                             >
                                 <option value="de">🎯 Đề (2 số cuối giải đặc biệt)</option>
                                 <option value="lo">🎲 Lô (2 số cuối tất cả giải)</option>
@@ -766,7 +767,11 @@ const SoiCauBayesian = () => {
                         {/* Hidden - Always use ensemble for final results */}
                         <div style={{ display: 'none' }}>
                             <label>Phương pháp:</label>
-                            <select value={FORCED_METHOD} onChange={() => { }}>
+                            <select 
+                                value={FORCED_METHOD} 
+                                onChange={() => { }}
+                                aria-label="Phương pháp dự đoán (ẩn)"
+                            >
                                 <option value="ensemble">🎯 Ensemble (Tổng hợp AI)</option>
                             </select>
                         </div>

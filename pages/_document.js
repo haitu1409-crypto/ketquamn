@@ -8,8 +8,10 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
     return (
-        <Html lang="vi">
+        <Html lang="vi" translate="no">
             <Head>
+                {/* ✅ Prevent Google Translate extension from auto-translating */}
+                <meta name="google" content="notranslate" />
                 {/* ===== DNS PREFETCH & PRECONNECT ===== */}
                 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
                 <link rel="dns-prefetch" href="https://www.google-analytics.com" />

@@ -159,7 +159,7 @@ class SEOContentGenerator {
             "@type": "WebPage",
             "name": pageData.title || "Soi Cầu Vị Trí XSMB",
             "description": pageData.description || "Soi cầu vị trí XSMB với thuật toán AI",
-            "url": pageData.url || "https://yourdomain.com/seo-soi-cau-vi-tri",
+            "url": pageData.url || "https://ketquamn.com/seo-soi-cau-vi-tri",
             "mainEntity": {
                 "@type": "SoftwareApplication",
                 "name": "Soi Cầu Vị Trí XSMB",
@@ -179,13 +179,13 @@ class SEOContentGenerator {
                         "@type": "ListItem",
                         "position": 1,
                         "name": "Trang chủ",
-                        "item": "https://yourdomain.com"
+                        "item": "https://ketquamn.com"
                     },
                     {
                         "@type": "ListItem",
                         "position": 2,
                         "name": "Soi Cầu Vị Trí XSMB",
-                        "item": "https://yourdomain.com/seo-soi-cau-vi-tri"
+                        "item": "https://ketquamn.com/seo-soi-cau-vi-tri"
                     }
                 ]
             },
@@ -208,10 +208,10 @@ class SEOContentGenerator {
             keywords: this.generateKeywordsString(),
             ogTitle: pageData.title || this.generateSEOTitle(),
             ogDescription: pageData.description || this.generateSEODescription(),
-            ogImage: "https://yourdomain.com/images/soi-cau-vi-tri-og.jpg",
+            ogImage: "https://ketquamn.com/images/soi-cau-vi-tri-og.jpg",
             twitterTitle: pageData.title || this.generateSEOTitle(),
             twitterDescription: pageData.description || this.generateSEODescription(),
-            twitterImage: "https://yourdomain.com/images/soi-cau-vi-tri-twitter.jpg"
+            twitterImage: "https://ketquamn.com/images/soi-cau-vi-tri-twitter.jpg"
         };
     }
 
@@ -253,13 +253,13 @@ class SEOContentGenerator {
      */
     generateSitemapData() {
         return {
-            url: 'https://yourdomain.com/seo-soi-cau-vi-tri',
+            url: 'https://ketquamn.com/seo-soi-cau-vi-tri',
             lastmod: new Date().toISOString(),
             changefreq: 'daily',
             priority: 0.9,
             images: [
                 {
-                    loc: 'https://yourdomain.com/images/soi-cau-vi-tri.jpg',
+                    loc: 'https://ketquamn.com/images/soi-cau-vi-tri.jpg',
                     caption: 'Soi Cầu Vị Trí XSMB',
                     title: 'Soi Cầu Vị Trí XSMB - Dự Đoán Xổ Số Miền Bắc'
                 }
@@ -282,8 +282,8 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
 
-Sitemap: https://yourdomain.com/sitemap.xml
-Sitemap: https://yourdomain.com/sitemap-images.xml`;
+Sitemap: https://ketquamn.com/sitemap.xml
+Sitemap: https://ketquamn.com/sitemap-images.xml`;
     }
 
     /**

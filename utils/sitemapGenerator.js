@@ -7,7 +7,7 @@ import seoContentGenerator from './seoContentGenerator';
 
 class SitemapGenerator {
     constructor() {
-        this.baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://yourdomain.com';
+        this.baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ketquamn.com';
         this.pages = [
             {
                 url: '/',

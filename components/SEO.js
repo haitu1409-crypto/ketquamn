@@ -34,7 +34,7 @@ export default function SEO({
             <meta name="author" content={author} />
             <meta charSet="UTF-8" />
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
 
             {/* Language & Geo */}
             <meta name="language" content="Vietnamese" />
@@ -118,7 +118,7 @@ export default function SEO({
             <meta name="format-detection" content="telephone=no" />
 
             {/* ===== CORE WEB VITALS OPTIMIZATION ===== */}
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="color-scheme" content="light dark" />
             <meta name="supported-color-schemes" content="light dark" />
 

@@ -150,14 +150,14 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta charSet="utf-8" />
 
                 {/* ✅ Critical resource hints for LCP optimization */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-                <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
                 {/* ✅ Preload critical images with fetchpriority */}
                 <link rel="preload" as="image" href="/logo1.png" fetchPriority="high" />

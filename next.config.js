@@ -12,6 +12,18 @@ const nextConfig = {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         minimumCacheTTL: 60,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'api.ketquamn.com',
+                pathname: '/uploads/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'api.taodandewukong.pro',
+                pathname: '/uploads/**',
+            },
+        ],
     },
     
     // ✅ Security Headers
@@ -37,10 +49,7 @@ const nextConfig = {
                         key: 'X-Content-Type-Options',
                         value: 'nosniff'
                     },
-                    {
-                        key: 'X-XSS-Protection',
-                        value: '1; mode=block'
-                    },
+                    // ✅ REMOVED: X-XSS-Protection is deprecated and unnecessary (Content-Security-Policy is sufficient)
                     {
                         key: 'Referrer-Policy',
                         value: 'strict-origin-when-cross-origin'

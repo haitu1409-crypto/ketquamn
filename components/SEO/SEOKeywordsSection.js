@@ -11,33 +11,33 @@ const SEOKeywordsSection = memo(function SEOKeywordsSection() {
     return (
         <div className={styles.seoKeywordsSection}>
             <strong>Kết Quả MN</strong> - Kết quả xổ số miền Nam |
-            <strong>TDDW.Pro</strong> |
-            Tạo dàn số <strong>TDDW</strong> |
-            Soi cầu <strong>TDDW</strong> |
-            Chốt số <strong>TDDW</strong> |
-            <strong>TDDW</strong> hôm nay |
-            Cầu lô <strong>TDDW</strong> |
-            Dự đoán <strong>TDDW</strong> |
-            Thống kê <strong>TDDW</strong> |
-            <strong>TDDW</strong> miễn phí |
-            Tạo dàn đề online <strong>TDDW</strong> |
-            <strong>TDDW</strong> công cụ xổ số |
-            <strong>TDDW</strong> loto |
-            <strong>TDDW</strong> lô đề |
-            <strong>TDDW</strong> tốt hơn kangdh |
-            <strong>TDDW</strong> vs giaimasohoc |
-            <strong>WK</strong> tool |
-            <strong>WK</strong> soi cầu |
-            <strong>TDD</strong> công cụ |
-            Dàn đề <strong>WK</strong> |
-            Mức số <strong>TDDW</strong> |
-            Tạo mức số <strong>TDDW</strong> |
-            Lập dàn số <strong>TDDW</strong> |
-            <strong>TDDW</strong> 2025 |
-            <strong>TDDW</strong> mới nhất |
-            TDDW xổ số miền bắc |
-            TDDW kết quả xổ số |
-            TDDW thống kê 3 miền
+            <strong>KETQUAMN.COM</strong> |
+            Tạo dàn số <strong>Kết Quả MN</strong> |
+            Soi cầu <strong>Kết Quả MN</strong> |
+            Chốt số <strong>Kết Quả MN</strong> |
+            <strong>Kết Quả MN</strong> hôm nay |
+            Cầu lô <strong>Kết Quả MN</strong> |
+            Dự đoán <strong>Kết Quả MN</strong> |
+            Thống kê <strong>Kết Quả MN</strong> |
+            <strong>Kết Quả MN</strong> miễn phí |
+            Tạo dàn đề online <strong>Kết Quả MN</strong> |
+            <strong>Kết Quả MN</strong> công cụ xổ số |
+            <strong>Kết Quả MN</strong> loto |
+            <strong>Kết Quả MN</strong> lô đề |
+            <strong>Kết Quả MN</strong> tốt hơn kangdh |
+            <strong>Kết Quả MN</strong> vs giaimasohoc |
+            <strong>KQMN</strong> tool |
+            <strong>KQMN</strong> soi cầu |
+            <strong>KQMN</strong> công cụ |
+            Dàn đề <strong>Kết Quả MN</strong> |
+            Mức số <strong>Kết Quả MN</strong> |
+            Tạo mức số <strong>Kết Quả MN</strong> |
+            Lập dàn số <strong>Kết Quả MN</strong> |
+            <strong>Kết Quả MN</strong> 2025 |
+            <strong>Kết Quả MN</strong> mới nhất |
+            Kết Quả MN xổ số miền bắc |
+            Kết Quả MN kết quả xổ số |
+            Kết Quả MN thống kê 3 miền
         </div>
     );
 });

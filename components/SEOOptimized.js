@@ -272,10 +272,10 @@ export default function SEOOptimized({
             <link rel="canonical" href={fullUrl} />
 
             {/* ===== DNS PREFETCH FOR PERFORMANCE ===== */}
-            <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-            <link rel="dns-prefetch" href="//www.google-analytics.com" />
-            <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-            <link rel="dns-prefetch" href="//api1.ketquamn.com" />
+            <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+            <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+            <link rel="dns-prefetch" href="https://api1.ketquamn.com" />
 
             {/* ===== PRECONNECT FOR CRITICAL RESOURCES ===== */}
             <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -351,7 +351,7 @@ export default function SEOOptimized({
             <meta property="tiktok:image" content={ogImageUrl} />
 
             {/* ===== MOBILE OPTIMIZATION ===== */}
-            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />

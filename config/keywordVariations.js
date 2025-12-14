@@ -69,12 +69,12 @@ const BRAND_KEYWORDS = {
         'ketquamn',
         'ketquamn',
         // ✅ SHORT ABBREVIATIONS - Viết tắt ngắn (giống RBK)
-        'tddw', 'TDDW', 'Tddw',
-        'wk', 'WK', 'Wk',
-        'tdd', 'TDD', 'Tdd',
-        'ddw', 'DDW', // Dàn Đề
-        'ddwk', 'DDWK', // Dàn Đề
-        'tdde', 'TDDE', // Tạo Dàn Đề
+        'ketquamn', 'KETQUAMN', 'KetQuaMN',
+        'kqmn', 'KQMN', 'KqMN',
+        'kqmn', 'KQMN', 'KqMN',
+        'ketqua', 'KETQUA', // Kết Quả
+        'kqmn', 'KQMN', // Kết Quả MN
+        'ketquamn', 'KETQUAMN', // Kết Quả MN
     ],
     hyphenated: [
         'tao-dan-de-ketquamn',
@@ -114,26 +114,26 @@ const BRAND_KEYWORDS = {
         'web tạo dàn đề ketquamn',
         'website tao dan de ketquamn',
         // ✅ SHORT ABBREVIATIONS với domain
-        'tddw.pro',
-        'tddw pro',
-        'tdd.pro',
-        'wk.pro',
+        'ketquamn.pro',
+        'ketquamn pro',
+        'kqmn.pro',
+        'ketquamn.com',
         'ketquamn.pro',
     ],
     
     // ✅ SHORT ABBREVIATIONS - Section riêng cho viết tắt ngắn (giống RBK strategy)
     shortAbbreviations: [
-        'tddw', 'TDDW', 'tdd w', 'TDD W', // Tạo Dàn Đề
-        'wk', 'WK', 'w k', 'W K', // Kết Quả
-        'tdd', 'TDD', 't d d', 'T D D', // Tạo Dàn Đề
-        'ddw', 'DDW', 'd d w', 'D D W', // Dàn Đề
-        'ddwk', 'DDWK', // Dàn Đề
-        'tdde', 'TDDE', // Tạo Dàn Đề
+        'ketquamn', 'KETQUAMN', 'ket qua mn', 'KET QUA MN', // Kết Quả MN
+        'kqmn', 'KQMN', 'kq mn', 'KQ MN', // Kết Quả MN
+        'ketqua', 'KETQUA', 'ket qua', 'KET QUA', // Kết Quả
+        'kqmn', 'KQMN', 'kq mn', 'KQ MN', // Kết Quả MN
+        'ketquamn', 'KETQUAMN', // Kết Quả MN
+        'ketquamn', 'KETQUAMN', // Kết Quả MN
         // With context
-        'tddw xổ số', 'tddw xo so',
-        'tddw loto', 'tddw lô đề',
-        'wk tool', 'wk công cụ',
-        'tddw.pro', 'tddw pro',
+        'ketquamn xổ số', 'ketquamn xo so',
+        'ketquamn loto', 'ketquamn lô đề',
+        'kqmn tool', 'kqmn công cụ',
+        'ketquamn.pro', 'ketquamn pro',
     ]
 };
 

@@ -403,9 +403,9 @@ export default function AdvancedSEO({
             ))}
 
             {/* ===== PERFORMANCE HINTS ===== */}
-            <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-            <link rel="dns-prefetch" href="//www.google-analytics.com" />
-            <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 

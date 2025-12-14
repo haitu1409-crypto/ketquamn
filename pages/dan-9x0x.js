@@ -255,7 +255,7 @@ export default function Dan9x0xPage() {
             {/* Core Web Vitals & Mobile SEO Optimization */}
             <Head>
                 {/* Mobile-first viewport optimization */}
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
@@ -274,8 +274,8 @@ export default function Dan9x0xPage() {
                 {/* <link rel="preload" href="/api/dande/generate" as="fetch" crossOrigin="anonymous" /> */}
 
                 {/* DNS prefetch for external resources */}
-                <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-                <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+                <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
                 {/* Resource hints */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />

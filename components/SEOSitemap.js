@@ -4,7 +4,7 @@
  */
 
 const generateSitemap = () => {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
     const currentDate = new Date().toISOString().split('T')[0];
 
     const staticPages = [

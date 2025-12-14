@@ -36,6 +36,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.95</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Soi Cầu Miền Bắc AI - Dự Đoán XSMB</image:title>
+            <image:caption>Soi cầu miền bắc bằng AI, dự đoán XSMB chính xác</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -43,6 +48,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.95</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Soi Cầu Đặc Biệt Miền Bắc</image:title>
+            <image:caption>Soi cầu đặc biệt miền bắc, dự đoán giải đặc biệt XSMB</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -50,6 +60,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.95</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Soi Cầu Lô Tô Miền Bắc</image:title>
+            <image:caption>Soi cầu lô tô miền bắc, dự đoán lô tô XSMB</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -57,6 +72,16 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/dan9x0x (1).png</image:loc>
+            <image:title>Tạo Dàn Đề 9x-0x - Kết Quả MN</image:title>
+            <image:caption>Tạo dàn đề 9x-0x ngẫu nhiên, công cụ tạo dàn số miễn phí</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN - Tạo Dàn Đề 9x-0x</image:title>
+            <image:caption>Kết Quả MN - Công cụ tạo dàn đề 9x-0x online</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -64,6 +89,16 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/dan2d1d (1).png</image:loc>
+            <image:title>Tạo Dàn Đề 2D - Kết Quả MN</image:title>
+            <image:caption>Tạo dàn đề 2D, tạo mức số 2D online miễn phí</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN - Tạo Dàn Đề 2D</image:title>
+            <image:caption>Kết Quả MN - Công cụ tạo dàn đề 2D</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -71,6 +106,16 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/dan3d4d (1).png</image:loc>
+            <image:title>Tạo Dàn Đề 3D-4D - Kết Quả MN</image:title>
+            <image:caption>Tạo dàn đề 3D-4D, tách dàn nhanh AB-BC-CD</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN - Tạo Dàn Đề 3D-4D</image:title>
+            <image:caption>Kết Quả MN - Công cụ tạo dàn đề 3D-4D</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -78,6 +123,16 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/dandacbiet (1).png</image:loc>
+            <image:title>Dàn Đề Đặc Biệt - Kết Quả MN</image:title>
+            <image:caption>Lọc ghép dàn đề, tạo dàn đề đặc biệt theo đầu đuôi tổng</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN - Dàn Đề Đặc Biệt</image:title>
+            <image:caption>Kết Quả MN - Công cụ lọc ghép dàn đề</image:caption>
+        </image:image>
     </url>
     
     <!-- Additional Tool Pages - Priority 0.85 -->
@@ -86,6 +141,16 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/dan9x0x (1).png</image:loc>
+            <image:title>Lọc Dàn Đề Tổng Hợp - Kết Quả MN</image:title>
+            <image:caption>Lọc dàn đề tổng hợp, cắt dàn 9x-0x, bộ lọc số thông minh</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN - Lọc Dàn Đề</image:title>
+            <image:caption>Kết Quả MN - Công cụ lọc dàn đề chuyên nghiệp</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -140,6 +205,16 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.82</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Xổ Số 3 Miền - Kết Quả MN</image:title>
+            <image:caption>Thống kê xổ số 3 miền chi tiết, phân tích kết quả XSMB XSMN XSMT</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả MN - Thống Kê Xổ Số</image:title>
+            <image:caption>Kết Quả MN - Công cụ thống kê xổ số chuyên nghiệp</image:caption>
+        </image:image>
     </url>
 
     <!-- Statistics Pages - Priority 0.85-0.90 -->
@@ -148,6 +223,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Đầu Đuôi XSMB - Kết Quả MN</image:title>
+            <image:caption>Thống kê đầu đuôi XSMB, phân tích đầu đuôi loto 00-99</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -155,6 +235,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.85</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Lô Gan XSMB - Kết Quả MN</image:title>
+            <image:caption>Thống kê lô gan XSMB, lô gan lâu chưa về, gan cực đại</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -162,6 +247,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Giải Đặc Biệt XSMB - Kết Quả MN</image:title>
+            <image:caption>Thống kê giải đặc biệt XSMB, xem giải đặc biệt hôm nay</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -169,6 +259,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.78</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Giải Đặc Biệt Theo Tuần - Kết Quả MN</image:title>
+            <image:caption>Thống kê giải đặc biệt theo tuần với view lịch</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -176,6 +271,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.79</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Giải Đặc Biệt Theo Năm - Kết Quả MN</image:title>
+            <image:caption>Thống kê giải đặc biệt theo năm, phân tích xu hướng</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -183,6 +283,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.88</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Tần Suất Lô Tô XSMB - Kết Quả MN</image:title>
+            <image:caption>Thống kê tần suất lô tô XSMB, số nóng số lạnh 00-99</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -190,6 +295,11 @@ function generateSiteMap(articles) {
         <changefreq>daily</changefreq>
         <priority>0.80</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/imgs/thongke (1).png</image:loc>
+            <image:title>Thống Kê Tần Suất Lô Cặp XSMB - Kết Quả MN</image:title>
+            <image:caption>Thống kê tần suất lô cặp XSMB, phân tích XX-YY</image:caption>
+        </image:image>
     </url>
     
     <!-- News List Page -->
@@ -198,6 +308,11 @@ function generateSiteMap(articles) {
         <changefreq>hourly</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Tin Tức Xổ Số - Kết Quả MN</image:title>
+            <image:caption>Tin tức xổ số mới nhất, cập nhật hàng ngày</image:caption>
+        </image:image>
     </url>
     
     <!-- Content Page -->
@@ -529,6 +644,11 @@ export async function getServerSideProps({ res }) {
         <changefreq>daily</changefreq>
         <priority>0.85</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Kết Quả Xổ Số 10 Ngày Gần Nhất - Kết Quả MN</image:title>
+            <image:caption>Kết quả xổ số 10 ngày gần nhất, xem lịch sử XSMB XSMN</image:caption>
+        </image:image>
     </url>
     
     <url>
@@ -536,6 +656,11 @@ export async function getServerSideProps({ res }) {
         <changefreq>daily</changefreq>
         <priority>0.90</priority>
         <lastmod>${lastmod}</lastmod>
+        <image:image>
+            <image:loc>${SITE_URL_BASE}/logo1.png</image:loc>
+            <image:title>Soi Cầu Vị Trí XSMB - SEO Optimized - Kết Quả MN</image:title>
+            <image:caption>Soi cầu vị trí XSMB, phân tích vị trí số trong giải đặc biệt</image:caption>
+        </image:image>
     </url>
     
     <url>

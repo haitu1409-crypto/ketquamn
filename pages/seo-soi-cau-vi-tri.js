@@ -38,7 +38,7 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
         "@type": "WebPage",
         "name": pageTitle,
         "description": pageDescription,
-        "url": "https://yourdomain.com/seo-soi-cau-vi-tri",
+        "url": "https://ketquamn.com/seo-soi-cau-vi-tri",
         "mainEntity": {
             "@type": "SoftwareApplication",
             "name": "Soi Cầu Vị Trí XSMB",
@@ -53,13 +53,13 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Trang chủ",
-                    "item": "https://yourdomain.com"
+                    "item": "https://ketquamn.com"
                 },
                 {
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Soi Cầu Vị Trí XSMB",
-                    "item": "https://yourdomain.com/seo-soi-cau-vi-tri"
+                    "item": "https://ketquamn.com/seo-soi-cau-vi-tri"
                 }
             ]
         }
@@ -79,10 +79,10 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://yourdomain.com/seo-soi-cau-vi-tri" />
+                <meta property="og:url" content="https://ketquamn.com/seo-soi-cau-vi-tri" />
                 <meta property="og:title" content={pageTitle} />
                 <meta property="og:description" content={pageDescription} />
-                <meta property="og:image" content="https://yourdomain.com/images/soi-cau-vi-tri-og.jpg" />
+                <meta property="og:image" content="https://ketquamn.com/images/soi-cau-vi-tri-og.jpg" />
                 <meta property="og:image:width" content="1200" />
                 <meta property="og:image:height" content="630" />
                 <meta property="og:site_name" content="Kết Quả MN | KETQUAMN.COM" />
@@ -90,10 +90,10 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
 
                 {/* Twitter */}
                 <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://yourdomain.com/seo-soi-cau-vi-tri" />
+                <meta property="twitter:url" content="https://ketquamn.com/seo-soi-cau-vi-tri" />
                 <meta property="twitter:title" content={pageTitle} />
                 <meta property="twitter:description" content={pageDescription} />
-                <meta property="twitter:image" content="https://yourdomain.com/images/soi-cau-vi-tri-twitter.jpg" />
+                <meta property="twitter:image" content="https://ketquamn.com/images/soi-cau-vi-tri-twitter.jpg" />
 
                 {/* Additional SEO Meta Tags */}
                 <meta name="theme-color" content="#667eea" />
@@ -104,16 +104,16 @@ const SEOPositionSoiCauPage = ({ initialData, initialDate, initialDays, seoData 
                 <meta name="apple-mobile-web-app-title" content="Soi Cầu Vị Trí XSMB" />
 
                 {/* Canonical URL */}
-                <link rel="canonical" href="https://yourdomain.com/seo-soi-cau-vi-tri" />
+                <link rel="canonical" href="https://ketquamn.com/seo-soi-cau-vi-tri" />
 
                 {/* Alternate Language Versions */}
-                <link rel="alternate" hrefLang="vi" href="https://yourdomain.com/seo-soi-cau-vi-tri" />
-                <link rel="alternate" hrefLang="x-default" href="https://yourdomain.com/seo-soi-cau-vi-tri" />
+                <link rel="alternate" hrefLang="vi" href="https://ketquamn.com/seo-soi-cau-vi-tri" />
+                <link rel="alternate" hrefLang="x-default" href="https://ketquamn.com/seo-soi-cau-vi-tri" />
 
                 {/* Preconnect to external domains */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="//api.yourdomain.com" />
+                <link rel="dns-prefetch" href="https://api.ketquamn.com" />
 
                 {/* Structured Data */}
                 <script

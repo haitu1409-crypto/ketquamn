@@ -97,7 +97,7 @@ export const SEARCH_CONSOLE_INSTRUCTIONS = {
     manualSubmission: `
     Để submit URL lên Google Search Console:
     1. Truy cập: https://search.google.com/search-console
-    2. Chọn property: ${process.env.NEXT_PUBLIC_SITE_URL || 'your-domain.com'}
+    2. Chọn property: ${process.env.NEXT_PUBLIC_SITE_URL || 'ketquamn.com'}
     3. Vào mục "URL Inspection"
     4. Nhập URL cần index
     5. Click "Request Indexing"
@@ -114,6 +114,7 @@ export const SEARCH_CONSOLE_INSTRUCTIONS = {
     5. Click "Submit"
     `
 };
+
 
 
 

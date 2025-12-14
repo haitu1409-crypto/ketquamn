@@ -9,8 +9,8 @@ const SEOHead = ({
     title = "Tạo Dàn Đề Online Miễn Phí | Công Cụ Lọc Dàn Đề Chuyên Nghiệp #1 Việt Nam",
     description = "Công cụ tạo dàn đề 9x-0x online miễn phí hàng đầu Việt Nam. Tạo dàn đề ngẫu nhiên, lọc dàn đề từ cao thủ, chọn bộ số đặc biệt, thêm số mong muốn, loại bỏ kép bằng. Công cụ dàn đề chuyên nghiệp nhất 2024.",
     keywords = "tạo dàn đề, tạo dàn đề online, công cụ tạo dàn đề, tạo dàn đề miễn phí, dàn đề 9x-0x, lọc dàn đề, bộ số đặc biệt, dàn đề ngẫu nhiên, tạo dàn lô số, công cụ lô số, số mong muốn, loại bỏ số, kép bằng, dàn đề chuyên nghiệp, cao thủ lô số, cách tạo dàn đề 9x-0x, tạo dàn đề có chọn số mong muốn, lọc dàn đề từ cao thủ, bộ số đặc biệt lô số, công cụ tạo dàn đề online miễn phí, tạo dàn đề loại bỏ kép bằng, dàn đề chuyên nghiệp nhất, tạo dàn đề Việt Nam, công cụ lô số Việt Nam, dàn đề online Việt",
-    canonical = "https://your-domain.com",
-    image = "/og-image.png"
+    canonical = "https://ketquamn.com",
+    image = "/logo1.png"
 }) => {
     const structuredData = {
         "@context": "https://schema.org",
@@ -42,34 +42,15 @@ const SEOHead = ({
         "author": {
             "@type": "Organization",
             "name": "Dàn Đề Pro Việt Nam",
-            "url": "https://your-domain.com"
+            "url": "https://ketquamn.com"
         },
         "keywords": keywords,
         "inLanguage": "vi-VN",
         "isAccessibleForFree": true,
         "datePublished": "2024-01-01",
-        "dateModified": "2024-12-01",
-        "mainEntity": {
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": "Làm thế nào để tạo dàn đề 9x-0x?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Sử dụng công cụ tạo dàn đề online miễn phí của chúng tôi. Chọn số lượng dàn, thêm số mong muốn (tối đa 40 số), loại bỏ số không mong muốn (tối đa 5 số), chọn bộ số đặc biệt và nhấn 'Tạo Dàn' để có kết quả ngay lập tức."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Công cụ lọc dàn đề hoạt động như thế nào?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Công cụ lọc dàn đề cho phép bạn nhập dàn đề từ nhiều cao thủ khác nhau, sau đó lọc và tối ưu hóa để tạo ra dàn đề cuối cùng tốt nhất với các cấp độ từ 8s đến 95s."
-                    }
-                }
-            ]
-        }
+        "dateModified": "2024-12-01"
+        // ✅ REMOVED: FAQPage nested in mainEntity - should be separate schema to avoid duplication
+        // FAQPage schema should be rendered separately by EnhancedSEOHead/UltimateSEO if needed
     };
 
     return (
@@ -121,11 +102,11 @@ const SEOHead = ({
 
             {/* Performance Hints */}
             <meta httpEquiv="x-dns-prefetch-control" content="on" />
-            <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-            <link rel="dns-prefetch" href="//www.google-analytics.com" />
+            <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
             {/* Preload Critical Resources */}
-            <link rel="preload" href="/og-image.png" as="image" />
+            <link rel="preload" href="/logo1.png" as="image" />
 
             {/* Structured Data */}
             <script

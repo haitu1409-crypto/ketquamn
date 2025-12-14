@@ -26,31 +26,45 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
 
     // Generate structured data for the page
     const pageStructuredData = useMemo(() => {
+        // ✅ FIX: WebPage should not have ItemList in mainEntity - separate schemas
         return {
             "@context": "https://schema.org",
             "@type": "WebPage",
             "name": "Kết quả xổ số miền Bắc - Kết Quả MN",
             "description": "Xem kết quả xổ số miền Bắc mới nhất, cập nhật trực tiếp từ Công ty Xổ số Điện toán Việt Nam",
             "url": "https://ketquamn.com/ket-qua-xo-so-mien-bac",
-            "mainEntity": {
-                "@type": "ItemList",
-                "name": "Danh sách kết quả xổ số miền Bắc",
-                "numberOfItems": pagination.totalResults || 0,
-                "itemListElement": data.slice(0, 10).map((item, index) => ({
-                    "@type": "ListItem",
-                    "position": index + 1,
-                    "item": {
-                        "@type": "LotteryGame",
-                        "name": `Kết quả xổ số miền Bắc ngày ${item.drawDate}`,
-                        "datePublished": item.drawDate
-                    }
-                }))
-            },
             "publisher": {
                 "@type": "Organization",
                 "name": "Kết Quả MN | KETQUAMN.COM",
-                "url": "https://ketquamn.com"
+                "url": "https://ketquamn.com",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://ketquamn.com/logo1.png",
+                    "width": 512,
+                    "height": 512
+                }
             }
+            // ✅ REMOVED: ItemList should be separate schema
+        };
+    }, [data, pagination]);
+    
+    // ✅ FIX: Separate ItemList schema
+    const itemListStructuredData = useMemo(() => {
+        if (!data || data.length === 0) return null;
+        return {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Danh sách kết quả xổ số miền Bắc",
+            "numberOfItems": pagination.totalResults || data.length,
+            "itemListElement": data.slice(0, 10).map((item, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                    "@type": "LotteryGame",
+                    "name": `Kết quả xổ số miền Bắc ngày ${item.drawDate}`,
+                    "datePublished": item.drawDate
+                }
+            }))
         };
     }, [data, pagination]);
 
@@ -146,12 +160,22 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
                 <link rel="alternate" hrefLang="vi" href="https://ketquamn.com/ket-qua-xo-so-mien-bac" />
 
                 {/* Structured Data */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(pageStructuredData)
-                    }}
-                />
+                    {/* WebPage Structured Data */}
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(pageStructuredData)
+                        }}
+                    />
+                    {/* ItemList Structured Data - Separate schema */}
+                    {itemListStructuredData && (
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify(itemListStructuredData)
+                            }}
+                        />
+                    )}
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{

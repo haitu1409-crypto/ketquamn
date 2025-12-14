@@ -39,7 +39,7 @@ export function isOptimalKeywordDensity(text, keyword) {
  * @param {number} maxLength - Max length (default 60)
  * @returns {string}
  */
-export function generateOptimizedTitle(keyword, brand = 'TDDW', maxLength = 60) {
+export function generateOptimizedTitle(keyword, brand = 'Kết Quả MN', maxLength = 60) {
     // Format: Keyword | Brand Name - Year
     const year = new Date().getFullYear();
     const baseTitle = `${keyword} | ${brand} - ${year}`;
@@ -401,6 +401,7 @@ export function calculateOverallSEOScore(pageData) {
         checklist
     };
 }
+
 
 
 

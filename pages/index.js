@@ -446,7 +446,7 @@ const Home = memo(function Home() {
                         {/* Right Column - Today Predictions (Desktop Only) */}
                         <div className={styles.rightColumn}>
                             <div className={styles.desktopOnlyTodayPredictions}>
-                                <TodayPredictions />
+                                <TodayPredictions instanceId="desktop" />
                             </div>
                         </div>
                     </div>

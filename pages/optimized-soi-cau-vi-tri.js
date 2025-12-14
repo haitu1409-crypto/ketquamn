@@ -38,9 +38,9 @@ const OptimizedPositionSoiCauPage = ({ initialData, initialDate, initialDays, pe
                 <meta property="og:title" content={pageTitle} />
                 <meta property="og:description" content={pageDescription} />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://yourdomain.com/optimized-soi-cau-vi-tri" />
-                <meta property="og:image" content="https://yourdomain.com/images/optimized-soi-cau-vi-tri.jpg" />
-                <link rel="canonical" href="https://yourdomain.com/optimized-soi-cau-vi-tri" />
+                <meta property="og:url" content="https://ketquamn.com/optimized-soi-cau-vi-tri" />
+                <meta property="og:image" content="https://ketquamn.com/images/optimized-soi-cau-vi-tri.jpg" />
+                <link rel="canonical" href="https://ketquamn.com/optimized-soi-cau-vi-tri" />
 
                 {/* SEO Keywords */}
                 <meta name="keywords" content="soi cầu vị trí tối ưu, soi cầu bạch thủ, dự đoán xổ số, phân tích vị trí số, pattern xổ số, thuật toán soi cầu, caching thông minh, hiệu suất cao" />
@@ -56,7 +56,7 @@ const OptimizedPositionSoiCauPage = ({ initialData, initialDate, initialDays, pe
 
                 {/* Performance hints */}
                 <link rel="preload" href="/api/optimized-position-soicau" as="fetch" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="//api.yourdomain.com" />
+                <link rel="dns-prefetch" href="https://api.ketquamn.com" />
             </Head>
 
             {/* Performance monitoring script */}
