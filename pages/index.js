@@ -28,8 +28,8 @@ const LatestXSMBResults = dynamic(() => import('../components/LatestXSMBResults'
             justifyContent: 'center',
             background: '#fff',
             borderRadius: '8px',
-            margin: '20px 0',
-            contain: 'layout style' 
+            margin: '20px 0'
+            /* ✅ REMOVED: contain property - causes layout issues on mount */
         }}>
             <div style={{ textAlign: 'center' }}>
                 <div style={{ 

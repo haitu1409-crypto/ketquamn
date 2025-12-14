@@ -8,9 +8,10 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
     return (
-        <Html lang="vi" translate="no">
+        <Html lang="vi">
             <Head>
                 {/* ✅ Prevent Google Translate extension from auto-translating */}
+                {/* ✅ REMOVED: translate="no" may cause layout issues - keeping only meta tag */}
                 <meta name="google" content="notranslate" />
                 {/* ===== DNS PREFETCH & PRECONNECT ===== */}
                 <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -25,8 +26,7 @@ export default function Document() {
                 {/* Removed unnecessary preloads to avoid browser warnings */}
 
                 {/* ===== CRITICAL CSS FOR CLS PREVENTION ===== */}
-                <link rel="preload" href="/styles/critical.css" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
-                <noscript><link rel="stylesheet" href="/styles/critical.css" /></noscript>
+                {/* ✅ REMOVED: External CSS preload causes FOUC - using inline CSS instead */}
 
                 {/* ===== GOOGLE ANALYTICS (gtag.js) - LAZY LOAD ===== */}
                 {/* ✅ Performance: Defer GTM loading to reduce blocking time */}
@@ -115,8 +115,9 @@ export default function Document() {
               font-size: 0.875rem;
               color: #6b7280;
               line-height: 1.5;
+              /* ✅ Fix CLS: Reserve space to prevent layout shift - like old version */
+              min-height: 60px;
               font-display: swap;
-              /* ✅ REMOVED: min-height and contain - causes layout issues on mount */
             }
             
             /* Focus visible for accessibility */
@@ -138,18 +139,22 @@ export default function Document() {
               margin: 1rem 0;
               color: #666;
               font-weight: 500;
-              /* ✅ REMOVED: min-height and contain - causes layout issues on mount */
+              /* ✅ Fix CLS: Reserve space for loading states - like old version */
+              min-height: 200px;
             }
             
-            /* ✅ REMOVED: contain property causes rendering issues on mount */
-            /* Let TodayPredictions component handle its own layout */
+            /* ✅ CLS Prevention for TodayPredictions - like old version */
+            .today-predictions-container,
+            [class*="TodayPredictions"] {
+              height: auto;
+            }
             
-            /* ✅ REMOVED: Fixed height for dynamic components causes layout issues */
-            /* Let components handle their own loading states */
-            
-            /* ✅ REMOVED: Aggressive CSS rules that cause layout issues on mount */
-            /* These rules were causing FOUC (Flash of Unstyled Content) and layout breaks */
-            /* Let components handle their own layout with proper CSS modules */
+            /* ✅ CLS Prevention for dynamic components - like old version but without contain */
+            [class*="dynamic"],
+            [class*="lazy"] {
+              min-height: 150px;
+              height: auto;
+            }
             
             @keyframes loading {
               0% { background-position: 200% 0; }
