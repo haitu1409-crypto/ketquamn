@@ -81,9 +81,9 @@ const XSMBSimpleTable = ({
         }
     }, [error, onError]);
 
-    // ✅ OPTIMIZED: Ưu tiên propData (server-side data) để render ngay lập tức
-    // Nếu có propData, dùng ngay (không cần chờ mount)
-    // Nếu không có propData, dùng apiData sau khi mount
+    // ✅ CRITICAL: Ưu tiên propData (server-side data) để render ngay lập tức
+    // Nếu có propData, dùng ngay (render trên cả server và client)
+    // Nếu không có propData, dùng apiData sau khi mount trên client
     const data = propData || (isMounted ? apiData : null);
 
     // ✅ OPTIMIZED: Không hiển thị loading nếu đã có data hoặc đang trên server
@@ -117,21 +117,11 @@ const XSMBSimpleTable = ({
         );
     }
 
-    // ✅ OPTIMIZED: Nếu có propData (server-side), render ngay
-    // Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
+    // ✅ CRITICAL: Nếu không có data, return null để không render gì
+    // Điều này đảm bảo server không render text trước khi có data
+    // Component sẽ được render lại khi có data từ client-side fetch
     if (!data) {
-        // ✅ Chỉ hiển thị loading trên client sau khi mount, không hiển thị trên server
-        if (showLoading && isMounted) {
-            return (
-                <div className={`${styles.container} ${className}`}>
-                    <div className={styles.loadingMessage}>
-                        <div className={styles.spinner}></div>
-                        <p>Đang tải dữ liệu kết quả xổ số...</p>
-                    </div>
-                </div>
-            );
-        }
-        // ✅ Trên server hoặc chưa mount, return null để tránh hydration mismatch
+        // ✅ Không render gì cả - để parent component quyết định hiển thị skeleton
         return null;
     }
 

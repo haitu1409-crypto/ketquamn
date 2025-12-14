@@ -492,11 +492,11 @@ const Home = memo(function Home({ initialXSMBData = null }) {
 export default Home;
 
 // ✅ CRITICAL: Fetch data server-side để render ngay lập tức
-// ✅ OPTIMIZED: Thêm timeout để tránh delay quá lâu
+// ✅ OPTIMIZED: Giảm timeout và đảm bảo fetch nhanh
 export async function getServerSideProps() {
     try {
-        // ✅ OPTIMIZED: Set timeout cho API call (5s max)
-        const fetchWithTimeout = (promise, timeoutMs = 5000) => {
+        // ✅ CRITICAL: Set timeout hợp lý (8s) để đảm bảo có data trước khi render
+        const fetchWithTimeout = (promise, timeoutMs = 8000) => {
             return Promise.race([
                 promise,
                 new Promise((_, reject) => 
@@ -508,16 +508,18 @@ export async function getServerSideProps() {
         // Import API service
         const { getLatestXSMBNext } = await import('../services/xsmbApi');
         
-        // ✅ OPTIMIZED: Fetch với timeout ngắn để không block rendering
+        // ✅ CRITICAL: Fetch với timeout ngắn, nhưng đảm bảo có data trước khi render
         let xsmbData = null;
         try {
-            xsmbData = await fetchWithTimeout(getLatestXSMBNext(), 5000);
+            xsmbData = await fetchWithTimeout(getLatestXSMBNext(), 8000);
         } catch (error) {
-            // ✅ Silent fail - không log error để tránh delay
-            // Component sẽ fetch client-side nếu server-side fail
+            // ✅ Nếu API fail, vẫn return null để component fetch client-side
+            // Nhưng không block server-side rendering
             xsmbData = null;
         }
 
+        // ✅ CRITICAL: Luôn return props, kể cả khi data = null
+        // Component sẽ xử lý việc hiển thị skeleton
         return {
             props: {
                 initialXSMBData: xsmbData,
