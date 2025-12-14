@@ -10,9 +10,19 @@ import Layout from '../components/Layout';
 import TodayPredictions from '../components/TodayPredictions';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-import { InternalLinksSection } from '../components/InternalLinkingSEO';
-import EditorialContent from '../components/EditorialContent';
-import ComparisonContent from '../components/ComparisonContent';
+// ✅ Lazy load SEO components to prevent CLS - Load after main content
+const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
+    ssr: false,
+    loading: () => <div style={{ minHeight: '100px', contain: 'layout style' }}></div>
+});
+const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
+    ssr: false,
+    loading: () => <div style={{ minHeight: '150px', contain: 'layout style' }}></div>
+});
+const ComparisonContent = dynamic(() => import('../components/ComparisonContent'), {
+    ssr: false,
+    loading: () => <div style={{ minHeight: '100px', contain: 'layout style' }}></div>
+});
 import { getPageSEO } from '../config/seoConfig';
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
@@ -491,14 +501,12 @@ const Home = memo(function Home() {
                     </div>
                 </div>
                 
-                {/* ✅ Editorial Content - Compact mode, chỉ hiển thị ngắn gọn */}
-                <EditorialContent pageType="home" compact={true} />
-                
-                {/* ✅ Comparison Content - Compact mode, ẩn full comparison */}
-                <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
-                
-                {/* ✅ Internal Linking SEO - Gray Hat Technique */}
-                <InternalLinksSection pageType="home" />
+                {/* ✅ SEO Content - Lazy loaded after main content to prevent CLS */}
+                <div style={{ contain: 'layout style', minHeight: '350px' }}>
+                    <EditorialContent pageType="home" compact={true} />
+                    <ComparisonContent targetBrand="ketqua04.net" showFullComparison={false} compact={true} />
+                    <InternalLinksSection pageType="home" />
+                </div>
             </Layout>
         </>
     );

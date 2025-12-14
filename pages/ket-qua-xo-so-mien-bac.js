@@ -19,12 +19,12 @@ import { isWithinLiveWindow } from '../utils/lotteryUtils';
 // ✅ Lazy load SEO components to improve initial page load performance
 const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
     ssr: false,
-    loading: () => null
+    loading: () => <div style={{ minHeight: '100px', contain: 'layout style' }}></div>
 });
 
 const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
     ssr: false,
-    loading: () => null
+    loading: () => <div style={{ minHeight: '150px', contain: 'layout style' }}></div>
 });
 
 const LiveResult = dynamic(() => import('../components/LiveResult'), {
@@ -310,9 +310,11 @@ const KQXSPage = memo(function KQXSPage() {
                         {/* ✅ SEO: Internal links - Removed duplicate section */}
                     </div>
                     
-                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
-                    <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
+                    {/* ✅ SEO Content - Lazy loaded after main content to prevent CLS */}
+                    <div style={{ contain: 'layout style', minHeight: '250px' }}>
+                        <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
+                        <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
+                    </div>
                 </div>
             </Layout>
         </>
