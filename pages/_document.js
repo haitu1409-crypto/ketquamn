@@ -78,15 +78,19 @@ export default function Document() {
               visibility: visible;
               opacity: 1;
               scroll-behavior: smooth;
+              /* ✅ Ensure font is set immediately - prevent layout shift */
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
             }
             
             body {
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
               margin: 0;
               padding: 0;
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
               line-height: 1.6;
+              /* ✅ Ensure font is applied immediately - prevent layout shift */
+              font-size: 16px;
             }
             
             /* Critical above-the-fold styles */
