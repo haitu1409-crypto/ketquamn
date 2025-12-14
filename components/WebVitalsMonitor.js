@@ -47,9 +47,12 @@ export default function WebVitalsMonitor() {
     };
 
     useEffect(() => {
+        // ✅ OPTIMIZED: Defer loading để không block initial render
         // Chỉ load Web Vitals trong production hoặc khi cần thiết
         if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
-            import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+            // ✅ Delay 2s để không block initial render
+            const timer = setTimeout(() => {
+                import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
                 // Largest Contentful Paint (LCP) - < 2.5s
                 getLCP((metric) => {
                     console.log('LCP:', metric);
@@ -80,9 +83,12 @@ export default function WebVitalsMonitor() {
                     console.log('TTFB:', metric);
                     sendToAnalytics('TTFB', metric.value, metric.rating);
                 });
-            }).catch(err => {
-                console.error('Failed to load web-vitals:', err);
-            });
+                }).catch(err => {
+                    // Silent fail - không log error
+                });
+            }, 2000); // Delay 2s để không block initial render
+
+            return () => clearTimeout(timer);
         }
     }, []);
 

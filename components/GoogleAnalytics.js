@@ -31,20 +31,29 @@ export default function GoogleAnalytics() {
     const router = useRouter();
 
     useEffect(() => {
+        // ✅ OPTIMIZED: Defer tracking để không block initial render
         const handleRouteChange = (url) => {
             pageview(url);
         };
 
-        // Track page views on route change
-        router.events.on('routeChangeComplete', handleRouteChange);
-        router.events.on('hashChangeComplete', handleRouteChange);
+        // ✅ Delay initial tracking để không block render
+        const timer = setTimeout(() => {
+            // Track page views on route change
+            router.events.on('routeChangeComplete', handleRouteChange);
+            router.events.on('hashChangeComplete', handleRouteChange);
 
-        // Track initial page load
-        pageview(window.location.pathname + window.location.search);
+            // Track initial page load
+            if (typeof window !== 'undefined') {
+                pageview(window.location.pathname + window.location.search);
+            }
+        }, 2000); // Delay 2s
 
         return () => {
-            router.events.off('routeChangeComplete', handleRouteChange);
-            router.events.off('hashChangeComplete', handleRouteChange);
+            clearTimeout(timer);
+            if (router.events) {
+                router.events.off('routeChangeComplete', handleRouteChange);
+                router.events.off('hashChangeComplete', handleRouteChange);
+            }
         };
     }, [router.events]);
 

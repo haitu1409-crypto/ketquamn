@@ -173,15 +173,17 @@ function MyApp({ Component, pageProps }) {
             {/* ✅ REMOVED: MultiSearchEngineOptimizer - Already handled by EnhancedSEOHead */}
             {/* ✅ REMOVED: OrganizationSchema - Already handled by SEOOptimized */}
 
-            {/* Google Analytics */}
-            <Analytics />
-            <GoogleAnalytics />
-
-            {/* Web Vitals Tracking */}
-            <WebVitals />
-
-            {/* Enhanced Web Vitals Monitor */}
-            <WebVitalsMonitor />
+            {/* ✅ OPTIMIZED: Defer Analytics và Web Vitals - chỉ load sau khi page đã render */}
+            {/* Google Analytics - Deferred để không block initial render */}
+            {typeof window !== 'undefined' && (
+                <>
+                    <Analytics />
+                    <GoogleAnalytics />
+                    {/* Web Vitals Tracking - Deferred để không block initial render */}
+                    <WebVitals />
+                    <WebVitalsMonitor />
+                </>
+            )}
 
             {/* SEO Analytics Enhanced - Temporarily disabled */}
             {/* <SEOAnalyticsEnhanced /> */}

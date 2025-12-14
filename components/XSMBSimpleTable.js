@@ -117,9 +117,11 @@ const XSMBSimpleTable = ({
         );
     }
 
+    // ✅ OPTIMIZED: Nếu có propData (server-side), render ngay
     // Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
     if (!data) {
-        if (showLoading) {
+        // ✅ Chỉ hiển thị loading trên client sau khi mount, không hiển thị trên server
+        if (showLoading && isMounted) {
             return (
                 <div className={`${styles.container} ${className}`}>
                     <div className={styles.loadingMessage}>
@@ -129,6 +131,7 @@ const XSMBSimpleTable = ({
                 </div>
             );
         }
+        // ✅ Trên server hoặc chưa mount, return null để tránh hydration mismatch
         return null;
     }
 

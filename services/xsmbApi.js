@@ -22,9 +22,10 @@ const getUserId = () => {
 };
 
 // Tạo axios instance với cấu hình mặc định
+// ✅ OPTIMIZED: Giảm timeout để tránh delay quá lâu (5s cho server-side, 15s cho client-side)
 const apiClient = axios.create({
     baseURL: API_BASE_URL,
-    timeout: 15000,
+    timeout: typeof window === 'undefined' ? 5000 : 15000, // Server-side: 5s, Client-side: 15s
     headers: {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
