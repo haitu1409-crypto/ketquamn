@@ -15,6 +15,9 @@ import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { isWithinLiveWindow } from '../utils/lotteryUtils';
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import { ContentWrapper } from '../components/ContentWrapper';
+import EditorialContent from '../components/EditorialContent';
 
 const LiveResult = dynamic(() => import('../components/LiveResult'), {
     loading: () => (
@@ -84,7 +87,7 @@ const KQXSPage = memo(function KQXSPage() {
 
     // ✅ Cache siteUrl to avoid recalculating
     const siteUrl = useMemo(() =>
-        process.env.NEXT_PUBLIC_SITE_URL || 'https://taodandewukong.pro',
+        process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com',
         []
     );
 
@@ -136,7 +139,7 @@ const KQXSPage = memo(function KQXSPage() {
         },
         {
             question: 'Xem XSMB ở đâu tốt nhất?',
-            answer: 'Taodandewukong.pro cung cấp kết quả XSMB nhanh nhất, chính xác nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
+            answer: 'Ketquamn.com cung cấp kết quả XSMB nhanh nhất, chính xác nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Hoàn toàn miễn phí, không cần đăng ký, cập nhật tự động sau khi quay số.'
         }
     ], [siteUrl]);
 
@@ -157,14 +160,14 @@ const KQXSPage = memo(function KQXSPage() {
                 'dateModified': deterministicDate,
                 'author': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong'
+                    'name': 'Kết Quả MN | KETQUAMN.COM'
                 },
                 'publisher': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
                     'logo': {
                         '@type': 'ImageObject',
-                        'url': `${siteUrl}/imgs/wukong.png`
+                        'url': `${siteUrl}/logo1.png`
                     }
                 },
                 'mainEntityOfPage': {
@@ -186,7 +189,7 @@ const KQXSPage = memo(function KQXSPage() {
                 'license': 'https://creativecommons.org/licenses/by/4.0/',
                 'provider': {
                     '@type': 'Organization',
-                    'name': 'Dàn Đề Wukong',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
                     'url': siteUrl
                 }
             }
@@ -202,6 +205,11 @@ const KQXSPage = memo(function KQXSPage() {
                 keywords={seoConfig.keywords.join(', ')}
                 canonical={`${siteUrl}/ket-qua-xo-so-mien-bac`}
                 ogImage={`${siteUrl}/imgs/xsmb.png`}
+                breadcrumbs={[
+                    { name: 'Trang chủ', url: siteUrl },
+                    { name: 'Kết Quả Xổ Số Miền Bắc', url: `${siteUrl}/ket-qua-xo-so-mien-bac` }
+                ]}
+                faq={faqData}
                 structuredData={structuredData}
             />
 
@@ -270,7 +278,7 @@ const KQXSPage = memo(function KQXSPage() {
                         </h2>
                         <p style={{ marginBottom: '15px' }}>
                             <strong>Kết quả xổ số miền Bắc (XSMB)</strong> được cập nhật hàng ngày lúc <strong>18h15</strong> từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội.
-                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Dàn Đề Wukong cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
+                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Kết Quả MN cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
                         </p>
                         <p style={{ marginBottom: '15px' }}>
                             Bạn có thể <strong>tra cứu kết quả xổ số miền Bắc</strong> theo ngày, xem <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>.
@@ -308,7 +316,7 @@ const KQXSPage = memo(function KQXSPage() {
                         </div>
 
                         <div className={styles.infoCard}>
-                            <h3>Ưu Điểm XSMB Tại Taodandewukong.pro</h3>
+                            <h3>Ưu Điểm XSMB Tại Ketquamn.com</h3>
                             <ul>
                                 <li>✅ <strong>Nhanh nhất:</strong> Cập nhật XSMB ngay sau khi quay số, nhanh hơn <strong>xosodaiphat</strong>, <strong>xoso.com.vn</strong></li>
                                 <li>✅ <strong>Chính xác:</strong> Kết quả XSMB chính xác 100%, đối chiếu từ nguồn chính thức</li>
@@ -373,6 +381,12 @@ const KQXSPage = memo(function KQXSPage() {
                             </ul>
                         </div>
                     </div>
+
+                    {/* ✅ Editorial Content - Compact mode */}
+                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
+
+                    {/* ✅ Internal Linking SEO - Gray Hat Technique */}
+                    <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
                 </div>
             </Layout>
         </>

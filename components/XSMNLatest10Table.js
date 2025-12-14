@@ -179,10 +179,10 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
             console.warn('Could not format date for result:', result);
             return acc;
         }
-        
+
         // Debug logging
         console.log(`📅 Grouping result: ${result.tentinh || result.tinh} - drawDate: ${result.drawDate} - dateKeyRaw: ${dateKeyRaw} - dateKey: ${dateKey}`);
-        
+
         if (!acc[dateKey]) {
             acc[dateKey] = [];
         }
@@ -200,13 +200,13 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
 
     // Slice to get only displayed days
     const displayedDateKeys = sortedDateKeys.slice(0, displayedDaysCount);
-    
+
     // Create displayed grouped data
     const groupedByDate = {};
     displayedDateKeys.forEach(dateKey => {
         groupedByDate[dateKey] = allGroupedByDate[dateKey];
     });
-    
+
     // Debug: Log grouped results
     console.log('📊 Total days:', sortedDateKeys.length, 'Displayed days:', displayedDaysCount);
     console.log('📊 Grouped by date:', Object.keys(groupedByDate).map(key => ({
@@ -295,7 +295,7 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
                 if (!results || results.length === 0) return null;
                 const firstResult = results[0];
                 if (!firstResult || !firstResult.drawDate) return null;
-                
+
                 const formattedDate = dateKey;
                 const dayOfWeek = getDayOfWeek(firstResult.drawDate);
                 const currentFilter = filterTypes[dateKey] || 'all';
@@ -345,135 +345,135 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                {/* Giải 8 */}
-                                <tr>
-                                    <td className={`${styles.tdTitle} ${styles.highlight}`}>G8</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            <span className={`${styles.prizeNumber} ${styles.highlight}`}>
-                                                {result.eightPrizes && result.eightPrizes.length > 0 
-                                                    ? getFilteredNumber(result.eightPrizes[0], currentFilter) 
-                                                    : '-'}
-                                            </span>
-                                        </td>
-                                    ))}
-                                </tr>
-
-                                {/* Giải 7 */}
-                                <tr>
-                                    <td className={styles.tdTitle}>G7</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            <span className={styles.prizeNumber}>
-                                                {result.sevenPrizes && result.sevenPrizes.length > 0 
-                                                    ? getFilteredNumber(result.sevenPrizes[0], currentFilter) 
-                                                    : '-'}
-                                            </span>
-                                        </td>
-                                    ))}
-                                </tr>
-
-                                {/* Giải 6 */}
-                                <tr>
-                                    <td className={styles.tdTitle}>G6</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            {(result.sixPrizes || []).slice(0, 3).map((kq, idx) => (
-                                                <span key={idx} className={styles.prizeNumber}>
-                                                    {getFilteredNumber(kq, currentFilter)}
-                                                    {idx < (result.sixPrizes || []).slice(0, 3).length - 1 && <br />}
-                                                </span>
+                                        {/* Giải 8 */}
+                                        <tr>
+                                            <td className={`${styles.tdTitle} ${styles.highlight}`}>G8</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    <span className={`${styles.prizeNumber} ${styles.highlight}`}>
+                                                        {result.eightPrizes && result.eightPrizes.length > 0
+                                                            ? getFilteredNumber(result.eightPrizes[0], currentFilter)
+                                                            : '-'}
+                                                    </span>
+                                                </td>
                                             ))}
-                                        </td>
-                                    ))}
-                                </tr>
+                                        </tr>
 
-                                {/* Giải 5 */}
-                                <tr>
-                                    <td className={`${styles.tdTitle} ${styles.g3}`}>G5</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            {(result.fivePrizes || []).slice(0, 3).map((kq, idx) => (
-                                                <span key={idx} className={`${styles.prizeNumber} ${styles.g3}`}>
-                                                    {getFilteredNumber(kq, currentFilter)}
-                                                    {idx < (result.fivePrizes || []).slice(0, 3).length - 1 && <br />}
-                                                </span>
+                                        {/* Giải 7 */}
+                                        <tr>
+                                            <td className={styles.tdTitle}>G7</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    <span className={styles.prizeNumber}>
+                                                        {result.sevenPrizes && result.sevenPrizes.length > 0
+                                                            ? getFilteredNumber(result.sevenPrizes[0], currentFilter)
+                                                            : '-'}
+                                                    </span>
+                                                </td>
                                             ))}
-                                        </td>
-                                    ))}
-                                </tr>
+                                        </tr>
 
-                                {/* Giải 4 */}
-                                <tr>
-                                    <td className={styles.tdTitle}>G4</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            {(result.fourPrizes || []).slice(0, 7).map((kq, idx) => (
-                                                <span key={idx} className={styles.prizeNumber}>
-                                                    {getFilteredNumber(kq, currentFilter)}
-                                                    {idx < (result.fourPrizes || []).slice(0, 7).length - 1 && <br />}
-                                                </span>
+                                        {/* Giải 6 */}
+                                        <tr>
+                                            <td className={styles.tdTitle}>G6</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    {(result.sixPrizes || []).slice(0, 3).map((kq, idx) => (
+                                                        <span key={idx} className={styles.prizeNumber}>
+                                                            {getFilteredNumber(kq, currentFilter)}
+                                                            {idx < (result.sixPrizes || []).slice(0, 3).length - 1 && <br />}
+                                                        </span>
+                                                    ))}
+                                                </td>
                                             ))}
-                                        </td>
-                                    ))}
-                                </tr>
+                                        </tr>
 
-                                {/* Giải 3 */}
-                                <tr>
-                                    <td className={`${styles.tdTitle} ${styles.g3}`}>G3</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            {(result.threePrizes || []).slice(0, 2).map((kq, idx) => (
-                                                <span key={idx} className={`${styles.prizeNumber} ${styles.g3}`}>
-                                                    {getFilteredNumber(kq, currentFilter)}
-                                                    {idx < (result.threePrizes || []).slice(0, 2).length - 1 && <br />}
-                                                </span>
+                                        {/* Giải 5 */}
+                                        <tr>
+                                            <td className={`${styles.tdTitle} ${styles.g3}`}>G5</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    {(result.fivePrizes || []).slice(0, 3).map((kq, idx) => (
+                                                        <span key={idx} className={`${styles.prizeNumber} ${styles.g3}`}>
+                                                            {getFilteredNumber(kq, currentFilter)}
+                                                            {idx < (result.fivePrizes || []).slice(0, 3).length - 1 && <br />}
+                                                        </span>
+                                                    ))}
+                                                </td>
                                             ))}
-                                        </td>
-                                    ))}
-                                </tr>
+                                        </tr>
 
-                                {/* Giải 2 */}
-                                <tr>
-                                    <td className={styles.tdTitle}>G2</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            <span className={styles.prizeNumber}>
-                                                {result.secondPrize && result.secondPrize.length > 0 
-                                                    ? getFilteredNumber(result.secondPrize[0], currentFilter) 
-                                                    : '-'}
-                                            </span>
-                                        </td>
-                                    ))}
-                                </tr>
+                                        {/* Giải 4 */}
+                                        <tr>
+                                            <td className={styles.tdTitle}>G4</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    {(result.fourPrizes || []).slice(0, 7).map((kq, idx) => (
+                                                        <span key={idx} className={styles.prizeNumber}>
+                                                            {getFilteredNumber(kq, currentFilter)}
+                                                            {idx < (result.fourPrizes || []).slice(0, 7).length - 1 && <br />}
+                                                        </span>
+                                                    ))}
+                                                </td>
+                                            ))}
+                                        </tr>
 
-                                {/* Giải 1 */}
-                                <tr>
-                                    <td className={styles.tdTitle}>G1</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            <span className={styles.prizeNumber}>
-                                                {result.firstPrize && result.firstPrize.length > 0 
-                                                    ? getFilteredNumber(result.firstPrize[0], currentFilter) 
-                                                    : '-'}
-                                            </span>
-                                        </td>
-                                    ))}
-                                </tr>
+                                        {/* Giải 3 */}
+                                        <tr>
+                                            <td className={`${styles.tdTitle} ${styles.g3}`}>G3</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    {(result.threePrizes || []).slice(0, 2).map((kq, idx) => (
+                                                        <span key={idx} className={`${styles.prizeNumber} ${styles.g3}`}>
+                                                            {getFilteredNumber(kq, currentFilter)}
+                                                            {idx < (result.threePrizes || []).slice(0, 2).length - 1 && <br />}
+                                                        </span>
+                                                    ))}
+                                                </td>
+                                            ))}
+                                        </tr>
 
-                                {/* Giải Đặc Biệt */}
-                                <tr>
-                                    <td className={`${styles.tdTitle} ${styles.highlight}`}>ĐB</td>
-                                    {results.map(result => (
-                                        <td key={result._id || result.tinh} className={styles.rowXS}>
-                                            <span className={`${styles.prizeNumber} ${styles.highlight} ${styles.gdb}`}>
-                                                {result.specialPrize && result.specialPrize.length > 0 
-                                                    ? getFilteredNumber(result.specialPrize[0], currentFilter) 
-                                                    : '-'}
-                                            </span>
-                                        </td>
-                                    ))}
-                                </tr>
+                                        {/* Giải 2 */}
+                                        <tr>
+                                            <td className={styles.tdTitle}>G2</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    <span className={styles.prizeNumber}>
+                                                        {result.secondPrize && result.secondPrize.length > 0
+                                                            ? getFilteredNumber(result.secondPrize[0], currentFilter)
+                                                            : '-'}
+                                                    </span>
+                                                </td>
+                                            ))}
+                                        </tr>
+
+                                        {/* Giải 1 */}
+                                        <tr>
+                                            <td className={styles.tdTitle}>G1</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    <span className={styles.prizeNumber}>
+                                                        {result.firstPrize && result.firstPrize.length > 0
+                                                            ? getFilteredNumber(result.firstPrize[0], currentFilter)
+                                                            : '-'}
+                                                    </span>
+                                                </td>
+                                            ))}
+                                        </tr>
+
+                                        {/* Giải Đặc Biệt */}
+                                        <tr>
+                                            <td className={`${styles.tdTitle} ${styles.highlight}`}>ĐB</td>
+                                            {results.map(result => (
+                                                <td key={result._id || result.tinh} className={styles.rowXS}>
+                                                    <span className={`${styles.prizeNumber} ${styles.highlight} ${styles.gdb}`}>
+                                                        {result.specialPrize && result.specialPrize.length > 0
+                                                            ? getFilteredNumber(result.specialPrize[0], currentFilter)
+                                                            : '-'}
+                                                    </span>
+                                                </td>
+                                            ))}
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

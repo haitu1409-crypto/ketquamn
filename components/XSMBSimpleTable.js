@@ -31,22 +31,15 @@ const XSMBSimpleTable = ({
     onDataLoad,
     onError
 }) => {
-    // ✅ Fix hydration: Chỉ fetch trên client
-    const [isMounted, setIsMounted] = React.useState(false);
-
-    React.useEffect(() => {
-        setIsMounted(true);
-    }, []);
-
-    // Sử dụng hook để fetch dữ liệu từ API - chỉ khi đã mount
+    // Sử dụng hook để fetch dữ liệu từ API
     const xsmbTodayHook = useXSMBNextToday({
-        autoFetch: isMounted && useToday && autoFetch,
+        autoFetch: useToday && autoFetch,
         refreshInterval: useToday ? refreshInterval : 0
     });
 
     const xsmbHook = useXSMBNext({
         date: useToday ? 'latest' : date,
-        autoFetch: isMounted && !useToday && autoFetch,
+        autoFetch: !useToday && autoFetch,
         refreshInterval: !useToday ? refreshInterval : 0
     });
 
@@ -54,7 +47,7 @@ const XSMBSimpleTable = ({
     const { data: apiData, loading, error, refetch } = useToday ? xsmbTodayHook : xsmbHook;
 
     // Debug: Log để kiểm tra dữ liệu (chỉ khi cần thiết)
-    if (process.env.NODE_ENV === 'development' && isMounted) {
+    if (process.env.NODE_ENV === 'development') {
         console.log('🔍 XSMBSimpleTable data source:', {
             propData: !!propData,
             apiData: !!apiData,
@@ -79,8 +72,7 @@ const XSMBSimpleTable = ({
     }, [error, onError]);
 
     // Sử dụng dữ liệu từ API hoặc prop - CHỈ dữ liệu thật, không có fallback
-    // ✅ Fix hydration: Chỉ dùng apiData sau khi đã mount trên client
-    const data = propData || (isMounted ? apiData : null);
+    const data = propData || apiData;
 
     // Loading state - hiển thị khi đang loading và chưa có data
     if (loading && showLoading && !data) {
