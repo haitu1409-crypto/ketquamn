@@ -95,13 +95,13 @@ export const ComparisonContent = memo(function ComparisonContent({
     className = ''
 }) {
     const comparison = COMPARISONS[targetBrand];
-    
+
     if (!comparison) return null;
-    
+
     // ✅ Compact mode - chỉ hiển thị ngắn gọn ở footer
     if (compact && !showFullComparison) {
         return (
-            <div 
+            <div
                 className={className}
                 style={{
                     marginTop: '20px',
@@ -114,15 +114,15 @@ export const ComparisonContent = memo(function ComparisonContent({
                 }}
             >
                 <p style={{ margin: 0 }}>
-                    <strong>Kết Quả MN</strong> - Thay thế {comparison.displayName}, tốt hơn {comparison.displayName}. 
+                    <strong>Kết Quả MN</strong> - Thay thế {comparison.displayName}, tốt hơn {comparison.displayName}.
                     Miễn phí 100%, nhanh chóng, không quảng cáo.
                 </p>
             </div>
         );
     }
-    
+
     return (
-        <section 
+        <section
             className={className}
             itemScope
             itemType="https://schema.org/Article"
@@ -136,7 +136,7 @@ export const ComparisonContent = memo(function ComparisonContent({
             }}
         >
             <header style={{ marginBottom: '30px' }}>
-                <h2 
+                <h2
                     style={{
                         fontSize: '28px',
                         fontWeight: 'bold',
@@ -148,7 +148,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                 >
                     So sánh Kết Quả MN vs {comparison.displayName}
                 </h2>
-                <p 
+                <p
                     style={{
                         fontSize: '18px',
                         lineHeight: '1.8',
@@ -160,12 +160,12 @@ export const ComparisonContent = memo(function ComparisonContent({
                     So sánh chi tiết giữa Kết Quả MN và {comparison.displayName} để giúp bạn chọn lựa trang web phù hợp nhất.
                 </p>
             </header>
-            
+
             <div itemProp="articleBody">
                 {/* Comparison Table */}
                 {showFullComparison && (
                     <div style={{ marginBottom: '30px' }}>
-                        <h3 
+                        <h3
                             style={{
                                 fontSize: '22px',
                                 fontWeight: '600',
@@ -175,7 +175,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                         >
                             Bảng so sánh
                         </h3>
-                        
+
                         <div style={{
                             display: 'grid',
                             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -197,7 +197,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                                 }}>
                                     {comparison.displayName}
                                 </h4>
-                                
+
                                 <div style={{ marginBottom: '16px' }}>
                                     <strong style={{ color: '#059669' }}>Ưu điểm:</strong>
                                     <ul style={{
@@ -224,7 +224,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                                         ))}
                                     </ul>
                                 </div>
-                                
+
                                 <div>
                                     <strong style={{ color: '#dc2626' }}>Nhược điểm:</strong>
                                     <ul style={{
@@ -252,7 +252,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                                     </ul>
                                 </div>
                             </div>
-                            
+
                             {/* Our Site */}
                             <div style={{
                                 padding: '24px',
@@ -268,7 +268,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                                 }}>
                                     Kết Quả MN
                                 </h4>
-                                
+
                                 <div>
                                     <strong style={{ color: '#FF6B35' }}>Ưu điểm vượt trội:</strong>
                                     <ul style={{
@@ -300,7 +300,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                         </div>
                     </div>
                 )}
-                
+
                 {/* Conclusion */}
                 <div style={{
                     padding: '24px',
@@ -325,13 +325,13 @@ export const ComparisonContent = memo(function ComparisonContent({
                         {comparison.conclusion}
                     </p>
                 </div>
-                
+
                 {/* CTA */}
                 <div style={{
                     marginTop: '30px',
                     textAlign: 'center'
                 }}>
-                    <Link 
+                    <Link
                         href="/"
                         style={{
                             display: 'inline-block',
@@ -357,7 +357,7 @@ export const ComparisonContent = memo(function ComparisonContent({
                     </Link>
                 </div>
             </div>
-            
+
             <meta itemProp="datePublished" content={new Date().toISOString()} />
             <meta itemProp="dateModified" content={new Date().toISOString()} />
             <meta itemProp="author" content="Kết Quả MN | KETQUAMN.COM" />

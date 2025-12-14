@@ -150,7 +150,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                {/* ✅ FIX: Viewport removed from _app.js - already set in _document.js for earliest possible setting to prevent layout shift */}
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
                 <meta charSet="utf-8" />
 
                 {/* ✅ Critical resource hints for LCP optimization */}

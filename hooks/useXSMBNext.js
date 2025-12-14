@@ -74,9 +74,13 @@ export const useXSMBNext = (options = {}) => {
             let result;
 
             if (targetDate === 'latest') {
+                console.log('🔄 Fetching latest XSMB data...');
                 result = await getLatestXSMBNext();
+                console.log('✅ Latest XSMB data fetched:', result);
             } else {
+                console.log(`🔄 Fetching XSMB data for date: ${targetDate}`);
                 result = await getXSMBNextByDate(targetDate);
+                console.log(`✅ XSMB data for ${targetDate} fetched:`, result);
             }
 
             setData(result);
@@ -84,11 +88,14 @@ export const useXSMBNext = (options = {}) => {
             // ✅ Cache data để tránh fetch lại
             setCachedData(result);
         } catch (err) {
+            console.error('❌ Error fetching XSMB data:', err);
             // Xử lý 429 error đặc biệt
             if (err.response?.status === 429) {
                 setError('API đang bị giới hạn. Vui lòng thử lại sau.');
+                console.warn('API rate limited, using fallback data');
             } else {
                 setError(err.message);
+                console.error('Error fetching XSMB data:', err);
             }
         } finally {
             setLoading(false);
@@ -342,20 +349,26 @@ export const useXSMBNextToday = (options = {}) => {
 
         try {
             const today = getCurrentDateFormatted();
+            console.log('🔄 Fetching XSMB data for today:', today);
             const result = await getXSMBNextByDate(today);
+            console.log('✅ Today XSMB data fetched:', result);
             setData(result);
             setIsToday(true);
             // ✅ Cache data
             setCachedData(result);
         } catch (err) {
+            console.warn('⚠️ No data for today, trying latest data...', err.message);
             // Nếu không có dữ liệu hôm nay, thử lấy dữ liệu mới nhất
             try {
+                console.log('🔄 Fetching latest XSMB data as fallback...');
                 const result = await getLatestXSMBNext();
+                console.log('✅ Latest XSMB data fetched as fallback:', result);
                 setData(result);
                 setIsToday(false);
                 // ✅ Cache data
                 setCachedData(result);
             } catch (fallbackErr) {
+                console.error('❌ Error fetching latest XSMB data:', fallbackErr);
                 setError(fallbackErr.message);
             }
         } finally {
@@ -408,45 +421,9 @@ export const useXSMBNextToday = (options = {}) => {
  */
 export function useXSMBLatest10(options = {}) {
     const { autoFetch = true, refreshInterval = 0, page = 1, limit = 10 } = options;
-    
-    // ✅ Cache key for this specific page/limit combination
-    const cacheKey = `xsmb_latest10_${page}_${limit}`;
-    
-    const getCachedData = () => {
-        if (typeof window === 'undefined') return null;
-        try {
-            const cached = sessionStorage.getItem(cacheKey);
-            if (cached) {
-                const { data: cachedData, pagination: cachedPagination, timestamp } = JSON.parse(cached);
-                // Cache trong 2 phút
-                if (Date.now() - timestamp < 2 * 60 * 1000) {
-                    return { data: cachedData, pagination: cachedPagination };
-                }
-            }
-        } catch (e) {
-            // Silent error
-        }
-        return null;
-    };
-
-    const setCachedData = (dataToCache, paginationToCache) => {
-        if (typeof window === 'undefined') return;
-        try {
-            sessionStorage.setItem(cacheKey, JSON.stringify({
-                data: dataToCache,
-                pagination: paginationToCache,
-                timestamp: Date.now()
-            }));
-        } catch (e) {
-            // Silent error
-        }
-    };
-
-    // ✅ Initialize with cached data if available
-    const cached = getCachedData();
-    const [data, setData] = useState(cached?.data || null);
-    const [pagination, setPagination] = useState(cached?.pagination || null);
-    const [loading, setLoading] = useState(!cached);
+    const [data, setData] = useState(null);
+    const [pagination, setPagination] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const fetchData = useCallback(async () => {
@@ -455,6 +432,7 @@ export function useXSMBLatest10(options = {}) {
             setError(null);
 
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+            console.log(`Fetching page ${page}, limit ${limit}`);
             const response = await fetch(`${apiUrl}/api/xsmb/results/latest10?page=${page}&limit=${limit}`);
 
             if (!response.ok) {
@@ -462,21 +440,21 @@ export function useXSMBLatest10(options = {}) {
             }
 
             const result = await response.json();
+            console.log('API Response:', result);
 
             if (result.success && result.data) {
                 setData(result.data);
                 setPagination(result.pagination);
-                // ✅ Cache the result
-                setCachedData(result.data, result.pagination);
             } else {
                 throw new Error('Invalid response format');
             }
         } catch (err) {
+            console.error('Error fetching XSMB results with pagination:', err);
             setError(err.message);
         } finally {
             setLoading(false);
         }
-    }, [page, limit, cacheKey]);
+    }, [page, limit]);
 
     // Auto fetch on mount and when page/limit changes
     useEffect(() => {

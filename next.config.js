@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    
+
     // ✅ SEO & Performance Optimizations
     poweredByHeader: false,
     compress: true,
-    
+
     // ✅ Image Optimization
     images: {
         formats: ['image/avif', 'image/webp'],
@@ -25,7 +25,7 @@ const nextConfig = {
             },
         ],
     },
-    
+
     // ✅ Security Headers
     async headers() {
         return [
@@ -80,7 +80,7 @@ const nextConfig = {
             },
         ];
     },
-    
+
     // ✅ Redirects for SEO
     async redirects() {
         return [
@@ -88,13 +88,13 @@ const nextConfig = {
             // Add your redirects here
         ];
     },
-    
+
     // ✅ Experimental Features for Performance
     experimental: {
         optimizeCss: true,
         optimizePackageImports: ['lucide-react', 'date-fns'],
     },
-    
+
     // ✅ Webpack Optimizations
     webpack: (config, { isServer }) => {
         // Optimize bundle size

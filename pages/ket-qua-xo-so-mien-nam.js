@@ -12,17 +12,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-
-// ✅ Lazy load SEO components to improve initial page load performance
-const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
-    ssr: false,
-    loading: () => null
-});
-
-const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
-    ssr: false,
-    loading: () => null
-});
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import { ContentWrapper } from '../components/ContentWrapper';
+import EditorialContent from '../components/EditorialContent';
 import { isWithinLiveWindowXSMN } from '../utils/lotteryUtils';
 
 const LiveResultXSMN = dynamic(() => import('../components/LiveResultXSMN'), {
@@ -157,10 +149,25 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                     '@type': 'WebPage',
                     '@id': `${siteUrl}/ket-qua-xo-so-mien-nam`
                 },
-                'keywords': seoConfig.keywords.slice(0, 10).join(', ') // ✅ Reduced from 50 to 10 for performance
+                'keywords': seoConfig.keywords.slice(0, 50).join(', ')
             },
-            generateFAQSchema(faqData)
-            // ✅ Removed Dataset schema to reduce structured data size and improve performance
+            generateFAQSchema(faqData),
+            {
+                '@context': 'https://schema.org',
+                '@type': 'Dataset',
+                'name': 'Kết Quả Xổ Số Miền Nam (XSMN)',
+                'description': 'Kết quả xổ số miền Nam (XSMN, SXMN, KQXSMN) được cập nhật hàng ngày',
+                'url': `${siteUrl}/ket-qua-xo-so-mien-nam`,
+                'temporalCoverage': '2025-01-01/..',
+                'spatialCoverage': 'Miền Nam, Việt Nam',
+                'keywords': 'xsmn, sxmn, kqxsmn, kết quả xổ số miền nam',
+                'license': 'https://creativecommons.org/licenses/by/4.0/',
+                'provider': {
+                    '@type': 'Organization',
+                    'name': 'Kết Quả MN',
+                    'url': siteUrl
+                }
+            }
         ];
     }, [pageTitle, pageDescription, seoConfig.keywords, siteUrl, faqData]);
 
@@ -170,7 +177,7 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 pageType="kqxs-xsmn"
                 title={pageTitle}
                 description={pageDescription}
-                keywords={seoConfig.keywords.slice(0, 30).join(', ')}
+                keywords={seoConfig.keywords.join(', ')}
                 canonical={`${siteUrl}/ket-qua-xo-so-mien-nam`}
                 ogImage={`${siteUrl}/imgs/xsmn.png`}
                 structuredData={structuredData}
@@ -260,8 +267,10 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                         </div>
                     </div>
 
-                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
+                    {/* ✅ Editorial Content - Compact mode */}
                     <EditorialContent pageType="ket-qua-xo-so-mien-nam" compact={true} />
+
+                    {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />
                 </div>
             </Layout>

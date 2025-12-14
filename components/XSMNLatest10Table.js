@@ -28,7 +28,17 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
     // Use API data if available, otherwise show empty state
     const data = apiData;
 
-    // ✅ Removed debug logs for production performance
+    // Debug logging
+    React.useEffect(() => {
+        if (data) {
+            console.log('📊 XSMNLatest10Table - Data received:', {
+                dataLength: data.length,
+                displayedDaysCount,
+                loading,
+                error
+            });
+        }
+    }, [data, displayedDaysCount, loading, error]);
 
     // Function to format date
     const formatDate = (dateInput) => {
@@ -36,6 +46,7 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
         try {
             const date = dateInput instanceof Date ? dateInput : new Date(dateInput);
             if (isNaN(date.getTime())) {
+                console.warn('Invalid date:', dateInput);
                 return '';
             }
             const day = date.getDate().toString().padStart(2, '0');
@@ -43,7 +54,7 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
             const year = date.getFullYear();
             return `${day}/${month}/${year}`;
         } catch (error) {
-            // Silent error handling for production
+            console.error('Error formatting date:', dateInput, error);
             return '';
         }
     };
@@ -59,7 +70,7 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
             const days = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
             return days[date.getDay()];
         } catch (error) {
-            // Silent error handling for production
+            console.error('Error getting day of week:', dateInput, error);
             return '';
         }
     };
@@ -137,7 +148,7 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
             // Return as YYYY-MM-DD string for consistent grouping
             return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
         } catch (error) {
-            // Silent error handling for production
+            console.error('Error getting date key:', dateInput, error);
             return null;
         }
     };
@@ -153,18 +164,24 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
     // Group ALL results by date first (using date key for consistent grouping)
     const allGroupedByDate = (data || []).reduce((acc, result) => {
         if (!result || !result.drawDate) {
+            console.warn('Result missing drawDate:', result);
             return acc;
         }
         // Get date key (YYYY-MM-DD format)
         const dateKeyRaw = getDateKey(result.drawDate);
         if (!dateKeyRaw) {
+            console.warn('Could not get date key for result:', result);
             return acc;
         }
         // Format to DD/MM/YYYY for display
         const dateKey = formatDateKey(dateKeyRaw);
         if (!dateKey) {
+            console.warn('Could not format date for result:', result);
             return acc;
         }
+        
+        // Debug logging
+        console.log(`📅 Grouping result: ${result.tentinh || result.tinh} - drawDate: ${result.drawDate} - dateKeyRaw: ${dateKeyRaw} - dateKey: ${dateKey}`);
         
         if (!acc[dateKey]) {
             acc[dateKey] = [];
@@ -190,7 +207,13 @@ const XSMNLatest10Table = ({ page = 1, limit = 10, onPaginationChange }) => {
         groupedByDate[dateKey] = allGroupedByDate[dateKey];
     });
     
-    // ✅ Removed debug logs for production performance
+    // Debug: Log grouped results
+    console.log('📊 Total days:', sortedDateKeys.length, 'Displayed days:', displayedDaysCount);
+    console.log('📊 Grouped by date:', Object.keys(groupedByDate).map(key => ({
+        date: key,
+        count: groupedByDate[key].length,
+        provinces: groupedByDate[key].map(r => r.tentinh || r.tinh)
+    })));
 
     // Handle load more button - tăng số ngày, không phải số documents
     const handleLoadMore = () => {

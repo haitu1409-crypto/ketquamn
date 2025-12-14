@@ -76,11 +76,11 @@ export const EditorialContent = memo(function EditorialContent({
     compact = true // ✅ Mặc định compact mode
 }) {
     const content = useMemo(() => EDITORIAL_CONTENT[pageType] || EDITORIAL_CONTENT['home'], [pageType]);
-    
+
     // ✅ Compact mode - chỉ hiển thị ngắn gọn
     if (compact) {
         return (
-            <section 
+            <section
                 className={className}
                 style={{
                     marginTop: '20px',
@@ -98,10 +98,10 @@ export const EditorialContent = memo(function EditorialContent({
             </section>
         );
     }
-    
+
     // Full mode - chỉ dùng khi cần thiết
     return (
-        <article 
+        <article
             className={className}
             itemScope
             itemType="https://schema.org/Article"
@@ -115,7 +115,7 @@ export const EditorialContent = memo(function EditorialContent({
             }}
         >
             <header style={{ marginBottom: '30px' }}>
-                <h2 
+                <h2
                     style={{
                         fontSize: '28px',
                         fontWeight: 'bold',
@@ -127,7 +127,7 @@ export const EditorialContent = memo(function EditorialContent({
                 >
                     {content.title}
                 </h2>
-                <p 
+                <p
                     style={{
                         fontSize: '18px',
                         lineHeight: '1.8',
@@ -139,10 +139,10 @@ export const EditorialContent = memo(function EditorialContent({
                     {content.introduction}
                 </p>
             </header>
-            
+
             <div itemProp="articleBody">
                 {content.body.map((paragraph, index) => (
-                    <p 
+                    <p
                         key={index}
                         style={{
                             fontSize: '16px',
@@ -155,9 +155,9 @@ export const EditorialContent = memo(function EditorialContent({
                     </p>
                 ))}
             </div>
-            
+
             {content.tips && content.tips.length > 0 && (
-                <section 
+                <section
                     style={{
                         marginTop: '30px',
                         padding: '24px',
@@ -166,7 +166,7 @@ export const EditorialContent = memo(function EditorialContent({
                         borderLeft: '4px solid #FF6B35'
                     }}
                 >
-                    <h3 
+                    <h3
                         style={{
                             fontSize: '20px',
                             fontWeight: '600',
@@ -176,7 +176,7 @@ export const EditorialContent = memo(function EditorialContent({
                     >
                         💡 Mẹo hữu ích
                     </h3>
-                    <ul 
+                    <ul
                         style={{
                             listStyle: 'none',
                             padding: 0,
@@ -184,7 +184,7 @@ export const EditorialContent = memo(function EditorialContent({
                         }}
                     >
                         {content.tips.map((tip, index) => (
-                            <li 
+                            <li
                                 key={index}
                                 style={{
                                     fontSize: '16px',
@@ -195,7 +195,7 @@ export const EditorialContent = memo(function EditorialContent({
                                     position: 'relative'
                                 }}
                             >
-                                <span 
+                                <span
                                     style={{
                                         position: 'absolute',
                                         left: 0,
@@ -211,7 +211,7 @@ export const EditorialContent = memo(function EditorialContent({
                     </ul>
                 </section>
             )}
-            
+
             <meta itemProp="datePublished" content={new Date().toISOString()} />
             <meta itemProp="dateModified" content={new Date().toISOString()} />
             <meta itemProp="author" content="Kết Quả MN | KETQUAMN.COM" />

@@ -317,7 +317,7 @@
 /* Ultra wide screens */
 @media (min-width: 1536px) {
     .headerContainer {
-        /* padding: var(--spacing-3) var(--spacing-5); */
+        padding: var(--spacing-3) var(--spacing-5);
     }
 }
 

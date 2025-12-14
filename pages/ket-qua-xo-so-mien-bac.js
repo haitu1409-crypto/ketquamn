@@ -15,17 +15,9 @@ import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { isWithinLiveWindow } from '../utils/lotteryUtils';
-
-// ✅ Lazy load SEO components to improve initial page load performance
-const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
-    ssr: false,
-    loading: () => null
-});
-
-const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
-    ssr: false,
-    loading: () => null
-});
+import { InternalLinksSection } from '../components/InternalLinkingSEO';
+import { ContentWrapper } from '../components/ContentWrapper';
+import EditorialContent from '../components/EditorialContent';
 
 const LiveResult = dynamic(() => import('../components/LiveResult'), {
     loading: () => (
@@ -182,10 +174,25 @@ const KQXSPage = memo(function KQXSPage() {
                     '@type': 'WebPage',
                     '@id': `${siteUrl}/ket-qua-xo-so-mien-bac`
                 },
-                'keywords': seoConfig.keywords.slice(0, 10).join(', ') // ✅ Reduced from 50 to 10 for performance
+                'keywords': seoConfig.keywords.slice(0, 50).join(', ')
             },
-            generateFAQSchema(faqData)
-            // ✅ Removed Dataset schema to reduce structured data size and improve performance
+            generateFAQSchema(faqData),
+            {
+                '@context': 'https://schema.org',
+                '@type': 'Dataset',
+                'name': 'Kết Quả Xổ Số Miền Bắc (XSMB)',
+                'description': 'Kết quả xổ số miền Bắc (XSMB, SXMB, KQXSMB, XSTD) được cập nhật hàng ngày lúc 18h15',
+                'url': `${siteUrl}/ket-qua-xo-so-mien-bac`,
+                'temporalCoverage': '2025-01-01/..',
+                'spatialCoverage': 'Hà Nội, Miền Bắc, Việt Nam',
+                'keywords': 'xsmb, sxmb, kqxsmb, xstd, kết quả xổ số miền bắc',
+                'license': 'https://creativecommons.org/licenses/by/4.0/',
+                'provider': {
+                    '@type': 'Organization',
+                    'name': 'Kết Quả MN | KETQUAMN.COM',
+                    'url': siteUrl
+                }
+            }
         ];
     }, [pageTitle, pageDescription, seoConfig.keywords, siteUrl, faqData]);
 
@@ -195,7 +202,7 @@ const KQXSPage = memo(function KQXSPage() {
                 pageType="kqxs"
                 title={pageTitle}
                 description={pageDescription}
-                keywords={seoConfig.keywords.slice(0, 30).join(', ')}
+                keywords={seoConfig.keywords.join(', ')}
                 canonical={`${siteUrl}/ket-qua-xo-so-mien-bac`}
                 ogImage={`${siteUrl}/imgs/xsmb.png`}
                 breadcrumbs={[
@@ -203,6 +210,7 @@ const KQXSPage = memo(function KQXSPage() {
                     { name: 'Kết Quả Xổ Số Miền Bắc', url: `${siteUrl}/ket-qua-xo-so-mien-bac` }
                 ]}
                 faq={faqData}
+                structuredData={structuredData}
                 structuredData={structuredData}
             />
 
@@ -256,18 +264,31 @@ const KQXSPage = memo(function KQXSPage() {
                         </button>
                     </div>
 
-                    {/* ✅ SEO: Compact content - Reduced to improve performance */}
+                    {/* ✅ SEO: Thêm paragraph content để Google có đủ text để index */}
                     <div style={{ 
-                        marginBottom: '20px', 
-                        padding: '15px', 
+                        marginBottom: '30px', 
+                        padding: '20px', 
                         backgroundColor: '#f8f9fa', 
                         borderRadius: '8px',
-                        fontSize: '15px',
+                        lineHeight: '1.8',
+                        fontSize: '16px',
                         color: '#333'
                     }}>
-                        <p style={{ marginBottom: '10px' }}>
+                        <h2 style={{ fontSize: '24px', marginBottom: '15px', color: '#1a1a1a' }}>
+                            Kết Quả Xổ Số Miền Bắc - XSMB Hôm Nay
+                        </h2>
+                        <p style={{ marginBottom: '15px' }}>
                             <strong>Kết quả xổ số miền Bắc (XSMB)</strong> được cập nhật hàng ngày lúc <strong>18h15</strong> từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. 
-                            Tra cứu <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>.
+                            Trang <strong>ket-qua-xo-so-mien-bac</strong> của Kết Quả MN cung cấp kết quả XSMB chính xác, nhanh nhất, tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn.
+                        </p>
+                        <p style={{ marginBottom: '15px' }}>
+                            Bạn có thể <strong>tra cứu kết quả xổ số miền Bắc</strong> theo ngày, xem <strong>XSMB 30 ngày</strong>, <strong>XSMB hôm qua</strong>, hoặc <strong>XSMB theo từng thứ trong tuần</strong>. 
+                            Kết quả được sắp xếp từ mới nhất đến cũ nhất, mỗi trang hiển thị 10 kết quả để dễ dàng theo dõi.
+                        </p>
+                        <p>
+                            <strong>Xổ số miền Bắc</strong> có 7 giải thưởng: <strong>Giải Đặc biệt</strong> (1 giải), <strong>Giải Nhất</strong> (1 giải), 
+                            <strong>Giải Nhì</strong> (2 giải), <strong>Giải Ba</strong> (6 giải), <strong>Giải Tư</strong> (4 giải), 
+                            <strong>Giải Năm</strong> (6 giải), <strong>Giải Sáu</strong> (3 giải), <strong>Giải Bảy</strong> (4 giải).
                         </p>
                     </div>
 
@@ -307,11 +328,65 @@ const KQXSPage = memo(function KQXSPage() {
                             </ul>
                         </div>
 
-                        {/* ✅ SEO: Internal links - Removed duplicate section */}
+                        {/* ✅ SEO: Thêm internal links để Google crawl tốt hơn */}
+                        <div className={styles.infoCard} style={{ marginTop: '20px' }}>
+                            <h3>Trang Liên Quan</h3>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/soi-cau-mien-bac-ai" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        🔮 Soi Cầu Miền Bắc AI - Dự Đoán XSMB Chính Xác
+                                    </a>
+                                </li>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/thong-ke" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        📊 Thống Kê Xổ Số 3 Miền - Phân Tích Xu Hướng
+                                    </a>
+                                </li>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/dan-9x0x" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        🎯 Tạo Dàn Đề 9x-0x - Công Cụ Tạo Dàn Số Chuyên Nghiệp
+                                    </a>
+                                </li>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/tin-tuc" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        📰 Tin Tức Xổ Số - Cập Nhật Mới Nhất
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* ✅ SEO: Thêm internal links để Google crawl tốt hơn */}
+                        <div className={styles.infoCard} style={{ marginTop: '20px' }}>
+                            <h3>Trang Liên Quan</h3>
+                            <ul style={{ listStyle: 'none', padding: 0 }}>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/soi-cau-mien-bac-ai" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        🔮 Soi Cầu Miền Bắc AI - Dự Đoán XSMB Chính Xác
+                                    </a>
+                                </li>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/thong-ke" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        📊 Thống Kê Xổ Số 3 Miền - Phân Tích Xu Hướng
+                                    </a>
+                                </li>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/dan-9x0x" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        🎯 Tạo Dàn Đề 9x-0x - Công Cụ Tạo Dàn Số Chuyên Nghiệp
+                                    </a>
+                                </li>
+                                <li style={{ marginBottom: '10px' }}>
+                                    <a href="/tin-tuc" style={{ color: '#007bff', textDecoration: 'none', fontSize: '16px' }}>
+                                        📰 Tin Tức Xổ Số - Cập Nhật Mới Nhất
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    {/* ✅ SEO Components - Lazy loaded to improve initial page load */}
+                    {/* ✅ Editorial Content - Compact mode */}
                     <EditorialContent pageType="ket-qua-xo-so-mien-bac" compact={true} />
+                    
+                    {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />
                 </div>
             </Layout>

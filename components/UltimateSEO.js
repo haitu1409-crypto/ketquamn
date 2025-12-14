@@ -28,43 +28,43 @@ export default function UltimateSEO({
     keywords = '',
     canonical,
     ogImage,
-
+    
     // Page Type
     pageType = 'website',
-
+    
     // E-E-A-T Signals
     author = null,
     authorProfile = null,
     expertise = null,
     experience = null,
     trustworthiness = null,
-
+    
     // Content Quality
     contentQuality = 'high',
     helpfulContent = true,
     originalContent = true,
-
+    
     // Structured Data
     structuredData = [],
     breadcrumbs = [],
     faq = [],
     articleData = null,
     lotteryData = null,
-
+    
     // Performance
     preloadImages = [],
     preconnectDomains = [],
-
+    
     // Security
     csp = null,
-
+    
     // Accessibility
     lang = 'vi',
-
+    
     // Robots
     noindex = false,
     nofollow = false,
-
+    
     // Additional
     customMeta = [],
     customLinks = [],
@@ -84,7 +84,7 @@ export default function UltimateSEO({
             authoritativeness: 'Trang web được tin cậy bởi hàng nghìn người dùng mỗi ngày',
             trustworthiness: trustworthiness || 'Dữ liệu chính xác, cập nhật nhanh, miễn phí 100%'
         };
-
+        
         if (author) {
             data.author = {
                 name: author,
@@ -93,7 +93,7 @@ export default function UltimateSEO({
                 experience: experience || '5+ năm kinh nghiệm'
             };
         }
-
+        
         return data;
     }, [author, authorProfile, expertise, experience, trustworthiness, siteUrl]);
 
@@ -277,29 +277,27 @@ export default function UltimateSEO({
                 inLanguage: 'vi-VN'
             };
 
-            // ✅ E-E-A-T: Author với expertise (REQUIRED for Article)
-            if (eeatData?.author) {
+            // ✅ E-E-A-T: Author với expertise
+            if (eeatData.author) {
                 articleSchema.author = {
                     '@type': 'Person',
                     name: eeatData.author.name,
-                    url: eeatData.author.profile || `${siteUrl}/about`,
-                    jobTitle: eeatData.author.expertise || 'Chuyên gia xổ số',
+                    url: eeatData.author.profile,
+                    jobTitle: eeatData.author.expertise,
                     knowsAbout: ['Xổ số', 'Thống kê', 'Phân tích số liệu']
                 };
             } else {
-                // ✅ FIX: Article MUST have author - use Organization as fallback
                 articleSchema.author = {
                     '@type': 'Organization',
-                    name: siteName,
-                    url: siteUrl
+                    name: siteName
                 };
             }
 
             schemas.push(articleSchema);
         }
 
-        // 6. Dataset Schema - Only if explicitly needed
-        if (pageType === 'dataset' && lotteryData) {
+        // 6. Dataset Schema
+        if (pageType === 'dataset' || lotteryData) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'Dataset',
@@ -320,18 +318,23 @@ export default function UltimateSEO({
                 spatialCoverage: {
                     '@type': 'Place',
                     name: 'Vietnam'
+                },
+                distribution: {
+                    '@type': 'DataDownload',
+                    encodingFormat: 'JSON',
+                    contentUrl: `${siteUrl}/api/lottery-data`
                 }
             });
         }
 
-        // 7. ItemList Schema - Only if explicitly needed
-        if (pageType === 'collection' && lotteryData?.items?.length > 0) {
+        // 7. ItemList Schema
+        if (pageType === 'collection' || lotteryData) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'ItemList',
                 name: title,
                 description: description,
-                itemListElement: lotteryData.items.slice(0, 10).map((item, index) => ({
+                itemListElement: lotteryData?.items?.map((item, index) => ({
                     '@type': 'ListItem',
                     position: index + 1,
                     item: {
@@ -339,29 +342,30 @@ export default function UltimateSEO({
                         name: item.name,
                         datePublished: item.date
                     }
-                }))
+                })) || []
             });
         }
 
-        // 8. HowTo Schema - Only if explicitly needed
-        if (pageType === 'howto' && articleData?.steps?.length > 0) {
+        // 8. ✅ NEW: HowTo Schema (cho hướng dẫn)
+        if (pageType === 'howto' && articleData?.steps) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'HowTo',
                 name: title,
                 description: description,
                 image: ogImageUrl,
-                step: articleData.steps.slice(0, 10).map((step, index) => ({
+                step: articleData.steps.map((step, index) => ({
                     '@type': 'HowToStep',
                     position: index + 1,
                     name: step.name,
-                    text: step.text
+                    text: step.text,
+                    image: step.image || ogImageUrl
                 }))
             });
         }
 
-        // 9. VideoObject Schema - Only if explicitly needed
-        if (articleData?.video?.url) {
+        // 9. ✅ NEW: VideoObject Schema (nếu có video)
+        if (articleData?.video) {
             schemas.push({
                 '@context': 'https://schema.org',
                 '@type': 'VideoObject',
@@ -369,31 +373,16 @@ export default function UltimateSEO({
                 description: description,
                 thumbnailUrl: articleData.video.thumbnail || ogImageUrl,
                 uploadDate: articleData.video.uploadDate || currentDate,
-                contentUrl: articleData.video.url
+                contentUrl: articleData.video.url,
+                embedUrl: articleData.video.embedUrl
             });
         }
 
         // Merge với structured data từ props
-        // ✅ FIX: Filter out FAQPage from structuredData props if faq prop is provided (to avoid duplicates)
-        const filteredStructuredData = Array.isArray(structuredData)
-            ? structuredData.filter(schema => {
-                // Remove FAQPage schema if faq prop is provided (UltimateSEO already creates it)
-                if (faq && faq.length > 0 && schema && schema['@type'] === 'FAQPage') {
-                    return false;
-                }
-                return Boolean(schema);
-            })
-            : [structuredData].filter(schema => {
-                if (faq && faq.length > 0 && schema && schema['@type'] === 'FAQPage') {
-                    return false;
-                }
-                return Boolean(schema);
-            });
-
-        return [...schemas, ...filteredStructuredData];
+        return [...schemas, ...(Array.isArray(structuredData) ? structuredData : [structuredData].filter(Boolean))];
     }, [
-        title, description, keywords, canonical, ogImage, pageType, structuredData,
-        breadcrumbs, faq, articleData, lotteryData, siteUrl, siteName, fullUrl,
+        title, description, keywords, canonical, ogImage, pageType, structuredData, 
+        breadcrumbs, faq, articleData, lotteryData, siteUrl, siteName, fullUrl, 
         ogImageUrl, currentDate, currentYear, eeatData
     ]);
 
@@ -402,12 +391,12 @@ export default function UltimateSEO({
         const directives = [];
         if (noindex) directives.push('noindex');
         else directives.push('index');
-
+        
         if (nofollow) directives.push('nofollow');
         else directives.push('follow');
-
+        
         directives.push('max-snippet:-1', 'max-image-preview:large', 'max-video-preview:-1');
-
+        
         return directives.join(', ');
     }, [noindex, nofollow]);
 
@@ -418,7 +407,7 @@ export default function UltimateSEO({
             <meta name="description" content={description} />
             <meta name="keywords" content={keywords} />
             <meta name="author" content={author || siteName} />
-
+            
             {/* ===== ROBOTS - Multi-Search Engine ===== */}
             <meta name="robots" content={robotsContent} />
             <meta name="googlebot" content={robotsContent} />
@@ -531,7 +520,6 @@ export default function UltimateSEO({
             <meta name="coccoc-site-verification" content="" />
 
             {/* ===== STRUCTURED DATA ===== */}
-            {/* ✅ FIX: Structured data doesn't block rendering, but we ensure it's non-blocking */}
             {enhancedStructuredData.map((schema, index) => (
                 <script
                     key={`structured-data-${index}`}
@@ -543,12 +531,12 @@ export default function UltimateSEO({
             ))}
 
             {/* ===== ✅ PERFORMANCE HINTS ===== */}
-            <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+            <link rel="dns-prefetch" href="//www.google-analytics.com" />
+            <link rel="dns-prefetch" href="//www.googletagmanager.com" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
+            
             {/* Preconnect to custom domains */}
             {preconnectDomains.map((domain, index) => (
                 <link key={`preconnect-${index}`} rel="preconnect" href={domain} />
@@ -556,10 +544,10 @@ export default function UltimateSEO({
 
             {/* Preload critical images */}
             {preloadImages.map((image, index) => (
-                <link
-                    key={`preload-${index}`}
-                    rel="preload"
-                    as="image"
+                <link 
+                    key={`preload-${index}`} 
+                    rel="preload" 
+                    as="image" 
                     href={image.url}
                     fetchPriority={image.priority || 'high'}
                 />
@@ -570,7 +558,7 @@ export default function UltimateSEO({
             <meta name="msapplication-TileColor" content="#FF6B35" />
 
             {/* ===== ✅ MOBILE OPTIMIZATION ===== */}
-            {/* ✅ FIX: Viewport meta tag removed - already set in _app.js to prevent layout shift */}
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-capable" content="yes" />
             <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -578,12 +566,12 @@ export default function UltimateSEO({
 
             {/* ===== ✅ SECURITY HEADERS (via meta tags where possible) ===== */}
             <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-            {/* ✅ REMOVED: X-Frame-Options - Must be set via HTTP headers only, not meta tags */}
-            {/* ✅ REMOVED: X-XSS-Protection - Deprecated, Content-Security-Policy is sufficient */}
+            <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
+            <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
             <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
             {/* ===== ✅ ACCESSIBILITY ===== */}
-            {/* Note: lang attribute is set in _document.js <Html lang="vi"> - do not duplicate here */}
+            <html lang={lang} />
 
             {/* ===== CUSTOM META TAGS ===== */}
             {customMeta.map((meta, index) => (

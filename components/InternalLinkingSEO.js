@@ -53,28 +53,28 @@ export function getInternalLinks(pageType) {
 
 export function InternalLinksSection({ pageType, className = '' }) {
     const links = getInternalLinks(pageType);
-    
+
     if (!links || links.length === 0) return null;
 
     return (
         <nav className={className} aria-label="Internal links">
-            <div style={{ 
-                padding: '20px', 
-                background: '#f8f9fa', 
+            <div style={{
+                padding: '20px',
+                background: '#f8f9fa',
                 borderRadius: '8px',
                 marginTop: '20px'
             }}>
-                <h3 style={{ 
-                    fontSize: '16px', 
-                    fontWeight: 'bold', 
+                <h3 style={{
+                    fontSize: '16px',
+                    fontWeight: 'bold',
                     marginBottom: '12px',
                     color: '#FF6B35'
                 }}>
                     🔗 Xem thêm:
                 </h3>
-                <ul style={{ 
-                    listStyle: 'none', 
-                    padding: 0, 
+                <ul style={{
+                    listStyle: 'none',
+                    padding: 0,
                     margin: 0,
                     display: 'flex',
                     flexWrap: 'wrap',
@@ -82,7 +82,7 @@ export function InternalLinksSection({ pageType, className = '' }) {
                 }}>
                     {links.map((link, index) => (
                         <li key={index} style={{ display: 'inline-block' }}>
-                            <Link 
+                            <Link
                                 href={link.url}
                                 style={{
                                     display: 'inline-block',
@@ -115,5 +115,6 @@ export function InternalLinksSection({ pageType, className = '' }) {
 }
 
 export default InternalLinksSection;
+
 
 
