@@ -13,8 +13,6 @@ import styles from '../styles/KQXS.module.css';
 import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { InternalLinksSection } from '../components/InternalLinkingSEO';
-import { ContentWrapper } from '../components/ContentWrapper';
-import EditorialContent from '../components/EditorialContent';
 import { isWithinLiveWindowXSMN } from '../utils/lotteryUtils';
 
 const LiveResultXSMN = dynamic(() => import('../components/LiveResultXSMN'), {
@@ -266,9 +264,6 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                             </ul>
                         </div>
                     </div>
-
-                    {/* ✅ Editorial Content - Thêm giá trị thực sự để tránh thin content */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-nam" />
 
                     {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-nam" />

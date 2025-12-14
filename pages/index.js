@@ -11,7 +11,6 @@ import TodayPredictions from '../components/TodayPredictions';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { InternalLinksSection } from '../components/InternalLinkingSEO';
-import EditorialContent from '../components/EditorialContent';
 import { getPageSEO } from '../config/seoConfig';
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
@@ -489,9 +488,6 @@ const Home = memo(function Home() {
                         Kết Quả MN mới nhất
                     </div>
                 </div>
-                
-                {/* ✅ Editorial Content - Thêm giá trị thực sự để tránh thin content */}
-                <EditorialContent pageType="home" />
                 
                 {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                 <InternalLinksSection pageType="home" />

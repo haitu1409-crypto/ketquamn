@@ -16,8 +16,6 @@ import { getPageSEO, generateFAQSchema } from '../config/seoConfig';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
 import { isWithinLiveWindow } from '../utils/lotteryUtils';
 import { InternalLinksSection } from '../components/InternalLinkingSEO';
-import { ContentWrapper } from '../components/ContentWrapper';
-import EditorialContent from '../components/EditorialContent';
 
 const LiveResult = dynamic(() => import('../components/LiveResult'), {
     loading: () => (
@@ -381,9 +379,6 @@ const KQXSPage = memo(function KQXSPage() {
                             </ul>
                         </div>
                     </div>
-                    
-                    {/* ✅ Editorial Content - Thêm giá trị thực sự để tránh thin content */}
-                    <EditorialContent pageType="ket-qua-xo-so-mien-bac" />
                     
                     {/* ✅ Internal Linking SEO - Gray Hat Technique */}
                     <InternalLinksSection pageType="ket-qua-xo-so-mien-bac" />

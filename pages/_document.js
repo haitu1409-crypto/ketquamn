@@ -62,7 +62,7 @@ export default function Document() {
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-                <meta name="apple-mobile-web-app-title" content="Kết Quả MN" />
+                <meta name="apple-mobile-web-app-title" content="Dàn Đề Wukong" />
 
                 {/* ===== MICROSOFT TILES ===== */}
                 <meta name="msapplication-config" content="/browserconfig.xml" />

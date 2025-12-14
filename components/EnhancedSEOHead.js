@@ -7,9 +7,6 @@
 import SEOOptimized from './SEOOptimized';
 import MultiSearchEngineOptimizer from './MultiSearchEngineOptimizer';
 import AdvancedSEO from './AdvancedSEO';
-import UltimateSEO from './UltimateSEO';
-import CoreWebVitalsOptimizer from './CoreWebVitalsOptimizer';
-import PageExperienceSignals from './PageExperienceSignals';
 import { memo } from 'react';
 
 const EnhancedSEOHead = memo(function EnhancedSEOHead({
@@ -37,32 +34,7 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
     const finalCanonical = canonicalUrl || canonical;
     return (
         <>
-            {/* ✅ UltimateSEO - Latest 2024-2025 SEO Standards (E-E-A-T, Core Web Vitals, Helpful Content) */}
-            <UltimateSEO
-                title={finalTitle}
-                description={finalDescription}
-                keywords={finalKeywords}
-                canonical={finalCanonical}
-                ogImage={ogImage}
-                pageType={pageType === 'home' ? 'website' : (pageType === 'article' ? 'article' : 'website')}
-                author={author}
-                structuredData={structuredData}
-                breadcrumbs={breadcrumbs}
-                faq={faq}
-                articleData={pageType === 'article' ? { publishedTime: new Date().toISOString(), modifiedTime: new Date().toISOString() } : null}
-                helpfulContent={true}
-                originalContent={true}
-                contentQuality="high"
-                noindex={false}
-            />
-
-            {/* ✅ Core Web Vitals Optimizer - LCP, FID, CLS optimization */}
-            <CoreWebVitalsOptimizer />
-
-            {/* ✅ Page Experience Signals - Mobile-friendly, Safe browsing, No intrusive interstitials */}
-            <PageExperienceSignals />
-
-            {/* ✅ AdvancedSEO - White Hat + Gray Hat SEO nâng cao (backup) */}
+            {/* ✅ AdvancedSEO - White Hat + Gray Hat SEO nâng cao */}
             <AdvancedSEO
                 title={finalTitle}
                 description={finalDescription}
@@ -77,7 +49,21 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
                 noindex={false}
             />
 
-            {/* ✅ MultiSearchEngineOptimizer - Enhanced for Bing, Cốc Cốc, Yandex, Baidu */}
+            {/* ✅ SEOOptimized - Existing SEO component (backup) */}
+            <SEOOptimized
+                pageType={pageType}
+                customTitle={finalTitle}
+                customDescription={finalDescription}
+                customKeywords={finalKeywords}
+                canonical={finalCanonical}
+                canonicalUrl={finalCanonical}
+                ogImage={ogImage}
+                breadcrumbs={breadcrumbs}
+                faq={faq}
+                structuredData={structuredData}
+            />
+
+            {/* ✅ MultiSearchEngineOptimizer - Enhanced for Bing, Cốc Cốc */}
             <MultiSearchEngineOptimizer
                 title={finalTitle}
                 description={finalDescription}
