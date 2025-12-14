@@ -18,17 +18,17 @@ import dynamic from 'next/dynamic';
 import reportWebVitals from '../lib/reportWebVitals';
 import { AuthProvider } from '../hooks/useAuth';
 
-// ✅ Multi-Search Engine Optimizer - For Bing, Cốc Cốc, Google
-const MultiSearchEngineOptimizer = dynamic(() => import('../components/MultiSearchEngineOptimizer'), {
-    ssr: true,  // SSR for SEO
-    loading: () => null
-});
+// ✅ OPTIMIZED: Disable MultiSearchEngineOptimizer in _app.js - Already handled by EnhancedSEOHead
+// const MultiSearchEngineOptimizer = dynamic(() => import('../components/MultiSearchEngineOptimizer'), {
+//     ssr: true,
+//     loading: () => null
+// });
 
-// ✅ SEO Schema Components
-const OrganizationSchema = dynamic(() => import('../components/SEO/OrganizationSchema'), {
-    ssr: true,
-    loading: () => null
-});
+// ✅ OPTIMIZED: Disable OrganizationSchema in _app.js - Already handled by SEOOptimized
+// const OrganizationSchema = dynamic(() => import('../components/SEO/OrganizationSchema'), {
+//     ssr: true,
+//     loading: () => null
+// });
 
 // Lazy load heavy components with proper error handling
 const Analytics = dynamic(() => import('../components/Analytics'), {
@@ -55,7 +55,7 @@ const GoogleAnalytics = dynamic(() => import('../components/GoogleAnalytics'), {
 
 function MyApp({ Component, pageProps }) {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
+    // ✅ REMOVED: isLoading state to prevent visible loading on route changes
 
     useEffect(() => {
         // Log app version (optional)
@@ -90,17 +90,17 @@ function MyApp({ Component, pageProps }) {
         }
     }, [router.pathname]);
 
-    // Handle route changes for smooth navigation
+    // ✅ OPTIMIZED: Handle route changes without loading state
     useEffect(() => {
         const handleStart = () => {
-            setIsLoading(true);
+            // ✅ REMOVED: setIsLoading(true) to prevent visible loading
             // ✅ Reset scroll position to top when navigation starts
             if (typeof window !== 'undefined') {
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
             }
         };
         const handleComplete = () => {
-            setIsLoading(false);
+            // ✅ REMOVED: setIsLoading(false) to prevent visible loading
             // ✅ Ensure scroll is at top when navigation completes (backup)
             if (typeof window !== 'undefined') {
                 // Use multiple strategies to ensure scroll reset
@@ -128,7 +128,7 @@ function MyApp({ Component, pageProps }) {
             }
         };
         const handleError = () => {
-            setIsLoading(false);
+            // ✅ REMOVED: setIsLoading(false) to prevent visible loading
             console.log('Route change error occurred');
             // ✅ Reset scroll even on error
             if (typeof window !== 'undefined') {
@@ -170,15 +170,8 @@ function MyApp({ Component, pageProps }) {
                 <meta name="coccoc-verification" content={process.env.NEXT_PUBLIC_COCCOC_VERIFICATION || "YOUR_COCCOC_VERIFICATION_CODE"} />
             </Head>
 
-            {/* ✅ Multi-Search Engine Optimizer */}
-            <MultiSearchEngineOptimizer
-                title="Kết Quả MN - Kết quả xổ số miền Nam 2025"
-                description="Kết quả xổ số miền Nam nhanh nhất, chính xác nhất. Xem kết quả XSMN, KQXSMN hôm nay."
-                keywords="kết quả xổ số miền Nam, xsmn, kqxsmn, sxmn, kết quả MN, xổ số miền Nam"
-            />
-
-            {/* ✅ SEO Schema - Organization */}
-            <OrganizationSchema />
+            {/* ✅ REMOVED: MultiSearchEngineOptimizer - Already handled by EnhancedSEOHead */}
+            {/* ✅ REMOVED: OrganizationSchema - Already handled by SEOOptimized */}
 
             {/* Google Analytics */}
             <Analytics />
@@ -194,19 +187,7 @@ function MyApp({ Component, pageProps }) {
             {/* <SEOAnalyticsEnhanced /> */}
 
 
-            {/* Loading indicator */}
-            {isLoading && (
-                <div style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '3px',
-                    background: 'linear-gradient(90deg, #FF6B35, #FF8C42)',
-                    zIndex: 9999,
-                    animation: 'loading 1s ease-in-out infinite'
-                }} />
-            )}
+            {/* ✅ REMOVED: Loading indicator - Causes visible loading on initial mount */}
 
             {/* Main Component */}
             <AuthProvider>

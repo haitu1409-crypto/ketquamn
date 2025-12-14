@@ -10,52 +10,28 @@ import Layout from '../components/Layout';
 import TodayPredictions from '../components/TodayPredictions';
 import styles from '../styles/Home.module.css';
 import EnhancedSEOHead from '../components/EnhancedSEOHead';
-// ✅ Lazy load SEO components to prevent CLS - Load after main content
+// ✅ OPTIMIZED: Lazy load SEO components without loading states to prevent visible loading
 const InternalLinksSection = dynamic(() => import('../components/InternalLinkingSEO').then(mod => ({ default: mod.InternalLinksSection })), {
     ssr: false,
-    loading: () => <div style={{ minHeight: '100px', contain: 'layout style' }}></div>
+    loading: () => null // No loading state to prevent visible loading
 });
 const EditorialContent = dynamic(() => import('../components/EditorialContent'), {
     ssr: false,
-    loading: () => <div style={{ minHeight: '150px', contain: 'layout style' }}></div>
+    loading: () => null // No loading state to prevent visible loading
 });
 const ComparisonContent = dynamic(() => import('../components/ComparisonContent'), {
     ssr: false,
-    loading: () => <div style={{ minHeight: '100px', contain: 'layout style' }}></div>
+    loading: () => null // No loading state to prevent visible loading
 });
 import { getPageSEO } from '../config/seoConfig';
 import { getAllKeywordsForPage } from '../config/keywordVariations';
 // ✅ Optimized: Import all icons at once (better than 10 dynamic imports)
 import { Dice6, Target, BarChart3, Star, Zap, CheckCircle, Heart, Smartphone, Sparkles, Calendar, Activity, TrendingUp, Award, Percent } from 'lucide-react';
 
-// ✅ Lazy load LatestXSMBResults with SSR enabled for SEO
+// ✅ OPTIMIZED: Lazy load LatestXSMBResults with SSR enabled, no visible loading state
 const LatestXSMBResults = dynamic(() => import('../components/LatestXSMBResults'), {
-    loading: () => (
-        <div style={{ 
-            minHeight: '400px', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            background: '#fff',
-            borderRadius: '8px',
-            margin: '20px 0',
-            contain: 'layout style' 
-        }}>
-            <div style={{ textAlign: 'center' }}>
-                <div style={{ 
-                    width: '40px', 
-                    height: '40px', 
-                    border: '4px solid #f3f3f3', 
-                    borderTop: '4px solid #FF6B35', 
-                    borderRadius: '50%', 
-                    animation: 'spin 1s linear infinite',
-                    margin: '0 auto 10px'
-                }}></div>
-                <p>Đang tải kết quả xổ số...</p>
-            </div>
-        </div>
-    ),
-    ssr: true  // ✅ SỬA: Enable SSR để Googlebot thấy được nội dung
+    loading: () => null, // ✅ OPTIMIZED: No visible loading state to prevent layout shift
+    ssr: true  // ✅ Enable SSR để Googlebot thấy được nội dung
 });
 
 // ✅ Lazy load SEO components with SSR enabled for SEO
