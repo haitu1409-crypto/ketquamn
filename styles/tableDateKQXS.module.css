@@ -18,7 +18,7 @@
 
 .header {
     background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
-    padding: 12px 16px;
+    padding: 5px 5px;
 }
 
 .title {
@@ -68,15 +68,19 @@
     background: #FF8C42;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
-    animation: none; /* Tắt animation khi hover */
+    animation: none;
+    /* Tắt animation khi hover */
 }
 
 /* Animation nhấp nháy */
 @keyframes blink {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
         box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
     }
+
     50% {
         opacity: 0.8;
         box-shadow: 0 0 0 8px rgba(255, 107, 53, 0);
@@ -228,6 +232,7 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -245,7 +250,7 @@
     }
 
     .header {
-        padding: 10px 12px;
+        padding: 5px 5px;
     }
 
     .title {
@@ -300,7 +305,7 @@
     }
 
     .header {
-        padding: 8px 10px;
+        padding: 5px 5px;
     }
 
     .title {
