@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/XSMBSimpleTable.module.css';
 import { useXSMBNext, useXSMBNextToday } from '../hooks/useXSMBNext';
+import XSMBSkeleton from './XSMBSkeleton';
 
 /**
  * Component hiển thị bảng kết quả xổ số miền Bắc (XSMB) với thiết kế cổ điển
@@ -82,16 +83,9 @@ const XSMBSimpleTable = ({
     // ✅ Fix hydration: Chỉ dùng apiData sau khi đã mount trên client
     const data = propData || (isMounted ? apiData : null);
 
-    // Loading state - hiển thị khi đang loading và chưa có data
+    // Loading state - hiển thị skeleton để reserve space và cải thiện LCP
     if (loading && showLoading && !data) {
-        return (
-            <div className={`${styles.container} ${className}`}>
-                <div className={styles.loadingMessage}>
-                    <div className={styles.spinner}></div>
-                    <p>Đang tải dữ liệu kết quả xổ số...</p>
-                </div>
-            </div>
-        );
+        return <XSMBSkeleton />;
     }
 
     // Error state - chỉ khi có lỗi và không có data
@@ -112,17 +106,10 @@ const XSMBSimpleTable = ({
         );
     }
 
-    // Nếu không có data, không hiển thị gì (hoặc loading nếu showLoading = true)
+    // Nếu không có data, hiển thị skeleton để reserve space
     if (!data) {
         if (showLoading) {
-            return (
-                <div className={`${styles.container} ${className}`}>
-                    <div className={styles.loadingMessage}>
-                        <div className={styles.spinner}></div>
-                        <p>Đang tải dữ liệu kết quả xổ số...</p>
-                    </div>
-                </div>
-            );
+            return <XSMBSkeleton />;
         }
         return null;
     }
