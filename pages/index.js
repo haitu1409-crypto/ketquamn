@@ -79,7 +79,7 @@ const ThongKeNhanh = dynamic(() => import('../components/ThongKeNhanh'), {
 });
 
 // ✅ Memoized Homepage component for better performance
-const Home = memo(function Home({ initialXSMBData }) {
+const Home = memo(function Home() {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://ketquamn.com');
 
     // Get SEO config for homepage
@@ -352,7 +352,7 @@ const Home = memo(function Home({ initialXSMBData }) {
                         {/* Left Column - Main Content */}
                         <div className={styles.leftColumn}>
                             {/* Latest XSMB Results */}
-                            <LatestXSMBResults initialData={initialXSMBData} />
+                            <LatestXSMBResults />
 
                             {/* Today Predictions - Mobile Only */}
                             <div className={styles.mobileOnlyTodayPredictions}>
@@ -451,106 +451,4 @@ const Home = memo(function Home({ initialXSMBData }) {
 
 // ✅ Export memoized component
 export default Home;
-
-// ✅ SSR: Fetch XSMB data trên server để cải thiện LCP
-export async function getServerSideProps() {
-    let xsmbData = null;
-    
-    try {
-        const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-        
-        // Fetch latest XSMB data trên server với timeout 5 giây
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 5000);
-        
-        const response = await fetch(`${API_BASE_URL}/api/xsmb/results/latest`, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            signal: controller.signal,
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (response.ok) {
-            const result = await response.json();
-            if (result.success && result.data) {
-                // Transform data giống như trong xsmbApi.js
-                const transformBackendData = (backendData) => {
-                    if (!backendData) return null;
-
-                    const formatDate = (dateString) => {
-                        if (!dateString) return null;
-                        const date = new Date(dateString);
-                        return date.toLocaleDateString('vi-VN', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric'
-                        });
-                    };
-
-                    const generateLotoData = (data) => {
-                        const lotoData = {};
-                        const allNumbers = [
-                            ...(data.specialPrize || []),
-                            ...(data.firstPrize || []),
-                            ...(data.secondPrize || []),
-                            ...(data.threePrizes || []),
-                            ...(data.fourPrizes || []),
-                            ...(data.fivePrizes || []),
-                            ...(data.sixPrizes || []),
-                            ...(data.sevenPrizes || [])
-                        ];
-
-                        for (let i = 0; i <= 9; i++) {
-                            const numbers = allNumbers
-                                .map(num => {
-                                    if (!num || typeof num !== 'string') return null;
-                                    const lastTwo = num.slice(-2);
-                                    return lastTwo;
-                                })
-                                .filter(num => num && num.startsWith(i.toString()))
-                                .filter((num, index, arr) => arr.indexOf(num) === index)
-                                .sort();
-
-                            if (numbers.length > 0) {
-                                lotoData[i.toString()] = numbers.join(', ');
-                            }
-                        }
-                        return lotoData;
-                    };
-
-                    return {
-                        date: formatDate(backendData.drawDate),
-                        specialPrize: backendData.specialPrize && backendData.specialPrize[0] ? backendData.specialPrize[0] : null,
-                        firstPrize: backendData.firstPrize && backendData.firstPrize[0] ? backendData.firstPrize[0] : null,
-                        secondPrize: backendData.secondPrize || [],
-                        threePrizes: backendData.threePrizes || [],
-                        fourPrizes: backendData.fourPrizes || [],
-                        fivePrizes: backendData.fivePrizes || [],
-                        sixPrizes: backendData.sixPrizes || [],
-                        sevenPrizes: backendData.sevenPrizes || [],
-                        maDB: backendData.maDB || '',
-                        loto: generateLotoData(backendData),
-                        dayOfWeek: backendData.dayOfWeek,
-                        tinh: backendData.tinh,
-                        tentinh: backendData.tentinh
-                    };
-                };
-
-                xsmbData = transformBackendData(result.data);
-            }
-        }
-    } catch (error) {
-        // Không throw error, chỉ log để trang vẫn render được
-        console.error('Error fetching XSMB data in getServerSideProps:', error.message);
-        // Trang vẫn render được, component sẽ fetch trên client nếu cần
-    }
-
-    return {
-        props: {
-            initialXSMBData: xsmbData, // Pass data từ SSR hoặc null
-        },
-    };
-}
 

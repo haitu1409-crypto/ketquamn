@@ -511,16 +511,6 @@ export default function AdvancedSEO({
             <link rel="dns-prefetch" href="//www.googletagmanager.com" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-            {/* ✅ Preload API endpoint cho trang chủ để cải thiện LCP */}
-            {pageType === 'website' && (() => {
-                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-                return (
-                    <>
-                        <link rel="dns-prefetch" href={apiUrl} />
-                        <link rel="preconnect" href={apiUrl} crossOrigin="anonymous" />
-                    </>
-                );
-            })()}
 
             {/* ===== THEME COLOR ===== */}
             <meta name="theme-color" content="#FF6B35" />

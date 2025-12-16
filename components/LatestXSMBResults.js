@@ -43,7 +43,7 @@ const LiveResult = dynamic(() => import('./LiveResult'), {
     ssr: false
 });
 
-const LatestXSMBResults = ({ initialData }) => {
+const LatestXSMBResults = () => {
     const [isLiveWindow, setIsLiveWindow] = useState(false);
     const intervalRef = useRef(null);
 
@@ -88,9 +88,8 @@ const LatestXSMBResults = ({ initialData }) => {
                     <LiveResult />
                 ) : (
                     <XSMBSimpleTable
-                        data={initialData}
                         date="latest"
-                        autoFetch={!initialData}
+                        autoFetch={true}
                         showLoto={true}
                         showLoading={true}
                         showError={true}
