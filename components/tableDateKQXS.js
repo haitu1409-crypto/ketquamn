@@ -251,7 +251,11 @@ const TableDate = () => {
                                                 <span className={styles.stationName}>{northStation.name}</span>
                                                 <div className={styles.timeCheckRow}>
                                                     <span className={styles.time}>{northStation.time}</span>
-                                                    {hasBroadcasted.north && <span className={styles.check}>✅</span>}
+                                                    {hasBroadcasted.north ? (
+                                                        <span className={styles.check}>✅</span>
+                                                    ) : isApproaching.north ? (
+                                                        <span className={styles.spinner}></span>
+                                                    ) : null}
                                                 </div>
                                             </div>
                                         ) : null}
@@ -263,7 +267,11 @@ const TableDate = () => {
                                                 <span className={styles.stationName}>{centralStation.name}</span>
                                                 <div className={styles.timeCheckRow}>
                                                     <span className={styles.time}>{centralStation.time}</span>
-                                                    {hasBroadcasted.central && <span className={styles.check}>✅</span>}
+                                                    {hasBroadcasted.central ? (
+                                                        <span className={styles.check}>✅</span>
+                                                    ) : isApproaching.central ? (
+                                                        <span className={styles.spinner}></span>
+                                                    ) : null}
                                                 </div>
                                             </div>
                                         ) : null}
@@ -275,7 +283,11 @@ const TableDate = () => {
                                                 <span className={styles.stationName}>{southStation.name}</span>
                                                 <div className={styles.timeCheckRow}>
                                                     <span className={styles.time}>{southStation.time}</span>
-                                                    {hasBroadcasted.south && <span className={styles.check}>✅</span>}
+                                                    {hasBroadcasted.south ? (
+                                                        <span className={styles.check}>✅</span>
+                                                    ) : isApproaching.south ? (
+                                                        <span className={styles.spinner}></span>
+                                                    ) : null}
                                                 </div>
                                             </div>
                                         ) : null}

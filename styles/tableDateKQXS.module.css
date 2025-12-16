@@ -61,12 +61,26 @@
     transition: all 0.2s ease;
     border: none;
     cursor: pointer;
+    animation: blink 2s ease-in-out infinite;
 }
 
 .action:hover {
     background: #FF8C42;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(255, 107, 53, 0.3);
+    animation: none; /* Tắt animation khi hover */
+}
+
+/* Animation nhấp nháy */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 0 8px rgba(255, 107, 53, 0);
+    }
 }
 
 .table {
@@ -195,6 +209,28 @@
     margin: 0;
     padding: 0;
     display: inline-block;
+}
+
+.spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #10b981;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive cho tablet và mobile */
