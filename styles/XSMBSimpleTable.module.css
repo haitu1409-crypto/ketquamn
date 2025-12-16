@@ -275,7 +275,7 @@
     white-space: normal !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     /* Ensure font-weight works on mobile - use numeric value */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -411,7 +411,7 @@
     white-space: normal !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     /* Ensure font-weight works on mobile - use numeric value */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
