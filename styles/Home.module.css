@@ -135,11 +135,11 @@
         padding-right: 0;
         padding: 12px 0 16px 0;
     }
-    
+
     .heroActions::-webkit-scrollbar-track {
         margin: 0;
     }
-    
+
     .heroActions::after {
         display: none;
     }
@@ -229,7 +229,7 @@
         padding: 8px 12px;
         min-height: 40px;
     }
-    
+
     .heroActionLink:hover {
         background-color: rgba(255, 107, 53, 0.05);
     }
@@ -473,7 +473,7 @@
     background: var(--color-white);
     border-radius: var(--border-radius-lg);
     /* ✅ Fix CLS: Reserve space for header */
-    min-height: 67px;
+    /* min-height: 67px; */
     contain: layout style;
     width: 100%;
     margin: 0;
@@ -489,7 +489,7 @@
 }
 
 .mainTitle {
-    font-size: var(--text-xl);
+    font-size: 20px;
     margin-top: 10px;
     font-weight: var(--font-bold);
     text-transform: uppercase;
@@ -521,9 +521,9 @@
 
 @media (min-width: 768px) {
     .mainTitle {
-        font-size: var(--text-3xl);
+        font-size: 20px;
         /* ✅ Fix CLS: Adjust height for desktop */
-        min-height: 70px;
+        /* min-height: 70px; */
         /* ✅ CRITICAL: Prevent layout shift during font loading */
         height: auto;
         overflow: visible;
