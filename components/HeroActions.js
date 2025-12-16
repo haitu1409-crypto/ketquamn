@@ -57,7 +57,15 @@ export default function HeroActions() {
                 }
 
                 const scrollY = window.scrollY || window.pageYOffset;
-                const shouldBeSticky = scrollY > initialTopRef.current;
+                // ✅ FIX: Always sticky once scrolled past initial position
+                // Once scrolled past the initial position, keep it sticky regardless of scroll direction
+                // Only unsticky when scrolled back to very top (within threshold)
+                const threshold = 20; // Small threshold near top to allow unsticky
+                const hasScrolledPastInitial = scrollY > initialTopRef.current;
+                const isNearTop = scrollY <= threshold;
+                
+                // Sticky if: (1) scrolled past initial position AND (2) not near top
+                const shouldBeSticky = hasScrolledPastInitial && !isNearTop;
 
                 // ✅ OPTIMIZED: Only update state if value actually changed
                 if (shouldBeSticky !== isStickyRef.current) {

@@ -43,6 +43,9 @@
     z-index: 99 !important;
     /* Add shadow when sticky */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* ✅ FIX: Ensure it stays visible when scrolling in any direction */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 /* Ẩn trên desktop, chỉ hiển thị trên mobile */
