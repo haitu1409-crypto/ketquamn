@@ -13,8 +13,9 @@
     overflow-x: hidden;
     /* ✅ CRITICAL: Do NOT set overflow-y - let body/html handle scrolling */
     overflow-y: visible;
-    /* ✅ Fix: Ensure layout doesn't create new stacking context */
-    position: relative;
+    /* ✅ Fix: position: relative can break sticky, but needed for skipToContent */
+    /* Use static for sticky to work, but skipToContent uses absolute relative to body */
+    position: static;
     /* ✅ CRITICAL: Ensure layout doesn't create scroll context */
     /* Scroll must happen on body/html, not on layout */
 }
@@ -528,143 +529,7 @@
 }
 
 /* ===== HERO ACTIONS ===== */
-.heroActions {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 10px;
-    align-items: center;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding: 12px 16px;
-    margin: 0;
-    /* Tạo không gian scroll rõ ràng */
-    scroll-padding: 16px;
-    /* Cải thiện touch target */
-    touch-action: pan-x;
-    /* Thêm shadow để người dùng biết có thể scroll */
-    position: relative;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid var(--color-gray-200);
-}
-
-/* Ẩn trên desktop, chỉ hiển thị trên mobile */
-@media (min-width: 768px) {
-    .heroActions {
-        display: none;
-    }
-}
-
-/* Scrollbar dễ nhìn và dễ dùng hơn */
-.heroActions::-webkit-scrollbar {
-    height: 6px;
-}
-
-.heroActions::-webkit-scrollbar-track {
-    background: #f5f5f5;
-    border-radius: 3px;
-}
-
-.heroActions::-webkit-scrollbar-thumb {
-    background: #FF6B35;
-    border-radius: 3px;
-    min-width: 40px;
-}
-
-.heroActions::-webkit-scrollbar-thumb:hover {
-    background: #FF8C42;
-}
-
-.heroActions::-webkit-scrollbar-thumb:active {
-    background: #e55a2b;
-}
-
-/* Firefox scrollbar */
-.heroActions {
-    scrollbar-width: thin;
-    scrollbar-color: #FF6B35 #f5f5f5;
-}
-
-/* Ẩn trên desktop, chỉ hiển thị trên mobile */
-@media (min-width: 768px) {
-    .heroActions {
-        display: none;
-    }
-}
-
-.heroActionLink {
-    display: inline-flex;
-    align-items: center;
-    color: #333;
-    font-size: 14px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    line-height: 1.5;
-    white-space: nowrap;
-    flex-shrink: 0;
-    padding: 6px 8px;
-    min-height: 32px;
-    border-radius: 4px;
-    font-weight: 500;
-    border: 1px solid #e0e0e0;
-    background-color: #ffffff;
-}
-
-.heroActionLink:hover {
-    color: #FF6B35;
-    text-decoration: none;
-    background-color: rgba(255, 107, 53, 0.05);
-    border-color: #FF6B35;
-}
-
-.heroActionLink:active {
-    background-color: rgba(255, 107, 53, 0.1);
-    border-color: #FF8C42;
-    transform: scale(0.98);
-}
-
-.heroActionLink:focus {
-    outline: 2px solid #FF6B35;
-    outline-offset: 2px;
-    border-color: #FF6B35;
-}
-
-.heroActionLink:focus:not(:focus-visible) {
-    outline: none;
-}
-
-/* Active state */
-.heroActionLink.active {
-    color: #FF6B35;
-    background-color: rgba(255, 107, 53, 0.1);
-    border-color: #FF6B35;
-    font-weight: 600;
-}
-
-.heroActionLink.active:hover {
-    background-color: rgba(255, 107, 53, 0.15);
-}
-
-@media (min-width: 480px) {
-    .heroActionLink {
-        font-size: 15px;
-        padding: 8px 10px;
-        min-height: 36px;
-    }
-}
-
-@media (min-width: 768px) {
-    .heroActionLink {
-        font-size: 16px;
-        padding: 8px 12px;
-        min-height: 40px;
-    }
-    
-    .heroActionLink:hover {
-        background-color: rgba(255, 107, 53, 0.05);
-    }
-}
+/* Moved to HeroActions.module.css component */
 
 /* ===== FOOTER ===== */
 .footer {
