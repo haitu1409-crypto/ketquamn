@@ -18,7 +18,7 @@ import styles from '../styles/LiveResultXSMN.module.css';
 const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = false }) => {
     const today = getTodayFormatted();
     const inLiveWindow = isWithinLiveWindowXSMN();
-    
+
     // Tỉnh theo ngày trong tuần
     const provincesByDay = useMemo(() => ({
         0: [
@@ -142,7 +142,6 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     const mountedRef = useRef(false);
     const animationTimeoutsRef = useRef(new Map());
     const prizeUpdateTimeoutRef = useRef(null);
-    const soundRef = useRef(null); // ✅ Ref cho âm thanh thông báo
 
     // Chuẩn hóa dữ liệu socket (array, object map hoặc object đơn)
     const normalizeToArray = useCallback((incoming) => {
@@ -160,7 +159,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     // Quản lý animation timeout cho từng tỉnh / prizeType
     const setAnimationWithTimeout = useCallback((tinh, prizeType) => {
         const key = `${tinh}-${prizeType}`;
-        
+
         // Clear timeout cũ nếu có
         if (animationTimeoutsRef.current.has(key)) {
             clearTimeout(animationTimeoutsRef.current.get(key));
@@ -210,11 +209,6 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 clearTimeout(timeoutId);
             });
             animationTimeoutsRef.current.clear();
-            // ✅ Cleanup sound
-            if (soundRef.current) {
-                soundRef.current.pause();
-                soundRef.current = null;
-            }
         };
     }, []);
 
@@ -257,7 +251,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 const json = await resp.json();
                 if (!json || !json.data || !Array.isArray(json.data)) return;
                 if (aborted) return;
-                
+
                 // ✅ FIX: Giống XSMB - không filter phức tạp, tin tưởng backend đã trả về đúng
                 // Backend đã query với $gte: today nên chỉ cần lấy data đầu tiên
                 if (json.data.length > 0) {
@@ -288,25 +282,6 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             setIsLoading(false);
         }
     }, [liveData, isLoading]);
-
-    // ✅ Helper function để phát âm thanh khi có kết quả mới
-    const playSound = useCallback(() => {
-        try {
-            // Tạo Audio object nếu chưa có
-            if (!soundRef.current) {
-                soundRef.current = new Audio('/soundChat.mp3');
-                soundRef.current.volume = 0.5; // Điều chỉnh âm lượng (0.0 - 1.0)
-            }
-            // Reset và phát lại
-            soundRef.current.currentTime = 0;
-            soundRef.current.play().catch(err => {
-                // Ignore lỗi nếu user chưa tương tác với trang (browser policy)
-                console.log('Không thể phát âm thanh (có thể do browser policy):', err);
-            });
-        } catch (err) {
-            console.log('Lỗi phát âm thanh:', err);
-        }
-    }, []);
 
     // ✅ Giống xsmb: Luôn animate prize đang chờ (giải chưa có số) từ G8 → ĐB cho từng tỉnh
     useEffect(() => {
@@ -372,12 +347,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     if (prev && prev.length > 0) {
                         prev.forEach(item => prevMap.set(item.tinh, item));
                     }
-                    
+
                     // ✅ FIX: Luôn dùng emptyResult làm base để đảm bảo có đủ tất cả tỉnh theo ngày
                     const base = emptyResult.map(emptyItem => {
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
-                    
+
                     // Nếu data là object map (key = tinh), merge vào base
                     if (!Array.isArray(data) && !data.tinh) {
                         // Object map: { 'tinh1': {...}, 'tinh2': {...} }
@@ -392,7 +367,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         return updated;
                     } else if (data.tinh) {
                         // Single province update dạng object
-                        const updated = base.map(item => 
+                        const updated = base.map(item =>
                             item.tinh === data.tinh ? { ...item, ...data } : item
                         );
                         setIsComplete(updated.every(item => item.isComplete));
@@ -404,7 +379,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                             // ✅ OPTIMIZATION: Dùng Map cho normalized data
                             const normalizedMap = new Map();
                             normalized.forEach(item => normalizedMap.set(item.tinh, item));
-                            
+
                             const updated = base.map(item => {
                                 const found = normalizedMap.get(item.tinh);
                                 return found ? { ...item, ...found } : item;
@@ -431,12 +406,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     if (prev && prev.length > 0) {
                         prev.forEach(item => prevMap.set(item.tinh, item));
                     }
-                    
+
                     // ✅ FIX: Luôn dùng emptyResult làm base để đảm bảo có đủ tất cả tỉnh theo ngày
                     const base = emptyResult.map(emptyItem => {
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
-                    
+
                     // Nếu data là object map (key = tinh), merge vào base
                     if (!Array.isArray(data) && !data.tinh) {
                         // Object map: { 'tinh1': {...}, 'tinh2': {...} }
@@ -456,7 +431,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                             // ✅ OPTIMIZATION: Dùng Map cho normalized data
                             const normalizedMap = new Map();
                             normalized.forEach(item => normalizedMap.set(item.tinh, item));
-                            
+
                             const updated = base.map(item => {
                                 const found = normalizedMap.get(item.tinh);
                                 return found ? { ...item, ...found } : item;
@@ -481,12 +456,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
 
             prizeUpdateTimeoutRef.current = setTimeout(() => {
                 if (!mountedRef.current) return;
-                
+
                 // ✅ Trigger animation TRƯỚC khi update value để animation có thời gian hiển thị
                 if (data.prizeData && data.prizeData !== '...' && data.prizeData !== '***') {
                     setAnimationWithTimeout(data.tinh, data.prizeType);
                 }
-                
+
                 // Update value ngay (không delay thêm) để giảm độ trễ và re-render thừa
                 setLiveData(prev => {
                     // ✅ OPTIMIZATION: Dùng Map để tối ưu lookup O(1) thay vì find() O(n)
@@ -494,24 +469,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     if (prev && prev.length > 0) {
                         prev.forEach(item => prevMap.set(item.tinh, item));
                     }
-                    
+
                     // ✅ FIX: Luôn dùng emptyResult làm base để đảm bảo có đủ tất cả tỉnh theo ngày
                     const base = emptyResult.map(emptyItem => {
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
-                    
-                    // ✅ Kiểm tra xem có phải là kết quả thực tế thay thế animation không
-                    const oldItem = prevMap.get(data.tinh);
-                    const oldValue = oldItem ? oldItem[data.prizeType] : null;
-                    const newValue = data.prizeData;
-                    const isReplacingAnimation = (oldValue === '...' || oldValue === '***' || !oldValue || oldValue === '') && 
-                                                newValue && newValue !== '...' && newValue !== '***';
-                    
-                    // ✅ Phát âm thanh khi có kết quả thực tế thay thế animation
-                    if (isReplacingAnimation) {
-                        playSound();
-                    }
-                    
+
                     return base.map(item => {
                         if (item.tinh === data.tinh) {
                             return { ...item, [data.prizeType]: data.prizeData, lastUpdated: data.timestamp };
@@ -537,7 +500,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     }
                     const dataMap = new Map();
                     data.forEach(item => dataMap.set(item.tinh, item));
-                    
+
                     const base = emptyResult.map(emptyItem => {
                         return prevMap.get(emptyItem.tinh) || emptyItem;
                     });
@@ -555,12 +518,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     if (prev && prev.length > 0) {
                         prev.forEach(item => prevMap.set(item.tinh, item));
                     }
-                    
+
                     // ✅ FIX: Luôn dùng emptyResult làm base
                     const base = emptyResult.map(emptyItem => {
                         return prevMap.get(emptyItem.tinh) || emptyItem;
                     });
-                    const updated = base.map(item => 
+                    const updated = base.map(item =>
                         item.tinh === data.tinh ? { ...item, ...data, isComplete: true } : item
                     );
                     setIsComplete(updated.every(item => item.isComplete));
@@ -581,15 +544,15 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     if (prev && prev.length > 0) {
                         prev.forEach(item => prevMap.set(item.tinh, item));
                     }
-                    
+
                     // ✅ FIX: Luôn dùng emptyResult làm base để đảm bảo có đủ tất cả tỉnh theo ngày
                     const base = emptyResult.map(emptyItem => {
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
-                    
+
                     if (data.tinh) {
                         // Single province update
-                        const updated = base.map(item => 
+                        const updated = base.map(item =>
                             item.tinh === data.tinh ? { ...item, ...data } : item
                         );
                         setIsComplete(updated.every(item => item.isComplete));
@@ -601,7 +564,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                             // ✅ OPTIMIZATION: Dùng Map cho normalized data
                             const normalizedMap = new Map();
                             normalized.forEach(item => normalizedMap.set(item.tinh, item));
-                            
+
                             const updated = base.map(item => {
                                 const found = normalizedMap.get(item.tinh);
                                 return found ? { ...item, ...found } : item;
@@ -657,13 +620,13 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 clearTimeout(prizeUpdateTimeoutRef.current);
                 prizeUpdateTimeoutRef.current = null;
             }
-            
+
             // Clear animation timeouts
             animationTimeoutsRef.current.forEach((timeoutId) => {
                 clearTimeout(timeoutId);
             });
             animationTimeoutsRef.current.clear();
-            
+
             xsmnSocketClient.off('xsmn:latest', handleLatest);
             xsmnSocketClient.off('xsmn:latest-all', handleLatestAll);
             xsmnSocketClient.off('xsmn:prize-update', handlePrizeUpdate);
@@ -672,10 +635,10 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             xsmnSocketClient.off('xsmn:error', handleError);
             xsmnSocketClient.off('connected', handleConnected);
             xsmnSocketClient.off('disconnected', handleDisconnected);
-            
+
             xsmnSocketClient.decrementRef();
         };
-    }, [inLiveWindow, isModal, emptyResult, setAnimationWithTimeout, playSound]);
+    }, [inLiveWindow, isModal, emptyResult, setAnimationWithTimeout]);
 
     // Function to get head and tail numbers for statistics
     const getHeadAndTailNumbers = useCallback((item) => {
@@ -799,8 +762,8 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     <span className={styles.digit_container}>
                         {Array.from({ length: displayDigits }).map((_, i) => {
                             // Mỗi digit hiển thị 1 số ngẫu nhiên (đứng yên, random mỗi lần render)
-                            // Sử dụng Math.random() để tạo số ngẫu nhiên lộn xộn giống XSMB
-                            const randomNum = Math.floor(Math.random() * 10);
+                            // Sử dụng seed + index để đảm bảo mỗi digit có số khác nhau
+                            const randomNum = Math.abs(seed + i) % 10;
                             return (
                                 <span key={`${i}-${seed}`} className={styles.digit_rolling}>
                                     <span className={styles.digit_number}>
@@ -851,7 +814,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     const dayOfWeek = displayData[0]?.dayOfWeek || '';
     const formattedDate = formatDate(displayData[0]?.drawDate || today);
     const dayOfWeekFormatted = getDayOfWeek(displayData[0]?.drawDate || today);
-    
+
     // Không hiển thị loading message khi đã có displayData để hiển thị
     // Vì displayData luôn có dữ liệu (từ liveData hoặc emptyResult), 
     // nên không cần hiển thị loading message nữa
@@ -1127,4 +1090,3 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
 };
 
 export default React.memo(LiveResultXSMN);
-

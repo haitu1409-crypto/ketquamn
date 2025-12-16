@@ -6,9 +6,23 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ChevronDown, MessageCircle, Users } from 'lucide-react';
+import { ChevronDown, Users } from 'lucide-react';
 import AuthButton from './Auth/AuthButton';
 import styles from '../styles/Layout.module.css';
+
+// Telegram Icon Component
+const TelegramIcon = ({ size = 20, className }) => (
+    <svg
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        className={className}
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+    </svg>
+);
 
 // Facebook Icon Component
 const FacebookIcon = ({ size = 20, className }) => (
@@ -158,43 +172,86 @@ const MobileNav = ({
                         );
                     })}
 
-                    {/* Social Media Links */}
-                    <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--color-gray-200)' }}>
-                        <div style={{ fontSize: '12px', color: 'var(--color-gray-500)', marginBottom: '12px', paddingLeft: '16px', fontWeight: '600' }}>
+                    {/* Social Media Links - Đặt ở cuối cùng */}
+                    <div style={{ 
+                        marginTop: 'auto', 
+                        paddingTop: '20px', 
+                        borderTop: '2px solid #e0f2fe',
+                        background: 'linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%)',
+                        borderRadius: '12px 12px 0 0',
+                        padding: '16px',
+                        marginLeft: '-16px',
+                        marginRight: '-16px',
+                        marginBottom: '-16px'
+                    }}>
+                        <div style={{ 
+                            fontSize: '13px', 
+                            color: '#0369a1', 
+                            marginBottom: '14px', 
+                            fontWeight: '700',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.5px'
+                        }}>
                             Kết nối với chúng tôi
                         </div>
                         
-                        {/* Telegram Link */}
-                        <a
-                            href="https://t.me/+Gj1LNJITFRM0OGQ1"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.mobileNavLink}
-                            onClick={onClose}
-                        >
-                            <div className={styles.mobileNavLinkContent}>
-                                <div className={styles.mobileNavLinkHeader}>
-                                    <MessageCircle size={20} className={styles.mobileNavIcon} />
-                                    <span className={styles.mobileNavLinkLabel}>Nhóm Telegram VIP</span>
-                                </div>
-                            </div>
-                        </a>
+                        <div style={{ 
+                            display: 'flex', 
+                            flexDirection: 'row', 
+                            gap: '8px' 
+                        }}>
+                            {/* Telegram Link */}
+                            <a
+                                href="https://t.me/+AmYQcrl7stkxZWY1"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.mobileNavLink}
+                                onClick={onClose}
+                                style={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    padding: '12px',
+                                    background: 'rgba(255, 255, 255, 0.8)',
+                                    border: '1px solid rgba(0, 136, 204, 0.15)',
+                                    borderRadius: '10px',
+                                    color: '#1e40af',
+                                    fontWeight: '600',
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                <TelegramIcon size={20} style={{ color: '#0088cc' }} />
+                                <span>Telegram</span>
+                            </a>
 
-                        {/* Facebook Link */}
-                        <a
-                            href="https://www.facebook.com/share/g/1FrkgbX6Sw/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.mobileNavLink}
-                            onClick={onClose}
-                        >
-                            <div className={styles.mobileNavLinkContent}>
-                                <div className={styles.mobileNavLinkHeader}>
-                                    <FacebookIcon size={20} className={styles.mobileNavIcon} />
-                                    <span className={styles.mobileNavLinkLabel}>Nhóm Facebook</span>
-                                </div>
-                            </div>
-                        </a>
+                            {/* Facebook Link */}
+                            <a
+                                href="https://www.facebook.com/share/g/1FrkgbX6Sw/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.mobileNavLink}
+                                onClick={onClose}
+                                style={{
+                                    flex: 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    gap: '8px',
+                                    padding: '12px',
+                                    background: 'rgba(255, 255, 255, 0.8)',
+                                    border: '1px solid rgba(0, 136, 204, 0.15)',
+                                    borderRadius: '10px',
+                                    color: '#1e40af',
+                                    fontWeight: '600',
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                <FacebookIcon size={20} style={{ color: '#0088cc' }} />
+                                <span>Facebook</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

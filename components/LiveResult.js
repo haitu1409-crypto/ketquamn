@@ -37,16 +37,15 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
     const animationThrottleRef = useRef(null);
     const lastAnimatingPrizeRef = useRef(null);
     const prizeUpdateTimeoutRef = useRef(null); // ✅ Ref cho debounce prize updates
-    const soundRef = useRef(null); // ✅ Ref cho âm thanh thông báo
-    
+
     // Animation queue - thứ tự xuất hiện 27 phần tử giải
     const animationQueueRef = useRef([
         'firstPrize_0',
         'secondPrize_0', 'secondPrize_1',
-        'threePrizes_0', 'threePrizes_1', 'threePrizes_2', 
+        'threePrizes_0', 'threePrizes_1', 'threePrizes_2',
         'threePrizes_3', 'threePrizes_4', 'threePrizes_5',
         'fourPrizes_0', 'fourPrizes_1', 'fourPrizes_2', 'fourPrizes_3',
-        'fivePrizes_0', 'fivePrizes_1', 'fivePrizes_2', 
+        'fivePrizes_0', 'fivePrizes_1', 'fivePrizes_2',
         'fivePrizes_3', 'fivePrizes_4', 'fivePrizes_5',
         'sixPrizes_0', 'sixPrizes_1', 'sixPrizes_2',
         'sevenPrizes_0', 'sevenPrizes_1', 'sevenPrizes_2', 'sevenPrizes_3',
@@ -57,35 +56,16 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
     const today = getTodayFormatted();
     const inLiveWindow = isWithinLiveWindow();
 
-    // ✅ Helper function để phát âm thanh khi có kết quả mới
-    const playSound = useCallback(() => {
-        try {
-            // Tạo Audio object nếu chưa có
-            if (!soundRef.current) {
-                soundRef.current = new Audio('/soundChat.mp3');
-                soundRef.current.volume = 0.5; // Điều chỉnh âm lượng (0.0 - 1.0)
-            }
-            // Reset và phát lại
-            soundRef.current.currentTime = 0;
-            soundRef.current.play().catch(err => {
-                // Ignore lỗi nếu user chưa tương tác với trang (browser policy)
-                console.log('Không thể phát âm thanh (có thể do browser policy):', err);
-            });
-        } catch (err) {
-            console.log('Lỗi phát âm thanh:', err);
-        }
-    }, []);
-
     // ✅ OPTIMIZED: Memoize getDayOfWeek với cache để tránh tính toán lại
     const getDayOfWeekCache = useRef(new Map());
     const getDayOfWeek = useCallback((dateString) => {
         if (!dateString) return '';
-        
+
         // ✅ Cache kết quả để tránh parse lại cùng một dateString
         if (getDayOfWeekCache.current.has(dateString)) {
             return getDayOfWeekCache.current.get(dateString);
         }
-        
+
         try {
             let date;
             // Xử lý cả ISO string và format DD/MM/YYYY
@@ -102,14 +82,14 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             if (isNaN(date.getTime())) return '';
             const days = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
             const result = days[date.getDay()];
-            
+
             // ✅ Cache kết quả (giới hạn cache size để tránh memory leak)
             if (getDayOfWeekCache.current.size > 100) {
                 const firstKey = getDayOfWeekCache.current.keys().next().value;
                 getDayOfWeekCache.current.delete(firstKey);
             }
             getDayOfWeekCache.current.set(dateString, result);
-            
+
             return result;
         } catch {
             return '';
@@ -126,7 +106,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
         // ✅ FIX: findNextAnimatingPrize được định nghĩa trong useEffect để tránh dependency loop
         const findNextAnimatingPrize = () => {
             if (!liveData) return null;
-            
+
             const queue = animationQueueRef.current;
             for (const prize of queue) {
                 const value = liveData[prize];
@@ -143,7 +123,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             if (!mountedRef.current) return;
 
             const nextPrize = findNextAnimatingPrize();
-            
+
             // ✅ Chỉ update nếu khác giá trị hiện tại (tránh re-render không cần thiết)
             if (nextPrize !== lastAnimatingPrizeRef.current) {
                 lastAnimatingPrizeRef.current = nextPrize;
@@ -162,7 +142,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
     // ✅ OPTIMIZED: Proper cleanup khi mount/unmount
     useEffect(() => {
         mountedRef.current = true;
-        
+
         // ✅ Reset state khi mount (tránh state cũ từ cache/reload)
         setAnimatingPrize(null);
         lastAnimatingPrizeRef.current = null;
@@ -182,12 +162,6 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
                 clearTimeout(timeoutId);
             });
             animationTimeoutsRef.current.clear();
-
-            // ✅ Cleanup sound
-            if (soundRef.current) {
-                soundRef.current.pause();
-                soundRef.current = null;
-            }
 
             // ✅ Reset animation state
             setAnimatingPrize(null);
@@ -248,7 +222,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
 
         // ✅ OPTIMIZED: Kiểm tra kỹ để tránh duplicate connections (React Strict Mode)
         const connectionStatus = lotterySocketClient.getConnectionStatus();
-        
+
         // Nếu đã connected, request latest data
         if (connectionStatus.socket && connectionStatus.connected) {
             console.log('✅ Socket already connected, requesting latest data...');
@@ -283,19 +257,8 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             // ✅ Debounce 50ms để batch multiple updates cùng lúc
             prizeUpdateTimeoutRef.current = setTimeout(() => {
                 if (!mountedRef.current) return;
-                
+
                 setLiveData(prev => {
-                    // ✅ Kiểm tra xem có phải là kết quả thực tế thay thế animation không
-                    const oldValue = prev[data.prizeType];
-                    const newValue = data.prizeData;
-                    const isReplacingAnimation = (oldValue === '...' || oldValue === '***' || !oldValue) && 
-                                                newValue && newValue !== '...' && newValue !== '***';
-                    
-                    // ✅ Phát âm thanh khi có kết quả thực tế thay thế animation
-                    if (isReplacingAnimation) {
-                        playSound();
-                    }
-                    
                     const updated = { ...prev, [data.prizeType]: data.prizeData, lastUpdated: data.timestamp };
                     // ✅ Animation sẽ được tự động set bởi useEffect (không cần setAnimationWithTimeout)
                     return updated;
@@ -360,7 +323,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
                 clearTimeout(prizeUpdateTimeoutRef.current);
                 prizeUpdateTimeoutRef.current = null;
             }
-            
+
             // Remove listeners
             lotterySocketClient.off('lottery:latest', handleLatest);
             lotterySocketClient.off('lottery:prize-update', handlePrizeUpdate);
@@ -369,12 +332,12 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             lotterySocketClient.off('lottery:error', handleError);
             lotterySocketClient.off('connected', handleConnected);
             lotterySocketClient.off('disconnected', handleDisconnected);
-            
+
             // ✅ Reference counting: Giảm reference khi component unmount
             // Tự động disconnect nếu không còn component nào sử dụng
             lotterySocketClient.decrementRef();
         };
-    }, [inLiveWindow, isModal, playSound]);
+    }, [inLiveWindow, isModal]);
 
     // ✅ OPTIMIZED: Memoize helper functions để tránh recreate
     const getLastTwoDigits = useCallback((num) => {
@@ -564,7 +527,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             const interval = setInterval(() => {
                 setRandomSeed(prev => prev + 1); // Trigger re-render để random lại
             }, 200); // Thay đổi mỗi 200ms để tạo hiệu ứng random (vẫn mượt nhưng ít re-render hơn)
-            
+
             return () => clearInterval(interval);
         } else {
             setRandomSeed(0); // Reset khi không animate

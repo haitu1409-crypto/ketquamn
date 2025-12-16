@@ -437,18 +437,19 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		gap: isMobile ? '6px' : '8px',
-		flexDirection: isMobile ? 'column' : 'row'
+		flexDirection: 'row' // Luôn dùng row, không dùng column trên mobile
 	}), [isMobile]);
 
 	const headerUpdateBtn = useMemo(() => ({
 		display: 'inline-flex',
 		alignItems: 'center',
-		gap: isMobile ? '4px' : '6px',
+		justifyContent: 'center',
+		gap: 0, // Không cần gap vì chỉ có icon
 		background: 'transparent',
 		color: '#FFFFFF',
 		border: '1px solid rgba(255,255,255,0.7)',
 		borderRadius: '4px',
-		padding: isMobile ? '4px 6px' : '4px 8px',
+		padding: isMobile ? '4px' : '6px', // Giảm padding ngang vì chỉ có icon
 		fontWeight: 700, // Use 700 for better mobile support
 		fontSize: isMobile ? '13px' : '14px',
 		cursor: 'pointer',
@@ -694,7 +695,6 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 						<div>THỐNG KÊ NHANH CHO NGÀY {todayStr}</div>
 						<button onClick={handleUpdateAll} style={headerUpdateBtn} title="Cập nhật dữ liệu">
 							<RefreshCw size={16} />
-							<span>Cập nhật dữ liệu</span>
 						</button>
 					</div>
 				</div>
@@ -711,7 +711,6 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 						<div>THỐNG KÊ NHANH CHO NGÀY {todayStr}</div>
 						<button onClick={handleUpdateAll} style={headerUpdateBtn} title="Cập nhật dữ liệu">
 							<RefreshCw size={16} />
-							<span>Cập nhật dữ liệu</span>
 						</button>
 					</div>
 				</div>
@@ -727,7 +726,6 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 					<div>THỐNG KÊ NHANH CHO NGÀY {todayStr}</div>
 					<button onClick={handleUpdateAll} style={headerUpdateBtn} title="Cập nhật dữ liệu">
 						<RefreshCw size={16} />
-						<span>Cập nhật dữ liệu</span>
 					</button>
 				</div>
 			</div>

@@ -158,28 +158,6 @@ const Home = memo(function Home() {
         }
     ], []);
 
-    const features = [
-        {
-            icon: Zap,
-            title: 'Nhanh Chóng',
-            description: 'Xử lý tức thì, kết quả trong 0.1 giây'
-        },
-        {
-            icon: CheckCircle,
-            title: 'Chính Xác',
-            description: 'Thuật toán chuẩn, kết quả chính xác 100%'
-        },
-        {
-            icon: Heart,
-            title: 'Miễn Phí',
-            description: 'Hoàn toàn miễn phí, không giới hạn'
-        },
-        {
-            icon: Smartphone,
-            title: 'Mọi Thiết Bị',
-            description: 'Hoạt động mượt trên mọi thiết bị'
-        }
-    ];
 
     // ✅ FIX: Structured data với useMemo để tránh hydration error
     const structuredData = useMemo(() => {
@@ -362,24 +340,6 @@ const Home = memo(function Home() {
                             {/* Featured Snippet - Direct Answer */}
                             {/* Thống kê nhanh */}
                             <ThongKeNhanh />
-
-                            {/* Features Section - Compact */}
-                            <section className={styles.features} aria-label="Tính năng nổi bật">
-                                <div className={styles.featuresGrid}>
-                                    {features.map((feature, idx) => {
-                                        const IconComponent = feature.icon;
-                                        return (
-                                            <div key={idx} className={styles.featureItem}>
-                                                <div className={styles.featureIcon}>
-                                                    <IconComponent size={20} />
-                                                </div>
-                                                <h3>{feature.title}</h3>
-                                                <p>{feature.description}</p>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </section>
 
                             {/* User Testimonials - Social Proof */}
                             <Testimonials />

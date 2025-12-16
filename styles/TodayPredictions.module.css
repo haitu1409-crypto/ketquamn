@@ -186,6 +186,33 @@
     background: var(--card-gradient);
 }
 
+/* ✅ Gradient nhạt cho ::before trùng tông màu với header */
+
+/* Cầu Lotto - Gradient xanh nhạt */
+.predictionCard[data-prediction-type="lotto"]::before {
+    background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%) !important; /* Xanh nhạt gradient */
+}
+
+/* Cầu Đặc biệt - Gradient đỏ nhạt */
+.predictionCard[data-prediction-type="special"]::before {
+    background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%) !important; /* Đỏ nhạt gradient */
+}
+
+/* Cầu 2 nháy - Gradient cam nhạt */
+.predictionCard[data-prediction-type="double-jump"]::before {
+    background: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%) !important; /* Cam nhạt gradient */
+}
+
+/* Bảng lô top - Gradient xám xanh nhạt */
+.predictionCard[data-prediction-type="top-table"]::before {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%) !important; /* Xám xanh nhạt gradient */
+}
+
+/* Dự đoán Kết Quả MN - Gradient tím nhạt */
+.predictionCard[data-prediction-type="wukong"]::before {
+    background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%) !important; /* Tím nhạt gradient */
+}
+
 .predictionCard:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
@@ -221,7 +248,7 @@
     /* margin-bottom: 10px;
     padding-bottom: 10px; */
     border-bottom: 2px solid #f7fafc;
-    background: #f6f7f9;
+    /* background: #f6f7f9; */
 }
 
 .cardHeader > div {
@@ -262,6 +289,58 @@
     line-height: 1.2;
     display: inline-flex;
     align-items: baseline;
+}
+
+/* ✅ Màu text đậm cho từng header - chỉ đổi màu text, giữ nguyên các style khác */
+
+/* Cầu Lotto - Xanh đậm */
+.predictionCard[data-prediction-type="lotto"] {
+    border-color: #93c5fd !important; /* Xanh nhạt - cùng tông với header */
+}
+
+.predictionCard[data-prediction-type="lotto"] .cardHeader .cardTitle,
+.predictionCard[data-prediction-type="lotto"] .cardHeader .cardSubtitle {
+    color: #1e40af !important; /* Xanh đậm */
+}
+
+/* Cầu Đặc biệt - Đỏ đậm */
+.predictionCard[data-prediction-type="special"] {
+    border-color: #fca5a5 !important; /* Đỏ nhạt - cùng tông với header */
+}
+
+.predictionCard[data-prediction-type="special"] .cardHeader .cardTitle,
+.predictionCard[data-prediction-type="special"] .cardHeader .cardSubtitle {
+    color: #991b1b !important; /* Đỏ đậm */
+}
+
+/* Cầu 2 nháy - Cam đậm */
+.predictionCard[data-prediction-type="double-jump"] {
+    border-color: #fdba74 !important; /* Cam nhạt - cùng tông với header */
+}
+
+.predictionCard[data-prediction-type="double-jump"] .cardHeader .cardTitle,
+.predictionCard[data-prediction-type="double-jump"] .cardHeader .cardSubtitle {
+    color: #c2410c !important; /* Cam đậm */
+}
+
+/* Bảng lô top - Xanh đen đậm */
+.predictionCard[data-prediction-type="top-table"] {
+    border-color: #64748b !important; /* Xám xanh nhạt - cùng tông với header */
+}
+
+.predictionCard[data-prediction-type="top-table"] .cardHeader .cardTitle,
+.predictionCard[data-prediction-type="top-table"] .cardHeader .cardSubtitle {
+    color: #0f172a !important; /* Xanh đen đậm */
+}
+
+/* Dự đoán Kết Quả MN - Tím đậm */
+.predictionCard[data-prediction-type="wukong"] {
+    border-color: #c4b5fd !important; /* Tím nhạt - cùng tông với header */
+}
+
+.predictionCard[data-prediction-type="wukong"] .cardHeader .cardTitle,
+.predictionCard[data-prediction-type="wukong"] .cardHeader .cardSubtitle {
+    color: #581c87 !important; /* Tím đậm */
 }
 
 /* Card Content */
@@ -682,9 +761,10 @@
         flex-shrink: 0;
     }
 
+    /* ✅ Giữ ::before hiển thị trên mobile với gradient nhạt */
     .predictionCard::before {
-        display: none;
-        /* Simplified: hide gradient top border on mobile */
+        display: block;
+        height: 3px;
     }
 
     .cardHeader {
@@ -708,6 +788,32 @@
         font-size: 0.95rem;
         color: var(--card-color, #333);
         font-weight: 700;
+    }
+
+    /* ✅ Giữ màu đậm cho header trên mobile */
+    .predictionCard[data-prediction-type="lotto"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="lotto"] .cardHeader .cardSubtitle {
+        color: #1e40af !important;
+    }
+
+    .predictionCard[data-prediction-type="special"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="special"] .cardHeader .cardSubtitle {
+        color: #991b1b !important;
+    }
+
+    .predictionCard[data-prediction-type="double-jump"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="double-jump"] .cardHeader .cardSubtitle {
+        color: #c2410c !important;
+    }
+
+    .predictionCard[data-prediction-type="top-table"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="top-table"] .cardHeader .cardSubtitle {
+        color: #0f172a !important;
+    }
+
+    .predictionCard[data-prediction-type="wukong"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="wukong"] .cardHeader .cardSubtitle {
+        color: #581c87 !important;
     }
 
     .cardContent {
@@ -904,9 +1010,10 @@
         max-width: 100%;
     }
 
+    /* ✅ Giữ ::before hiển thị trên mobile nhỏ với gradient nhạt */
     .predictionCard::before {
-        display: none;
-        /* Simplified: hide gradient top border on mobile */
+        display: block;
+        height: 3px;
     }
 
     .cardHeader {
@@ -930,6 +1037,32 @@
         font-size: 1.1rem;
         color: var(--card-color, #333);
         font-weight: 700;
+    }
+
+    /* ✅ Giữ màu đậm cho header trên mobile nhỏ */
+    .predictionCard[data-prediction-type="lotto"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="lotto"] .cardHeader .cardSubtitle {
+        color: #1e40af !important;
+    }
+
+    .predictionCard[data-prediction-type="special"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="special"] .cardHeader .cardSubtitle {
+        color: #991b1b !important;
+    }
+
+    .predictionCard[data-prediction-type="double-jump"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="double-jump"] .cardHeader .cardSubtitle {
+        color: #c2410c !important;
+    }
+
+    .predictionCard[data-prediction-type="top-table"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="top-table"] .cardHeader .cardSubtitle {
+        color: #0f172a !important;
+    }
+
+    .predictionCard[data-prediction-type="wukong"] .cardHeader .cardTitle,
+    .predictionCard[data-prediction-type="wukong"] .cardHeader .cardSubtitle {
+        color: #581c87 !important;
     }
 
     .cardContent {
@@ -1089,18 +1222,35 @@
    ============================================ */
 
 .socialLinksSection {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--color-gray-200, #e5e7eb);
-    display: none; /* Hidden by default on mobile */
+    margin-top: 24px;
+    padding: 20px;
+    border-top: 2px solid #e0f2fe; /* Border xanh nhạt */
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%); /* Gradient xanh nhạt */
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 136, 204, 0.08); /* Shadow xanh nhẹ */
+    position: relative;
+    display: block; /* Hiển thị trên cả mobile và desktop */
+    /* Animation nhẹ để thu hút sự chú ý */
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(0, 136, 204, 0.08);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(0, 136, 204, 0.12);
+    }
 }
 
 .socialLinksTitle {
-    font-size: 12px;
-    color: var(--color-gray-500, #6b7280);
-    margin-bottom: 12px;
-    padding-left: 16px;
-    font-weight: 700; /* Use 700 for better mobile support */
+    font-size: 13px;
+    color: #0369a1; /* Màu xanh đậm hơn */
+    margin-bottom: 14px;
+    padding-left: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     /* Ensure font-weight works on mobile */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -1109,40 +1259,64 @@
 .socialLinksContainer {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 0 16px;
+    gap: 10px;
+    padding: 0;
 }
 
 .socialLink {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 12px;
-    color: var(--color-gray-700, #374151);
+    padding: 12px 16px;
+    color: #1e40af; /* Màu xanh đậm */
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.2s ease;
+    border-radius: 10px;
+    transition: all 0.3s ease;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 136, 204, 0.15);
+    backdrop-filter: blur(10px);
 }
 
 .socialLink:hover {
-    background: var(--color-gray-100, #f3f4f6);
-    color: var(--color-gray-900, #111827);
+    background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+    color: #1e3a8a;
+    border-color: rgba(0, 136, 204, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 136, 204, 0.15);
 }
 
 .socialIcon {
     flex-shrink: 0;
-    color: var(--color-gray-600, #4b5563);
+    color: #0088cc; /* Màu xanh cho Telegram và Facebook */
 }
 
 .socialLink:hover .socialIcon {
-    color: var(--color-gray-900, #111827);
+    color: #0066aa; /* Màu xanh đậm hơn khi hover */
 }
 
-/* Show on desktop only */
-@media (min-width: 769px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
     .socialLinksSection {
-        display: block;
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 10px;
+    }
+    
+    .socialLinksTitle {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .socialLinksContainer {
+        flex-direction: row; /* Hiển thị ngang trên mobile */
+        gap: 8px;
+    }
+    
+    .socialLink {
+        padding: 10px 14px;
+        font-size: 13px;
+        flex: 1; /* Mỗi link chiếm 50% chiều rộng */
     }
 }

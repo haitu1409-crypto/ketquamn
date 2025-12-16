@@ -409,6 +409,104 @@ export default function Layout({ children, className = '' }) {
                                                 </Link>
                                             );
                                         })}
+
+                                        {/* Social Media Links - Đặt ở cuối cùng */}
+                                        <div style={{ 
+                                            marginTop: 'auto', 
+                                            paddingTop: '20px', 
+                                            borderTop: '2px solid #e0f2fe',
+                                            background: 'linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%)',
+                                            borderRadius: '12px 12px 0 0',
+                                            padding: '16px',
+                                            marginLeft: '-16px',
+                                            marginRight: '-16px',
+                                            marginBottom: '-16px'
+                                        }}>
+                                            <div style={{ 
+                                                fontSize: '13px', 
+                                                color: '#0369a1', 
+                                                marginBottom: '14px', 
+                                                fontWeight: '700',
+                                                textTransform: 'uppercase',
+                                                letterSpacing: '0.5px'
+                                            }}>
+                                                Kết nối với chúng tôi
+                                            </div>
+                                            
+                                            <div style={{ 
+                                                display: 'flex', 
+                                                flexDirection: 'row', 
+                                                gap: '8px' 
+                                            }}>
+                                                {/* Telegram Link */}
+                                                <a
+                                                    href="https://t.me/+AmYQcrl7stkxZWY1"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => setIsMenuOpen(false)}
+                                                    style={{
+                                                        flex: 1,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        gap: '8px',
+                                                        padding: '12px',
+                                                        background: 'rgba(255, 255, 255, 0.8)',
+                                                        border: '1px solid rgba(0, 136, 204, 0.15)',
+                                                        borderRadius: '10px',
+                                                        color: '#1e40af',
+                                                        fontWeight: '600',
+                                                        textDecoration: 'none'
+                                                    }}
+                                                >
+                                                    <svg
+                                                        width="20"
+                                                        height="20"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor"
+                                                        style={{ color: '#0088cc' }}
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                                                    </svg>
+                                                    <span>Telegram</span>
+                                                </a>
+
+                                                {/* Facebook Link */}
+                                                <a
+                                                    href="https://www.facebook.com/share/g/1FrkgbX6Sw/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={() => setIsMenuOpen(false)}
+                                                    style={{
+                                                        flex: 1,
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        gap: '8px',
+                                                        padding: '12px',
+                                                        background: 'rgba(255, 255, 255, 0.8)',
+                                                        border: '1px solid rgba(0, 136, 204, 0.15)',
+                                                        borderRadius: '10px',
+                                                        color: '#1e40af',
+                                                        fontWeight: '600',
+                                                        textDecoration: 'none'
+                                                    }}
+                                                >
+                                                    <svg
+                                                        width="20"
+                                                        height="20"
+                                                        viewBox="0 0 24 24"
+                                                        fill="currentColor"
+                                                        style={{ color: '#0088cc' }}
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                                    </svg>
+                                                    <span>Facebook</span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </>
