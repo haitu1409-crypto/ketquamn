@@ -188,10 +188,19 @@ export default function AdvancedMetaTags({
             <meta httpEquiv="Cache-Control" content="public, max-age=3600" />
             <meta httpEquiv="Expires" content={new Date(Date.now() + 3600000).toUTCString()} />
             
-            {/* ===== REFRESH (for dynamic content) ===== */}
-            {pageType === 'kqxs' && (
-                <meta httpEquiv="refresh" content="300" /> // Refresh every 5 minutes for lottery results
-            )}
+            {/* ===== REFRESH (REMOVED - Causes accessibility issues and bad UX) ===== */}
+            {/* 
+                ✅ REMOVED: Meta refresh tag causes auto-refresh every 5 minutes
+                - Violates accessibility guidelines (axe rule: Timed refresh must not exist)
+                - Bad UX: Loses user state, interrupts user interaction
+                - Not needed: Page already has WebSocket and polling mechanisms for real-time updates
+                - If refresh is needed, use JavaScript-based polling or WebSocket updates instead
+                
+                Original code (REMOVED):
+                {pageType === 'kqxs' && (
+                    <meta httpEquiv="refresh" content="300" />
+                )}
+            */}
             
             {/* ===== RATING ===== */}
             <meta name="rating" content="general" />
@@ -282,4 +291,7 @@ export default function AdvancedMetaTags({
 
 // Export utility functions
 export { generateTitleVariations, generateDescriptionVariations };
+
+
+
 

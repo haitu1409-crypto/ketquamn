@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useEffect, useMemo } from 'react';
 import styles from '../styles/tableDateKQXS.module.css';
 import Link from 'next/link';
 
 const TableDate = () => {
-    const router = useRouter();
+    // ✅ FIX: Hydration-safe pattern - chỉ render dynamic content sau khi mounted
+    const [isMounted, setIsMounted] = useState(false);
     const [currentDate, setCurrentDate] = useState('');
     const [dayOfWeek, setDayOfWeek] = useState('');
     const [hasBroadcasted, setHasBroadcasted] = useState({ north: false, central: false, south: false });
@@ -89,7 +89,15 @@ const TableDate = () => {
         },
     };
 
+    // ✅ FIX: Mark component as mounted để chỉ render dynamic content sau hydration
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        // ✅ FIX: Chỉ update khi đã mounted để tránh hydration mismatch
+        if (!isMounted) return;
+
         const updateDateAndStations = () => {
             // Lấy thời gian Việt Nam (UTC+7) - Asia/Ho_Chi_Minh
             const now = new Date();
@@ -173,30 +181,37 @@ const TableDate = () => {
         updateDateAndStations();
         const interval = setInterval(updateDateAndStations, 60000); // Cập nhật mỗi phút
         return () => clearInterval(interval);
-    }, []);
+    }, [isMounted]);
 
-    // Xác định miền sắp xổ để hiển thị thẻ tường thuật
-    const approachingRegion = isApproaching.south ? "Miền Nam" :
-        isApproaching.central ? "Miền Trung" :
-            isApproaching.north ? "Miền Bắc" : null;
-    const approachingTime = isApproaching.south ? "16h15" :
-        isApproaching.central ? "17h15" :
-            isApproaching.north ? "18h15" : "";
+    // ✅ FIX: Xác định miền sắp xổ chỉ khi đã mounted để tránh hydration mismatch
+    const approachingRegion = isMounted && isApproaching.south ? "Miền Nam" :
+        isMounted && isApproaching.central ? "Miền Trung" :
+            isMounted && isApproaching.north ? "Miền Bắc" : null;
+    const approachingTime = isMounted && isApproaching.south ? "16h15" :
+        isMounted && isApproaching.central ? "17h15" :
+            isMounted && isApproaching.north ? "18h15" : "";
 
-    // Xác định URL tương ứng
-    const approachingUrl = approachingRegion === "Miền Nam" ? "/ket-qua-xo-so-mien-nam" :
-        approachingRegion === "Miền Trung" ? "/ket-qua-xo-so-mien-trung" :
-            "/ket-qua-xo-so-mien-bac";
-
-    // Chỉ hiển thị link nếu không phải đang ở trang tương ứng
-    const shouldShowLink = approachingRegion && router.pathname !== approachingUrl;
-
-    // Tìm số hàng tối đa để căn chỉnh bảng
-    const maxRows = Math.max(
-        currentStations.north.length,
-        currentStations.central.length,
-        currentStations.south.length
-    );
+    // ✅ FIX: Tính maxRows từ stationsSchedule với useMemo để đảm bảo tính toán an toàn
+    // Lấy số hàng tối đa có thể có (thứ 7 miền Nam có 4 tỉnh)
+    const maxPossibleRows = useMemo(() => {
+        try {
+            const centralMax = Math.max(...Object.values(stationsSchedule.central).map(stations => Array.isArray(stations) ? stations.length : 0));
+            const southMax = Math.max(...Object.values(stationsSchedule.south).map(stations => Array.isArray(stations) ? stations.length : 0));
+            return Math.max(
+                stationsSchedule.north.allDays.length,
+                centralMax,
+                southMax
+            );
+        } catch (error) {
+            // Fallback nếu có lỗi
+            console.warn('Error calculating maxPossibleRows:', error);
+            return 4; // Default max rows
+        }
+    }, []); // Empty deps vì stationsSchedule là constant
+    
+    // ✅ FIX: Luôn render với maxPossibleRows để đảm bảo HTML structure nhất quán giữa server và client
+    // Điều này tránh hydration mismatch và layout shift
+    const maxRows = maxPossibleRows;
 
     return (
         <div className={styles.container}>
@@ -209,11 +224,9 @@ const TableDate = () => {
                         <p className={styles.desc}>
                             Tường thuật trực tiếp KQXS {approachingRegion} lúc {approachingTime}
                         </p>
-                        {shouldShowLink && (
-                            <Link href={approachingUrl} className={styles.action} prefetch={false}>
-                                Xem Ngay
-                            </Link>
-                        )}
+                        <Link href={`/${approachingRegion === "Miền Nam" ? "ket-qua-xo-so-mien-nam" : approachingRegion === "Miền Trung" ? "ket-qua-xo-so-mien-trung" : "ket-qua-xo-so-mien-bac"}`} className={styles.action}>
+                            Xem Ngay
+                        </Link>
                     </div>
                 )}
                 <table className={styles.table}>
@@ -223,46 +236,53 @@ const TableDate = () => {
                             <td className={styles.titleTable}>Miền Trung</td>
                             <td className={styles.titleTable}>Miền Nam</td>
                         </tr>
-                        {Array.from({ length: maxRows }).map((_, rowIndex) => (
-                            <tr key={rowIndex}>
-                                {/* Miền Bắc */}
-                                <td>
-                                    {currentStations.north[rowIndex] ? (
-                                        <div className={styles.stationRow}>
-                                            <span className={styles.stationName}>{currentStations.north[rowIndex].name}</span>
-                                            <div className={styles.timeCheckRow}>
-                                                <span className={styles.time}>{currentStations.north[rowIndex].time}</span>
-                                                {hasBroadcasted.north && <span className={styles.check}>✅</span>}
+                        {Array.from({ length: maxRows }).map((_, rowIndex) => {
+                            // ✅ FIX: Chỉ render data khi đã mounted, trên server render empty cells
+                            const northStation = isMounted ? currentStations.north[rowIndex] : null;
+                            const centralStation = isMounted ? currentStations.central[rowIndex] : null;
+                            const southStation = isMounted ? currentStations.south[rowIndex] : null;
+                            
+                            return (
+                                <tr key={rowIndex}>
+                                    {/* Miền Bắc */}
+                                    <td>
+                                        {northStation ? (
+                                            <div className={styles.stationRow}>
+                                                <span className={styles.stationName}>{northStation.name}</span>
+                                                <div className={styles.timeCheckRow}>
+                                                    <span className={styles.time}>{northStation.time}</span>
+                                                    {hasBroadcasted.north && <span className={styles.check}>✅</span>}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ) : ''}
-                                </td>
-                                {/* Miền Trung */}
-                                <td>
-                                    {currentStations.central[rowIndex] ? (
-                                        <div className={styles.stationRow}>
-                                            <span className={styles.stationName}>{currentStations.central[rowIndex].name}</span>
-                                            <div className={styles.timeCheckRow}>
-                                                <span className={styles.time}>{currentStations.central[rowIndex].time}</span>
-                                                {hasBroadcasted.central && <span className={styles.check}>✅</span>}
+                                        ) : null}
+                                    </td>
+                                    {/* Miền Trung */}
+                                    <td>
+                                        {centralStation ? (
+                                            <div className={styles.stationRow}>
+                                                <span className={styles.stationName}>{centralStation.name}</span>
+                                                <div className={styles.timeCheckRow}>
+                                                    <span className={styles.time}>{centralStation.time}</span>
+                                                    {hasBroadcasted.central && <span className={styles.check}>✅</span>}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ) : ''}
-                                </td>
-                                {/* Miền Nam */}
-                                <td>
-                                    {currentStations.south[rowIndex] ? (
-                                        <div className={styles.stationRow}>
-                                            <span className={styles.stationName}>{currentStations.south[rowIndex].name}</span>
-                                            <div className={styles.timeCheckRow}>
-                                                <span className={styles.time}>{currentStations.south[rowIndex].time}</span>
-                                                {hasBroadcasted.south && <span className={styles.check}>✅</span>}
+                                        ) : null}
+                                    </td>
+                                    {/* Miền Nam */}
+                                    <td>
+                                        {southStation ? (
+                                            <div className={styles.stationRow}>
+                                                <span className={styles.stationName}>{southStation.name}</span>
+                                                <div className={styles.timeCheckRow}>
+                                                    <span className={styles.time}>{southStation.time}</span>
+                                                    {hasBroadcasted.south && <span className={styles.check}>✅</span>}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ) : ''}
-                                </td>
-                            </tr>
-                        ))}
+                                        ) : null}
+                                    </td>
+                                </tr>
+                            );
+                        })}
                     </tbody>
                 </table>
             </div>

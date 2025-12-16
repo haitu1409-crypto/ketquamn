@@ -142,6 +142,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     const mountedRef = useRef(false);
     const animationTimeoutsRef = useRef(new Map());
     const prizeUpdateTimeoutRef = useRef(null);
+    const soundRef = useRef(null); // ✅ Ref cho âm thanh thông báo
 
     // Chuẩn hóa dữ liệu socket (array, object map hoặc object đơn)
     const normalizeToArray = useCallback((incoming) => {
@@ -209,6 +210,11 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 clearTimeout(timeoutId);
             });
             animationTimeoutsRef.current.clear();
+            // ✅ Cleanup sound
+            if (soundRef.current) {
+                soundRef.current.pause();
+                soundRef.current = null;
+            }
         };
     }, []);
 
@@ -282,6 +288,25 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             setIsLoading(false);
         }
     }, [liveData, isLoading]);
+
+    // ✅ Helper function để phát âm thanh khi có kết quả mới
+    const playSound = useCallback(() => {
+        try {
+            // Tạo Audio object nếu chưa có
+            if (!soundRef.current) {
+                soundRef.current = new Audio('/soundChat.mp3');
+                soundRef.current.volume = 0.5; // Điều chỉnh âm lượng (0.0 - 1.0)
+            }
+            // Reset và phát lại
+            soundRef.current.currentTime = 0;
+            soundRef.current.play().catch(err => {
+                // Ignore lỗi nếu user chưa tương tác với trang (browser policy)
+                console.log('Không thể phát âm thanh (có thể do browser policy):', err);
+            });
+        } catch (err) {
+            console.log('Lỗi phát âm thanh:', err);
+        }
+    }, []);
 
     // ✅ Giống xsmb: Luôn animate prize đang chờ (giải chưa có số) từ G8 → ĐB cho từng tỉnh
     useEffect(() => {
@@ -475,6 +500,18 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
                     
+                    // ✅ Kiểm tra xem có phải là kết quả thực tế thay thế animation không
+                    const oldItem = prevMap.get(data.tinh);
+                    const oldValue = oldItem ? oldItem[data.prizeType] : null;
+                    const newValue = data.prizeData;
+                    const isReplacingAnimation = (oldValue === '...' || oldValue === '***' || !oldValue || oldValue === '') && 
+                                                newValue && newValue !== '...' && newValue !== '***';
+                    
+                    // ✅ Phát âm thanh khi có kết quả thực tế thay thế animation
+                    if (isReplacingAnimation) {
+                        playSound();
+                    }
+                    
                     return base.map(item => {
                         if (item.tinh === data.tinh) {
                             return { ...item, [data.prizeType]: data.prizeData, lastUpdated: data.timestamp };
@@ -638,7 +675,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             
             xsmnSocketClient.decrementRef();
         };
-    }, [inLiveWindow, isModal, emptyResult, setAnimationWithTimeout]);
+    }, [inLiveWindow, isModal, emptyResult, setAnimationWithTimeout, playSound]);
 
     // Function to get head and tail numbers for statistics
     const getHeadAndTailNumbers = useCallback((item) => {
@@ -762,8 +799,8 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     <span className={styles.digit_container}>
                         {Array.from({ length: displayDigits }).map((_, i) => {
                             // Mỗi digit hiển thị 1 số ngẫu nhiên (đứng yên, random mỗi lần render)
-                            // Sử dụng seed + index để đảm bảo mỗi digit có số khác nhau
-                            const randomNum = Math.abs(seed + i) % 10;
+                            // Sử dụng Math.random() để tạo số ngẫu nhiên lộn xộn giống XSMB
+                            const randomNum = Math.floor(Math.random() * 10);
                             return (
                                 <span key={`${i}-${seed}`} className={styles.digit_rolling}>
                                     <span className={styles.digit_number}>

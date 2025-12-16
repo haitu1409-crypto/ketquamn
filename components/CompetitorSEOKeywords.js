@@ -382,3 +382,6 @@ export default function CompetitorSEOKeywords({ pageType = 'home' }) {
 // Export for use in other components
 export { COMPETITOR_KEYWORDS };
 
+
+
+
