@@ -82,6 +82,85 @@ const XSMBSimpleTable = ({
     // ✅ Fix hydration: Chỉ dùng apiData sau khi đã mount trên client
     const data = propData || (isMounted ? apiData : null);
 
+    // ✅ Tối ưu: Memoize function getDayOfWeek - PHẢI đặt trước early return
+    const getDayOfWeek = React.useCallback((dateString) => {
+        if (!dateString) return '';
+        const date = new Date(dateString.split('/').reverse().join('-'));
+        const days = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+        return days[date.getDay()];
+    }, []);
+
+    // ✅ Tối ưu: Memoize formatted date - PHẢI đặt trước early return
+    const formattedDate = React.useMemo(() => {
+        if (!data?.date) return 'Kết quả XSMB';
+        return `${getDayOfWeek(data.date)} - ${data.date}`;
+    }, [data?.date, getDayOfWeek]);
+
+    // ✅ Tính toán loto đuôi từ các giải thưởng - PHẢI đặt trước early return để tuân thủ Rules of Hooks
+    // ✅ Tối ưu: Sử dụng Set để loại bỏ duplicate nhanh hơn, tối ưu thuật toán
+    const calculateLotoDuoi = React.useMemo(() => {
+        if (!data) return {};
+
+        // Lấy 2 số cuối từ tất cả các giải - tối ưu: dùng Set để loại bỏ duplicate ngay
+        const getLastTwoDigits = (num) => {
+            if (!num || typeof num !== 'string') return null;
+            return num.slice(-2).padStart(2, '0');
+        };
+
+        // Destructure dữ liệu
+        const {
+            specialPrize,
+            firstPrize,
+            secondPrize = [],
+            threePrizes = [],
+            fourPrizes = [],
+            fivePrizes = [],
+            sixPrizes = [],
+            sevenPrizes = []
+        } = data;
+
+        // ✅ Tối ưu: Sử dụng Set để loại bỏ duplicate ngay từ đầu, nhóm theo đuôi luôn
+        const lotoDuoiMap = new Map(); // Map<đuôi, Set<số>>
+
+        // Helper function để thêm số vào map
+        const addNumber = (num) => {
+            if (!num) return;
+            const lastTwo = getLastTwoDigits(num);
+            if (!lastTwo) return;
+            
+            const tail = lastTwo[1]; // Số đuôi
+            if (!lotoDuoiMap.has(tail)) {
+                lotoDuoiMap.set(tail, new Set());
+            }
+            lotoDuoiMap.get(tail).add(lastTwo);
+        };
+
+        // Thu thập tất cả các số từ các giải
+        if (specialPrize) addNumber(specialPrize);
+        if (firstPrize) addNumber(firstPrize);
+        secondPrize.forEach(addNumber);
+        threePrizes.forEach(addNumber);
+        fourPrizes.forEach(addNumber);
+        fivePrizes.forEach(addNumber);
+        sixPrizes.forEach(addNumber);
+        sevenPrizes.forEach(addNumber);
+
+        // Chuyển đổi Map thành object format
+        const lotoDuoi = {};
+        for (let i = 0; i <= 9; i++) {
+            const tail = i.toString();
+            if (lotoDuoiMap.has(tail)) {
+                const numbers = Array.from(lotoDuoiMap.get(tail))
+                    .sort((a, b) => parseInt(a) - parseInt(b));
+                if (numbers.length > 0) {
+                    lotoDuoi[tail] = numbers.join(', ');
+                }
+            }
+        }
+
+        return lotoDuoi;
+    }, [data]);
+
     // Loading state - hiển thị khi đang loading và chưa có data
     if (loading && showLoading && !data) {
         return (
@@ -142,14 +221,6 @@ const XSMBSimpleTable = ({
         loto = {}
     } = data;
 
-    // Function to get day of week
-    const getDayOfWeek = (dateString) => {
-        if (!dateString) return '';
-        const date = new Date(dateString.split('/').reverse().join('-'));
-        const days = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
-        return days[date.getDay()];
-    };
-
     // Debug log - tạm thời tắt để tránh spam console
     // console.log('🔍 XSMBSimpleTable rendering with data:', data);
 
@@ -163,7 +234,7 @@ const XSMBSimpleTable = ({
                         <thead>
                             <tr>
                                 <th colSpan="13" className={styles.kqcell + ' ' + styles.kq_ngay}>
-                                    {resultDate ? `${getDayOfWeek(resultDate)} - ${resultDate}` : 'Kết quả XSMB'}
+                                    {formattedDate}
                                 </th>
                             </tr>
                         </thead>
@@ -303,16 +374,21 @@ const XSMBSimpleTable = ({
                                 <th>Đầu</th>
                                 <th>&nbsp;</th>
                             </tr>
-                            {Object.entries(loto).map(([digit, numbers]) => (
-                                <tr key={digit}>
-                                    <td className={styles.dauDigitCol}>
-                                        {digit}
-                                    </td>
-                                    <td className={styles[`dau_${digit}`] + ' ' + styles.dauDataCol}>
-                                        {numbers}
-                                    </td>
-                                </tr>
-                            ))}
+                            {/* ✅ Tối ưu: Sử dụng Array.from với length cố định thay vì Object.entries để tránh re-sort */}
+                            {Array.from({ length: 10 }, (_, i) => i.toString()).map((digit) => {
+                                const numbers = loto[digit];
+                                if (!numbers) return null;
+                                return (
+                                    <tr key={digit}>
+                                        <td className={styles.dauDigitCol}>
+                                            {digit}
+                                        </td>
+                                        <td className={styles[`dau_${digit}`] + ' ' + styles.dauDataCol}>
+                                            {numbers}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
 
@@ -323,16 +399,21 @@ const XSMBSimpleTable = ({
                                 <th>Đuôi</th>
                                 <th>&nbsp;</th>
                             </tr>
-                            {Object.entries(loto).map(([digit, numbers]) => (
-                                <tr key={digit}>
-                                    <td className={styles.ditDigitCol}>
-                                        {digit}
-                                    </td>
-                                    <td className={styles[`dit_${digit}`] + ' ' + styles.ditDataCol}>
-                                        {numbers}
-                                    </td>
-                                </tr>
-                            ))}
+                            {/* ✅ Tối ưu: Sử dụng Array.from với length cố định thay vì Object.entries để tránh re-sort */}
+                            {Array.from({ length: 10 }, (_, i) => i.toString()).map((digit) => {
+                                const numbers = calculateLotoDuoi[digit];
+                                if (!numbers) return null;
+                                return (
+                                    <tr key={digit}>
+                                        <td className={styles.ditDigitCol}>
+                                            {digit}
+                                        </td>
+                                        <td className={styles[`dit_${digit}`] + ' ' + styles.ditDataCol}>
+                                            {numbers}
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>
