@@ -205,12 +205,14 @@ const PositionSoiCauLotoPage = ({ initialData, initialDate, initialDays }) => {
                 "offers": {
                     "@type": "Offer",
                     "price": "0",
-                    "priceCurrency": "VND"
+                    "priceCurrency": "VND",
+                    "priceValidUntil": "2027-12-31"
                 },
                 "author": {
                     "@type": "Organization",
                     "name": "Kết Quả MN",
-                    "url": siteUrl
+                    "url": siteUrl,
+                    "image": `${siteUrl}/logo1.png`
                 }
             },
             {

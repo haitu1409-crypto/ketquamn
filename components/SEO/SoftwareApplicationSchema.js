@@ -18,7 +18,8 @@ export default function SoftwareApplicationSchema({ pageName = 'home' }) {
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "VND"
+            "priceCurrency": "VND",
+            "priceValidUntil": "2027-12-31"
         },
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -29,7 +30,9 @@ export default function SoftwareApplicationSchema({ pageName = 'home' }) {
         },
         "author": {
             "@type": "Organization",
-            "name": "Kết Quả MN Team"
+            "name": "Kết Quả MN Team",
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "datePublished": "2024-01-01",
         "dateModified": new Date().toISOString().split('T')[0],

@@ -193,7 +193,8 @@ const Home = memo(function Home() {
                 "author": {
                     "@type": "Organization",
                     "name": "Kết Quả MN | KETQUAMN.COM",
-                    "url": siteUrl
+                    "url": siteUrl,
+                    "image": `${siteUrl}/logo1.png`
                 },
                 "publisher": {
                     "@type": "Organization",
@@ -201,13 +202,15 @@ const Home = memo(function Home() {
                     "logo": {
                         "@type": "ImageObject",
                         "url": `${siteUrl}/logo1.png`
-                    }
+                    },
+                    "image": `${siteUrl}/logo1.png`
                 },
                 "offers": {
                     "@type": "Offer",
                     "price": "0",
                     "priceCurrency": "VND",
-                    "availability": "https://schema.org/InStock"
+                    "availability": "https://schema.org/InStock",
+                    "priceValidUntil": "2027-12-31"
                 },
                 "aggregateRating": {
                     "@type": "AggregateRating",
@@ -245,6 +248,7 @@ const Home = memo(function Home() {
                 "name": "Kết Quả MN | KETQUAMN.COM",
                 "url": siteUrl,
                 "logo": `${siteUrl}/logo1.png`,
+                "image": `${siteUrl}/logo1.png`,
                 "description": "Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số 3 miền nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT. Công cụ tạo dàn số, thống kê xổ số chuyên nghiệp. Miễn phí 100%.",
                 "sameAs": [
                     siteUrl
@@ -269,7 +273,8 @@ const Home = memo(function Home() {
                     "logo": {
                         "@type": "ImageObject",
                         "url": `${siteUrl}/logo1.png`
-                    }
+                    },
+                    "image": `${siteUrl}/logo1.png`
                 },
                 "potentialAction": {
                     "@type": "SearchAction",

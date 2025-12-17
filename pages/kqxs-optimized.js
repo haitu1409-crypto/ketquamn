@@ -42,7 +42,8 @@ const KQXSOptimizedPage = ({ initialData, initialPagination }) => {
                     "url": "https://ketquamn.com/logo1.png",
                     "width": 512,
                     "height": 512
-                }
+                },
+                "image": "https://ketquamn.com/logo1.png"
             }
             // ✅ REMOVED: ItemList should be separate schema
         };

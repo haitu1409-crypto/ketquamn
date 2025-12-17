@@ -103,12 +103,14 @@ const Dan3D4DPage = memo(function Dan3D4DPage() {
         "author": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "step": [
             {

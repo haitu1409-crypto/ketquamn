@@ -122,12 +122,14 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
                 "offers": {
                     "@type": "Offer",
                     "price": "0",
-                    "priceCurrency": "VND"
+                    "priceCurrency": "VND",
+                    "priceValidUntil": "2027-12-31"
                 },
                 "author": {
                     "@type": "Organization",
                     "name": "Kết Quả MN",
-                    "url": siteUrl
+                    "url": siteUrl,
+                    "image": `${siteUrl}/logo1.png`
                 }
             },
             {
@@ -179,8 +181,9 @@ const SoiCauBacCau = ({ initialStats, initialMetadata, initialDays }) => {
                         "item": `${siteUrl}/soi-cau-bac-cau`
                     }
                 ]
-            },
-            generateFAQSchema(faqData)
+            }
+            // ✅ REMOVED: generateFAQSchema(faqData) - FAQPage đã được tạo tự động bởi DynamicSchemaGenerator từ prop faq
+            // Tránh trùng lặp FAQPage schema (Google chỉ cho phép một FAQPage trên mỗi trang)
         ];
     }, [siteUrl, faqData]);
 

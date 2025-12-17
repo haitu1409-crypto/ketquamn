@@ -245,8 +245,8 @@ export function generateAllSchemas({
         schemas.push({
             '@context': 'https://schema.org',
             '@type': 'SoftwareApplication',
-            name: title,
-            description: description,
+            name: title || siteName, // ✅ FIX: Fallback to siteName if title is undefined
+            description: description || 'Công cụ xổ số miễn phí',
             url: fullUrl,
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Web Browser',
@@ -256,7 +256,9 @@ export function generateAllSchemas({
             dateModified: currentDate,
             author: {
                 '@type': 'Organization',
-                name: siteName
+                name: siteName, // ✅ FIX: Ensure name is always present
+                url: siteUrl,
+                image: imageUrl
             },
             publisher: {
                 '@type': 'Organization',
@@ -264,13 +266,15 @@ export function generateAllSchemas({
                 logo: {
                     '@type': 'ImageObject',
                     url: imageUrl
-                }
+                },
+                image: imageUrl
             },
             offers: {
                 '@type': 'Offer',
                 price: '0',
                 priceCurrency: 'VND',
-                availability: 'https://schema.org/InStock'
+                availability: 'https://schema.org/InStock',
+                priceValidUntil: '2027-12-31' // ✅ FIX: Add priceValidUntil
             },
             aggregateRating: {
                 '@type': 'AggregateRating',

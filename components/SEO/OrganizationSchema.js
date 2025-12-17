@@ -60,7 +60,8 @@ export default function OrganizationSchema() {
             "price": "0",
             "priceCurrency": "VND",
             "availability": "https://schema.org/InStock",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "priceValidUntil": "2027-12-31"
         }
     };
 

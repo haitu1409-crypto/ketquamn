@@ -483,26 +483,8 @@ export default function SEOOptimized({
                 }}
             />
 
-            {/* ===== FAQ SCHEMA ===== */}
-            {faq && (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify({
-                            '@context': 'https://schema.org',
-                            '@type': 'FAQPage',
-                            mainEntity: faq.map(item => ({
-                                '@type': 'Question',
-                                name: item.question,
-                                acceptedAnswer: {
-                                    '@type': 'Answer',
-                                    text: item.answer,
-                                },
-                            })),
-                        }),
-                    }}
-                />
-            )}
+            {/* ===== FAQ SCHEMA - REMOVED: Đã được xử lý bởi DynamicSchemaGenerator để tránh trùng lặp ===== */}
+            {/* FAQPage schema chỉ nên được tạo một lần duy nhất trên mỗi trang */}
 
             {/* ===== SITELINKS SEARCHBOX SCHEMA ===== */}
             <script

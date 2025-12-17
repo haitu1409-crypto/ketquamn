@@ -129,7 +129,8 @@ export default function Dan9x0xPage() {
         "offers": {
             "@type": "Offer",
             "price": "0",
-            "priceCurrency": "VND"
+            "priceCurrency": "VND",
+            "priceValidUntil": "2027-12-31"
         },
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -146,12 +147,14 @@ export default function Dan9x0xPage() {
         "author": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         }
     };
 
@@ -193,12 +196,14 @@ export default function Dan9x0xPage() {
         "author": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "step": [
             {

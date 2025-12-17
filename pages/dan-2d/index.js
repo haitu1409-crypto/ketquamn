@@ -97,12 +97,14 @@ const Dan2DPage = memo(function Dan2DPage() {
         "author": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "publisher": {
             "@type": "Organization",
             "name": "Kết Quả MN",
-            "url": "https://ketquamn.com"
+            "url": "https://ketquamn.com",
+            "image": "https://ketquamn.com/logo1.png"
         },
         "step": [
             {

@@ -234,21 +234,8 @@ export default function AdvancedSEO({
             });
         }
 
-        // 4. FAQPage (nếu có)
-        if (faq && faq.length > 0) {
-            schemas.push({
-                '@context': 'https://schema.org',
-                '@type': 'FAQPage',
-                mainEntity: faq.map(item => ({
-                    '@type': 'Question',
-                    name: item.question,
-                    acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: item.answer
-                    }
-                }))
-            });
-        }
+        // 4. FAQPage - REMOVED: Đã được xử lý bởi DynamicSchemaGenerator để tránh trùng lặp
+        // FAQPage schema chỉ nên được tạo một lần duy nhất trên mỗi trang
 
         // 5. Article Schema (nếu là article)
         if (pageType === 'article' && articleData) {

@@ -150,7 +150,8 @@ const KQXSMNPage = memo(function KQXSMNPage() {
                 },
                 'keywords': seoConfig.keywords.slice(0, 50).join(', ')
             },
-            generateFAQSchema(faqData),
+            // ✅ REMOVED: generateFAQSchema(faqData) - FAQPage đã được tạo tự động bởi DynamicSchemaGenerator từ prop faq
+            // Tránh trùng lặp FAQPage schema (Google chỉ cho phép một FAQPage trên mỗi trang)
             {
                 '@context': 'https://schema.org',
                 '@type': 'Dataset',
