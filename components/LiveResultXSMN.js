@@ -113,6 +113,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     const animationTimeoutsRef = useRef(new Map());
     const prizeUpdateTimeoutRef = useRef(null);
     const isCompleteTimeoutRef = useRef(null); // ✅ Debounce setIsComplete
+    const visibilityRequestTimeoutRef = useRef(null); // ✅ Debounce visibility request
     const lastLiveDataRef = useRef(null); // ✅ Track last data để tránh update không cần thiết
 
     // Chuẩn hóa dữ liệu socket (array, object map hoặc object đơn)
@@ -681,6 +682,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 isCompleteTimeoutRef.current = null;
             }
 
+            // ✅ Cleanup visibility request timeout
+            if (visibilityRequestTimeoutRef.current) {
+                clearTimeout(visibilityRequestTimeoutRef.current);
+                visibilityRequestTimeoutRef.current = null;
+            }
+
             xsmnSocketClient.off('xsmn:latest', handleLatest);
             xsmnSocketClient.off('xsmn:latest-all', handleLatestAll);
             xsmnSocketClient.off('xsmn:prize-update', handlePrizeUpdate);
@@ -693,6 +700,57 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             xsmnSocketClient.decrementRef();
         };
     }, [inLiveWindow, isModal, emptyResult, setAnimationWithTimeout]);
+
+    // ✅ OPTIMIZED: Request latest data khi tab active lại để tránh mất dữ liệu
+    // Giải pháp tối ưu: visibilitychange listener + debounce
+    // - Chỉ request khi tab active lại (document.visibilityState === 'visible')
+    // - Chỉ request khi socket connected và trong live window
+    // - Debounce 500ms để tránh request nhiều lần liên tiếp
+    useEffect(() => {
+        // Chỉ setup khi trong live window hoặc modal
+        if (!inLiveWindow && !isModal) return;
+        
+        // Chỉ chạy trên client (không có document trong SSR)
+        if (typeof window === 'undefined' || !document) return;
+
+        const handleVisibilityChange = () => {
+            // Chỉ xử lý khi tab active lại
+            if (document.visibilityState !== 'visible') return;
+            
+            // Chỉ request khi component mounted
+            if (!mountedRef.current) return;
+            
+            // Debounce để tránh request nhiều lần liên tiếp
+            if (visibilityRequestTimeoutRef.current) {
+                clearTimeout(visibilityRequestTimeoutRef.current);
+            }
+            
+            visibilityRequestTimeoutRef.current = setTimeout(() => {
+                // Chỉ request khi socket connected
+                const connectionStatus = xsmnSocketClient.getConnectionStatus();
+                if (connectionStatus.connected && connectionStatus.socket) {
+                    console.log('🔄 Tab active lại, request latest data...');
+                    try {
+                        xsmnSocketClient.requestLatest();
+                    } catch (err) {
+                        console.warn('⚠️ requestLatest khi tab active lỗi:', err.message);
+                    }
+                }
+            }, 500); // Debounce 500ms
+        };
+
+        // Thêm listener
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Cleanup
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            if (visibilityRequestTimeoutRef.current) {
+                clearTimeout(visibilityRequestTimeoutRef.current);
+                visibilityRequestTimeoutRef.current = null;
+            }
+        };
+    }, [inLiveWindow, isModal]);
 
     // Function to get head and tail numbers for statistics
     const getHeadAndTailNumbers = useCallback((item) => {
