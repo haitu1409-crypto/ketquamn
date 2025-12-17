@@ -59,8 +59,8 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         ],
     }), []);
 
-    // Tạo empty result cho các tỉnh
-    const emptyResult = useMemo(() => {
+    // ✅ OPTIMIZED: Helper function để tạo empty result (tái sử dụng logic)
+    const createEmptyResultData = useCallback(() => {
         const targetDate = new Date(today.split('-').reverse().join('-'));
         const dayOfWeekIndex = targetDate.getDay();
         const provinces = provincesByDay[dayOfWeekIndex] || provincesByDay[6];
@@ -95,41 +95,11 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         }));
     }, [today, station, provincesByDay]);
 
-    // ✅ FIX: Khởi tạo với emptyResult ngay từ đầu (giống XSMB) để hiển thị bảng rỗng khi chờ kết quả
-    const [liveData, setLiveData] = useState(() => {
-        const targetDate = new Date(today.split('-').reverse().join('-'));
-        const dayOfWeekIndex = targetDate.getDay();
-        const provinces = provincesByDay[dayOfWeekIndex] || provincesByDay[6];
+    // Tạo empty result cho các tỉnh
+    const emptyResult = useMemo(() => createEmptyResultData(), [createEmptyResultData]);
 
-        return provinces.map(province => ({
-            drawDate: today,
-            station: station,
-            dayOfWeek: targetDate.toLocaleString('vi-VN', { weekday: 'long' }),
-            tentinh: province.tentinh,
-            tinh: province.tinh,
-            year: new Date().getFullYear(),
-            month: new Date().getMonth() + 1,
-            eightPrizes_0: '...',
-            sevenPrizes_0: '...',
-            sixPrizes_0: '...',
-            sixPrizes_1: '...',
-            sixPrizes_2: '...',
-            fivePrizes_0: '...',
-            fourPrizes_0: '...',
-            fourPrizes_1: '...',
-            fourPrizes_2: '...',
-            fourPrizes_3: '...',
-            fourPrizes_4: '...',
-            fourPrizes_5: '...',
-            fourPrizes_6: '...',
-            threePrizes_0: '...',
-            threePrizes_1: '...',
-            secondPrize_0: '...',
-            firstPrize_0: '...',
-            specialPrize_0: '...',
-            lastUpdated: 0,
-        }));
-    });
+    // ✅ OPTIMIZED: Dùng helper function để tránh duplicate logic
+    const [liveData, setLiveData] = useState(() => createEmptyResultData());
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isComplete, setIsComplete] = useState(false);
@@ -699,44 +669,92 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         return { heads, tails };
     }, []);
 
-    // Helper parse date để tránh đảo ngày-tháng khi input dạng DD-MM-YYYY / DD/MM/YYYY
-    const parseDateInput = (dateInput) => {
+    // ✅ OPTIMIZED: Memoize parseDateInput với cache để tránh tính toán lại
+    const parseDateInputCache = useRef(new Map());
+    const parseDateInput = useCallback((dateInput) => {
         if (!dateInput) return null;
         if (dateInput instanceof Date) return dateInput;
 
+        // Cache kết quả
+        if (parseDateInputCache.current.has(dateInput)) {
+            return parseDateInputCache.current.get(dateInput);
+        }
+
+        let result = null;
         if (typeof dateInput === 'string') {
             // DD-MM-YYYY hoặc DD/MM/YYYY
             if (/^\d{2}[-/]\d{2}[-/]\d{4}$/.test(dateInput)) {
                 const [d, m, y] = dateInput.split(/[-/]/).map(Number);
                 const parsed = new Date(y, m - 1, d);
-                if (!isNaN(parsed.getTime())) return parsed;
+                if (!isNaN(parsed.getTime())) result = parsed;
+            } else {
+                // ISO hoặc format khác
+                const iso = new Date(dateInput);
+                if (!isNaN(iso.getTime())) result = iso;
             }
-            // ISO hoặc format khác để Date tự xử lý
-            const iso = new Date(dateInput);
-            if (!isNaN(iso.getTime())) return iso;
-            return null;
         }
 
-        return null;
-    };
+        // Cache kết quả (giới hạn size)
+        if (parseDateInputCache.current.size > 50) {
+            const firstKey = parseDateInputCache.current.keys().next().value;
+            parseDateInputCache.current.delete(firstKey);
+        }
+        if (result) parseDateInputCache.current.set(dateInput, result);
 
-    // Function to format date
-    const formatDate = (dateInput) => {
+        return result;
+    }, []);
+
+    // ✅ OPTIMIZED: Memoize formatDate
+    const formatDateCache = useRef(new Map());
+    const formatDate = useCallback((dateInput) => {
+        if (!dateInput) return '';
+        
+        // Cache kết quả
+        if (formatDateCache.current.has(dateInput)) {
+            return formatDateCache.current.get(dateInput);
+        }
+
         const date = parseDateInput(dateInput);
         if (!date) return '';
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
         const year = date.getFullYear();
-        return `${day}/${month}/${year}`;
-    };
+        const result = `${day}/${month}/${year}`;
 
-    // Function to get day of week
-    const getDayOfWeek = (dateInput) => {
+        // Cache kết quả
+        if (formatDateCache.current.size > 50) {
+            const firstKey = formatDateCache.current.keys().next().value;
+            formatDateCache.current.delete(firstKey);
+        }
+        formatDateCache.current.set(dateInput, result);
+
+        return result;
+    }, [parseDateInput]);
+
+    // ✅ OPTIMIZED: Memoize getDayOfWeek với cache
+    const getDayOfWeekCache = useRef(new Map());
+    const getDayOfWeek = useCallback((dateInput) => {
+        if (!dateInput) return '';
+
+        // Cache kết quả
+        if (getDayOfWeekCache.current.has(dateInput)) {
+            return getDayOfWeekCache.current.get(dateInput);
+        }
+
         const date = parseDateInput(dateInput);
         if (!date) return '';
         const days = ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
-        return days[date.getDay()];
-    };
+        const result = days[date.getDay()];
+
+        // Cache kết quả
+        if (getDayOfWeekCache.current.size > 50) {
+            const firstKey = getDayOfWeekCache.current.keys().next().value;
+            getDayOfWeekCache.current.delete(firstKey);
+        }
+        getDayOfWeekCache.current.set(dateInput, result);
+
+        return result;
+    }, [parseDateInput]);
 
     // ✅ FIX: Render prize value với animation mới giống XSMB - riêng cho từng tỉnh
     const renderPrizeValue = useCallback((tinh, prizeType, value, digits = 5) => {
@@ -808,28 +826,37 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         );
     }
 
-    // ✅ FIX: Giờ liveData luôn có emptyResult từ đầu, không cần fallback nữa
+    // ✅ OPTIMIZED: Memoize displayData và các giá trị tính toán
     const displayData = liveData;
+    
+    // ✅ OPTIMIZED: Memoize formattedDate và dayOfWeekFormatted
+    const formattedDate = useMemo(() => {
+        return formatDate(displayData[0]?.drawDate || today);
+    }, [displayData, today, formatDate]);
+
+    const dayOfWeekFormatted = useMemo(() => {
+        return getDayOfWeek(displayData[0]?.drawDate || today);
+    }, [displayData, today, getDayOfWeek]);
+
     const dayOfWeek = displayData[0]?.dayOfWeek || '';
-    const formattedDate = formatDate(displayData[0]?.drawDate || today);
-    const dayOfWeekFormatted = getDayOfWeek(displayData[0]?.drawDate || today);
 
     // Không hiển thị loading message khi đã có displayData để hiển thị
-    // Vì displayData luôn có dữ liệu (từ liveData hoặc emptyResult), 
-    // nên không cần hiển thị loading message nữa
     const shouldShowLoading = false;
 
-    // Calculate head and tail statistics
-    const allHeads = Array(10).fill().map(() => []);
-    const allTails = Array(10).fill().map(() => []);
-    const stationsData = displayData.map(item => {
-        const { heads, tails } = getHeadAndTailNumbers(item);
-        for (let i = 0; i < 10; i++) {
-            allHeads[i].push(heads[i]);
-            allTails[i].push(tails[i]);
-        }
-        return { tentinh: item.tentinh, tinh: item.tinh };
-    });
+    // ✅ OPTIMIZED: Memoize head and tail statistics để tránh tính toán lại mỗi lần render
+    const { allHeads, allTails, stationsData } = useMemo(() => {
+        const heads = Array(10).fill().map(() => []);
+        const tails = Array(10).fill().map(() => []);
+        const stations = displayData.map(item => {
+            const { heads: itemHeads, tails: itemTails } = getHeadAndTailNumbers(item);
+            for (let i = 0; i < 10; i++) {
+                heads[i].push(itemHeads[i]);
+                tails[i].push(itemTails[i]);
+            }
+            return { tentinh: item.tentinh, tinh: item.tinh };
+        });
+        return { allHeads: heads, allTails: tails, stationsData: stations };
+    }, [displayData, getHeadAndTailNumbers]);
 
     return (
         <div className={styles.containerKQ}>
