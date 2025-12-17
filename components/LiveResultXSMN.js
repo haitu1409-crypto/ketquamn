@@ -922,6 +922,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         {Array.from({ length: displayDigits }).map((_, i) => {
                             // Mỗi digit hiển thị 1 số ngẫu nhiên (đứng yên, random mỗi lần render) - giống XSMB
                             const randomNum = Math.floor(Math.random() * 10);
+                            // ✅ OPTIMIZED: Dùng CSS nth-child thay vì class động để tăng hiệu suất
                             return (
                                 <span key={`${i}-${seed}`} className={styles.digit_rolling}>
                                     <span className={styles.digit_number}>

@@ -511,9 +511,16 @@
     display: inline-block;
     /* Đứng yên, không scroll */
     position: relative;
-    /* GPU optimization */
-    will-change: opacity;
+    /* ✅ OPTIMIZED: GPU acceleration cho animations */
+    will-change: transform;
     transform: translateZ(0);
+}
+
+/* ✅ Background màu cam nhạt cho các số đang animation (không padding để tránh rớt layout) */
+[data-status="animating"] .digit_rolling {
+    background-color: #ffe4cc; /* Màu cam nhạt */
+    border-radius: 6px;
+    /* Không thêm padding để tránh làm rớt layout */
 }
 
 .digit_number {
@@ -525,9 +532,23 @@
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
+    /* ✅ OPTIMIZED: GPU acceleration cho animations */
+    will-change: transform;
+    transform: translateZ(0);
     /* Animation: Fade in/out để tạo hiệu ứng random */
     animation: randomFade 0.1s linear infinite;
     opacity: 1;
+}
+
+/* ✅ OPTIMIZED: Dùng nth-child thay vì class động để tăng hiệu suất */
+/* Vị trí chẵn (1,3,5,7,9...): màu xanh nước biển - nth-child(odd) = vị trí 1,3,5... */
+[data-status="animating"] .digit_container .digit_rolling:nth-child(odd) .digit_number {
+    color: #0066cc;
+}
+
+/* Vị trí lẻ (2,4,6,8...): màu đỏ đậm - nth-child(even) = vị trí 2,4,6... */
+[data-status="animating"] .digit_container .digit_rolling:nth-child(even) .digit_number {
+    color: #cc0000;
 }
 
 /* Animation để các số random thay đổi */

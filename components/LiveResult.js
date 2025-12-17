@@ -37,6 +37,8 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
     const animationThrottleRef = useRef(null);
     const lastAnimatingPrizeRef = useRef(null);
     const prizeUpdateTimeoutRef = useRef(null); // ✅ Ref cho debounce prize updates
+    const visibilityRequestTimeoutRef = useRef(null); // ✅ Debounce visibility request
+    const isCompleteTimeoutRef = useRef(null); // ✅ Debounce setIsComplete
 
     // Animation queue - thứ tự xuất hiện 27 phần tử giải
     const animationQueueRef = useRef([
@@ -230,14 +232,52 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
         }
         // incrementRef() sẽ tự động connect nếu chưa connected
 
+        // ✅ OPTIMIZED: Helper function để check data có thay đổi không (cho single object)
+        const hasDataChanged = (prev, updated) => {
+            if (!prev || !updated) return true;
+            
+            // So sánh các prize fields chính
+            const prizeFields = ['eightPrizes_0', 'sevenPrizes_0', 'sixPrizes_0', 'sixPrizes_1', 'sixPrizes_2',
+                'fivePrizes_0', 'fivePrizes_1', 'fivePrizes_2', 'fivePrizes_3', 'fivePrizes_4', 'fivePrizes_5',
+                'fourPrizes_0', 'fourPrizes_1', 'fourPrizes_2', 'fourPrizes_3',
+                'threePrizes_0', 'threePrizes_1', 'threePrizes_2', 'threePrizes_3', 'threePrizes_4', 'threePrizes_5',
+                'secondPrize_0', 'secondPrize_1', 'firstPrize_0', 'specialPrize_0'];
+            
+            for (const field of prizeFields) {
+                if (prev[field] !== updated[field]) return true;
+            }
+            
+            // So sánh thêm lastUpdated và isComplete để không bỏ sót metadata updates
+            if (prev.lastUpdated !== updated.lastUpdated) return true;
+            if (prev.isComplete !== updated.isComplete) return true;
+            
+            return false;
+        };
+
+        // ✅ OPTIMIZED: Debounce setIsComplete để tránh tính toán mỗi lần update
+        const debouncedSetIsComplete = (isCompleteValue) => {
+            if (isCompleteTimeoutRef.current) {
+                clearTimeout(isCompleteTimeoutRef.current);
+            }
+            isCompleteTimeoutRef.current = setTimeout(() => {
+                setIsComplete(isCompleteValue);
+            }, 100); // Debounce 100ms
+        };
+
         // Listen to events
         const handleLatest = (data) => {
             if (!mountedRef.current) return;
 
             if (data) {
                 const formatted = formatResultForDisplay(data);
-                setLiveData(formatted);
-                setIsComplete(formatted.isComplete || false);
+                // ✅ OPTIMIZATION: Chỉ update state nếu data thực sự thay đổi
+                setLiveData(prev => {
+                    if (hasDataChanged(prev, formatted)) {
+                        debouncedSetIsComplete(formatted.isComplete || false);
+                        return formatted;
+                    }
+                    return prev; // Không thay đổi → return prev để tránh re-render
+                });
             }
             setIsLoading(false);
             setError(null);
@@ -260,8 +300,11 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
 
                 setLiveData(prev => {
                     const updated = { ...prev, [data.prizeType]: data.prizeData, lastUpdated: data.timestamp };
-                    // ✅ Animation sẽ được tự động set bởi useEffect (không cần setAnimationWithTimeout)
-                    return updated;
+                    // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
+                    if (hasDataChanged(prev, updated)) {
+                        return updated;
+                    }
+                    return prev; // Không thay đổi → return prev để tránh re-render
                 });
 
                 setIsLoading(false);
@@ -273,8 +316,14 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             if (!mountedRef.current) return;
 
             const formatted = formatResultForDisplay(data);
-            setLiveData(formatted);
-            setIsComplete(true);
+            // ✅ OPTIMIZATION: Chỉ update state nếu data thực sự thay đổi
+            setLiveData(prev => {
+                if (hasDataChanged(prev, formatted)) {
+                    debouncedSetIsComplete(true);
+                    return formatted;
+                }
+                return prev;
+            });
             setIsLoading(false);
             setError(null);
         };
@@ -283,8 +332,14 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             if (!mountedRef.current) return;
 
             const formatted = formatResultForDisplay(data);
-            setLiveData(formatted);
-            setIsComplete(formatted.isComplete || false);
+            // ✅ OPTIMIZATION: Chỉ update state nếu data thực sự thay đổi
+            setLiveData(prev => {
+                if (hasDataChanged(prev, formatted)) {
+                    debouncedSetIsComplete(formatted.isComplete || false);
+                    return formatted;
+                }
+                return prev;
+            });
             setIsLoading(false);
             setError(null);
         };
@@ -324,6 +379,18 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
                 prizeUpdateTimeoutRef.current = null;
             }
 
+            // ✅ Cleanup visibility request timeout
+            if (visibilityRequestTimeoutRef.current) {
+                clearTimeout(visibilityRequestTimeoutRef.current);
+                visibilityRequestTimeoutRef.current = null;
+            }
+
+            // ✅ Cleanup debounce setIsComplete timeout
+            if (isCompleteTimeoutRef.current) {
+                clearTimeout(isCompleteTimeoutRef.current);
+                isCompleteTimeoutRef.current = null;
+            }
+
             // Remove listeners
             lotterySocketClient.off('lottery:latest', handleLatest);
             lotterySocketClient.off('lottery:prize-update', handlePrizeUpdate);
@@ -336,6 +403,57 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
             // ✅ Reference counting: Giảm reference khi component unmount
             // Tự động disconnect nếu không còn component nào sử dụng
             lotterySocketClient.decrementRef();
+        };
+    }, [inLiveWindow, isModal]);
+
+    // ✅ OPTIMIZED: Request latest data khi tab active lại để tránh mất dữ liệu
+    // Giải pháp tối ưu: visibilitychange listener + debounce
+    // - Chỉ request khi tab active lại (document.visibilityState === 'visible')
+    // - Chỉ request khi socket connected và trong live window
+    // - Debounce 500ms để tránh request nhiều lần liên tiếp
+    useEffect(() => {
+        // Chỉ setup khi trong live window hoặc modal
+        if (!inLiveWindow && !isModal) return;
+        
+        // Chỉ chạy trên client (không có document trong SSR)
+        if (typeof window === 'undefined' || !document) return;
+
+        const handleVisibilityChange = () => {
+            // Chỉ xử lý khi tab active lại
+            if (document.visibilityState !== 'visible') return;
+            
+            // Chỉ request khi component mounted
+            if (!mountedRef.current) return;
+            
+            // Debounce để tránh request nhiều lần liên tiếp
+            if (visibilityRequestTimeoutRef.current) {
+                clearTimeout(visibilityRequestTimeoutRef.current);
+            }
+            
+            visibilityRequestTimeoutRef.current = setTimeout(() => {
+                // Chỉ request khi socket connected
+                const connectionStatus = lotterySocketClient.getConnectionStatus();
+                if (connectionStatus.connected && connectionStatus.socket) {
+                    console.log('🔄 Tab active lại, request latest data...');
+                    try {
+                        lotterySocketClient.requestLatest();
+                    } catch (err) {
+                        console.warn('⚠️ requestLatest khi tab active lỗi:', err.message);
+                    }
+                }
+            }, 500); // Debounce 500ms
+        };
+
+        // Thêm listener
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // Cleanup
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            if (visibilityRequestTimeoutRef.current) {
+                clearTimeout(visibilityRequestTimeoutRef.current);
+                visibilityRequestTimeoutRef.current = null;
+            }
         };
     }, [inLiveWindow, isModal]);
 
@@ -559,6 +677,7 @@ const LiveResult = ({ station = 'xsmb', isModal = false, showChatPreview = false
                             // Mỗi digit hiển thị 1 số ngẫu nhiên (đứng yên, random mỗi lần render)
                             // Sử dụng seed + index để đảm bảo mỗi digit có số khác nhau
                             const randomNum = Math.floor(Math.random() * 10);
+                            // ✅ OPTIMIZED: Dùng CSS nth-child thay vì class động để tăng hiệu suất
                             return (
                                 <span key={`${i}-${seed}`} className={styles.digit_rolling}>
                                     <span className={styles.digit_number}>
