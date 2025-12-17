@@ -38,8 +38,8 @@ const SEO_CONFIG = {
      * ENHANCED: Keyword variations for multi-search engine optimization
      */
     home: {
-        title: 'Kết Quả MN | KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Hôm Nay - Tốt Hơn Xosodaiphat, Xoso.com.vn, Xskt.com.vn - KQXS - XSKT - XSMN - XSMB - XSMT Nhanh Nhất, Chính Xác Nhất 2025',
-        description: 'Kết Quả MN (KETQUAMN.COM) - Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn, xsmn.mobi. XSMN, XSMB, XSMT, KQXSMN, KQXSMB, KQXSMT. Xem kết quả xổ số hôm nay, tra cứu kết quả xổ số, thống kê xổ số 3 miền. Miễn phí 100%, cập nhật trực tiếp.',
+        title: 'KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Nhanh Nhất | Miễn Phí',
+        description: 'Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT cập nhật realtime. Miễn phí 100%!',
         keywords: [
             // ✅ BRAND VARIATIONS - Tất cả cách gõ tìm kiếm
             'Kết Quả MN', 'ket qua MN', 'KETQUAMN.COM', 'ketquamn.com',
@@ -320,8 +320,8 @@ const SEO_CONFIG = {
      * Primary Keywords: tạo dàn 9x0x, dàn 9x0x, cắt dàn 9x0x, lọc dàn 9x
      */
     dan9x0x: {
-        title: 'Tạo Dàn Đề 9x-0x | Lọc Dàn Đề Siêu Cấp - Miễn Phí 2025',
-        description: 'Công cụ tạo dàn 9x-0x ngẫu nhiên chuyên nghiệp. Cắt dàn 9x, lọc dàn 9x, nuôi dàn 9x khung 3-5 ngày. Thuật toán Fisher-Yates chuẩn. Miễn phí 100%!',
+        title: 'Tạo Dàn Đề 9x-0x Miễn Phí | Công Cụ Chuyên Nghiệp | KETQUAMN',
+        description: 'Tạo dàn đề 9x-0x online miễn phí tại KETQUAMN.COM. Cắt dàn, lọc dàn, nuôi dàn khung 3-5 ngày. Thuật toán Fisher-Yates chuẩn. Sử dụng ngay!',
         keywords: [
             // Primary
             'tạo dàn 9x0x', 'dàn 9x0x', 'dàn đề 9x0x',
@@ -408,8 +408,8 @@ const SEO_CONFIG = {
      * SECONDARY: tao dan 2d, dàn 2d, ứng dụng tạo dàn 2d
      */
     dan2d: {
-        title: 'Tạo Dàn Đề 2D - Tạo Mức Số 2D | Công Cụ Lô Đề Miễn Phí 2025',
-        description: 'Tạo dàn đề 2D, tạo mức số 2D (tao dan 2d) online miễn phí. Công cụ tạo dàn lô đề 2 số. Bạch thủ, song thủ, lô đá 2D. Lấy nhanh dàn đề đặc biệt. Chính xác 100%!',
+        title: 'Tạo Dàn Đề 2D Miễn Phí | Bạch Thủ, Song Thủ | KETQUAMN',
+        description: 'Tạo dàn đề 2D, mức số 2D online miễn phí. Bạch thủ, song thủ, lô đá 2D. Công cụ chuyên nghiệp, không cần đăng ký. Sử dụng ngay!',
         keywords: [
             // Primary
             'tạo dàn 2d', 'tạo dàn đề 2d', 'dàn 2d',
@@ -455,8 +455,8 @@ const SEO_CONFIG = {
      * SECONDARY: dàn 3 càng (210), tao dan 3d, tao dan 3 cang
      */
     dan3d4d: {
-        title: 'Tạo Dàn Đề 3D-4D | Tách Dàn Nhanh AB-BC-CD | Mức Số 3-4D Pro 2025',
-        description: 'Tạo dàn đề 3D-4D, tạo mức số 3-4D (tao dan 3d 4d). Tách dàn nhanh thành AB, BC, CD. Công cụ tạo dàn lô đề 3 càng, ghép lotto 4 càng. Dành cho cao thủ!',
+        title: 'Tạo Dàn 3D-4D Miễn Phí | Ghép Lotto 4 Càng | KETQUAMN.COM',
+        description: 'Tạo dàn đề 3D-4D, ghép lotto 4 càng online miễn phí. Tách dàn nhanh AB-BC-CD. Công cụ chuyên nghiệp, không cần đăng ký. Sử dụng ngay!',
         keywords: [
             'tạo dàn 3d',
             'tạo dàn 4d',
@@ -493,8 +493,8 @@ const SEO_CONFIG = {
      * Primary Keywords: dàn đặc biệt, lọc ghép dàn số, lấy nhanh dàn số
      */
     danDacBiet: {
-        title: 'Dàn Đề Đặc Biệt | Lọc Ghép Dàn Đề | Tạo Dàn Đầu Đuôi Tổng Chạm Bộ 2025',
-        description: 'Lọc ghép dàn đề chuyên nghiệp. Tạo dàn đề đặc biệt theo đầu, đuôi, tổng. Tạo dàn đề đầu đuôi chạm bộ. Lấy nhanh dàn đề 36-50 số. Dàn đề bất tử. Miễn phí 100%!',
+        title: 'Dàn Đề Đặc Biệt | Lọc Ghép Dàn Đề | KETQUAMN.COM',
+        description: 'Tạo dàn đề đặc biệt theo đầu, đuôi, tổng, chạm, bộ. Lọc ghép dàn đề chuyên nghiệp. Lấy nhanh dàn 36-50 số. Miễn phí 100%!',
         keywords: [
             'dàn đặc biệt',
             'lọc ghép dàn đề',
@@ -1219,8 +1219,8 @@ const SEO_CONFIG = {
      * ENHANCED: Tối ưu với keywords variations, time-based, competitive
      */
     'kqxs': {
-        title: 'Kết Quả MN | KETQUAMN.COM - XSMB Kết Quả Xổ Số Miền Bắc Hôm Nay Nhanh Nhất | SXMB - KQXSMB - XSTD 2025',
-        description: 'Kết Quả MN (KETQUAMN.COM) - XSMB kết quả xổ số miền Bắc đài truyền thống (xsmb, sxmb, kqxsmb, xstd) hôm nay nhanh nhất, chính xác nhất. Tường thuật trực tiếp lúc 18h15 từ trường quay số 53E Hàng Bài, Hoàn Kiếm, Hà Nội. Xem XSMB 30 ngày, XSMB hôm qua, XSMB theo thứ. Tốt hơn xosodaiphat, xoso.com.vn, xskt.com.vn. Miễn phí 100%!',
+        title: 'XSMB Hôm Nay - Kết Quả Xổ Số Miền Bắc | KETQUAMN.COM',
+        description: 'Xem kết quả XSMB hôm nay nhanh nhất, chính xác nhất. Cập nhật trực tiếp từ 18h15. Xem XSMB 30 ngày, tra cứu lịch sử. Miễn phí 100%!',
         keywords: [
             // ✅ PRIMARY KEYWORDS - Từ khóa chính volume cao
             'xsmb', 'XSMB', 'xs mb', 'xổ số mb',
