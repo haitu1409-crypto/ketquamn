@@ -125,6 +125,8 @@
     font-size: 12px;
     font-weight: 600;
     animation: pulse 2s infinite;
+    will-change: opacity; /* ✅ Tối ưu: hint browser về animation */
+    contain: layout style paint; /* ✅ Tối ưu: isolate layout */
 }
 
 .liveDot {
@@ -133,6 +135,8 @@
     background: white;
     border-radius: 50%;
     animation: blink 1s infinite;
+    will-change: opacity; /* ✅ Tối ưu: hint browser về animation */
+    contain: layout style paint; /* ✅ Tối ưu: isolate layout */
 }
 
 @keyframes pulse {
@@ -234,6 +238,7 @@
 .tableXS td.rowXS {
     transition: background-color 0.2s ease;
     padding: 0 !important;
+    will-change: background-color; /* ✅ Tối ưu: chỉ khi hover */
 }
 
 .tableXS td.rowXS:hover {
@@ -265,6 +270,7 @@
     line-height: 28px;
     vertical-align: middle;
     font-weight: 700;
+    contain: layout style; /* ✅ Tối ưu: isolate layout để tránh reflow */
 }
 
 .running_2 {
@@ -314,6 +320,8 @@
 .digit_container {
     display: inline-flex;
     gap: 0;
+    contain: layout style paint; /* ✅ Tối ưu: isolate layout để tránh reflow */
+    will-change: contents; /* ✅ Tối ưu: hint browser về animation */
 }
 
 .digit_rolling {
@@ -327,10 +335,13 @@
     line-height: 1.2;
     background: transparent;
     color: #d32f2f;
+    contain: layout style paint; /* ✅ Tối ưu: isolate layout */
+    will-change: contents; /* ✅ Tối ưu: hint browser */
 }
 
 .digit_number {
     display: block;
+    contain: layout style; /* ✅ Tối ưu: isolate layout */
 }
 
 .ellipsis {

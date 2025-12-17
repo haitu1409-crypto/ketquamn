@@ -112,6 +112,8 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     const mountedRef = useRef(false);
     const animationTimeoutsRef = useRef(new Map());
     const prizeUpdateTimeoutRef = useRef(null);
+    const isCompleteTimeoutRef = useRef(null); // ✅ Debounce setIsComplete
+    const lastLiveDataRef = useRef(null); // ✅ Track last data để tránh update không cần thiết
 
     // Chuẩn hóa dữ liệu socket (array, object map hoặc object đơn)
     const normalizeToArray = useCallback((incoming) => {
@@ -182,12 +184,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         };
     }, []);
 
-    // ✅ OPTIMIZED: Randomize số khi đang animate (dùng một interval chung)
+    // ✅ OPTIMIZED: Randomize số khi đang animate - tăng interval để giảm re-render (từ 300ms lên 600ms)
     useEffect(() => {
         if (!Object.keys(animatingPrizes).length) return undefined;
         const intervalId = setInterval(() => {
             setRandomSeed(prev => prev + 1);
-        }, 300); // 300ms để giảm tần suất re-render
+        }, 600); // ✅ Tăng lên 600ms để giảm re-render từ 3.3 lần/giây xuống 1.67 lần/giây
         return () => clearInterval(intervalId);
     }, [animatingPrizes]);
 
@@ -307,6 +309,41 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             xsmnSocketClient.requestLatest();
         }
 
+        // ✅ OPTIMIZED: Helper function để check data có thay đổi không
+        // So sánh đầy đủ: prize fields, lastUpdated, và isComplete để đảm bảo không bỏ sót update
+        const hasDataChanged = (prev, updated) => {
+            if (!prev || prev.length !== updated.length) return true;
+            for (let i = 0; i < prev.length; i++) {
+                const prevItem = prev[i];
+                const updatedItem = updated[i];
+                if (prevItem.tinh !== updatedItem.tinh) return true;
+                
+                // So sánh các prize fields chính
+                const prizeFields = ['eightPrizes_0', 'sevenPrizes_0', 'sixPrizes_0', 'sixPrizes_1', 'sixPrizes_2',
+                    'fivePrizes_0', 'fourPrizes_0', 'fourPrizes_1', 'fourPrizes_2', 'fourPrizes_3', 'fourPrizes_4', 'fourPrizes_5', 'fourPrizes_6',
+                    'threePrizes_0', 'threePrizes_1', 'secondPrize_0', 'firstPrize_0', 'specialPrize_0'];
+                for (const field of prizeFields) {
+                    if (prevItem[field] !== updatedItem[field]) return true;
+                }
+                
+                // ✅ FIX: So sánh thêm lastUpdated và isComplete để không bỏ sót metadata updates
+                if (prevItem.lastUpdated !== updatedItem.lastUpdated) return true;
+                if (prevItem.isComplete !== updatedItem.isComplete) return true;
+            }
+            return false;
+        };
+
+        // ✅ OPTIMIZED: Debounce setIsComplete để tránh tính toán mỗi lần update
+        // Giảm delay xuống 100ms để giảm độ trễ hiển thị trạng thái complete
+        const debouncedSetIsComplete = (updated) => {
+            if (isCompleteTimeoutRef.current) {
+                clearTimeout(isCompleteTimeoutRef.current);
+            }
+            isCompleteTimeoutRef.current = setTimeout(() => {
+                setIsComplete(updated.every(item => item.isComplete));
+            }, 100); // Debounce 100ms (giảm từ 200ms để giảm độ trễ)
+        };
+
         // Listen to events
         const handleLatest = (data) => {
             if (!mountedRef.current) return;
@@ -324,25 +361,22 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
 
+                    let updated;
                     // Nếu data là object map (key = tinh), merge vào base
                     if (!Array.isArray(data) && !data.tinh) {
                         // Object map: { 'tinh1': {...}, 'tinh2': {...} }
-                        const updated = base.map(item => {
+                        updated = base.map(item => {
                             const tinh = item.tinh;
                             if (data[tinh]) {
                                 return { ...item, ...data[tinh] };
                             }
                             return item; // Giữ nguyên tỉnh chưa có data
                         });
-                        setIsComplete(updated.every(item => item.isComplete));
-                        return updated;
                     } else if (data.tinh) {
                         // Single province update dạng object
-                        const updated = base.map(item =>
+                        updated = base.map(item =>
                             item.tinh === data.tinh ? { ...item, ...data } : item
                         );
-                        setIsComplete(updated.every(item => item.isComplete));
-                        return updated;
                     } else {
                         // Array - merge từng tỉnh
                         const normalized = normalizeToArray(data);
@@ -351,15 +385,22 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                             const normalizedMap = new Map();
                             normalized.forEach(item => normalizedMap.set(item.tinh, item));
 
-                            const updated = base.map(item => {
+                            updated = base.map(item => {
                                 const found = normalizedMap.get(item.tinh);
                                 return found ? { ...item, ...found } : item;
                             });
-                            setIsComplete(updated.every(item => item.isComplete));
-                            return updated;
+                        } else {
+                            updated = base;
                         }
-                        return base;
                     }
+
+                    // ✅ OPTIMIZATION: Chỉ update state nếu data thực sự thay đổi
+                    if (hasDataChanged(prev, updated)) {
+                        debouncedSetIsComplete(updated);
+                        return updated;
+                    }
+                    // Không thay đổi → return prev để tránh re-render
+                    return prev;
                 });
                 setIsLoading(false);
                 setError(null);
@@ -393,8 +434,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                             }
                             return item; // Giữ nguyên tỉnh chưa có data
                         });
-                        setIsComplete(updated.every(item => item.isComplete));
-                        return updated;
+                        // ✅ FIX: Dùng debouncedSetIsComplete để nhất quán với các handler khác
+                        if (hasDataChanged(prev, updated)) {
+                            debouncedSetIsComplete(updated);
+                            return updated;
+                        }
+                        return prev;
                     } else {
                         // Array hoặc single object - normalize và merge
                         const normalized = normalizeToArray(data);
@@ -407,8 +452,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                                 const found = normalizedMap.get(item.tinh);
                                 return found ? { ...item, ...found } : item;
                             });
-                            setIsComplete(updated.every(item => item.isComplete));
-                            return updated;
+                            // ✅ FIX: Dùng debouncedSetIsComplete và hasDataChanged để nhất quán
+                            if (hasDataChanged(prev, updated)) {
+                                debouncedSetIsComplete(updated);
+                                return updated;
+                            }
+                            return prev;
                         }
                         return base;
                     }
@@ -435,6 +484,13 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
 
                 // Update value ngay (không delay thêm) để giảm độ trễ và re-render thừa
                 setLiveData(prev => {
+                    // ✅ OPTIMIZATION: Chỉ update tỉnh cụ thể, không tạo lại toàn bộ array
+                    const hasChange = prev.some(item => 
+                        item.tinh === data.tinh && item[data.prizeType] !== data.prizeData
+                    );
+                    
+                    if (!hasChange) return prev; // Không thay đổi → tránh re-render
+
                     // ✅ OPTIMIZATION: Dùng Map để tối ưu lookup O(1) thay vì find() O(n)
                     const prevMap = new Map();
                     if (prev && prev.length > 0) {
@@ -446,12 +502,18 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
 
-                    return base.map(item => {
+                    const updated = base.map(item => {
                         if (item.tinh === data.tinh) {
                             return { ...item, [data.prizeType]: data.prizeData, lastUpdated: data.timestamp };
                         }
                         return item;
                     });
+
+                    // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
+                    if (hasDataChanged(prev, updated)) {
+                        return updated;
+                    }
+                    return prev;
                 });
 
                 setIsLoading(false);
@@ -479,8 +541,13 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         const found = dataMap.get(item.tinh);
                         return found ? { ...item, ...found, isComplete: true } : item;
                     });
-                    setIsComplete(updated.every(item => item.isComplete));
-                    return updated;
+                    
+                    // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
+                    if (hasDataChanged(prev, updated)) {
+                        debouncedSetIsComplete(updated);
+                        return updated;
+                    }
+                    return prev;
                 });
             } else if (data) {
                 setLiveData(prev => {
@@ -497,8 +564,13 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                     const updated = base.map(item =>
                         item.tinh === data.tinh ? { ...item, ...data, isComplete: true } : item
                     );
-                    setIsComplete(updated.every(item => item.isComplete));
-                    return updated;
+                    
+                    // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
+                    if (hasDataChanged(prev, updated)) {
+                        debouncedSetIsComplete(updated);
+                        return updated;
+                    }
+                    return prev;
                 });
             }
             setIsLoading(false);
@@ -521,13 +593,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                         return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
                     });
 
+                    let updated;
                     if (data.tinh) {
                         // Single province update
-                        const updated = base.map(item =>
+                        updated = base.map(item =>
                             item.tinh === data.tinh ? { ...item, ...data } : item
                         );
-                        setIsComplete(updated.every(item => item.isComplete));
-                        return updated;
                     } else {
                         // Array hoặc object map - merge
                         const normalized = normalizeToArray(data);
@@ -536,15 +607,21 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                             const normalizedMap = new Map();
                             normalized.forEach(item => normalizedMap.set(item.tinh, item));
 
-                            const updated = base.map(item => {
+                            updated = base.map(item => {
                                 const found = normalizedMap.get(item.tinh);
                                 return found ? { ...item, ...found } : item;
                             });
-                            setIsComplete(updated.every(item => item.isComplete));
-                            return updated;
+                        } else {
+                            updated = base;
                         }
-                        return base;
                     }
+
+                    // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
+                    if (hasDataChanged(prev, updated)) {
+                        debouncedSetIsComplete(updated);
+                        return updated;
+                    }
+                    return prev;
                 });
                 setIsLoading(false);
                 setError(null);
@@ -597,6 +674,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 clearTimeout(timeoutId);
             });
             animationTimeoutsRef.current.clear();
+
+            // ✅ Cleanup debounce timeout
+            if (isCompleteTimeoutRef.current) {
+                clearTimeout(isCompleteTimeoutRef.current);
+                isCompleteTimeoutRef.current = null;
+            }
 
             xsmnSocketClient.off('xsmn:latest', handleLatest);
             xsmnSocketClient.off('xsmn:latest-all', handleLatestAll);
