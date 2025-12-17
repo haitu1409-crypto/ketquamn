@@ -238,8 +238,11 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     }, []);
 
     // Fallback fetch latest via REST khi không có dữ liệu (trường hợp socket chưa trả về)
-    // ✅ FIX: Đơn giản hóa giống XSMB - tin tưởng backend đã filter đúng
+    // ✅ FIX: Chỉ dùng fallback API khi NGOÀI live window (vì trong live window, DB chưa có dữ liệu)
     useEffect(() => {
+        // Nếu đang trong live window, không dùng fallback API (socket sẽ lấy từ snapshot)
+        if (inLiveWindow) return;
+        
         if (liveData && liveData.length > 0) return;
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
         const url = `${apiUrl}/api/xsmn/results/latest10?page=1&limit=10`;
@@ -252,8 +255,6 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 if (!json || !json.data || !Array.isArray(json.data)) return;
                 if (aborted) return;
 
-                // ✅ FIX: Giống XSMB - không filter phức tạp, tin tưởng backend đã trả về đúng
-                // Backend đã query với $gte: today nên chỉ cần lấy data đầu tiên
                 if (json.data.length > 0) {
                     setLiveData(json.data);
                     setIsLoading(false);
@@ -264,7 +265,7 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             }
         })();
         return () => { aborted = true; };
-    }, [liveData, today]);
+    }, [liveData, today, inLiveWindow]);
 
     // Lưu cache khi có dữ liệu mới
     useEffect(() => {
@@ -752,18 +753,16 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             displayDigits = Math.min(digits, 3);
         }
 
-        // ✅ OPTIMIZED: Số ngẫu nhiên đứng yên (không scroll, random mỗi lần render)
+        // ✅ OPTIMIZED: Số ngẫu nhiên đứng yên (không scroll, random mỗi lần render) - giống XSMB
         if (isAnimating && (value === '...' || value === '***' || !value)) {
-            // Sử dụng randomSeed kết hợp hash tỉnh để đảm bảo random khác nhau giữa các tỉnh
-            const hashTinh = (tinh || '').split('').reduce((s, c) => s + c.charCodeAt(0), 0);
-            const seed = randomSeed + hashTinh;
+            // Sử dụng randomSeed để đảm bảo random mỗi lần re-render
+            const seed = randomSeed;
             return (
                 <span className={`${className} ${isSpecialOrEighth ? styles.highlight : ''}`} data-status="animating">
                     <span className={styles.digit_container}>
                         {Array.from({ length: displayDigits }).map((_, i) => {
-                            // Mỗi digit hiển thị 1 số ngẫu nhiên (đứng yên, random mỗi lần render)
-                            // Sử dụng seed + index để đảm bảo mỗi digit có số khác nhau
-                            const randomNum = Math.abs(seed + i) % 10;
+                            // Mỗi digit hiển thị 1 số ngẫu nhiên (đứng yên, random mỗi lần render) - giống XSMB
+                            const randomNum = Math.floor(Math.random() * 10);
                             return (
                                 <span key={`${i}-${seed}`} className={styles.digit_rolling}>
                                     <span className={styles.digit_number}>
