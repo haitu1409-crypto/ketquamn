@@ -312,6 +312,7 @@ function escapeXml(unsafe) {
 
 export async function getServerSideProps({ res }) {
     // Always set headers first - Important for Google to properly parse sitemap
+    res.statusCode = 200;
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -347,9 +348,22 @@ export async function getServerSideProps({ res }) {
         // Write sitemap
         res.write(sitemap);
         res.end();
+        
+        // Return props to prevent Next.js from rendering component
+        return {
+            props: {}
+        };
 
     } catch (error) {
         console.error('[Sitemap] Generation error:', error);
+
+        // Ensure headers are still set even on error
+        if (!res.headersSent) {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+            res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+            res.setHeader('X-Content-Type-Options', 'nosniff');
+        }
 
         // Return comprehensive sitemap on error (without articles)
         const lastmod = new Date().toISOString();
@@ -569,11 +583,12 @@ export async function getServerSideProps({ res }) {
 
         res.write(minimalSitemap);
         res.end();
+        
+        // Return props to prevent Next.js from rendering component
+        return {
+            props: {}
+        };
     }
-
-    return {
-        props: {}
-    };
 }
 
 export default function Sitemap() {
