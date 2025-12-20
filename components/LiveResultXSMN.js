@@ -185,12 +185,12 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         };
     }, []);
 
-    // ✅ OPTIMIZED: Randomize số khi đang animate - tăng interval để giảm re-render (từ 300ms lên 600ms)
+    // ✅ OPTIMIZED: Randomize số khi đang animate - đồng nhất tốc độ với LiveResult (200ms)
     useEffect(() => {
         if (!Object.keys(animatingPrizes).length) return undefined;
         const intervalId = setInterval(() => {
             setRandomSeed(prev => prev + 1);
-        }, 600); // ✅ Tăng lên 600ms để giảm re-render từ 3.3 lần/giây xuống 1.67 lần/giây
+        }, 200); // ✅ Đồng nhất với LiveResult: 200ms = 5 lần/giây (mượt mà hơn)
         return () => clearInterval(intervalId);
     }, [animatingPrizes]);
 
