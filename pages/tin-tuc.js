@@ -160,6 +160,16 @@ const fetchTrendingArticles = async (limit = 8) => {
     return fetchWithCache(`${apiUrl}/api/articles/trending?limit=${limit}`, cacheKey);
 };
 
+const fetchDanDeBatTuArticles = async (limit = 6) => {
+    const cacheKey = `dan-de-bat-tu_${limit}`;
+    return fetchWithCache(`${apiUrl}/api/articles?category=dan-de-bat-tu&limit=${limit}&sort=-publishedAt`, cacheKey);
+};
+
+const fetchSoiCauLoToArticles = async (limit = 6) => {
+    const cacheKey = `soi-cau-lo-to_${limit}`;
+    return fetchWithCache(`${apiUrl}/api/articles?category=soi-cau-lo-to&limit=${limit}&sort=-publishedAt`, cacheKey);
+};
+
 const fetchCategories = async () => {
     const cacheKey = 'categories';
     return fetchWithCache(`${apiUrl}/api/articles/categories`, cacheKey);
@@ -174,58 +184,58 @@ const getFallbackData = (cacheKey) => {
                 articles: [
                     {
                         _id: '1',
-                        title: 'LMHT: Top 10 tướng mạnh nhất phiên bản 14.5',
-                        excerpt: 'Danh sách 10 tướng mạnh nhất meta hiện tại trong Liên Minh Huyền Thoại. Cập nhật mới nhất từ các chuyên gia.',
-                        slug: 'lmht-top-10-tuong-manh-nhat',
-                        category: 'lien-minh-huyen-thoai',
+                        title: 'Kinh Nghiệm Chơi Lô Đề: Bí Quyết Từ Cao Thủ',
+                        excerpt: 'Chia sẻ kinh nghiệm quý báu từ các cao thủ lô đề lâu năm. Các phương pháp và chiến thuật hiệu quả nhất.',
+                        slug: 'kinh-nghiem-choi-lo-de',
+                        category: 'kinh-nghiem',
                         publishedAt: new Date().toISOString(),
                         views: 1250,
                         author: 'Admin',
                         featuredImage: {
                             url: '/imgs/wukong.png',
-                            alt: 'Top 10 tướng mạnh nhất'
+                            alt: 'Kinh nghiệm chơi lô đề'
                         }
                     },
                     {
                         _id: '2',
-                        title: 'Liên Quân Mobile: Hướng dẫn lên rank Cao Thủ mùa mới',
-                        excerpt: 'Chiến thuật và mẹo chơi Liên Quân Mobile hiệu quả. Cách lên rank nhanh, pick tướng đúng meta.',
-                        slug: 'lien-quan-huong-dan-len-rank',
-                        category: 'lien-quan-mobile',
+                        title: 'Soi Cầu Lôtô Miền Bắc Hôm Nay - Phân Tích Chuyên Sâu',
+                        excerpt: 'Phân tích và soi cầu lôtô miền Bắc chính xác nhất. Cập nhật thống kê và dự đoán số may mắn hôm nay.',
+                        slug: 'soi-cau-lo-to-mien-bac',
+                        category: 'soi-cau-lo-to',
                         publishedAt: new Date(Date.now() - 86400000).toISOString(),
                         views: 980,
                         author: 'Admin',
                         featuredImage: {
                             url: '/imgs/wukong.png',
-                            alt: 'Hướng dẫn lên rank'
+                            alt: 'Soi cầu lôtô'
                         }
                     },
                     {
                         _id: '3',
-                        title: 'TFT: Meta đội hình mạnh nhất mùa 12',
-                        excerpt: 'Tổng hợp đội hình Đấu Trường Chân Lý mạnh nhất hiện tại. Hướng dẫn build đội hình chuẩn meta.',
-                        slug: 'tft-meta-doi-hinh-manh-nhat',
-                        category: 'dau-truong-chan-ly-tft',
+                        title: 'Soi Cầu Đặc Biệt: Dự Đoán Số Vàng Ngày Mai',
+                        excerpt: 'Soi cầu đặc biệt chính xác nhất với phương pháp thống kê khoa học. Dự đoán số vàng có khả năng về cao.',
+                        slug: 'soi-cau-dac-biet-du-doan',
+                        category: 'soi-cau-dac-biet',
                         publishedAt: new Date(Date.now() - 172800000).toISOString(),
                         views: 756,
                         author: 'Admin',
                         featuredImage: {
                             url: '/imgs/wukong.png',
-                            alt: 'Meta TFT'
+                            alt: 'Soi cầu đặc biệt'
                         }
                     },
                     {
                         _id: '4',
-                        title: 'Trending: Cộng đồng game Việt nổi sóng với giải đấu mới',
-                        excerpt: 'Tin tức game hot nhất tuần này. Giải đấu esports lớn sắp diễn ra, cập nhật tin game mới nhất.',
-                        slug: 'trending-giai-dau-moi',
-                        category: 'trending',
+                        title: 'Dàn Đề Bất Tử: Bộ Số Vàng Không Bao Giờ Lỗi',
+                        excerpt: 'Dàn đề bất tử được các chuyên gia đánh giá cao. Bộ số vàng với tỷ lệ trúng cao nhất hiện tại.',
+                        slug: 'dan-de-bat-tu-bo-so-vang',
+                        category: 'dan-de-bat-tu',
                         publishedAt: new Date(Date.now() - 259200000).toISOString(),
                         views: 1890,
                         author: 'Admin',
                         featuredImage: {
                             url: '/imgs/wukong.png',
-                            alt: 'Trending game'
+                            alt: 'Dàn đề bất tử'
                         }
                     }
                 ],
@@ -245,44 +255,44 @@ const getFallbackData = (cacheKey) => {
         const allFeaturedArticles = [
             {
                 _id: 'f1',
-                title: 'LMHT: Yasuo vs Yone - Ai mạnh hơn trong meta mới?',
-                excerpt: 'So sánh chi tiết hai anh em Yasuo và Yone trong phiên bản mới. Build trang bị tối ưu và chiến thuật chơi.',
-                slug: 'lmht-yasuo-vs-yone',
-                category: 'lien-minh-huyen-thoai',
+                title: 'Kinh Nghiệm Nuôi Lô Khung 3 Ngày - Tỷ Lệ Thắng Cao',
+                excerpt: 'Chia sẻ phương pháp nuôi lô khung 3 ngày hiệu quả với tỷ lệ thắng cao. Kinh nghiệm từ các cao thủ.',
+                slug: 'kinh-nghiem-nuoi-lo-khung',
+                category: 'kinh-nghiem',
                 publishedAt: new Date().toISOString(),
                 views: 2100,
                 author: 'Admin',
                 featuredImage: {
                     url: '/imgs/wukong.png',
-                    alt: 'Yasuo vs Yone'
+                    alt: 'Nuôi lô khung'
                 }
             },
             {
                 _id: 'f2',
-                title: 'Liên Quân: Top 5 xạ thủ mạnh nhất mùa 31',
-                excerpt: 'Danh sách xạ thủ đáng chơi nhất trong Liên Quân Mobile mùa mới. Cách build và lên đồ hiệu quả.',
-                slug: 'lien-quan-top-xa-thu',
-                category: 'lien-quan-mobile',
+                title: 'Soi Cầu Lôtô Theo Giải - Phương Pháp Chính Xác',
+                excerpt: 'Hướng dẫn soi cầu lôtô theo giải với độ chính xác cao. Phân tích và thống kê chi tiết từng giải.',
+                slug: 'soi-cau-lo-to-theo-giai',
+                category: 'soi-cau-lo-to',
                 publishedAt: new Date(Date.now() - 43200000).toISOString(),
                 views: 1580,
                 author: 'Admin',
                 featuredImage: {
                     url: '/imgs/wukong.png',
-                    alt: 'Top xạ thủ'
+                    alt: 'Soi cầu theo giải'
                 }
             },
             {
                 _id: 'f3',
-                title: 'TFT: Hướng dẫn chơi đội hình 6 Học Viện',
-                excerpt: 'Build đội hình 6 Học Viện mạnh nhất TFT mùa 12. Cách xoay hệ và pick tướng carry chính.',
-                slug: 'tft-doi-hinh-6-hoc-vien',
-                category: 'dau-truong-chan-ly-tft',
+                title: 'Soi Cầu Đặc Biệt Theo Tổng - Bí Quyết Từ Chuyên Gia',
+                excerpt: 'Phương pháp soi cầu đặc biệt theo tổng được các chuyên gia đánh giá cao. Dự đoán chính xác nhất.',
+                slug: 'soi-cau-dac-biet-theo-tong',
+                category: 'soi-cau-dac-biet',
                 publishedAt: new Date(Date.now() - 86400000).toISOString(),
                 views: 1320,
                 author: 'Admin',
                 featuredImage: {
                     url: '/imgs/wukong.png',
-                    alt: '6 Học Viện'
+                    alt: 'Soi cầu theo tổng'
                 }
             }
         ];
@@ -300,44 +310,44 @@ const getFallbackData = (cacheKey) => {
             data: [
                 {
                     _id: 't1',
-                    title: 'LMHT: Faker lập kỷ lục mới tại World Championship',
-                    excerpt: 'Tin game hot: Faker và T1 vô địch CKTG 2024. Phân tích trận đấu và highlight đáng chú ý.',
-                    slug: 'faker-vo-dich-cktg',
-                    category: 'lien-minh-huyen-thoai',
+                    title: 'Dàn Đề Bất Tử 36 Số - Tỷ Lệ Trúng Cao Nhất',
+                    excerpt: 'Dàn đề bất tử 36 số được các chuyên gia khuyên dùng. Tỷ lệ trúng cao và ổn định nhất hiện tại.',
+                    slug: 'dan-de-bat-tu-36-so',
+                    category: 'dan-de-bat-tu',
                     publishedAt: new Date().toISOString(),
                     views: 3200,
                     author: 'Admin',
                     featuredImage: {
                         url: '/imgs/wukong.png',
-                        alt: 'Faker vô địch'
+                        alt: 'Dàn đề 36 số'
                     }
                 },
                 {
                     _id: 't2',
-                    title: 'Liên Quân: Cập nhật tướng mới Nakroth Siêu Phàm',
-                    excerpt: 'Nakroth phiên bản mới với skill set được buff mạnh. Review chi tiết và cách chơi tối ưu.',
-                    slug: 'nakroth-sieu-pham',
-                    category: 'lien-quan-mobile',
+                    title: 'Kinh Nghiệm Bắt Lô Kép - Mẹo Hay Từ Cao Thủ',
+                    excerpt: 'Chia sẻ kinh nghiệm bắt lô kép hiệu quả từ các cao thủ. Các dấu hiệu và cách nhận biết chính xác.',
+                    slug: 'kinh-nghiem-bat-lo-kep',
+                    category: 'kinh-nghiem',
                     publishedAt: new Date(Date.now() - 21600000).toISOString(),
                     views: 1890,
                     author: 'Admin',
                     featuredImage: {
                         url: '/imgs/wukong.png',
-                        alt: 'Nakroth mới'
+                        alt: 'Bắt lô kép'
                     }
                 },
                 {
                     _id: 't3',
-                    title: 'TFT: Patch notes mùa 12 - Thay đổi meta lớn',
-                    excerpt: 'Cập nhật patch notes TFT mới nhất. Những thay đổi quan trọng ảnh hưởng đến meta.',
-                    slug: 'tft-patch-notes-mua-12',
-                    category: 'dau-truong-chan-ly-tft',
+                    title: 'Soi Cầu Lôtô Miền Nam - Dự Đoán Chính Xác',
+                    excerpt: 'Soi cầu lôtô miền Nam với phương pháp thống kê khoa học. Dự đoán số may mắn chính xác nhất.',
+                    slug: 'soi-cau-lo-to-mien-nam',
+                    category: 'soi-cau-lo-to',
                     publishedAt: new Date(Date.now() - 43200000).toISOString(),
                     views: 1650,
                     author: 'Admin',
                     featuredImage: {
                         url: '/imgs/wukong.png',
-                        alt: 'TFT Patch Notes'
+                        alt: 'Soi cầu miền Nam'
                     }
                 }
             ]
@@ -348,10 +358,10 @@ const getFallbackData = (cacheKey) => {
         return {
             success: true,
             data: [
-                { key: 'lien-minh-huyen-thoai', count: 5 },
-                { key: 'lien-quan-mobile', count: 7 },
-                { key: 'dau-truong-chan-ly-tft', count: 12 },
-                { key: 'trending', count: 9 }
+                { key: 'kinh-nghiem', count: 5 },
+                { key: 'soi-cau-lo-to', count: 7 },
+                { key: 'soi-cau-dac-biet', count: 12 },
+                { key: 'dan-de-bat-tu', count: 9 }
             ]
         };
     }
@@ -780,18 +790,18 @@ const CategoryLabel = memo(({ category }) => {
 
 CategoryLabel.displayName = 'CategoryLabel';
 
-// Map old categories (from database) to new game categories
+// Map old categories (from database) to new lottery categories
 const mapOldCategoryToNew = (category) => {
     const mapping = {
-        'du-doan-ket-qua-xo-so': 'lien-minh-huyen-thoai',
-        'dan-de-chuyen-nghiep': 'lien-minh-huyen-thoai',
-        'thong-ke-xo-so': 'lien-minh-huyen-thoai',
-        'giai-ma-giac-mo': 'lien-quan-mobile',
-        'tin-tuc-xo-so': 'lien-quan-mobile',
-        'kinh-nghiem-choi-lo-de': 'dau-truong-chan-ly-tft',
-        'meo-vat-xo-so': 'dau-truong-chan-ly-tft',
-        'phuong-phap-soi-cau': 'trending',
-        'huong-dan-choi': 'trending'
+        'du-doan-ket-qua-xo-so': 'soi-cau-dac-biet',
+        'dan-de-chuyen-nghiep': 'dan-de-bat-tu',
+        'thong-ke-xo-so': 'soi-cau-dac-biet',
+        'giai-ma-giac-mo': 'soi-cau-lo-to',
+        'tin-tuc-xo-so': 'soi-cau-dac-biet',
+        'kinh-nghiem-choi-lo-de': 'kinh-nghiem',
+        'meo-vat-xo-so': 'kinh-nghiem',
+        'phuong-phap-soi-cau': 'soi-cau-lo-to',
+        'huong-dan-choi': 'kinh-nghiem'
     };
     return mapping[category] || category;
 };
@@ -810,7 +820,7 @@ const groupCategories = (categories) => {
     });
 
     // Return as array with desired order
-    const order = ['lien-minh-huyen-thoai', 'lien-quan-mobile', 'dau-truong-chan-ly-tft', 'trending'];
+    const order = ['kinh-nghiem', 'soi-cau-lo-to', 'soi-cau-dac-biet', 'dan-de-bat-tu'];
     return order
         .map(key => grouped[key])
         .filter(cat => cat); // Remove undefined
@@ -827,10 +837,10 @@ const mapNewCategoryForAPI = (newCategory) => {
 const getCategoryColor = (category) => {
     const mappedCategory = mapOldCategoryToNew(category);
     const colors = {
-        'lien-minh-huyen-thoai': '#0397ab',
-        'lien-quan-mobile': '#d32f2f',
-        'dau-truong-chan-ly-tft': '#7c3aed',
-        'trending': '#f59e0b'
+        'kinh-nghiem': '#0397ab',
+        'soi-cau-lo-to': '#d32f2f',
+        'soi-cau-dac-biet': '#7c3aed',
+        'dan-de-bat-tu': '#f59e0b'
     };
     return colors[mappedCategory] || '#6b7280';
 };
@@ -838,10 +848,10 @@ const getCategoryColor = (category) => {
 const getCategoryLabel = (category) => {
     const mappedCategory = mapOldCategoryToNew(category);
     const labels = {
-        'lien-minh-huyen-thoai': 'Liên Minh Huyền Thoại',
-        'lien-quan-mobile': 'Liên Quân Mobile',
-        'dau-truong-chan-ly-tft': 'Đấu Trường Chân Lý TFT',
-        'trending': 'Trending'
+        'kinh-nghiem': 'Kinh Nghiệm',
+        'soi-cau-lo-to': 'Soi Cầu Lôtô',
+        'soi-cau-dac-biet': 'Soi Cầu Đặc Biệt',
+        'dan-de-bat-tu': 'Dàn Đề Bất Tử'
     };
     return labels[mappedCategory] || 'Tin Tức';
 };
@@ -1244,9 +1254,9 @@ const CategoryGrid = memo(({ articles, activeCategory, onChangeCategory }) => {
     }, [updateMaxItems]);
 
     const categories = useMemo(() => [
-        { key: 'lien-minh-huyen-thoai', label: getCategoryLabel('lien-minh-huyen-thoai') },
-        { key: 'lien-quan-mobile', label: getCategoryLabel('lien-quan-mobile') },
-        { key: 'dau-truong-chan-ly-tft', label: getCategoryLabel('dau-truong-chan-ly-tft') }
+        { key: 'dan-de-bat-tu', label: getCategoryLabel('dan-de-bat-tu') },
+        { key: 'soi-cau-lo-to', label: getCategoryLabel('soi-cau-lo-to') },
+        { key: 'soi-cau-dac-biet', label: getCategoryLabel('soi-cau-dac-biet') }
     ], []);
 
     const filtered = useMemo(() => {
@@ -1319,6 +1329,8 @@ export default function NewsPage() {
         articles: [],
         featuredArticles: [],
         trendingArticles: [],
+        danDeBatTuArticles: [],
+        soiCauLoToArticles: [],
         categories: [],
         selectedCategory: null,
         currentPage: 1,
@@ -1327,7 +1339,7 @@ export default function NewsPage() {
         error: null,
         searchQuery: '',
         sortBy: '-publishedAt',
-        categoryGrid: 'lien-minh-huyen-thoai'
+        categoryGrid: 'dan-de-bat-tu'
     });
 
     // State for "Show more" functionality
@@ -1359,7 +1371,7 @@ export default function NewsPage() {
             // Nhưng vì API đã hỗ trợ category mới, ta có thể truyền trực tiếp
             const apiCategory = state.selectedCategory || null;
 
-            const [articlesRes, featuredRes, trendingRes, categoriesRes] = await Promise.allSettled([
+            const [articlesRes, featuredRes, trendingRes, danDeBatTuRes, soiCauLoToRes, categoriesRes] = await Promise.allSettled([
                 fetchArticles({
                     page: state.currentPage,
                     category: null, // Load all, filter on client
@@ -1369,6 +1381,8 @@ export default function NewsPage() {
                 }),
                 fetchFeaturedArticles(10, apiCategory), // Load 10 featured articles theo category
                 fetchTrendingArticles(10), // Load more trending articles
+                fetchDanDeBatTuArticles(6), // Load articles với category "dan-de-bat-tu"
+                fetchSoiCauLoToArticles(6), // Load articles với category "soi-cau-lo-to"
                 fetchCategories()
             ]);
 
@@ -1417,13 +1431,26 @@ export default function NewsPage() {
 
             // Kiểm tra xem response đã được group chưa (có key là category mới không)
             const isAlreadyGrouped = rawCategories.length > 0 &&
-                ['lien-minh-huyen-thoai', 'lien-quan-mobile', 'dau-truong-chan-ly-tft', 'trending']
+                ['kinh-nghiem', 'soi-cau-lo-to', 'soi-cau-dac-biet', 'dan-de-bat-tu']
                     .includes(rawCategories[0].key);
 
             // Nếu đã được group, sử dụng trực tiếp; nếu chưa, group lại
-            const groupedCategories = isAlreadyGrouped
+            let groupedCategories = isAlreadyGrouped
                 ? rawCategories
                 : groupCategories(rawCategories);
+
+            // Đảm bảo tất cả 4 categories luôn hiển thị trong navigation
+            const allCategories = ['kinh-nghiem', 'soi-cau-lo-to', 'soi-cau-dac-biet', 'dan-de-bat-tu'];
+            const existingKeys = groupedCategories.map(cat => cat.key);
+            const missingCategories = allCategories
+                .filter(key => !existingKeys.includes(key))
+                .map(key => ({ key, count: 0 }));
+            
+            // Merge và sắp xếp theo thứ tự mong muốn
+            const mergedCategories = [...groupedCategories, ...missingCategories];
+            groupedCategories = allCategories
+                .map(key => mergedCategories.find(cat => cat.key === key))
+                .filter(cat => cat); // Loại bỏ undefined
 
             // Lấy 10 bài viết mới nhất có isFeatured = true
             // API đã filter theo category và isFeatured rồi
@@ -1443,6 +1470,34 @@ export default function NewsPage() {
             // Reset slide index khi category thay đổi hoặc articles thay đổi
             setFeaturedSlideIndex(0);
 
+            // Lấy articles với category "dan-de-bat-tu"
+            let danDeBatTuArticles = [];
+            if (danDeBatTuRes.status === 'fulfilled' && danDeBatTuRes.value.success) {
+                const articlesData = danDeBatTuRes.value.data;
+                // Kiểm tra xem response có structure như thế nào
+                if (Array.isArray(articlesData)) {
+                    danDeBatTuArticles = articlesData;
+                } else if (articlesData.articles && Array.isArray(articlesData.articles)) {
+                    danDeBatTuArticles = articlesData.articles;
+                } else {
+                    danDeBatTuArticles = [];
+                }
+            }
+
+            // Lấy articles với category "soi-cau-lo-to"
+            let soiCauLoToArticles = [];
+            if (soiCauLoToRes.status === 'fulfilled' && soiCauLoToRes.value.success) {
+                const articlesData = soiCauLoToRes.value.data;
+                // Kiểm tra xem response có structure như thế nào
+                if (Array.isArray(articlesData)) {
+                    soiCauLoToArticles = articlesData;
+                } else if (articlesData.articles && Array.isArray(articlesData.articles)) {
+                    soiCauLoToArticles = articlesData.articles;
+                } else {
+                    soiCauLoToArticles = [];
+                }
+            }
+
             setState(prev => ({
                 ...prev,
                 articles: articles,
@@ -1450,12 +1505,14 @@ export default function NewsPage() {
                 featuredArticles: featuredArticles,
                 trendingArticles: trendingRes.status === 'fulfilled' && trendingRes.value.success
                     ? trendingRes.value.data.slice(0, 6) : [],
+                danDeBatTuArticles: danDeBatTuArticles.slice(0, 6),
+                soiCauLoToArticles: soiCauLoToArticles.slice(0, 6),
                 categories: groupedCategories,
                 loading: false
             }));
 
             // Log any failed requests for debugging
-            const failedRequests = [articlesRes, featuredRes, trendingRes, categoriesRes]
+            const failedRequests = [articlesRes, featuredRes, trendingRes, danDeBatTuRes, soiCauLoToRes, categoriesRes]
                 .filter(result => result.status === 'rejected')
                 .map(result => result.reason);
 
@@ -1527,9 +1584,9 @@ export default function NewsPage() {
     const seoData = useMemo(() => {
         const ogImageUrl = `${siteUrl}/logo1.png`;
         return {
-            title: 'Tin Tức Game - LMHT, Liên Quân, TFT | Cập Nhật 24/7',
-            description: 'Tin tức game mới nhất về Liên Minh Huyền Thoại, Liên Quân Mobile, Đấu Trường Chân Lý TFT. Hướng dẫn, meta, review chuyên sâu. Cập nhật 24/7.',
-            keywords: 'tin tức game, LMHT, League of Legends, Liên Quân Mobile, TFT, Đấu Trường Chân Lý, esports, game MOBA, meta game, hướng dẫn game',
+            title: 'Tin Tức Xổ Số - Kinh Nghiệm, Soi Cầu, Dàn Đề | Cập Nhật 24/7',
+            description: 'Tin tức xổ số mới nhất về kinh nghiệm chơi lô đề, soi cầu lôtô, soi cầu đặc biệt, dàn đề bất tử. Hướng dẫn, phương pháp, thống kê chuyên sâu. Cập nhật 24/7.',
+            keywords: 'tin tức xổ số, kinh nghiệm lô đề, soi cầu lôtô, soi cầu đặc biệt, dàn đề bất tử, thống kê xổ số, dự đoán kết quả xổ số',
             canonical: `${siteUrl}/tin-tuc`,
             ogImage: ogImageUrl,
             ogType: 'website'
@@ -1545,7 +1602,7 @@ export default function NewsPage() {
         url: seoData.canonical,
         publisher: {
             '@type': 'Organization',
-            name: 'S-Games - Tin Tức Game & Esports',
+            name: 'S-Games - Tin Tức Xổ Số & Lô Đề',
             logo: {
                 '@type': 'ImageObject',
                 url: `${siteUrl}/logo1.png`
@@ -1810,76 +1867,33 @@ export default function NewsPage() {
 
                         {/* Enhanced Sidebar */}
                         <aside className={styles.sidebar}>
-                            {/* Trending Articles - Optimized rendering */}
-                            {state.trendingArticles.length > 0 && (
+                            {/* Dàn Đề Bất Tử Articles - Optimized rendering */}
+                            {state.danDeBatTuArticles.length > 0 && (
                                 <div className={styles.sidebarCard}>
                                     <h3 className={styles.sidebarTitle}>
-                                        Tin Nổi Bật
+                                        Dàn Đề Bất Tử
                                     </h3>
                                     <div className={styles.sidebarList}>
-                                        {state.trendingArticles.slice(0, 6).map((article, index) => (
+                                        {state.danDeBatTuArticles.slice(0, 6).map((article, index) => (
                                             <SidebarItem key={article._id} article={article} index={index} />
                                         ))}
                                     </div>
                                 </div>
                             )}
 
-                            {/* Trending Sidebar Items */}
-                            <div className={styles.sidebarCard}>
-                                <h3 className={styles.sidebarTitle}>
-                                    Trending
-                                </h3>
-                                <div className={styles.sidebarList}>
-                                    {[
-                                        {
-                                            _id: 'fixed-1',
-                                            slug: 'thong-ke-xo-so-mien-bac-phan-tich-xu-huong-so-nong-lanh',
-                                            title: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh',
-                                            author: 'Admin',
-                                            publishedAt: new Date('2025-10-06').toISOString(),
-                                            featuredImage: {
-                                                url: '/imgs/wukong.png',
-                                                alt: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh'
-                                            }
-                                        },
-                                        {
-                                            _id: 'fixed-2',
-                                            slug: 'thong-ke-xo-so-mien-bac-phan-tich-xu-huong-so-nong-lanh',
-                                            title: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh',
-                                            author: 'Admin',
-                                            publishedAt: new Date('2025-10-06').toISOString(),
-                                            featuredImage: {
-                                                url: '/imgs/wukong.png',
-                                                alt: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh'
-                                            }
-                                        },
-                                        {
-                                            _id: 'fixed-3',
-                                            slug: 'thong-ke-xo-so-mien-bac-phan-tich-xu-huong-so-nong-lanh',
-                                            title: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh',
-                                            author: 'Admin',
-                                            publishedAt: new Date('2025-10-06').toISOString(),
-                                            featuredImage: {
-                                                url: '/imgs/wukong.png',
-                                                alt: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh'
-                                            }
-                                        },
-                                        {
-                                            _id: 'fixed-4',
-                                            slug: 'thong-ke-xo-so-mien-bac-phan-tich-xu-huong-so-nong-lanh',
-                                            title: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh',
-                                            author: 'Admin',
-                                            publishedAt: new Date('2025-10-06').toISOString(),
-                                            featuredImage: {
-                                                url: '/imgs/wukong.png',
-                                                alt: 'Thống Kê Xổ Số Miền Bắc - Phân Tích Xu Hướng Số Nóng Lạnh'
-                                            }
-                                        }
-                                    ].map((article, index) => (
-                                        <SidebarItem key={article._id} article={article} index={index + state.trendingArticles.length} />
-                                    ))}
+                            {/* Soi Cầu Lôtô Articles - Optimized rendering */}
+                            {state.soiCauLoToArticles.length > 0 && (
+                                <div className={styles.sidebarCard}>
+                                    <h3 className={styles.sidebarTitle}>
+                                        Soi Cầu Lôtô
+                                    </h3>
+                                    <div className={styles.sidebarList}>
+                                        {state.soiCauLoToArticles.slice(0, 6).map((article, index) => (
+                                            <SidebarItem key={article._id} article={article} index={index + state.danDeBatTuArticles.length} />
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                         </aside>
                     </div>

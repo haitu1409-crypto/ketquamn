@@ -925,10 +925,10 @@ export default function EditArticle() {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com';
 
     const categories = [
-        { value: 'lien-minh-huyen-thoai', label: 'Liên Minh Huyền Thoại' },
-        { value: 'lien-quan-mobile', label: 'Liên Quân Mobile' },
-        { value: 'dau-truong-chan-ly-tft', label: 'Đấu Trường Chân Lý TFT' },
-        { value: 'trending', label: 'Trending' }
+        { value: 'kinh-nghiem', label: 'Kinh Nghiệm' },
+        { value: 'soi-cau-lo-to', label: 'Soi Cầu Lôtô' },
+        { value: 'soi-cau-dac-biet', label: 'Soi Cầu Đặc Biệt' },
+        { value: 'dan-de-bat-tu', label: 'Dàn Đề Bất Tử' }
     ];
 
     const handleInputChange = (field, value) => {

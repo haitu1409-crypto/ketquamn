@@ -436,15 +436,15 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
     // Map old categories to new categories (đồng bộ với tin-tuc.js)
     const mapOldCategoryToNew = useCallback((category) => {
         const mapping = {
-            'du-doan-ket-qua-xo-so': 'lien-minh-huyen-thoai',
-            'dan-de-chuyen-nghiep': 'lien-minh-huyen-thoai',
-            'thong-ke-xo-so': 'lien-minh-huyen-thoai',
-            'giai-ma-giac-mo': 'lien-quan-mobile',
-            'tin-tuc-xo-so': 'lien-quan-mobile',
-            'kinh-nghiem-choi-lo-de': 'dau-truong-chan-ly-tft',
-            'meo-vat-xo-so': 'dau-truong-chan-ly-tft',
-            'phuong-phap-soi-cau': 'trending',
-            'huong-dan-choi': 'trending'
+            'du-doan-ket-qua-xo-so': 'soi-cau-dac-biet',
+            'dan-de-chuyen-nghiep': 'dan-de-bat-tu',
+            'thong-ke-xo-so': 'soi-cau-dac-biet',
+            'giai-ma-giac-mo': 'soi-cau-lo-to',
+            'tin-tuc-xo-so': 'soi-cau-dac-biet',
+            'kinh-nghiem-choi-lo-de': 'kinh-nghiem',
+            'meo-vat-xo-so': 'kinh-nghiem',
+            'phuong-phap-soi-cau': 'soi-cau-lo-to',
+            'huong-dan-choi': 'kinh-nghiem'
         };
         return mapping[category] || category;
     }, []);
@@ -452,10 +452,10 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
     const getCategoryColor = useCallback((category) => {
         const mappedCategory = mapOldCategoryToNew(category);
         const colors = {
-            'lien-minh-huyen-thoai': '#0397ab',
-            'lien-quan-mobile': '#d32f2f',
-            'dau-truong-chan-ly-tft': '#7c3aed',
-            'trending': '#f59e0b'
+            'kinh-nghiem': '#0397ab',
+            'soi-cau-lo-to': '#d32f2f',
+            'soi-cau-dac-biet': '#7c3aed',
+            'dan-de-bat-tu': '#f59e0b'
         };
         return colors[mappedCategory] || '#6b7280';
     }, [mapOldCategoryToNew]);
@@ -463,10 +463,10 @@ export default function ArticleDetailPage({ article: initialArticle, seoData: in
     const getCategoryLabel = useCallback((category) => {
         const mappedCategory = mapOldCategoryToNew(category);
         const labels = {
-            'lien-minh-huyen-thoai': 'Liên Minh Huyền Thoại',
-            'lien-quan-mobile': 'Liên Quân Mobile',
-            'dau-truong-chan-ly-tft': 'Đấu Trường Chân Lý TFT',
-            'trending': 'Trending'
+            'kinh-nghiem': 'Kinh Nghiệm',
+            'soi-cau-lo-to': 'Soi Cầu Lôtô',
+            'soi-cau-dac-biet': 'Soi Cầu Đặc Biệt',
+            'dan-de-bat-tu': 'Dàn Đề Bất Tử'
         };
         return labels[mappedCategory] || 'Tin Tức';
     }, [mapOldCategoryToNew]);
