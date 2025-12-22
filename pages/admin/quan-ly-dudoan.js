@@ -63,12 +63,46 @@ export default function ManagePredictions() {
             const response = await fetch(url);
             const result = await response.json();
 
-            if (result.success) {
-                setPredictions(result.data.predictions);
-                setTotalPages(result.data.pagination.totalPages);
+            if (result.success && result.data) {
+                // Xử lý các cấu trúc response khác nhau
+                let predictionsList = [];
+                let paginationData = null;
+
+                // Kiểm tra nếu data là array trực tiếp
+                if (Array.isArray(result.data)) {
+                    predictionsList = result.data;
+                    paginationData = { totalPages: 1 };
+                }
+                // Kiểm tra nếu data có predictions array
+                else if (result.data.predictions && Array.isArray(result.data.predictions)) {
+                    predictionsList = result.data.predictions;
+                    paginationData = result.data.pagination || { totalPages: 1 };
+                }
+                // Kiểm tra nếu data có data array (nested)
+                else if (result.data.data && Array.isArray(result.data.data)) {
+                    predictionsList = result.data.data;
+                    paginationData = result.data.pagination || result.pagination || { totalPages: 1 };
+                }
+                // Fallback: thử dùng data như một array
+                else {
+                    console.warn('Unexpected response structure:', result);
+                    predictionsList = [];
+                    paginationData = { totalPages: 1 };
+                }
+
+                setPredictions(predictionsList);
+                setTotalPages(paginationData?.totalPages || 1);
+            } else {
+                // Nếu không thành công, set giá trị mặc định
+                setPredictions([]);
+                setTotalPages(1);
+                console.warn('API response not successful:', result);
             }
         } catch (error) {
             console.error('Error fetching predictions:', error);
+            // Set giá trị mặc định khi có lỗi
+            setPredictions([]);
+            setTotalPages(1);
         } finally {
             setLoading(false);
         }
@@ -111,7 +145,8 @@ export default function ManagePredictions() {
         return `${day}/${month}/${year}`;
     };
 
-    const filteredPredictions = predictions.filter(prediction => {
+    const filteredPredictions = (predictions || []).filter(prediction => {
+        if (!prediction || !prediction.predictionDate) return false;
         const dateStr = formatDate(prediction.predictionDate);
         return dateStr.includes(searchTerm);
     });
