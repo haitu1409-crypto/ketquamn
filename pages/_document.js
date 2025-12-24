@@ -41,7 +41,8 @@ export default function Document() {
                 {/* Removed unnecessary preloads to avoid browser warnings */}
 
                 {/* ===== CRITICAL CSS FOR CLS PREVENTION ===== */}
-                <link rel="preload" href="/styles/critical.css" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
+                {/* ✅ Mobile Performance: Load critical CSS immediately, no async */}
+                <link rel="stylesheet" href="/styles/critical.css" />
                 <noscript><link rel="stylesheet" href="/styles/critical.css" /></noscript>
 
                 {/* ===== GOOGLE ANALYTICS (gtag.js) - LAZY LOAD ===== */}
@@ -210,8 +211,8 @@ export default function Document() {
                 {/* ===== NEXT.JS SCRIPTS ===== */}
                 <NextScript />
 
-                {/* ===== TRACKING ERROR HANDLER - EARLY INIT ===== */}
-                <script dangerouslySetInnerHTML={{
+                {/* ===== TRACKING ERROR HANDLER - DEFERRED FOR MOBILE PERFORMANCE ===== */}
+                <script defer dangerouslySetInnerHTML={{
                     __html: `
                         // Early tracking error prevention
                         (function() {
@@ -352,8 +353,8 @@ export default function Document() {
                     `
                 }} />
 
-                {/* ===== TRACKING ERROR HANDLER ===== */}
-                <script dangerouslySetInnerHTML={{
+                {/* ===== TRACKING ERROR HANDLER - DEFERRED FOR MOBILE PERFORMANCE ===== */}
+                <script defer dangerouslySetInnerHTML={{
                     __html: `
                         // Initialize tracking error handling
                         if (typeof window !== 'undefined') {
