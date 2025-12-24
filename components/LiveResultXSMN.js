@@ -112,6 +112,8 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
     const mountedRef = useRef(false);
     const animationTimeoutsRef = useRef(new Map());
     const prizeUpdateTimeoutRef = useRef(null);
+    const prizeUpdateQueueRef = useRef([]); // ✅ Queue-based processing để không mất updates
+    const MAX_QUEUE_SIZE = 50; // ✅ Giới hạn queue size để tránh memory leak
     const isCompleteTimeoutRef = useRef(null); // ✅ Debounce setIsComplete
     const visibilityRequestTimeoutRef = useRef(null); // ✅ Debounce visibility request
     const lastLiveDataRef = useRef(null); // ✅ Track last data để tránh update không cần thiết
@@ -411,6 +413,14 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
         // Server emit khi không truyền specificTinh (map theo tỉnh)
         const handleLatestAll = (data) => {
             if (!mountedRef.current) return;
+            
+            // ✅ Clear queue khi nhận latest-all để tránh race condition
+            prizeUpdateQueueRef.current = [];
+            if (prizeUpdateTimeoutRef.current) {
+                clearTimeout(prizeUpdateTimeoutRef.current);
+                prizeUpdateTimeoutRef.current = null;
+            }
+            
             // ✅ FIX: Merge data thay vì replace toàn bộ để giữ lại các tỉnh chưa có data
             if (data && typeof data === 'object') {
                 setLiveData(prev => {
@@ -468,57 +478,94 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
             }
         };
 
+        // ✅ Queue-based processing: Xử lý tất cả updates trong queue để không mất updates
+        const processQueue = () => {
+            if (!mountedRef.current) return;
+
+            const updates = prizeUpdateQueueRef.current;
+            if (updates.length === 0) return;
+
+            // Clear queue ngay để tránh race condition
+            prizeUpdateQueueRef.current = [];
+
+            // ✅ Chỉ trigger animation cho update đầu tiên của mỗi tỉnh/prizeType để tránh animation conflicts
+            const animatedPrizes = new Set();
+            updates.forEach(update => {
+                if (update.prizeData && update.prizeData !== '...' && update.prizeData !== '***') {
+                    const key = `${update.tinh}-${update.prizeType}`;
+                    if (!animatedPrizes.has(key)) {
+                        animatedPrizes.add(key);
+                        setAnimationWithTimeout(update.tinh, update.prizeType);
+                    }
+                }
+            });
+
+            // Merge tất cả updates cùng lúc
+            setLiveData(prev => {
+                // ✅ OPTIMIZATION: Dùng Map để tối ưu lookup O(1) thay vì find() O(n)
+                const prevMap = new Map();
+                if (prev && prev.length > 0) {
+                    prev.forEach(item => prevMap.set(item.tinh, item));
+                }
+
+                // ✅ FIX: Luôn dùng emptyResult làm base để đảm bảo có đủ tất cả tỉnh theo ngày
+                let updated = emptyResult.map(emptyItem => {
+                    return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
+                });
+
+                // Apply tất cả updates trong queue
+                updates.forEach(update => {
+                    updated = updated.map(item => {
+                        if (item.tinh === update.tinh) {
+                            return { ...item, [update.prizeType]: update.prizeData, lastUpdated: update.timestamp };
+                        }
+                        return item;
+                    });
+                });
+
+                // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
+                if (hasDataChanged(prev, updated)) {
+                    return updated;
+                }
+                return prev;
+            });
+
+            setIsLoading(false);
+            setError(null);
+        };
+
         const handlePrizeUpdate = (data) => {
             if (!mountedRef.current) return;
 
+            // ✅ Deduplicate: Chỉ giữ update mới nhất cho cùng tinh+prizeType
+            const existingIndex = prizeUpdateQueueRef.current.findIndex(
+                u => u.tinh === data.tinh && u.prizeType === data.prizeType
+            );
+
+            if (existingIndex >= 0) {
+                prizeUpdateQueueRef.current[existingIndex] = data; // Replace duplicate
+            } else {
+                prizeUpdateQueueRef.current.push(data); // Add new
+            }
+
+            // ✅ Giới hạn queue size để tránh memory leak
+            if (prizeUpdateQueueRef.current.length >= MAX_QUEUE_SIZE) {
+                // Xử lý queue ngay lập tức thay vì chờ timeout
+                if (prizeUpdateTimeoutRef.current) {
+                    clearTimeout(prizeUpdateTimeoutRef.current);
+                    prizeUpdateTimeoutRef.current = null;
+                }
+                processQueue();
+                return;
+            }
+
+            // Schedule processing sau 50ms
             if (prizeUpdateTimeoutRef.current) {
                 clearTimeout(prizeUpdateTimeoutRef.current);
             }
 
             prizeUpdateTimeoutRef.current = setTimeout(() => {
-                if (!mountedRef.current) return;
-
-                // ✅ Trigger animation TRƯỚC khi update value để animation có thời gian hiển thị
-                if (data.prizeData && data.prizeData !== '...' && data.prizeData !== '***') {
-                    setAnimationWithTimeout(data.tinh, data.prizeType);
-                }
-
-                // Update value ngay (không delay thêm) để giảm độ trễ và re-render thừa
-                setLiveData(prev => {
-                    // ✅ OPTIMIZATION: Chỉ update tỉnh cụ thể, không tạo lại toàn bộ array
-                    const hasChange = prev.some(item => 
-                        item.tinh === data.tinh && item[data.prizeType] !== data.prizeData
-                    );
-                    
-                    if (!hasChange) return prev; // Không thay đổi → tránh re-render
-
-                    // ✅ OPTIMIZATION: Dùng Map để tối ưu lookup O(1) thay vì find() O(n)
-                    const prevMap = new Map();
-                    if (prev && prev.length > 0) {
-                        prev.forEach(item => prevMap.set(item.tinh, item));
-                    }
-
-                    // ✅ FIX: Luôn dùng emptyResult làm base để đảm bảo có đủ tất cả tỉnh theo ngày
-                    const base = emptyResult.map(emptyItem => {
-                        return prevMap.get(emptyItem.tinh) || emptyItem; // O(1) lookup
-                    });
-
-                    const updated = base.map(item => {
-                        if (item.tinh === data.tinh) {
-                            return { ...item, [data.prizeType]: data.prizeData, lastUpdated: data.timestamp };
-                        }
-                        return item;
-                    });
-
-                    // ✅ OPTIMIZATION: Chỉ update nếu thực sự thay đổi
-                    if (hasDataChanged(prev, updated)) {
-                        return updated;
-                    }
-                    return prev;
-                });
-
-                setIsLoading(false);
-                setError(null);
+                processQueue();
             }, 50);
         };
 
@@ -669,6 +716,9 @@ const LiveResultXSMN = ({ station = 'xsmn', isModal = false, showChatPreview = f
                 clearTimeout(prizeUpdateTimeoutRef.current);
                 prizeUpdateTimeoutRef.current = null;
             }
+
+            // ✅ Clear queue khi unmount để tránh memory leak
+            prizeUpdateQueueRef.current = [];
 
             // Clear animation timeouts
             animationTimeoutsRef.current.forEach((timeoutId) => {
