@@ -36,6 +36,7 @@
     flex: 1;
     overflow-x: auto;
     min-width: 0;
+    max-width: 100%;
 }
 
 .sideTablesContainer {
@@ -45,6 +46,10 @@
     flex-shrink: 0;
     width: auto;
     justify-content: center;
+    overflow-x: auto;
+    min-width: 0;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
 
 .kqxs {
@@ -429,7 +434,7 @@
     table-layout: fixed;
     text-align: center;
     width: auto;
-    max-width: 280px;
+    max-width: 100%;
     min-width: 260px;
     align-self: flex-start;
 }
@@ -465,6 +470,7 @@
 .dauDataCol {
     width: 260px !important;
     max-width: 260px !important;
+    min-width: 200px !important;
     padding: 0 !important;
     font-size: 18px !important;
     text-align: center !important;
@@ -522,7 +528,7 @@
     background: #ffffff;
     table-layout: fixed;
     width: auto;
-    max-width: 280px;
+    max-width: 100%;
     min-width: 260px;
     align-self: flex-start;
 }
@@ -559,6 +565,7 @@
 .ditDataCol {
     /* width: 260px !important; */
     max-width: 260px !important;
+    min-width: 200px !important;
     padding: 0 !important;
     font-size: 18px !important;
     text-align: center !important;
@@ -611,6 +618,25 @@
     font-weight: 700;
 }
 
+/* Responsive cho tablet và màn hình nhỏ */
+@media (max-width: 1200px) {
+    .sideTablesContainer {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .dau,
+    .dit {
+        min-width: 240px;
+    }
+
+    .dauDataCol,
+    .ditDataCol {
+        min-width: 180px !important;
+        max-width: 240px !important;
+    }
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .horizontalLayout {
@@ -626,6 +652,20 @@
         gap: 15px;
         justify-content: center;
         flex-shrink: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .dau,
+    .dit {
+        min-width: 240px;
+        max-width: 100%;
+    }
+
+    .dauDataCol,
+    .ditDataCol {
+        min-width: 180px !important;
+        max-width: 240px !important;
     }
 }
 
@@ -694,7 +734,16 @@
     .ditDataCol {
         min-width: 0 !important;
         max-width: none !important;
+        width: auto !important;
         padding: 0 !important;
+    }
+
+    .dau th:not(:first-child),
+    .dit th:not(:first-child) {
+        max-width: none !important;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
     }
 
     .kqxs {
