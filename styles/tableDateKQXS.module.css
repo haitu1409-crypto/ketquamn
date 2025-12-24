@@ -17,7 +17,7 @@
 }
 
 .header {
-    background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+    background: linear-gradient(135deg, #FFE5D9 0%, #FFD4C4 100%);
     padding: 5px 5px;
 }
 
@@ -26,7 +26,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     text-align: center;
-    color: #ffffff;
+    color: #8B4513;
     line-height: 1.4;
 }
 

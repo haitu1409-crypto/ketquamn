@@ -500,25 +500,17 @@
     overflow: visible;
     /* padding: var(--spacing-6) 0; */
     animation: fadeIn var(--transition-slow) ease-out;
-    /* ✅ PERFORMANCE: Background image chỉ hiển thị trên desktop */
-    background-image: url('/imgs/background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* Fallback background color */
-    /* background-color: var(--bg-secondary); */
+    /* ✅ Background color thay vì hình ảnh */
+    background-color: #e0e0e073;
     /* ✅ CRITICAL: Ensure main doesn't create stacking context that breaks sticky */
     position: relative;
     z-index: 1;
 }
 
-/* ✅ PERFORMANCE: Ẩn background image trên mobile để tăng hiệu suất */
+/* ✅ Mobile: Sử dụng cùng màu nền */
 @media (max-width: 767px) {
     .main {
-        background-image: none !important;
-        background-color: var(--color-white);
-        /* Sử dụng màu nền thay vì hình ảnh trên mobile */
+        background-color: #e0e0e073;
     }
 }
 

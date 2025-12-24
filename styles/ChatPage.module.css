@@ -11,21 +11,15 @@
     min-height: var(--app-height, 100vh);
     padding: 0;
     margin: 0;
-    background: #f5f5f5;
-    /* ✅ PERFORMANCE: Background image chỉ hiển thị trên desktop */
-    background-image: url('/imgs/background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* ✅ Background color thay vì hình ảnh */
+    background-color: #e0e0e073;
     z-index: 1000;
 }
 
-/* ✅ PERFORMANCE: Ẩn background image trên mobile để tăng hiệu suất */
+/* ✅ Mobile: Sử dụng cùng màu nền */
 @media (max-width: 767px) {
     .chatPage {
-        background-image: none !important;
-        background-color: #f5f5f5;
+        background-color: #e0e0e073;
     }
     overflow: hidden;
     box-sizing: border-box;

@@ -196,22 +196,6 @@ export default function Document() {
             h1 {
             }
             
-            h2 {
-              min-height: 2rem !important;
-              height: 2rem !important;
-              overflow: hidden !important;
-              text-overflow: ellipsis !important;
-              white-space: nowrap !important;
-            }
-            
-            h3 {
-              min-height: 1.75rem !important;
-              height: 1.75rem !important;
-              overflow: hidden !important;
-              text-overflow: ellipsis !important;
-              white-space: nowrap !important;
-            }
-            
             @keyframes loading {
               0% { background-position: 200% 0; }
               100% { background-position: -200% 0; }

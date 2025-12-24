@@ -910,7 +910,6 @@ const HeroArticle = memo(({ article }) => {
     return (
         <Link href={`/tin-tuc/${article.slug}`} className={styles.heroPost}>
             <div className={styles.heroImageContainer}>
-                <CategoryLabel category={article.category} />
                 <OptimizedImage
                     src={article.featuredImage?.url}
                     alt={article.featuredImage?.alt || article.title}
@@ -923,12 +922,6 @@ const HeroArticle = memo(({ article }) => {
                 />
             </div>
             <div className={styles.heroContent}>
-                <span
-                    className={styles.heroCategory}
-                    style={{ backgroundColor: categoryColor }}
-                >
-                    {categoryLabel}
-                </span>
                 <h1 className={styles.heroTitle}>{article.title}</h1>
                 <p className={styles.heroExcerpt}>{article.excerpt}</p>
                 <div className={styles.heroMeta}>
@@ -953,7 +946,6 @@ HeroArticle.displayName = 'HeroArticle';
 const FeaturedCard = memo(({ article, index }) => (
     <Link href={`/tin-tuc/${article.slug}`} className={styles.featuredCard}>
         <div className={styles.featuredImageContainer}>
-            <CategoryLabel category={article.category} />
             <OptimizedImage
                 src={article.featuredImage?.url}
                 alt={article.featuredImage?.alt || article.title}
@@ -981,7 +973,7 @@ const FeaturedSlider = memo(({ articles, currentIndex, onNext, onPrev, onGoToSli
     if (!articles || articles.length === 0) return null;
 
     const [slidesPerView, setSlidesPerView] = useState(
-        typeof window !== 'undefined' && window.innerWidth <= 768 ? 1 : 3
+        typeof window !== 'undefined' && window.innerWidth <= 768 ? 2 : 3
     );
     const trackRef = useRef(null);
     const resizeTimeoutRef = useRef(null);
@@ -996,7 +988,7 @@ const FeaturedSlider = memo(({ articles, currentIndex, onNext, onPrev, onGoToSli
     const updateSlidesPerView = useCallback(() => {
         if (typeof window === 'undefined') return;
         const isMobile = window.innerWidth <= 768;
-        setSlidesPerView(isMobile ? 1 : 3);
+        setSlidesPerView(isMobile ? 2 : 3);
     }, []);
 
     // Update slidesPerView on resize with throttling
@@ -1130,7 +1122,6 @@ const ArticleCard = memo(({ article, index }) => {
     return (
         <Link href={`/tin-tuc/${article.slug}`} className={styles.articleListItem}>
             <div className={styles.articleListImageContainer}>
-                <CategoryLabel category={article.category} />
                 <OptimizedImage
                     src={article.featuredImage?.url}
                     alt={article.featuredImage?.alt || article.title}
@@ -1182,7 +1173,6 @@ const SidebarItem = memo(({ article, index }) => {
     return (
         <Link href={`/tin-tuc/${article.slug}`} className={styles.sidebarItem}>
             <div className={styles.sidebarItemImageWrapper}>
-                <CategoryLabel category={article.category} />
                 <OptimizedImage
                     src={article.featuredImage?.url}
                     alt={article.featuredImage?.alt || article.title}
@@ -1196,6 +1186,9 @@ const SidebarItem = memo(({ article, index }) => {
             </div>
             <div className={styles.sidebarItemContent}>
                 <h4 className={styles.sidebarItemTitle}>{article.title}</h4>
+                {article.excerpt && (
+                    <p className={styles.sidebarItemExcerpt}>{article.excerpt}</p>
+                )}
                 <div className={styles.sidebarItemMeta}>
                     {article.author && (
                         <span className={styles.sidebarItemAuthor}>
@@ -1292,7 +1285,6 @@ const CategoryGrid = memo(({ articles, activeCategory, onChangeCategory }) => {
                 {filtered.map(article => (
                     <Link href={`/tin-tuc/${article.slug}`} key={article._id} className={styles.categoryGridCard}>
                         <div className={styles.categoryGridImageWrapper}>
-                            <CategoryLabel category={article.category} />
                             <OptimizedImage
                                 src={article.featuredImage?.url}
                                 alt={article.featuredImage?.alt || article.title}
