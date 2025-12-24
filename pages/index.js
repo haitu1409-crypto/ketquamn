@@ -343,7 +343,7 @@ const Home = memo(function Home() {
                             </div>
 
                             {/* Featured Snippet - Direct Answer */}
-                            {/* Thống kê nhanh */}
+                            {/* Thống kê nhanh - Lazy load for mobile performance */}
                             <ThongKeNhanh />
 
                             {/* User Testimonials - Social Proof */}

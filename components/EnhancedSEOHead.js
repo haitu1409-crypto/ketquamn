@@ -35,9 +35,11 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
     const finalDescription = customDescription || description;
     const finalKeywords = customKeywords || keywords;
     const finalCanonical = canonicalUrl || canonical;
+    // ✅ Mobile Performance: Only render essential SEO components
+    // AdvancedSEO handles most meta tags, others are redundant for performance
     return (
         <>
-            {/* ✅ AdvancedSEO - White Hat + Gray Hat SEO nâng cao */}
+            {/* ✅ AdvancedSEO - Main SEO component (handles most meta tags) */}
             <AdvancedSEO
                 title={finalTitle}
                 description={finalDescription}
@@ -52,21 +54,7 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
                 noindex={false}
             />
 
-            {/* ✅ SEOOptimized - Existing SEO component (backup) */}
-            <SEOOptimized
-                pageType={pageType}
-                customTitle={finalTitle}
-                customDescription={finalDescription}
-                customKeywords={finalKeywords}
-                canonical={finalCanonical}
-                canonicalUrl={finalCanonical}
-                ogImage={ogImage}
-                breadcrumbs={breadcrumbs}
-                faq={faq}
-                structuredData={structuredData}
-            />
-
-            {/* ✅ MultiSearchEngineOptimizer - Enhanced for Bing, Cốc Cốc */}
+            {/* ✅ MultiSearchEngineOptimizer - Essential for Bing, Cốc Cốc */}
             <MultiSearchEngineOptimizer
                 title={finalTitle}
                 description={finalDescription}
@@ -79,24 +67,14 @@ const EnhancedSEOHead = memo(function EnhancedSEOHead({
                 structuredData={structuredData}
             />
             
-            {/* ✅ HiddenSEOKeywords - Kỹ thuật tinh vi: Keywords ở vị trí Google đọc nhưng user không thấy */}
+            {/* ✅ HiddenSEOKeywords - Lightweight, important for SEO */}
             <HiddenSEOKeywords
                 keywords={finalKeywords ? finalKeywords.split(',').map(k => k.trim()) : []}
                 pageType={pageType}
                 canonical={finalCanonical}
             />
             
-            {/* ✅ AdvancedMetaTags - Tất cả variations của meta tags */}
-            <AdvancedMetaTags
-                title={finalTitle}
-                description={finalDescription}
-                keywords={finalKeywords}
-                canonical={finalCanonical}
-                pageType={pageType}
-                locale={locale}
-            />
-            
-            {/* ✅ DynamicSchemaGenerator - 20+ schema types */}
+            {/* ✅ DynamicSchemaGenerator - Important structured data */}
             <DynamicSchemaGenerator
                 pageType={pageType}
                 title={finalTitle}
