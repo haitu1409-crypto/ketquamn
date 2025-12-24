@@ -141,9 +141,6 @@ const nextConfig = {
     generateEtags: false,
     compress: true,
     
-    // ✅ Mobile Performance: Optimize CSS
-    swcMinify: true,
-    
     // ✅ Performance: Target modern browsers only (remove legacy polyfills)
     // This reduces bundle size by ~13 KiB
     compiler: {

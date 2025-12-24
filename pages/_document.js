@@ -41,8 +41,7 @@ export default function Document() {
                 {/* Removed unnecessary preloads to avoid browser warnings */}
 
                 {/* ===== CRITICAL CSS FOR CLS PREVENTION ===== */}
-                {/* ✅ Mobile Performance: Load critical CSS immediately, no async */}
-                <link rel="stylesheet" href="/styles/critical.css" />
+                <link rel="preload" href="/styles/critical.css" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
                 <noscript><link rel="stylesheet" href="/styles/critical.css" /></noscript>
 
                 {/* ===== GOOGLE ANALYTICS (gtag.js) - LAZY LOAD ===== */}
@@ -86,13 +85,121 @@ export default function Document() {
                 {/* ===== MICROSOFT TILES ===== */}
                 <meta name="msapplication-config" content="/browserconfig.xml" />
 
-                {/* ===== MINIMAL INLINE CRITICAL CSS - Mobile Optimized ===== */}
+                {/* ===== INLINE CRITICAL CSS - Optimized for PageSpeed ===== */}
                 <style dangerouslySetInnerHTML={{
                     __html: `
-            html{visibility:visible;opacity:1;scroll-behavior:smooth}
-            body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;padding:0;-webkit-font-smoothing:antialiased;line-height:1.6;background-color:#e0e0e073}
-            .container{max-width:1280px;margin:0 auto;padding:0 1rem}
-            @keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+            /* Critical CSS for above-the-fold content */
+            html {
+              visibility: visible;
+              opacity: 1;
+              scroll-behavior: smooth;
+            }
+            
+            body {
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+              margin: 0;
+              padding: 0;
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              line-height: 1.6;
+            }
+            
+            /* Critical above-the-fold styles */
+            .container {
+              max-width: 1280px;
+              margin: 0 auto;
+              padding: 0 1rem;
+            }
+            
+            .header {
+              text-align: center;
+              margin-bottom: 2rem;
+              padding: 1.5rem 1rem;
+              background: #fff;
+              border-radius: 8px;
+              border: 1px solid #e5e7eb;
+            }
+            
+            .mainTitle {
+              font-size: 1.5rem;
+              font-weight: 700;
+              color: #111827;
+              margin-bottom: 0.5rem;
+            }
+            
+            .subtitle {
+              font-size: 0.875rem;
+              color: #6b7280;
+              line-height: 1.5;
+              /* ✅ Fix CLS: Reserve space to prevent layout shift */
+              min-height: 60px;
+              contain: layout style;
+              font-display: swap;
+            }
+            
+            /* Focus visible for accessibility */
+            :focus-visible {
+              outline: 2px solid #FF6B35;
+              outline-offset: 2px;
+            }
+            
+            /* Loading skeleton */
+            .loadingSkeleton {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 2rem;
+              background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+              background-size: 200% 100%;
+              animation: loading 1.5s infinite;
+              border-radius: 8px;
+              margin: 1rem 0;
+              color: #666;
+              font-weight: 500;
+              /* ✅ Fix CLS: Reserve space for loading states */
+              min-height: 200px;
+              contain: layout style;
+            }
+            
+            /* ✅ CLS Prevention for TodayPredictions */
+            .today-predictions-container,
+            [class*="TodayPredictions"] {
+              contain: layout style;
+              height: auto;
+            }
+            
+            /* ✅ CLS Prevention for dynamic components */
+            [class*="dynamic"],
+            [class*="lazy"] {
+              min-height: 150px;
+              height: 150px;
+              contain: layout style;
+              overflow: hidden;
+            }
+            
+            /* ✅ CRITICAL: Prevent layout shift for subtitle element */
+            [class*="subtitle"],
+            p[class*="subtitle"] {
+              contain: layout style !important;
+              font-display: swap !important;
+              overflow: hidden !important;
+              text-overflow: ellipsis !important;
+              white-space: nowrap !important;
+            }
+            
+            /* ✅ CRITICAL: Prevent layout shift for text elements */
+            h1, h2, h3, h4, h5, h6 {
+              font-display: swap !important;
+              contain: layout style !important;
+            }
+            
+            h1 {
+            }
+            
+            @keyframes loading {
+              0% { background-position: 200% 0; }
+              100% { background-position: -200% 0; }
+            }
           `
                 }} />
             </Head>
@@ -103,8 +210,8 @@ export default function Document() {
                 {/* ===== NEXT.JS SCRIPTS ===== */}
                 <NextScript />
 
-                {/* ===== TRACKING ERROR HANDLER - DEFERRED FOR MOBILE PERFORMANCE ===== */}
-                <script defer dangerouslySetInnerHTML={{
+                {/* ===== TRACKING ERROR HANDLER - EARLY INIT ===== */}
+                <script dangerouslySetInnerHTML={{
                     __html: `
                         // Early tracking error prevention
                         (function() {
@@ -245,8 +352,8 @@ export default function Document() {
                     `
                 }} />
 
-                {/* ===== TRACKING ERROR HANDLER - DEFERRED FOR MOBILE PERFORMANCE ===== */}
-                <script defer dangerouslySetInnerHTML={{
+                {/* ===== TRACKING ERROR HANDLER ===== */}
+                <script dangerouslySetInnerHTML={{
                     __html: `
                         // Initialize tracking error handling
                         if (typeof window !== 'undefined') {

@@ -370,23 +370,12 @@ const ThongKeNhanh = React.memo(function ThongKeNhanh() {
 		}
 	}, []);
 
-	// ✅ Mobile Performance: Defer API calls until after initial render
 	useEffect(() => {
-		// Delay API calls on mobile to improve initial load
-		const delay = typeof window !== 'undefined' && window.innerWidth <= 768 ? 500 : 0;
-		const timer = setTimeout(() => {
-			fetchData();
-		}, delay);
-		return () => clearTimeout(timer);
+		fetchData();
 	}, [fetchData]);
 
 	useEffect(() => {
-		// Delay API calls on mobile to improve initial load
-		const delay = typeof window !== 'undefined' && window.innerWidth <= 768 ? 1000 : 200;
-		const timer = setTimeout(() => {
-			fetchSpecialDauDuoiBoxData();
-		}, delay);
-		return () => clearTimeout(timer);
+		fetchSpecialDauDuoiBoxData();
 	}, [fetchSpecialDauDuoiBoxData]);
 
 	// Cập nhật dữ liệu: gọi PUT rồi refetch

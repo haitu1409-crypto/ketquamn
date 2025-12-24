@@ -4,11 +4,11 @@
  * Tích hợp Analytics và Web Vitals tracking
  */
 
-// ✅ Import CSS in correct order - Critical CSS first
-import '../styles/CriticalCLSFix.css'; // Critical CSS first
+// ✅ Import CSS in correct order
 import '../styles/globals.css';
 import '../styles/fonts.css';
 import '../styles/CLSFix.css';
+import '../styles/CriticalCLSFix.css';
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
@@ -153,18 +153,15 @@ function MyApp({ Component, pageProps }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
                 <meta charSet="utf-8" />
 
-                {/* ✅ Critical resource hints for LCP optimization - Mobile optimized */}
+                {/* ✅ Critical resource hints for LCP optimization */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
                 <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-                
-                {/* ✅ Mobile Performance: Preconnect to API early */}
-                <link rel="preconnect" href="https://api1.ketquamn.com" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="https://api1.ketquamn.com" />
 
-                {/* ✅ Preload critical images with fetchpriority - Only one preload */}
+                {/* ✅ Preload critical images with fetchpriority */}
                 <link rel="preload" as="image" href="/logo1.png" fetchPriority="high" />
+                <link rel="preload" as="image" href="/logo1.png" fetchPriority="low" />
 
                 {/* ✅ Search Engine Verification */}
                 {/* TODO: Thay YOUR_GOOGLE_VERIFICATION_CODE bằng code thật từ Search Console */}
