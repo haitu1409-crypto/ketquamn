@@ -86,9 +86,17 @@ function generateKeywordVariations(keywords) {
  */
 function generateCompetitorVariations() {
     const competitors = [
-        'xosodaiphat', 'xoso.com.vn', 'xskt.com.vn', 'xsmn.mobi',
-        'xosothantai', 'atrungroi', 'xsmn247', 'ketqua.net',
-        'rongbachkim.net', 'xskt.net', 'ketqua04.net'
+        'xosodaiphat', 'xoso dai phat', 'xosodaiphat.com', 'xosodaiphat com',
+        'xổ số đại phát', 'xo so dai phat', 'xosodaiphat.net', 'xosodaiphat.vn',
+        'xoso.com.vn', 'xskt.com.vn', 'xskt.com', 'xskt.vn', 'xskt',
+        'xổ số kiến thiết', 'xo so kien thiet', 'xskt.net',
+        'xsmn.mobi', 'xosothantai', 'atrungroi', 'xsmn247', 'ketqua.net',
+        'rongbachkim.net', 'rongbachkim', 'rong bach kim', 'rồng bạch kim', 'rbk',
+        'rongbachkim.com', 'rongbachkim.vn', 'rongbachkim soi cầu', 'rongbachkim thống kê',
+        'ketqua04.net', 'ketqua04',
+        'xosovn', 'xoso vn', 'ketqua xosovn', 'ketqua xoso vn',
+        'xổ số minh ngọc', 'xo so minh ngoc', 'xosominhngoc', 'xoso minh ngoc',
+        'ketqua xổ số minh ngọc', 'ket qua xo so minh ngoc'
     ];
     
     const variations = [];

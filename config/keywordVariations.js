@@ -47,15 +47,43 @@ function removeDiacritics(str) {
 }
 
 /**
- * BRAND KEYWORDS - Từ khóa thương hiệu
- * Tất cả biến thể của "kết quả MN"
+ * BRAND KEYWORDS - Từ khóa thương hiệu (SEO 2025: Chất lượng > Số lượng)
+ * Tất cả biến thể của "kết quả MN" - Tối ưu theo Google SEO Best Practices 2025
+ * Tập trung vào keywords tự nhiên, có ý nghĩa, không spam
  */
 const BRAND_KEYWORDS = {
+    // ✅ PRIMARY BRAND - Tên thương hiệu chính
     primary: [
-        'kết quả MN',
-        'kết quả xổ số miền Nam',
-        'ket qua MN',
-        'ket qua xo so mien Nam',
+        'Kết Quả MN', 'ket qua MN', 'KETQUAMN.COM', 'ketquamn.com',
+        'Ket Qua MN', 'KetQuaMN', 'ketquamn', 'KETQUAMN',
+        'ket qua mn', 'ket-qua-mn', 'ket_qua_mn',
+    ],
+    // ✅ BRAND + FEATURE COMBINATIONS - Tự nhiên, có ý nghĩa
+    brandFeature: [
+        'ketqua xsmn', 'ket qua xsmn', 'ketqua XSMN', 'ket qua XSMN',
+        'ketqua xsmb', 'ket qua xsmb', 'ketqua XSMB', 'ket qua XSMB',
+        'ketqua xsmt', 'ket qua xsmt', 'ketqua XSMT', 'ket qua XSMT',
+        'ketquamn xsmn', 'ketquamn xsmb', 'ketquamn xsmt',
+        'ketquamn.com xsmn', 'ketquamn.com xsmb', 'ketquamn.com xsmt',
+        'ket qua mn xsmn', 'ket qua mn xsmb', 'ket qua mn xsmt',
+        'kết quả mn xsmn', 'kết quả mn xsmb', 'kết quả mn xsmt',
+    ],
+    // ✅ BRAND + TIME-BASED - Hôm nay, mới nhất
+    brandTime: [
+        'ketqua xsmn hôm nay', 'ket qua xsmn hom nay',
+        'ketqua xsmb hôm nay', 'ket qua xsmb hom nay',
+        'ketqua xsmt hôm nay', 'ket qua xsmt hom nay',
+        'ketquamn xsmn hôm nay', 'ketquamn xsmb hôm nay',
+        'ketquamn.com xsmn hôm nay', 'ketquamn.com ket qua xsmn',
+        'ket qua mn xsmn hôm nay', 'ket qua mn xsmb hom nay',
+    ],
+    // ✅ BRAND + ACTION - Tra cứu, thống kê
+    brandAction: [
+        'xổ số ketquamn', 'xo so ketquamn', 'xổ số ket qua mn',
+        'ketquamn kết quả xổ số', 'ket qua mn ket qua xo so',
+        'ketquamn tra cứu', 'ket qua mn tra cuu',
+        'ketquamn thống kê', 'ket qua mn thong ke',
+        'ketquamn soi cầu', 'ket qua mn soi cau',
     ],
     noDiacritics: [
         'ket qua MN',
@@ -66,15 +94,11 @@ const BRAND_KEYWORDS = {
     noSpace: [
         'ketquamn',
         'ketquamn.com',
-        'ketquamn',
-        'ketquamn',
+        'KETQUAMN.COM',
         // ✅ SHORT ABBREVIATIONS - Viết tắt ngắn (giống RBK)
         'ketquamn', 'KETQUAMN', 'KetQuaMN',
         'kqmn', 'KQMN', 'KqMN',
-        'kqmn', 'KQMN', 'KqMN',
         'ketqua', 'KETQUA', // Kết Quả
-        'kqmn', 'KQMN', // Kết Quả MN
-        'ketquamn', 'KETQUAMN', // Kết Quả MN
     ],
     hyphenated: [
         'tao-dan-de-ketquamn',
@@ -1100,6 +1124,43 @@ function getURLPatternsForPage(pageType) {
     return patterns[pageType] || [];
 }
 
+/**
+ * Get all brand keywords (SEO 2025: Chất lượng > Số lượng)
+ * Chỉ trả về các keywords tự nhiên, có ý nghĩa
+ * @param {string} pageType - Type of page (home, kqxs-xsmn, kqxs-xsmb, etc.)
+ * @returns {Array} Array of brand keywords
+ */
+function getAllBrandKeywords(pageType = 'home') {
+    const keywords = [];
+    
+    // Primary brand keywords (luôn có)
+    keywords.push(...BRAND_KEYWORDS.primary);
+    
+    // Brand + Feature combinations (theo từng trang)
+    if (pageType === 'kqxs-xsmn' || pageType === 'home') {
+        keywords.push(...BRAND_KEYWORDS.brandFeature.filter(k => k.includes('xsmn') || k.includes('XSMN')));
+    }
+    if (pageType === 'kqxs-xsmb' || pageType === 'ket-qua-xo-so-mien-bac' || pageType === 'home') {
+        keywords.push(...BRAND_KEYWORDS.brandFeature.filter(k => k.includes('xsmb') || k.includes('XSMB')));
+    }
+    if (pageType === 'kqxs-xsmt' || pageType === 'home') {
+        keywords.push(...BRAND_KEYWORDS.brandFeature.filter(k => k.includes('xsmt') || k.includes('XSMT')));
+    }
+    
+    // Brand + Time-based (cho các trang kết quả)
+    if (pageType.includes('kqxs') || pageType.includes('ket-qua')) {
+        keywords.push(...BRAND_KEYWORDS.brandTime);
+    }
+    
+    // Brand + Action (cho các trang thống kê, soi cầu)
+    if (pageType.includes('thong-ke') || pageType.includes('soi-cau')) {
+        keywords.push(...BRAND_KEYWORDS.brandAction);
+    }
+    
+    // Remove duplicates
+    return [...new Set(keywords)];
+}
+
 module.exports = {
     BRAND_KEYWORDS,
     PRODUCT_KEYWORDS,
@@ -1113,6 +1174,7 @@ module.exports = {
     getURLPatternsForPage,
     generateMetaDescription,
     generateAllVariations,
-    removeDiacritics
+    removeDiacritics,
+    getAllBrandKeywords
 };
 

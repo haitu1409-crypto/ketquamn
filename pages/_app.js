@@ -170,12 +170,8 @@ function MyApp({ Component, pageProps }) {
                 <meta name="coccoc-verification" content={process.env.NEXT_PUBLIC_COCCOC_VERIFICATION || "YOUR_COCCOC_VERIFICATION_CODE"} />
             </Head>
 
-            {/* ✅ Multi-Search Engine Optimizer */}
-            <MultiSearchEngineOptimizer
-                title="Kết Quả MN - Kết quả xổ số miền Nam 2025"
-                description="Kết quả xổ số miền Nam nhanh nhất, chính xác nhất. Xem kết quả XSMN, KQXSMN hôm nay."
-                keywords="kết quả xổ số miền Nam, xsmn, kqxsmn, sxmn, kết quả MN, xổ số miền Nam"
-            />
+            {/* ✅ Multi-Search Engine Optimizer - REMOVED: Đã được xử lý bởi EnhancedSEOHead trong từng trang */}
+            {/* Các trang con sẽ tự quản lý SEO thông qua EnhancedSEOHead để tránh override title */}
 
             {/* ✅ SEO Schema - Organization */}
             <OrganizationSchema />

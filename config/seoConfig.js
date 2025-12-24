@@ -7,7 +7,7 @@
  * Enhanced: Multi-search engine optimization (Google, Bing, Cốc Cốc)
  */
 
-const { getAllKeywordsForPage, generateMetaDescription } = require('./keywordVariations');
+const { getAllKeywordsForPage, generateMetaDescription, getAllBrandKeywords } = require('./keywordVariations');
 
 // Normalize SITE_URL to remove trailing slash to avoid double slashes in URLs
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://ketquamn.com').replace(/\/+$/, '');
@@ -41,11 +41,26 @@ const SEO_CONFIG = {
         title: 'KETQUAMN.COM - Kết Quả Xổ Số 3 Miền Nhanh Nhất | Miễn Phí',
         description: 'Kết quả xổ số miền Nam, miền Bắc, miền Trung nhanh nhất, chính xác nhất. XSMN, XSMB, XSMT cập nhật realtime. Miễn phí 100%!',
         keywords: [
-            // ✅ BRAND VARIATIONS - Tất cả cách gõ tìm kiếm
+            // ✅ BRAND VARIATIONS - Tất cả cách gõ tìm kiếm (Tối ưu theo SEO 2025: Chất lượng > Số lượng)
             'Kết Quả MN', 'ket qua MN', 'KETQUAMN.COM', 'ketquamn.com',
             'Ket Qua MN', 'KetQuaMN', 'ketquamn', 'KETQUAMN',
             'ket qua mn', 'ket-qua-mn', 'ket_qua_mn',
-            
+            // Brand + Feature combinations (Tự nhiên, có ý nghĩa)
+            'ketqua xsmn', 'ket qua xsmn', 'ketqua XSMN', 'ket qua XSMN',
+            'ketqua xsmb', 'ket qua xsmb', 'ketqua XSMB', 'ket qua XSMB',
+            'ketqua xsmt', 'ket qua xsmt', 'ketqua XSMT', 'ket qua XSMT',
+            'ketqua xsmn hôm nay', 'ket qua xsmn hom nay',
+            'ketqua xsmb hôm nay', 'ket qua xsmb hom nay',
+            'ketqua xsmt hôm nay', 'ket qua xsmt hom nay',
+            'ketquamn xsmn', 'ketquamn xsmb', 'ketquamn xsmt',
+            'ketquamn.com xsmn', 'ketquamn.com xsmb', 'ketquamn.com xsmt',
+            'ket qua mn xsmn', 'ket qua mn xsmb', 'ket qua mn xsmt',
+            'kết quả mn xsmn', 'kết quả mn xsmb', 'kết quả mn xsmt',
+            'xổ số ketquamn', 'xo so ketquamn', 'xổ số ket qua mn',
+            'ketquamn kết quả xổ số', 'ket qua mn ket qua xo so',
+            'ketquamn tra cứu', 'ket qua mn tra cuu',
+            'ketquamn thống kê', 'ket qua mn thong ke',
+
             // ✅ CORE KEYWORDS - Kết quả xổ số (có dấu + không dấu)
             'kết quả xổ số', 'ket qua xo so', 'ket qua xổ số', 'kết quả xo so',
             'ketquaxoso', 'ket-qua-xo-so', 'ket_qua_xo_so',
@@ -53,12 +68,12 @@ const SEO_CONFIG = {
             'kết quả xổ số miền Bắc', 'ket qua xo so mien Bac', 'ket qua xo so mien bac',
             'kết quả xổ số miền Trung', 'ket qua xo so mien Trung', 'ket qua xo so mien trung',
             'kết quả xổ số 3 miền', 'ket qua xo so 3 mien',
-            
+
             // ✅ XỔ SỐ VIẾT TẮT
             'XSMN', 'xsmn', 'XSMB', 'xsmb', 'XSMT', 'xsmt',
             'KQXSMN', 'kqxsmn', 'KQXSMB', 'kqxsmb', 'KQXSMT', 'kqxsmt',
             'SXMN', 'sxmn', 'SXMB', 'sxmb', 'SXMT', 'sxmt',
-            
+
             // ✅ TIME-BASED KEYWORDS
             'kết quả xổ số hôm nay', 'ket qua xo so hom nay',
             'kết quả xổ số mới nhất', 'ket qua xo so moi nhat',
@@ -67,13 +82,13 @@ const SEO_CONFIG = {
             'tra cứu kết quả xổ số', 'tra cuu ket qua xo so',
             'kết quả xổ số nhanh nhất', 'ket qua xo so nhanh nhat',
             'kết quả xổ số chính xác', 'ket qua xo so chinh xac',
-            
+
             // ✅ REGIONAL KEYWORDS
             'xổ số miền Nam', 'xo so mien Nam', 'xo so mien nam',
             'xổ số miền Bắc', 'xo so mien Bac', 'xo so mien bac',
             'xổ số miền Trung', 'xo so mien Trung', 'xo so mien trung',
             'xổ số 3 miền', 'xo so 3 mien',
-            
+
             // ✅ ACTION KEYWORDS
             'xem kết quả xổ số hôm nay', 'xem ket qua xo so hom nay',
             'tra cứu kết quả xổ số miền Nam', 'tra cuu ket qua xo so mien nam',
@@ -81,16 +96,24 @@ const SEO_CONFIG = {
             'xem kết quả XSMN', 'xem ket qua XSMN',
             'xem kết quả XSMB', 'xem ket qua XSMB',
             'xem kết quả XSMT', 'xem ket qua XSMT',
-            
+
             // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh (MỞ RỘNG)
-            // XOSODAIPHAT - Target mạnh
+            // XOSODAIPHAT - Target mạnh (MỞ RỘNG)
             'kết quả xổ số xosodaiphat', 'ket qua xo so xosodaiphat',
             'kết quả xổ số tốt hơn xosodaiphat', 'ket qua xo so tot hon xosodaiphat',
             'xosodaiphat alternative', 'thay thế xosodaiphat', 'xosodaiphat vs ketquamn',
             'xosodaiphat hay ketquamn', 'ketquamn tốt hơn xosodaiphat',
             'xosodaiphat chậm', 'xosodaiphat lỗi', 'ketquamn nhanh hơn xosodaiphat',
             'xosodaiphat.com kết quả xổ số', 'xosodaiphat xsmb', 'xosodaiphat xsmn',
-            
+            'xổ số đại phát', 'xo so dai phat', 'xosodaiphat.com', 'xosodaiphat com',
+            'xổ số đại phát kết quả xổ số', 'xo so dai phat ket qua xo so',
+            'xổ số đại phát xsmb', 'xo so dai phat xsmb',
+            'xổ số đại phát xsmn', 'xo so dai phat xsmn',
+            'xổ số đại phát xsmt', 'xo so dai phat xsmt',
+            'xosodaiphat kqxs', 'xosodaiphat thống kê', 'xosodaiphat loto',
+            'xosodaiphat tra cứu', 'xosodaiphat dò vé số',
+            'ketquamn tốt hơn xổ số đại phát', 'ketquamn nhanh hơn xổ số đại phát',
+
             // XOSO.COM.VN - Target mạnh
             'kết quả xổ số xoso', 'ket qua xo so xoso',
             'kết quả xổ số tốt hơn xoso', 'ket qua xo so tot hon xoso',
@@ -98,46 +121,139 @@ const SEO_CONFIG = {
             'xoso hay ketquamn', 'ketquamn tốt hơn xoso',
             'xoso.com.vn chậm', 'xoso.com.vn lỗi', 'ketquamn nhanh hơn xoso',
             'xoso.com.vn kết quả xổ số', 'xoso xsmb', 'xoso xsmn',
-            
-            // XSKT.COM.VN - Target mạnh
+
+            // XSKT.COM.VN - Target mạnh (MỞ RỘNG)
             'kết quả xổ số xskt', 'ket qua xo so xskt',
             'kết quả xổ số tốt hơn xskt', 'ket qua xo so tot hon xskt',
             'xskt.com.vn alternative', 'thay thế xskt.com.vn', 'xskt.com.vn vs ketquamn',
             'xskt hay ketquamn', 'ketquamn tốt hơn xskt',
             'xskt.com.vn chậm', 'xskt.com.vn lỗi', 'ketquamn nhanh hơn xskt',
             'xskt.com.vn kết quả xổ số', 'xskt xsmb', 'xskt soi cầu',
-            
+            'xổ số kiến thiết', 'xo so kien thiet', 'xskt.com.vn', 'xskt.com', 'xskt.vn',
+            'xổ số kiến thiết kết quả xổ số', 'xo so kien thiet ket qua xo so',
+            'xổ số kiến thiết xsmb', 'xo so kien thiet xsmb',
+            'xổ số kiến thiết xsmn', 'xo so kien thiet xsmn',
+            'xổ số kiến thiết xsmt', 'xo so kien thiet xsmt',
+            'xskt kqxs', 'xskt thống kê', 'xskt loto', 'xskt tra cứu',
+            'ketquamn tốt hơn xổ số kiến thiết', 'ketquamn nhanh hơn xổ số kiến thiết',
+
             // XSMN.MOBI - Target mạnh
             'kết quả xổ số xsmn.mobi', 'ket qua xo so xsmn.mobi',
             'xsmn.mobi alternative', 'thay thế xsmn.mobi', 'xsmn.mobi vs ketquamn',
             'xsmn.mobi hay ketquamn', 'ketquamn tốt hơn xsmn.mobi',
             'xsmn.mobi chậm', 'xsmn.mobi lỗi', 'ketquamn nhanh hơn xsmn.mobi',
             'xsmn.mobi kết quả xổ số', 'xsmn.mobi xsmn',
-            
+
             // XOSOTHANTAI.MOBI - Target mạnh
             'xosothantai.mobi alternative', 'thay thế xosothantai', 'xosothantai vs ketquamn',
             'xosothantai hay ketquamn', 'ketquamn tốt hơn xosothantai',
             'xosothantai chậm', 'xosothantai lỗi', 'ketquamn nhanh hơn xosothantai',
             'xosothantai soi cầu', 'xosothantai thống kê',
-            
+
             // ATRUNGROI.COM - Target mạnh
             'atrungroi.com alternative', 'thay thế atrungroi', 'atrungroi vs ketquamn',
             'atrungroi hay ketquamn', 'ketquamn tốt hơn atrungroi',
             'atrungroi chậm', 'atrungroi lỗi', 'ketquamn nhanh hơn atrungroi',
             'atrungroi soi cầu', 'atrungroi dự đoán', 'a trúng rồi soi cầu',
-            
+
             // XSMN247.ME / XỔ SỐ MINH NGỌC - Target mạnh
             'xsmn247.me alternative', 'thay thế xsmn247', 'xsmn247 vs ketquamn',
             'xsmn247 hay ketquamn', 'ketquamn tốt hơn xsmn247',
             'xsmn247 chậm', 'xsmn247 lỗi', 'ketquamn nhanh hơn xsmn247',
             'xsmn247 kết quả xổ số', 'xổ số minh ngọc 247', 'xo so minh ngoc 247',
-            
+            'xổ số minh ngọc', 'xo so minh ngoc', 'xosominhngoc', 'xoso minh ngoc',
+            'ketqua xổ số minh ngọc', 'ket qua xo so minh ngoc', 'ketqua xosominhngoc',
+            'xổ số minh ngọc hôm nay', 'xo so minh ngoc hom nay', 'xổ số minh ngọc mới nhất',
+
+            // KETQUA04 - Target mạnh
+            'ketqua04', 'ketqua 04', 'ket-qua-04', 'ketqua04.net', 'ketqua04.com',
+            'ketqua04 alternative', 'thay thế ketqua04', 'ketqua04 vs ketquamn',
+            'ketqua04 hay ketquamn', 'ketquamn tốt hơn ketqua04',
+            'ketqua04 chậm', 'ketqua04 lỗi', 'ketquamn nhanh hơn ketqua04',
+            'ketqua04 kết quả xổ số', 'ket qua xo so ketqua04', 'ketqua04 xsmb', 'ketqua04 xsmn',
+
+            // KETQUA XOSOVN / XOSOVN - Target mạnh
+            'ketqua xosovn', 'ket qua xosovn', 'ketqua xoso vn', 'ket qua xoso vn',
+            'xosovn', 'xoso vn', 'xoso-vn', 'xosovn.com', 'xosovn.net',
+            'xosovn alternative', 'thay thế xosovn', 'xosovn vs ketquamn',
+            'xosovn hay ketquamn', 'ketquamn tốt hơn xosovn',
+            'xosovn chậm', 'xosovn lỗi', 'ketquamn nhanh hơn xosovn',
+            'ketqua xosovn kết quả xổ số', 'ket qua xo so xosovn', 'xosovn xsmb', 'xosovn xsmn',
+
+            // RỒNG BẠCH KIM / RONGBACHKIM.NET - Target mạnh
+            'rongbachkim.net', 'rongbachkim', 'rong bach kim', 'rồng bạch kim',
+            'rongbachkim.net alternative', 'thay thế rongbachkim', 'rongbachkim vs ketquamn',
+            'rongbachkim hay ketquamn', 'ketquamn tốt hơn rongbachkim',
+            'rongbachkim chậm', 'rongbachkim lỗi', 'ketquamn nhanh hơn rongbachkim',
+            'rongbachkim soi cầu', 'rong bach kim soi cau', 'rbk soi cầu',
+            'rongbachkim thống kê', 'rong bach kim thong ke', 'rbk thống kê',
+            'rongbachkim chốt số', 'rong bach kim chot so', 'rbk chốt số',
+            'rongbachkim cầu lô', 'rong bach kim cau lo', 'rbk cầu lô',
+            'rongbachkim kqxs', 'rongbachkim xsmb', 'rongbachkim xsmn',
+            'rồng bạch kim kết quả xổ số', 'rong bach kim ket qua xo so',
+            'ketquamn soi cầu tốt hơn rongbachkim', 'ketquamn thống kê tốt hơn rongbachkim',
+
             // KETQUA.NET - Target mạnh
             'kết quả xổ số ketqua.net', 'ket qua xo so ketqua.net',
             'ketqua.net alternative', 'thay thế ketqua.net', 'ketqua.net vs ketquamn',
             'ketqua.net hay ketquamn', 'ketquamn tốt hơn ketqua.net',
             'ketqua.net chậm', 'ketqua.net lỗi', 'ketquamn nhanh hơn ketqua.net',
-            
+
+            // ✅ NICHE KEYWORDS - Keywords ngách của đối thủ (Long-tail, Specific Features)
+            // XOSODAIPHAT - Tính năng đặc biệt
+            'dò vé số xosodaiphat', 'do ve so xosodaiphat',
+            'tra cứu kết quả xosodaiphat', 'tra cuu ket qua xosodaiphat',
+            'xosodaiphat dò số', 'xosodaiphat do so',
+            'xosodaiphat vietlott', 'xosodaiphat keno',
+            'xosodaiphat mega 6/45', 'xosodaiphat power 6/55',
+
+            // XSKT.COM.VN - Tính năng đặc biệt
+            'xskt soi cầu vip', 'xskt soi cau vip',
+            'xskt thống kê loto', 'xskt thong ke loto',
+            'xskt phân tích số', 'xskt phan tich so',
+            'xskt dự đoán chính xác', 'xskt du doan chinh xac',
+            'xskt cầu lô đẹp', 'xskt cau lo dep',
+
+            // RONGBACHKIM - Tính năng đặc biệt (Chốt số, Cầu lô, Lotto)
+            'rongbachkim chốt số giờ vàng', 'rong bach kim chot so gio vang',
+            'rongbachkim cầu lô vip', 'rong bach kim cau lo vip',
+            'rongbachkim lotto online', 'rong bach kim lotto online',
+            'rongbachkim bảng vàng', 'rong bach kim bang vang',
+            'rongbachkim cầu 2 nháy', 'rong bach kim cau 2 nhay',
+            'rongbachkim cầu đặc biệt', 'rong bach kim cau dac biet',
+            'rbk chốt số', 'rbk chot so',
+            'rbk cầu lô', 'rbk cau lo',
+
+            // XOSOTHANTAI - Tính năng đặc biệt
+            'xosothantai soi cầu miễn phí', 'xosothantai soi cau mien phi',
+            'xosothantai thống kê lô gan', 'xosothantai thong ke lo gan',
+            'xosothantai dự đoán xsmb', 'xosothantai du doan xsmb',
+
+            // ATRUNGROI - Tính năng đặc biệt
+            'atrungroi dự đoán vip', 'atrungroi du doan vip',
+            'atrungroi soi cầu chính xác', 'atrungroi soi cau chinh xac',
+            'a trúng rồi dự đoán', 'a trung roi du doan',
+
+            // XSMN247 / XỔ SỐ MINH NGỌC - Tính năng đặc biệt
+            'xổ số minh ngọc 247 kết quả', 'xo so minh ngoc 247 ket qua',
+            'xsmn247 tra cứu', 'xsmn247 tra cuu',
+            'xổ số minh ngọc hôm nay', 'xo so minh ngoc hom nay',
+
+            // KETQUA04 - Tính năng đặc biệt
+            'ketqua04 tra cứu xổ số', 'ketqua04 tra cuu xo so',
+            'ketqua04 kết quả nhanh', 'ketqua04 ket qua nhanh',
+            'ketqua04 xsmb trực tiếp', 'ketqua04 xsmb truc tiep',
+
+            // KETQUA XOSOVN - Tính năng đặc biệt
+            'ketqua xosovn tra cứu', 'ket qua xosovn tra cuu',
+            'xosovn kết quả 3 miền', 'xosovn ket qua 3 mien',
+            'ketqua xosovn xsmb hôm nay', 'ket qua xosovn xsmb hom nay',
+
+            // KETQUA.NET - Tính năng đặc biệt
+            'ketqua.net thống kê', 'ketqua.net thong ke',
+            'ketqua.net soi cầu', 'ketqua.net soi cau',
+            'ketqua.net loto', 'ketqua.net loto',
+
             // COMPARISON - So sánh tổng thể
             'kết quả xổ số nào tốt nhất', 'ket qua xo so nao tot nhat',
             'kết quả xổ số nhanh nhất', 'ket qua xo so nhanh nhat',
@@ -145,26 +261,26 @@ const SEO_CONFIG = {
             'kết quả xổ số uy tín nhất', 'ket qua xo so uy tin nhat',
             'trang xổ số nào tốt nhất', 'trang xo so nao tot nhat',
             'web xổ số nào tốt nhất', 'web xo so nao tot nhat',
-            
+
             // ✅ LONG-TAIL KEYWORDS
             'xem kết quả xổ số miền Nam hôm nay', 'xem ket qua xo so mien nam hom nay',
             'xem kết quả xổ số miền Bắc hôm nay', 'xem ket qua xo so mien bac hom nay',
             'tra cứu kết quả xổ số 3 miền', 'tra cuu ket qua xo so 3 mien',
             'bảng kết quả xổ số', 'bang ket qua xo so',
             'danh sách kết quả xổ số', 'danh sach ket qua xo so',
-            
+
             // ✅ THỐNG KÊ KEYWORDS
             'thống kê xổ số', 'thong ke xo so',
             'thống kê xổ số 3 miền', 'thong ke xo so 3 mien',
             'thống kê XSMN', 'thong ke XSMN',
             'thống kê XSMB', 'thong ke XSMB',
             'thống kê XSMT', 'thong ke XSMT',
-            
+
             // ✅ CÔNG CỤ XỔ SỐ (giữ lại một phần)
             'tạo dàn đề', 'tao dan de',
             'soi cầu', 'soi cau',
             'dự đoán xổ số', 'du doan xo so',
-            
+
             // ✅ ĐỒNG NGHĨA - Các từ có nghĩa tương tự
             'lập dàn đề', 'lap dan de', 'lập dàn số', 'lap dan so',
             'lập mức số', 'lap muc so', 'lập dàn', 'lap dan',
@@ -172,7 +288,7 @@ const SEO_CONFIG = {
             'lập mức', 'lap muc', 'tạo bộ số', 'tao bo so',
             'lập bộ số', 'lap bo so', 'tạo dãy số', 'tao day so',
             'lập dãy số', 'lap day so', 'tạo danh sách số', 'tao danh sach so',
-            
+
             // ✅ BIẾN THỂ CHÍNH TẢ - Sai chính tả phổ biến
             'tạo dàn đê', 'tao dan ê', 'tạo đàn đề', 'tao dần đề',
             'tạo dàn dề', 'tao dan đe', 'tạo đan đề', 'tao dản đề',
@@ -193,14 +309,14 @@ const SEO_CONFIG = {
             'cách tạo dàn đề hiệu quả', 'tạo dàn đề như thế nào',
             'app tạo dàn đề nào tốt', 'web tạo dàn đề uy tín',
             'công cụ tạo dàn đề chuyên nghiệp', 'phần mềm tạo dàn đề miễn phí',
-            
+
             // Long-tail với đồng nghĩa
             'cách lập dàn đề', 'lap dan de online', 'lập dàn đề miễn phí',
             'web lập dàn đề', 'tool lập dàn số', 'app lập mức số',
             'cách tạo dàn số hiệu quả', 'lập dàn đề như thế nào',
             'phần mềm lập dàn đề', 'ứng dụng lập dàn số',
             'cách tạo mức số', 'tạo mức số online', 'lập mức số miễn phí',
-            
+
             // Câu hỏi phổ biến
             'tạo dàn đề ở đâu', 'tao dan de o dau', 'lập dàn số ở đâu',
             'web tạo dàn đề nào tốt', 'app tạo dàn số nào hay',
@@ -227,34 +343,34 @@ const SEO_CONFIG = {
             'kangdh', 'kang dh', 'kangdh.com', 'taodanxoso', 'tao dan xo so',
             'kangdh tạo dàn', 'kangdh tạo dàn số', 'kangdh tạo dàn đề',
             'tốt hơn kangdh', 'tot hon kangdh', 'kangdh.com.vn',
-            
+
             // GiaiMaSoHoc.net - Đối thủ lớn
             'giai ma so hoc', 'giải mã số học', 'giaimasohoc', 'giaimasohoc.net',
             'giai ma so hoc tạo dàn', 'giải mã số học tạo dàn số',
             'tốt hơn giaimasohoc', 'tot hon giaimasohoc',
-            
+
             // SieuKetQua.com - Đối thủ lớn
             'sieu ket qua', 'sieuketqua', 'sieuketqua.com',
             'sieuketqua tạo dàn', 'sieu ket qua tạo dàn xổ số',
             'tốt hơn sieuketqua', 'tot hon sieuketqua',
-            
+
             // DanhCongi.com - Đối thủ
             'danhcongi', 'danhcongi.com', 'danh con gi',
             'danhcongi tạo dàn', 'tốt hơn danhcongi',
-            
+
             // Lottoat.com - Đối thủ
             'lottoat', 'lottoat.com', 'xoso.lottoat.com',
             'lottoat tạo dàn', 'tốt hơn lottoat',
-            
+
             // Quynh.vn - Đối thủ
             'quỳnh.vn', 'quynh.vn', 'quynh tạo dàn đề',
-            
+
             // Các trang khác
             'dan de pro', 'dande pro', 'dàn đề pro',
             'tạo dàn đề chuyên nghiệp', 'tao dan de chuyen nghiep',
             'phần mềm tạo dàn số', 'phan mem tao dan so',
             'ứng dụng tạo dàn số', 'ung dung tao dan so',
-            
+
             // ✅ BRAND KEYWORDS - Kết Quả MN
             'Kết Quả MN tạo dàn đề', 'Kết Quả MN dàn đề', 'Kết Quả MN loto',
             'Kết Quả MN xổ số', 'Kết Quả MN soi cầu', 'Kết Quả MN thống kê',
@@ -289,16 +405,16 @@ const SEO_CONFIG = {
             'tạo dàn đề 2025', 'tạo dàn đề mới nhất', 'tạo dàn đề chuyên nghiệp',
             'lập dàn số 2025', 'lap dan so moi nhat', 'lập dàn số chuyên nghiệp',
             'tạo mức số 2025', 'tao muc so moi nhat',
-            
+
             // ✅ SPACING VARIATIONS - Các cách viết khác nhau
             'tạo-dàn-đề', 'tao-dan-de', 'lập-dàn-số', 'lap-dan-so',
             'tạo_dàn_đề', 'tao_dan_de', 'lập_dàn_số', 'lap_dan_so',
             'taodande', 'lapdanso', 'taomucso', 'lapmucso',
-            
+
             // ✅ NO SPACE - Viết liền
             'ketquamn', 'taodandeso', 'lapdandeso',
             'taomucso', 'lapmucso', 'taodanso',
-            
+
             // ✅ MIXED CASE - Chữ hoa/thường
             'TạoDànĐề', 'TaoDanDe', 'LapDanSo',
             'TAODANDE', 'LAPDANSO', 'TạoMứcSố'
@@ -766,14 +882,14 @@ const SEO_CONFIG = {
             'soi cầu tốt hơn xskt', 'soi cau tot hon xskt',
             'xskt.com.vn soi cầu', 'xskt.com.vn soi cau',
             'soi cầu thay thế xskt', 'soi cau thay the xskt',
-            
+
             // XOSOTHANTAI.MOBI
             'soi cầu miền bắc xosothantai', 'soi cau mien bac xosothantai',
             'soi cầu xosothantai', 'soi cau xosothantai',
             'xosothantai soi cầu', 'xosothantai soi cau',
             'soi cầu tốt hơn xosothantai', 'soi cau tot hon xosothantai',
             'xosothantai.mobi soi cầu', 'xosothantai.mobi soi cau',
-            
+
             // XSMN247.ME / XSMN247 / XỔ SỐ MINH NGỌC
             'soi cầu miền bắc xsmn247', 'soi cau mien bac xsmn247',
             'soi cầu xsmn247', 'soi cau xsmn247',
@@ -782,7 +898,7 @@ const SEO_CONFIG = {
             'xsmn247.me soi cầu', 'xsmn247.me soi cau',
             'xổ số minh ngọc 247 soi cầu', 'xo so minh ngoc 247 soi cau',
             'soi cầu minh ngọc', 'soi cau minh ngoc',
-            
+
             // ATRUNGROI.COM / A TRÚNG RỒI
             'soi cầu miền bắc atrungroi', 'soi cau mien bac atrungroi',
             'soi cầu atrungroi', 'soi cau atrungroi',
@@ -790,37 +906,68 @@ const SEO_CONFIG = {
             'soi cầu tốt hơn atrungroi', 'soi cau tot hon atrungroi',
             'atrungroi.com soi cầu', 'atrungroi.com soi cau',
             'a trúng rồi soi cầu', 'a trung roi soi cau',
-            
+
             // XOSO.COM.VN
             'soi cầu miền bắc xoso', 'soi cau mien bac xoso',
             'soi cầu xoso', 'soi cau xoso',
             'xoso.com.vn soi cầu', 'xoso.com.vn soi cau',
             'thống kê vị trí xoso', 'thong ke vi tri xoso',
-            
+
             // XSMN.MOBI
             'soi cầu xsmn.mobi', 'soi cau xsmn.mobi',
             'xsmn.mobi soi cầu', 'xsmn.mobi soi cau',
             'soi cầu tốt hơn xsmn.mobi', 'soi cau tot hon xsmn.mobi',
-            
+
             // KQXSMB.MOBI
             'soi cầu kqxsmb.mobi', 'soi cau kqxsmb.mobi',
             'kqxsmb.mobi soi cầu', 'kqxsmb.mobi soi cau',
-            
+
             // SOICAUMIENPHI.ORG / SOI CẦU MIỄN PHÍ 888
             'soi cầu miễn phí 888', 'soi cau mien phi 888',
             'soi cầu miễn phí tốt nhất', 'soi cau mien phi tot nhat',
             'soicaumienphi.org soi cầu', 'soicaumienphi soi cau',
-            
+
             // XOSODAIPHAT
             'soi cầu xosodaiphat', 'soi cau xosodaiphat',
             'xosodaiphat soi cầu', 'xosodaiphat soi cau',
-            
+
+            // RỒNG BẠCH KIM / RONGBACHKIM.NET
+            'soi cầu rongbachkim', 'soi cau rongbachkim',
+            'rongbachkim soi cầu', 'rong bach kim soi cau', 'rbk soi cầu',
+            'soi cầu rồng bạch kim', 'soi cau rong bach kim',
+            'rongbachkim chốt số', 'rong bach kim chot so', 'rbk chốt số',
+            'rongbachkim cầu lô', 'rong bach kim cau lo', 'rbk cầu lô',
+            'rongbachkim thống kê', 'rong bach kim thong ke', 'rbk thống kê',
+            'soi cầu tốt hơn rongbachkim', 'soi cau tot hon rongbachkim',
+            'ketquamn soi cầu tốt hơn rongbachkim', 'ketquamn chốt số tốt hơn rongbachkim',
+
+            // ✅ NICHE KEYWORDS - Keywords ngách của đối thủ (Long-tail, Specific Features)
+            // RONGBACHKIM - Tính năng đặc biệt
+            'rongbachkim chốt số giờ vàng', 'rong bach kim chot so gio vang',
+            'rongbachkim cầu lô vip', 'rong bach kim cau lo vip',
+            'rongbachkim cầu 2 nháy', 'rong bach kim cau 2 nhay',
+            'rongbachkim cầu đặc biệt', 'rong bach kim cau dac biet',
+            'rbk chốt số giờ vàng', 'rbk chot so gio vang',
+
+            // XSKT - Tính năng đặc biệt
+            'xskt soi cầu vip', 'xskt soi cau vip',
+            'xskt cầu lô đẹp', 'xskt cau lo dep',
+            'xskt dự đoán chính xác', 'xskt du doan chinh xac',
+
+            // XOSOTHANTAI - Tính năng đặc biệt
+            'xosothantai soi cầu miễn phí', 'xosothantai soi cau mien phi',
+            'xosothantai dự đoán xsmb', 'xosothantai du doan xsmb',
+
+            // ATRUNGROI - Tính năng đặc biệt
+            'atrungroi dự đoán vip', 'atrungroi du doan vip',
+            'atrungroi soi cầu chính xác', 'atrungroi soi cau chinh xac',
+
             // COMPARISON KEYWORDS - So sánh với đối thủ
             'soi cầu nào tốt nhất', 'soi cau nao tot nhat',
             'soi cầu uy tín nhất', 'soi cau uy tin nhat',
             'soi cầu chính xác nhất', 'soi cau chinh xac nhat',
             'soi cầu miền bắc nào đáng tin', 'soi cau mien bac nao dang tin',
-            'soi cầu tốt hơn xskt xosothantai', 'soi cau tot hon xskt xosothantai',
+            'soi cầu tốt hơn xskt xosothantai rongbachkim', 'soi cau tot hon xskt xosothantai rongbachkim',
 
             // ✅ STATISTICAL KEYWORDS - Thống kê
             'thống kê vị trí XSMB', 'thong ke vi tri XSMB',
@@ -1239,7 +1386,7 @@ const SEO_CONFIG = {
             'xsmb 90 ngày', 'xsmb 90 ngay',
             'xsmb ngày hôm nay', 'xsmb ngay hom nay',
             'kết quả xsmb hôm nay', 'ket qua xsmb hom nay',
-            
+
             // ✅ DAY-OF-WEEK KEYWORDS - Theo thứ trong tuần
             'xsmb thứ 2', 'xsmb thu 2', 'XSMB thứ 2', 'xsmb thứ hai',
             'xsmb thứ 3', 'xsmb thu 3', 'XSMB thứ 3', 'xsmb thứ ba',
@@ -1248,11 +1395,11 @@ const SEO_CONFIG = {
             'xsmb thứ 6', 'xsmb thu 6', 'XSMB thứ 6', 'xsmb thứ sáu',
             'xsmb thứ 7', 'xsmb thu 7', 'XSMB thứ 7', 'xsmb thứ bảy',
             'xsmb chủ nhật', 'xsmb chu nhat', 'XSMB chủ nhật',
-            
+
             // ✅ DATE-SPECIFIC KEYWORDS - Theo ngày cụ thể
             'xsmb 30/10', 'xsmb 31/10', 'xsmb hôm nay 30/10',
             'kết quả xsmb 30/10', 'ket qua xsmb 30/10',
-            
+
             // ✅ ACTION KEYWORDS - Hành động
             'xsmb trực tiếp', 'xsmb truc tiep', 'XSMB trực tiếp',
             'tường thuật xsmb', 'tuong thuat xsmb',
@@ -1260,37 +1407,54 @@ const SEO_CONFIG = {
             'kết quả xsmb trực tiếp', 'ket qua xsmb truc tiep',
             'xsmb tường thuật', 'xsmb tuong thuat',
             'quay số xsmb', 'quay so xsmb',
-            
-            // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh
+
+            // ✅ COMPETITIVE KEYWORDS - Đối thủ cạnh tranh (MỞ RỘNG)
             // XOSODAIPHAT
             'xsmb xosodaiphat', 'xosodaiphat xsmb',
             'xsmb tốt hơn xosodaiphat', 'xsmb tot hon xosodaiphat',
-            'xosodaiphat.com xsmb',
-            
+            'xosodaiphat.com xsmb', 'xosodaiphat com xsmb',
+            'xsmb xổ số đại phát', 'xo so dai phat xsmb',
+            'xổ số đại phát xsmb', 'xo so dai phat xsmb',
+            'xsmb tốt hơn xổ số đại phát', 'xsmb tot hon xo so dai phat',
+            'ketqua xsmb xosodaiphat', 'ket qua xsmb xo so dai phat',
+
             // XOSO.COM.VN
             'xsmb xoso', 'xoso.com.vn xsmb',
             'xsmb tốt hơn xoso', 'xsmb tot hon xoso',
             'kết quả xsmb xoso', 'ket qua xsmb xoso',
-            
+
             // XSKT.COM.VN
             'xsmb xskt', 'xskt.com.vn xsmb',
             'xsmb tốt hơn xskt', 'xsmb tot hon xskt',
             'kết quả xsmb xskt', 'ket qua xsmb xskt',
-            
+            'xsmb xổ số kiến thiết', 'xo so kien thiet xsmb',
+            'xổ số kiến thiết xsmb', 'xo so kien thiet xsmb',
+            'xsmb tốt hơn xổ số kiến thiết', 'xsmb tot hon xo so kien thiet',
+            'ketqua xsmb xskt', 'ket qua xsmb xo so kien thiet',
+
             // XSMN.MOBI
             'xsmb xsmn.mobi', 'xsmn.mobi xsmb',
             'xsmb tốt hơn xsmn.mobi', 'xsmb tot hon xsmn.mobi',
-            
+
             // AZ24.VN
             'xsmb az24', 'az24.vn xsmb',
             'xsmb tốt hơn az24', 'xsmb tot hon az24',
-            
+
+            // RỒNG BẠCH KIM / RONGBACHKIM.NET
+            'rongbachkim xsmb', 'rong bach kim xsmb', 'rồng bạch kim xsmb',
+            'rbk xsmb', 'rongbachkim.net xsmb', 'rongbachkim.com xsmb',
+            'rongbachkim kết quả xsmb', 'rong bach kim ket qua xsmb',
+            'xsmb rongbachkim', 'xsmb rong bach kim', 'xsmb rbk',
+            'rongbachkim xsmb hôm nay', 'rong bach kim xsmb hom nay',
+            'ketqua xsmb rongbachkim', 'ket qua xsmb rong bach kim',
+            'xsmb tốt hơn rongbachkim', 'xsmb tot hon rongbachkim',
+
             // COMPARISON
             'xsmb nào tốt nhất', 'xsmb nao tot nhat',
             'kết quả xsmb tốt nhất', 'ket qua xsmb tot nhat',
             'xsmb nhanh nhất', 'xsmb nhanh nhat',
             'xsmb chính xác nhất', 'xsmb chinh xac nhat',
-            
+
             // ✅ LONG-TAIL KEYWORDS
             'xem kết quả xổ số hôm nay', 'xem ket qua xo so hom nay',
             'kết quả xổ số miền bắc mới nhất', 'ket qua xo so mien bac moi nhat',
@@ -1298,55 +1462,90 @@ const SEO_CONFIG = {
             'bảng kết quả xổ số miền bắc', 'bang ket qua xo so mien bac',
             'kết quả xsmb hôm nay chi tiết', 'ket qua xsmb hom nay chi tiet',
             'xem xsmb hôm nay', 'xem xsmb hom nay',
-            
+
             // ✅ VARIATIONS - Biến thể
             // Missing diacritics
             'xsmb', 'ket qua xo so mien bac', 'xo so mien bac',
             'sxmb', 'kqxsmb', 'xstd',
-            
+
             // Spacing variations
             'xsmb', 'xs-mb', 'xs_mb', 'xs mb',
             'kq-xsmb', 'kq_xsmb', 'kq xsmb',
             'xo-so-mien-bac', 'xo_so_mien_bac',
-            
+
             // No space
             'xsmb', 'sxmb', 'kqxsmb', 'xstd',
             'xosomienbac', 'ketquaxoso',
-            
+
             // Mixed case
             'XSMB', 'XSMb', 'XsMb', 'xsMB',
-            
+
             // ✅ LOCATION KEYWORDS
             'xsmb hà nội', 'xsmb ha noi', 'XSMB Hà Nội',
             'xổ số hà nội', 'xo so ha noi',
             'xổ số thủ đô', 'xo so thu do',
             'xskmb', 'xổ số kiến thiết miền bắc',
-            
+
             // ✅ STATISTICAL KEYWORDS
             'thống kê xsmb', 'thong ke xsmb',
             'thống kê giải đặc biệt xsmb', 'thong ke giai dac biet xsmb',
             'xsmb lo gan', 'xsmb lô gan',
             'xsmb quay thử', 'xsmb quay thu',
-            
-            // ✅ BRAND VARIATIONS
+
+            // ✅ BRAND VARIATIONS (Tối ưu theo SEO 2025: Tự nhiên, có ý nghĩa)
             'Kết Quả MN xsmb', 'ket qua MN xsmb', 'KETQUAMN.COM xsmb',
             'ketquamn.com xsmb', 'ketquamn xsmb',
             'Kết Quả MN XSMB', 'ket qua MN XSMB',
-            
+            // Brand + Feature combinations (Tự nhiên)
+            'ketqua xsmb', 'ket qua xsmb', 'ketqua XSMB',
+            'ketqua xsmb hôm nay', 'ket qua xsmb hom nay',
+            'ketquamn xsmb hôm nay', 'ket qua mn xsmb hom nay',
+            'ketquamn.com xsmb hôm nay', 'ketquamn.com ket qua xsmb',
+            'xổ số ketquamn xsmb', 'xo so ketquamn xsmb',
+            'ketquamn tra cứu xsmb', 'ket qua mn tra cuu xsmb',
+
             // ✅ REGIONAL
             'kết quả xổ số 3 miền', 'ket qua xo so 3 mien',
             'xsmb xsmn xsmt', 'kết quả xổ số đầy đủ',
             'xổ số 3 miền', 'xo so 3 mien',
-            
+
             // ✅ ACCURACY KEYWORDS
             'xsmb chính xác', 'xsmb chinh xac',
             'kết quả xsmb nhanh nhất', 'ket qua xsmb nhanh nhat',
             'xsmb cập nhật nhanh', 'xsmb cap nhat nhanh',
-            
+
             // ✅ FREE KEYWORDS
             'xsmb miễn phí', 'xsmb mien phi',
             'kết quả xsmb miễn phí', 'ket qua xsmb mien phi',
-            'xem xsmb miễn phí', 'xem xsmb mien phi'
+            'xem xsmb miễn phí', 'xem xsmb mien phi',
+
+            // ✅ COMPETITOR KEYWORDS - Đối thủ cạnh tranh (MỞ RỘNG)
+            // XỔ SỐ MINH NGỌC
+            'xổ số minh ngọc xsmb', 'xo so minh ngoc xsmb', 'xosominhngoc xsmb',
+            'ketqua xổ số minh ngọc xsmb', 'ket qua xo so minh ngoc xsmb',
+            'xổ số minh ngọc kết quả xsmb', 'xo so minh ngoc ket qua xsmb',
+            'xsmb xổ số minh ngọc', 'xsmb xo so minh ngoc',
+
+            // KETQUA04
+            'ketqua04 xsmb', 'ketqua 04 xsmb', 'ketqua04.net xsmb',
+            'ketqua04 kết quả xsmb', 'ketqua04 ket qua xsmb',
+            'xsmb ketqua04', 'xsmb ketqua 04',
+            'ketqua04 xsmb hôm nay', 'ketqua04 xsmb hom nay',
+
+            // KETQUA XOSOVN / XOSOVN
+            'ketqua xosovn xsmb', 'ket qua xosovn xsmb', 'ketqua xoso vn xsmb',
+            'xosovn xsmb', 'xoso vn xsmb', 'xosovn.com xsmb',
+            'ketqua xosovn kết quả xsmb', 'ket qua xosovn ket qua xsmb',
+            'xsmb ketqua xosovn', 'xsmb xosovn',
+            'ketqua xosovn xsmb hôm nay', 'xosovn xsmb hom nay',
+
+            // RỒNG BẠCH KIM / RONGBACHKIM.NET
+            'rongbachkim xsmb', 'rong bach kim xsmb', 'rồng bạch kim xsmb',
+            'rbk xsmb', 'rongbachkim.net xsmb', 'rongbachkim.com xsmb',
+            'rongbachkim kết quả xsmb', 'rong bach kim ket qua xsmb',
+            'xsmb rongbachkim', 'xsmb rong bach kim', 'xsmb rbk',
+            'rongbachkim xsmb hôm nay', 'rong bach kim xsmb hom nay',
+            'ketqua xsmb rongbachkim', 'ket qua xsmb rong bach kim'
         ],
         url: '/ket-qua-xo-so-mien-bac',
         image: OG_IMAGES.xsmb,
