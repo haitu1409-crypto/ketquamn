@@ -680,6 +680,28 @@ export default function Layout({ children, className = '' }) {
                                     </li>
                                 </ul>
                             </div>
+
+                            {/* Giới Thiệu Section - Legal Pages */}
+                            <div className={styles.footerSection}>
+                                <h4 className={styles.footerSectionTitle}>Giới Thiệu</h4>
+                                <ul className={styles.footerLinks}>
+                                    <li>
+                                        <Link href="/ve-chung-toi" className={styles.footerLink}>
+                                            Về Chúng Tôi
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/chinh-sach-bao-mat" className={styles.footerLink}>
+                                            Chính Sách Bảo Mật
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href="/lien-he" className={styles.footerLink}>
+                                            Liên Hệ
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Footer Bottom */}

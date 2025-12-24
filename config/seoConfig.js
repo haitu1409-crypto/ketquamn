@@ -826,6 +826,90 @@ const SEO_CONFIG = {
     },
 
     /**
+     * CHÍNH SÁCH BẢO MẬT
+     * Legal page - Important for E-A-T and Trust Signals
+     */
+    'chinh-sach-bao-mat': {
+        title: 'Chính Sách Bảo Mật - KETQUAMN.COM | Bảo Vệ Thông Tin Người Dùng',
+        description: 'Chính sách bảo mật thông tin của KETQUAMN.COM. Cam kết bảo vệ quyền riêng tư và thông tin cá nhân của người dùng khi sử dụng dịch vụ xổ số, tạo dàn đề.',
+        keywords: [
+            'chính sách bảo mật',
+            'bảo mật thông tin',
+            'quyền riêng tư',
+            'bảo vệ dữ liệu',
+            'ketquamn privacy policy',
+            'chính sách quyền riêng tư',
+            'bảo mật ketquamn'
+        ],
+        url: '/chinh-sach-bao-mat',
+        image: OG_IMAGES.default,
+        canonical: `${SITE_URL}/chinh-sach-bao-mat`,
+        type: 'article',
+        priority: 0.5,
+        changefreq: 'monthly',
+        structuredData: {
+            type: 'WebPage',
+            additionalTypes: []
+        }
+    },
+
+    /**
+     * VỀ CHÚNG TÔI
+     * About page - Important for E-A-T and Trust Signals
+     */
+    've-chung-toi': {
+        title: 'Về Chúng Tôi - KETQUAMN.COM | Giới Thiệu & Sứ Mệnh',
+        description: 'Tìm hiểu về KETQUAMN.COM - Trang web xem kết quả xổ số 3 miền nhanh nhất, chính xác nhất. Chúng tôi cam kết cung cấp dịch vụ miễn phí, chất lượng cao cho người dùng.',
+        keywords: [
+            'về chúng tôi',
+            'giới thiệu ketquamn',
+            'sứ mệnh ketquamn',
+            'ketquamn.com',
+            'about ketquamn',
+            'giới thiệu kết quả mn',
+            'về ketquamn'
+        ],
+        url: '/ve-chung-toi',
+        image: OG_IMAGES.default,
+        canonical: `${SITE_URL}/ve-chung-toi`,
+        type: 'article',
+        priority: 0.5,
+        changefreq: 'monthly',
+        structuredData: {
+            type: 'AboutPage',
+            additionalTypes: []
+        }
+    },
+
+    /**
+     * LIÊN HỆ
+     * Contact page - Important for E-A-T and Trust Signals
+     */
+    'lien-he': {
+        title: 'Liên Hệ - KETQUAMN.COM | Hỗ Trợ & Tư Vấn 24/7',
+        description: 'Liên hệ với KETQUAMN.COM để được hỗ trợ và tư vấn về kết quả xổ số, tạo dàn đề, soi cầu. Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7.',
+        keywords: [
+            'liên hệ ketquamn',
+            'hỗ trợ xổ số',
+            'tư vấn dàn đề',
+            'contact ketquamn',
+            'hotline ketquamn',
+            'email ketquamn',
+            'liên hệ kết quả mn'
+        ],
+        url: '/lien-he',
+        image: OG_IMAGES.default,
+        canonical: `${SITE_URL}/lien-he`,
+        type: 'article',
+        priority: 0.5,
+        changefreq: 'monthly',
+        structuredData: {
+            type: 'ContactPage',
+            additionalTypes: []
+        }
+    },
+
+    /**
      * SOI CẦU BAYESIAN - NEW HIGH PRIORITY
      * PRIMARY: soi cầu miền bắc hôm nay (74,000), dự đoán XSMB (12,100), soi cầu MB (8,100)
      * SECONDARY: thống kê vị trí XSMB (2,900), phân tích xổ số miền Bắc (1,600)

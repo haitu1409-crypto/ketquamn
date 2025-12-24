@@ -247,6 +247,28 @@ function generateSiteMap(articles) {
         <lastmod>${lastmod}</lastmod>
     </url>
     
+    <!-- Legal & Info Pages - Important for E-A-T -->
+    <url>
+        <loc>${SITE_URL_BASE}/chinh-sach-bao-mat</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.50</priority>
+        <lastmod>${lastmod}</lastmod>
+    </url>
+    
+    <url>
+        <loc>${SITE_URL_BASE}/ve-chung-toi</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.50</priority>
+        <lastmod>${lastmod}</lastmod>
+    </url>
+    
+    <url>
+        <loc>${SITE_URL_BASE}/lien-he</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.50</priority>
+        <lastmod>${lastmod}</lastmod>
+    </url>
+    
     <!-- Additional Pages -->
     <url>
         <loc>${SITE_URL_BASE}/kqxs-10-ngay</loc>
